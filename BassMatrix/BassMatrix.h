@@ -77,6 +77,11 @@ enum ECtrlTags
   kCtrlTagLedSeq14,
   kCtrlTagLedSeq15,
 
+  kCtrlTagHostSync,
+  kCtrlTagKeySync,
+  kCtrlTagInternalSync,
+  kCtrlTagMidiPlay,
+
   kNumCtrlTags
 };
 

@@ -30,3 +30,14 @@ public:
 protected:
   int mParamIdx;
 };
+
+// The buttons to choose sync mode.
+class SyncBtnControl : public IBSwitchControl
+{
+public:
+  SyncBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag);
+  void OnMouseDown(float x, float y, const IMouseMod& mod) override;
+protected:
+  int mParamIdx;
+  int mCtrlTag;
+};

@@ -53,7 +53,11 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   
   mLayoutFunc = [&](IGraphics* pGraphics) {
     const IRECT bounds = pGraphics->GetBounds();
-    
+    const IRECT innerBounds = bounds.GetPadded(-10.f);
+    const IRECT sliderBounds = innerBounds.GetFromLeft(150).GetMidVPadded(100);
+    const IRECT versionBounds = innerBounds.GetFromTRHC(300, 20);
+    const IRECT titleBounds = innerBounds.GetCentredInside(200, 50);
+
 //    if (pGraphics->NControls()) {
 //      pGraphics->GetBackgroundControl()->SetTargetAndDrawRECTs(bounds);
 //      return;
@@ -112,13 +116,13 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     }
 
     const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
-    pGraphics->AttachControl(new IBSwitchControl(140, 800, btnHostSyncBitmap, kParamHostSync));
+    pGraphics->AttachControl(new SyncBtnControl(140, 800, btnHostSyncBitmap, kParamHostSync, kCtrlTagHostSync), kCtrlTagHostSync);
     const IBitmap btnKeySyncBitmap = pGraphics->LoadBitmap(PNGKEYSYNC_FN, 2, true);
-    pGraphics->AttachControl(new IBSwitchControl(250, 800, btnKeySyncBitmap, kParamKeySync));
+    pGraphics->AttachControl(new SyncBtnControl(250, 800, btnKeySyncBitmap, kParamKeySync, kCtrlTagKeySync), kCtrlTagKeySync);
     const IBitmap btnInternalSyncBitmap = pGraphics->LoadBitmap(PNGINTERNALSYNC_FN, 2, true);
-    pGraphics->AttachControl(new IBSwitchControl(360, 800, btnInternalSyncBitmap, kParamInternalSync));
+    pGraphics->AttachControl(new SyncBtnControl(360, 800, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
-    pGraphics->AttachControl(new IBSwitchControl(470, 800, btnMidiPlayBitmap, kParamMidiPlay));
+    pGraphics->AttachControl(new SyncBtnControl(470, 800, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
 
     //pGraphics->AttachControl(new ITextControl(titleBounds, "BassMatrix", IText(30)), kCtrlTagTitle);
     //WDL_String buildInfoStr;
@@ -379,11 +383,19 @@ void BassMatrix::OnParamChange(int paramIdx)
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
     }
+    else
+    {
+      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+    }
     break;
   case kParamInternalSync:
     if (value == 1.0)
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+    }
+    else
+    {
+      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
     }
     break;
   case kParamKeySync:
@@ -391,9 +403,17 @@ void BassMatrix::OnParamChange(int paramIdx)
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::KEY_SYNC);
     }
+    else
+    {
+      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+    }
     break;
   case kParamMidiPlay:
     if (value == 1.0)
+    {
+      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+    }
+    else
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
     }

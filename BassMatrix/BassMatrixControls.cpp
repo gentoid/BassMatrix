@@ -87,6 +87,7 @@ void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* 
 
 void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
+  IBSwitchControl::OnMouseDown(x, y, mod);
   if (mParamIdx - kBtnSeq0 < kNumberOfSeqButtons - kNumberOfPropButtons)
   {
     // For the notes. Turn off all note buttons on the same column and then turn on the button just pressed.
@@ -176,4 +177,33 @@ void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
       pControlBtn->SetDirty(true);
     }
   }
+}
+
+
+SyncBtnControl::SyncBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag) :
+  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag)
+{
+}
+
+void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
+{
+  IBSwitchControl::OnMouseDown(x, y, mod);
+  IControl* pControlHostSyncBtn = GetUI()->GetControlWithTag(kCtrlTagHostSync);
+  IControl* pControlKeySyncBtn = GetUI()->GetControlWithTag(kCtrlTagKeySync);
+  IControl* pControlInternalSyncBtn = GetUI()->GetControlWithTag(kCtrlTagInternalSync);
+  IControl* pControlMidiPlayBtn = GetUI()->GetControlWithTag(kCtrlTagMidiPlay);
+  double hsBefore = pControlHostSyncBtn->GetValue();
+  double ksBefore = pControlKeySyncBtn->GetValue();
+  double isBefore = pControlInternalSyncBtn->GetValue();
+  double mpBefore = pControlMidiPlayBtn->GetValue();
+  pControlHostSyncBtn->SetValue(0.0);
+  pControlKeySyncBtn->SetValue(0.0);
+  pControlInternalSyncBtn->SetValue(0.0);
+  pControlMidiPlayBtn->SetValue(0.0);
+  IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
+  pControlBtn->SetValue(1.0);
+  if (pControlHostSyncBtn->GetValue() != hsBefore) { pControlHostSyncBtn->SetDirty(true); }
+  if (pControlKeySyncBtn->GetValue() != ksBefore) { pControlKeySyncBtn->SetDirty(true); }
+  if (pControlInternalSyncBtn->GetValue() != isBefore) { pControlInternalSyncBtn->SetDirty(true); }
+  if (pControlMidiPlayBtn->GetValue() != mpBefore) { pControlMidiPlayBtn->SetDirty(true); }
 }
