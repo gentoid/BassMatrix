@@ -87,7 +87,7 @@ void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* 
 
 void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
-  IBSwitchControl::OnMouseDown(x, y, mod);
+//  IBSwitchControl::OnMouseDown(x, y, mod);
   if (mParamIdx - kBtnSeq0 < kNumberOfSeqButtons - kNumberOfPropButtons)
   {
     // For the notes. Turn off all note buttons on the same column and then turn on the button just pressed.
