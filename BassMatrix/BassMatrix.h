@@ -38,6 +38,7 @@ enum EParams
 	kBtnPtnC = kLedBtn0 + 16,
 	kBtnPtnOct2 = kBtnPtnC + 12,
 	kBtnPtnOct3,
+	kKnobLoopSize,
 
 	kNumParams
 };

@@ -41,6 +41,8 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kBtnPtnOct2)->InitBool("Octav 2", true);
   GetParam(kBtnPtnOct3)->InitBool("Octav 3", false);
 
+  GetParam(kKnobLoopSize)->InitInt("Loop size", 1, 1, 24);
+
 #if IPLUG_EDITOR // http://bit.ly/2S64BDd
   mMakeGraphicsFunc = [&]() {
     return MakeGraphics(*this, PLUG_WIDTH, PLUG_HEIGHT, PLUG_FPS);
@@ -119,12 +121,11 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(470, 800, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
 
-    // Pattern buttons
+    // Pattern controls
     const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
     pGraphics->AttachControl(new PatternBtnControl(485, 160, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2), kCtrlTagBtnPtnOct2);
     const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485 + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3), kCtrlTagBtnPtnOct3);
-
+    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3), kCtrlTagBtnPtnOct3);
     IBitmap btnPatternBitmap[12] ;
     btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
     btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
@@ -143,6 +144,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
       pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 3) * (btnPatternBitmap[0].W() / 2 + 10), 190.f + (i / 3) * (btnPatternBitmap[0].H() / 2 + 10), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i), kCtrlTagBtnPtnC + i);
     }
+
+    const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
+    pGraphics->AttachControl(new IBKnobControl(615.f, 200.f, btnPatternLoopSizeBitmap, kKnobLoopSize));
 
     //pGraphics->AttachControl(new ITextControl(titleBounds, "BassMatrix", IText(30)), kCtrlTagTitle);
     //WDL_String buildInfoStr;

@@ -210,10 +210,34 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 
 
 PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag) :
-  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag)
+  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected()
 {
 }
 
 void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
+  IBSwitchControl::OnMouseDown(x, y, mod);
+
+  // If it is any of the octave button that has been pressed
+  if (mCtrlTag == kCtrlTagBtnPtnOct2 || mCtrlTag == kCtrlTagBtnPtnOct3)
+  {
+    IControl* pControlOctav2 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2);
+    IControl* pControlOctav3 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3);
+    double oct2Before = pControlOctav2->GetValue();
+    double oct3Before = pControlOctav3->GetValue();
+    pControlOctav2->SetValue(mCtrlTag == kCtrlTagBtnPtnOct2 ? 1.0 : 0.0);
+    pControlOctav3->SetValue(mCtrlTag == kCtrlTagBtnPtnOct3 ? 1.0 : 0.0);
+    if (pControlOctav2->GetValue() != oct2Before) { pControlOctav2->SetDirty(true); }
+    if (pControlOctav3->GetValue() != oct3Before) { pControlOctav3->SetDirty(true); }
+  }
+  else
+  {
+    for (int i = 0; i < 12; ++i)
+    {
+      double before = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue();
+      GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(0.0);
+      GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(kCtrlTagBtnPtnC + i == mCtrlTag ? 1.0 : 0.0);
+      GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetDirty(before == GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue());
+    }
+  }
 }

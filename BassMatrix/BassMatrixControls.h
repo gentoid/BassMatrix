@@ -51,4 +51,6 @@ public:
 protected:
   int mParamIdx;
   int mCtrlTag;
+  int mOctav2Selected;
+  int mOctav3Selected;
 };
