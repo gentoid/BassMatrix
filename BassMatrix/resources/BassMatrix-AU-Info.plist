@@ -18,19 +18,19 @@
 			<key>subtype</key>
 			<string>2GcB</string>
 			<key>type</key>
-			<string>aufx</string>
+			<string>aumu</string>
 			<key>version</key>
-			<integer>6912</integer>
+			<integer>7424</integer>
 		</dict>
 	</array>
 	<key>AudioUnit Version</key>
-	<string>0x00001b00</string>
+	<string>0x00001d00</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>BassMatrix</string>
 	<key>CFBundleGetInfoString</key>
-	<string>BassMatrix v0.27.0 Copyright 2021 Acme Inc</string>
+	<string>BassMatrix v0.29.0 Copyright 2021 Acme Inc</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.Witech.audiounit.BassMatrix</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -40,11 +40,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.27.0</string>
+	<string>0.29.0</string>
 	<key>CFBundleSignature</key>
 	<string>2GcB</string>
 	<key>CFBundleVersion</key>
-	<string>0.27.0</string>
+	<string>0.29.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>LSMinimumSystemVersion</key>
