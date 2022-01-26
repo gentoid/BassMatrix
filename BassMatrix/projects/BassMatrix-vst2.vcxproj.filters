@@ -364,4 +364,7 @@
       <Filter>config</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resources\BassMatrix.ico" />
+  </ItemGroup>
 </Project>

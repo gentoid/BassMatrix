@@ -41,3 +41,14 @@ protected:
   int mParamIdx;
   int mCtrlTag;
 };
+
+// The buttons to choose pattern.
+class PatternBtnControl : public IBSwitchControl
+{
+public:
+  PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag);
+  void OnMouseDown(float x, float y, const IMouseMod& mod) override;
+protected:
+  int mParamIdx;
+  int mCtrlTag;
+};

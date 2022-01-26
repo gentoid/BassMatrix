@@ -34,21 +34,10 @@ enum EParams
 	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
 
 	kLedBtn0 = kBtnProp0 + kNumberOfPropButtons,
-	kLedBtn1,
-	kLedBtn2,
-	kLedBtn3,
-	kLedBtn4,
-	kLedBtn5,
-	kLedBtn6,
-	kLedBtn7,
-	kLedBtn8,
-	kLedBtn9,
-	kLedBtn10,
-	kLedBtn11,
-	kLedBtn12,
-	kLedBtn13,
-	kLedBtn14,
-	kLedBtn15,
+
+	kBtnPtnC = kLedBtn0 + 16,
+	kBtnPtnOct2 = kBtnPtnC + 12,
+	kBtnPtnOct3,
 
 	kNumParams
 };
@@ -57,26 +46,11 @@ enum ECtrlTags
 {
   kCtrlTagVersionNumber = 0,
   kCtrlTagBtnSeq0,
-
-  kCtrlTagBtnProp0 = kCtrlTagBtnSeq0 + 16 * kNumberOfNoteBtns,
-
-  kCtrlTagLedSeq0 = kCtrlTagBtnProp0 + 16 * 5,
-  kCtrlTagLedSeq1,
-  kCtrlTagLedSeq2,
-  kCtrlTagLedSeq3,
-  kCtrlTagLedSeq4,
-  kCtrlTagLedSeq5,
-  kCtrlTagLedSeq6,
-  kCtrlTagLedSeq7,
-  kCtrlTagLedSeq8,
-  kCtrlTagLedSeq9,
-  kCtrlTagLedSeq10,
-  kCtrlTagLedSeq11,
-  kCtrlTagLedSeq12,
-  kCtrlTagLedSeq13,
-  kCtrlTagLedSeq14,
-  kCtrlTagLedSeq15,
-
+  kCtrlTagBtnProp0   = kCtrlTagBtnSeq0 + 16 * kNumberOfNoteBtns,
+  kCtrlTagLedSeq0    = kCtrlTagBtnProp0 + 16 * 5,
+  kCtrlTagBtnPtnC    = kCtrlTagLedSeq0 + 16,
+  kCtrlTagBtnPtnOct2 = kCtrlTagBtnPtnC + 12,
+  kCtrlTagBtnPtnOct3,
   kCtrlTagHostSync,
   kCtrlTagKeySync,
   kCtrlTagInternalSync,

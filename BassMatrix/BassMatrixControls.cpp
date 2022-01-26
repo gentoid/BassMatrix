@@ -207,3 +207,13 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
   if (pControlInternalSyncBtn->GetValue() != isBefore) { pControlInternalSyncBtn->SetDirty(true); }
   if (pControlMidiPlayBtn->GetValue() != mpBefore) { pControlMidiPlayBtn->SetDirty(true); }
 }
+
+
+PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag) :
+  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag)
+{
+}
+
+void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
+{
+}

@@ -30,21 +30,16 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   // randomize the current pattern and then tells the gui to update.
   for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
   {
-    char buf[256];
-    sprintf(buf, "%s %d", "Sequencer button", i - kBtnSeq0);
-
-    GetParam(i)->InitBool(buf, false);
-    if ((i - kBtnSeq0) / 16 == 5)
-    {
-      GetParam(i)->InitBool(buf, true);
-    }
-
-    if ((i - kBtnSeq0) / 16 == 16) // Turn on all the gate buttons
-    {
-      GetParam(i)->InitBool(buf, true);
-    }
+    GetParam(i)->InitBool(("Sequencer button " + std::to_string(i - kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
   }
 
+  for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
+  {
+    GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(), i == kBtnPtnC);
+  }
+
+  GetParam(kBtnPtnOct2)->InitBool("Octav 2", true);
+  GetParam(kBtnPtnOct3)->InitBool("Octav 3", false);
 
 #if IPLUG_EDITOR // http://bit.ly/2S64BDd
   mMakeGraphicsFunc = [&]() {
@@ -123,6 +118,31 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     pGraphics->AttachControl(new SyncBtnControl(360, 800, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(470, 800, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
+
+    // Pattern buttons
+    const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
+    pGraphics->AttachControl(new PatternBtnControl(485, 160, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2), kCtrlTagBtnPtnOct2);
+    const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
+    pGraphics->AttachControl(new PatternBtnControl(485 + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3), kCtrlTagBtnPtnOct3);
+
+    IBitmap btnPatternBitmap[12] ;
+    btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
+    btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
+    btnPatternBitmap[2] = pGraphics->LoadBitmap(PNGBTNPATD_FN, 2, true);
+    btnPatternBitmap[3] = pGraphics->LoadBitmap(PNGBTNPATDd_FN, 2, true);
+    btnPatternBitmap[4] = pGraphics->LoadBitmap(PNGBTNPATE_FN, 2, true);
+    btnPatternBitmap[5] = pGraphics->LoadBitmap(PNGBTNPATF_FN, 2, true);
+    btnPatternBitmap[6] = pGraphics->LoadBitmap(PNGBTNPATFf_FN, 2, true);
+    btnPatternBitmap[7] = pGraphics->LoadBitmap(PNGBTNPATG_FN, 2, true);
+    btnPatternBitmap[8] = pGraphics->LoadBitmap(PNGBTNPATGg_FN, 2, true);
+    btnPatternBitmap[9] = pGraphics->LoadBitmap(PNGBTNPATA_FN, 2, true);
+    btnPatternBitmap[10] = pGraphics->LoadBitmap(PNGBTNPATAa_FN, 2, true);
+    btnPatternBitmap[11] = pGraphics->LoadBitmap(PNGBTNPATB_FN, 2, true);
+
+    for (int i = 0; i < 12; ++i)
+    {
+      pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 3) * (btnPatternBitmap[0].W() / 2 + 10), 190.f + (i / 3) * (btnPatternBitmap[0].H() / 2 + 10), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i), kCtrlTagBtnPtnC + i);
+    }
 
     //pGraphics->AttachControl(new ITextControl(titleBounds, "BassMatrix", IText(30)), kCtrlTagTitle);
     //WDL_String buildInfoStr;
