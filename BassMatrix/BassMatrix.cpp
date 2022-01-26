@@ -93,7 +93,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap btnSeqBitmap = pGraphics->LoadBitmap(PNGBTNSEQ_FN, 2, true);
     for (int i = 0; i < 16; i++)
     {
-        for (int j = 0; j < 12; j++)
+        for (int j = 0; j < kNumberOfNoteBtns; j++)
         {
             pGraphics->AttachControl(new SeqNoteBtnControl(140.f + i * (btnSeqBitmap.W() / 2 + 26), 380.f + j * (btnSeqBitmap.H() + 1),
                 btnSeqBitmap, kBtnSeq0 + 16 * j + i),
@@ -351,10 +351,12 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (rowNr == 0)
     {
       pattern->setOctave(seqNr, value == 1.0 ? 1 : 0);
+      pattern->setOctave(seqNr, value == 0.0 ? 0 : 0);
     }
     if (rowNr == 1)
     {
       pattern->setOctave(seqNr, value == 1.0 ? -1 : 0);
+      pattern->setOctave(seqNr, value == 0.0 ? 0 : 0);
     }
     if (rowNr == 2)
     {
