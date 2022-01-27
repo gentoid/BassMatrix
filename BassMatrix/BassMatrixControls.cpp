@@ -211,16 +211,14 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 }
 
 
-PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag, rosic::Open303& o) :
-  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected(), open303Core(o)
+PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag) :
+  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected()
 {
 }
 
 void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
   IBSwitchControl::OnMouseDown(x, y, mod);
-
-  open303Core.sequencer.setUpdateSequenserGUI(true);
 
   // If it is any of the octave button that has been pressed
   if (mCtrlTag == kCtrlTagBtnPtnOct2 || mCtrlTag == kCtrlTagBtnPtnOct3)

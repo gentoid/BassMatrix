@@ -123,9 +123,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 
     // Pattern controls
     const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485, 160, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2, open303Core), kCtrlTagBtnPtnOct2);
+    pGraphics->AttachControl(new PatternBtnControl(485, 160, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2), kCtrlTagBtnPtnOct2);
     const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3, open303Core), kCtrlTagBtnPtnOct3);
+    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3), kCtrlTagBtnPtnOct3);
     IBitmap btnPatternBitmap[12] ;
     btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
     btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
@@ -142,7 +142,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 
     for (int i = 0; i < 12; ++i)
     {
-      pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 3) * (btnPatternBitmap[0].W() / 2 + 10), 190.f + (i / 3) * (btnPatternBitmap[0].H() / 2 + 10), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
+      pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 3) * (btnPatternBitmap[0].W() / 2 + 10), 190.f + (i / 3) * (btnPatternBitmap[0].H() / 2 + 10), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i), kCtrlTagBtnPtnC + i);
     }
 
     const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);

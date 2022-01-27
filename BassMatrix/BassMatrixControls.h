@@ -46,12 +46,11 @@ protected:
 class PatternBtnControl : public IBSwitchControl
 {
 public:
-  PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag, rosic::Open303& o);
+  PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag);
   void OnMouseDown(float x, float y, const IMouseMod& mod) override;
 protected:
   int mParamIdx;
   int mCtrlTag;
   int mOctav2Selected;
   int mOctav3Selected;
-  rosic::Open303& open303Core;
 };
