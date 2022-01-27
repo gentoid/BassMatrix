@@ -373,6 +373,7 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
       open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() + paramIdx - kBtnPtnC);
+      open303Core.sequencer.setUpdateSequenserGUI(true);
     }
     return;
   }
@@ -382,12 +383,14 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
       open303Core.sequencer.setPatternMultiplier(0);
+      open303Core.sequencer.setUpdateSequenserGUI(true);
     }
     break;
   case kBtnPtnOct3:
     if (value == 1.0)
     {
       open303Core.sequencer.setPatternMultiplier(1);
+      open303Core.sequencer.setUpdateSequenserGUI(true);
     }
     break;
   case kParamResonance:
