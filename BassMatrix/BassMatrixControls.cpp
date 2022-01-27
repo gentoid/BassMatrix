@@ -132,9 +132,6 @@ void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
         pControlBtnDown = pControlBtn;
       }
 
-      double upBefore = pControlBtnUp->GetValue();
-      double downBefore = pControlBtnDown->GetValue();
-
       if (row == kNumberOfNoteBtns) // Up
       {
         if (1.0 == pControlBtnUp->GetValue())
@@ -144,8 +141,8 @@ void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
         }
         else if (0.0 == pControlBtnUp->GetValue())
         {
-          pControlBtnUp->SetValue(1.0);
           pControlBtnDown->SetValue(0.0);
+          pControlBtnUp->SetValue(1.0);
         }
       }
       else // Down
@@ -157,18 +154,23 @@ void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
         }
         else if (0.0 == pControlBtnDown->GetValue())
         {
-          pControlBtnUp->SetValue(0.0);
           pControlBtnDown->SetValue(1.0);
+          pControlBtnUp->SetValue(0.0);
         }
       }
 
-      if (upBefore != pControlBtnUp->GetValue())
+      // The order of the calls to SetDirty() matters. In case one button is lit
+      // and the other goes off. We want one who is lit to come last, so the
+      // SetDirty() for that control should come last.
+      if (pControlBtnDown->GetValue() == 1.0)
       {
         pControlBtnUp->SetDirty(true);
+        pControlBtnDown->SetDirty(true);
       }
-      if (downBefore != pControlBtnDown->GetValue())
+      else // if(pControlBtnUp->GetValue() == 1.0)
       {
         pControlBtnDown->SetDirty(true);
+        pControlBtnUp->SetDirty(true);
       }
     }
     else // Accent, glide or gate

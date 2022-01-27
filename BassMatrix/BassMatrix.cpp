@@ -351,12 +351,10 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (rowNr == 0)
     {
       pattern->setOctave(seqNr, value == 1.0 ? 1 : 0);
-      pattern->setOctave(seqNr, value == 0.0 ? 0 : 0);
     }
     if (rowNr == 1)
     {
       pattern->setOctave(seqNr, value == 1.0 ? -1 : 0);
-      pattern->setOctave(seqNr, value == 0.0 ? 0 : 0);
     }
     if (rowNr == 2)
     {
