@@ -161,6 +161,19 @@ namespace rosic
 
     void setUpdateSequenserGUI(bool v) { updateSequenserGUI = v; }
 
+    void setPattern(int patternNr) { activePattern = patternNr; }
+
+    int getPatternMultiplier() { return patternMultiplier; }
+    void setPatternMultiplier(int m) { patternMultiplier = m; }
+
+    void randomize()
+    {
+      for (int i = 0; i < numPatterns; ++i)
+      {
+        patterns[i].randomize();
+      }
+    }
+
     //---------------------------------------------------------------------------------------------
     // others:
 
@@ -168,9 +181,10 @@ namespace rosic
 
   protected:
 
-    static const int numPatterns = 16;
+    static const int numPatterns = 24;
     AcidPattern patterns[numPatterns];
 
+    int    patternMultiplier = 0;  // used when changing between patterns
     int    activePattern;      // the currently selected pattern
     bool   running;            // flag to indicate that sequencer is running
     bool   modeChanged;        // flag that is set to true in setMode and to false in modeChanged

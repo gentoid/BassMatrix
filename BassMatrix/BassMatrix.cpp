@@ -123,9 +123,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 
     // Pattern controls
     const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485, 160, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2), kCtrlTagBtnPtnOct2);
+    pGraphics->AttachControl(new PatternBtnControl(485, 160, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2, open303Core), kCtrlTagBtnPtnOct2);
     const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3), kCtrlTagBtnPtnOct3);
+    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() + 10, 160, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3, open303Core), kCtrlTagBtnPtnOct3);
     IBitmap btnPatternBitmap[12] ;
     btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
     btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
@@ -142,7 +142,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 
     for (int i = 0; i < 12; ++i)
     {
-      pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 3) * (btnPatternBitmap[0].W() / 2 + 10), 190.f + (i / 3) * (btnPatternBitmap[0].H() / 2 + 10), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i), kCtrlTagBtnPtnC + i);
+      pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 3) * (btnPatternBitmap[0].W() / 2 + 10), 190.f + (i / 3) * (btnPatternBitmap[0].H() / 2 + 10), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
     }
 
     const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
@@ -299,23 +299,19 @@ void BassMatrix::OnReset()
   open303Core.setPostFilterHighpass(24.0);
   open303Core.setSquarePhaseShift(189.0);
 
-  rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
   srand(static_cast<unsigned int>(time(0)));
-  pattern->randomize();
+  open303Core.sequencer.randomize();
 
-#ifdef WAM_API
-
-  open303Core.setTuning(440.0);
-  open303Core.setCutoff(1000.0);
-  open303Core.setResonance(50.0);
-  open303Core.setEnvMod(0.25);
-  open303Core.setDecay(400.0);
-  open303Core.setAccent(0.5);
-  open303Core.setVolume(-6.0);
-  open303Core.setWaveform(0.0); // Default  open303Core.setWaveform(0.85);
+  //open303Core.setTuning(440.0);
+  //open303Core.setCutoff(1000.0);
+  //open303Core.setResonance(50.0);
+  //open303Core.setEnvMod(0.25);
+  //open303Core.setDecay(400.0);
+  //open303Core.setAccent(0.5);
+  //open303Core.setVolume(-6.0);
+  //open303Core.setWaveform(0.0); // Default  open303Core.setWaveform(0.85);
 
   open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
-#endif
 }
 
 void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)
@@ -371,7 +367,29 @@ void BassMatrix::OnParamChange(int paramIdx)
     return;
   }
 
+  // Pattern selection buttons
+  if (paramIdx >= kBtnPtnC && paramIdx <= kBtnPtnC + 11)
+  {
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() + paramIdx - kBtnPtnC);
+    }
+    return;
+  }
+
   switch (paramIdx) {
+  case kBtnPtnOct2:
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setPatternMultiplier(0);
+    }
+    break;
+  case kBtnPtnOct3:
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setPatternMultiplier(1);
+    }
+    break;
   case kParamResonance:
     open303Core.setResonance(value);
     break;
