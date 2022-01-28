@@ -150,10 +150,7 @@ namespace rosic
       step = inStep; countDown = samplesLeftInStep;
     }
 
-    int getStep()
-    {
-      return step;
-    }
+    int getStep() { return step; }
 
     int getActivePattern() { return activePattern; }
 

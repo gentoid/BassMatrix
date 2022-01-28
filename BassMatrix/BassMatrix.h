@@ -97,4 +97,6 @@ private:
 	ISender<1, 1, std::array<bool, kNumberOfSeqButtons>> mSequencerSender;
 	unsigned int mLastSamplePos;
 	bool mStartSyncWithHost;
+	int mKnobLoopSize;
+	int mCurrentPattern;
 };

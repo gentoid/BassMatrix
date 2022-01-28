@@ -8,7 +8,7 @@
 #endif
 
 BassMatrix::BassMatrix(const InstanceInfo& info)
-: Plugin(info, MakeConfig(kNumParams, kNumPresets)), mLastSamplePos(0), mStartSyncWithHost(false)
+: Plugin(info, MakeConfig(kNumParams, kNumPresets)), mLastSamplePos(0), mStartSyncWithHost(false), mCurrentPattern(0)
 {
   GetParam(kParamCutOff)->InitDouble("Cut off", 500.0, 314.0, 2394.0, 1.0, "Hz");
   GetParam(kParamResonance)->InitDouble("Resonace", 50.0, 0.0, 100.0, 1.0, "%");
@@ -254,6 +254,20 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
       }
     }
 
+    if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN)
+    {
+      if (mKnobLoopSize > 1)
+      {
+        if (open303Core.sequencer.getStep() == 0)
+        {
+          mCurrentPattern = (mCurrentPattern + 1) % mKnobLoopSize;
+          open303Core.sequencer.setPattern(mCurrentPattern);
+          open303Core.sequencer.setUpdateSequenserGUI(true);
+
+        }
+      }
+    }
+
     while (!mMidiQueue.Empty())
     {
       IMidiMsg msg = mMidiQueue.Peek();
@@ -384,6 +398,9 @@ void BassMatrix::OnParamChange(int paramIdx)
       open303Core.sequencer.setPatternMultiplier(1);
       open303Core.sequencer.setUpdateSequenserGUI(true);
     }
+    break;
+  case kKnobLoopSize:
+    mKnobLoopSize = static_cast<int>(value);
     break;
   case kParamResonance:
     open303Core.setResonance(value);
