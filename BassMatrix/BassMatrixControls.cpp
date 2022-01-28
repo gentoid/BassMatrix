@@ -185,20 +185,24 @@ SyncBtnControl::SyncBtnControl(float x, float y, const IBitmap& bitmap, int para
 void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
   IBSwitchControl::OnMouseDown(x, y, mod);
+  IControl* pControlStopBtn = GetUI()->GetControlWithTag(kCtrlTagStop);
   IControl* pControlHostSyncBtn = GetUI()->GetControlWithTag(kCtrlTagHostSync);
   IControl* pControlKeySyncBtn = GetUI()->GetControlWithTag(kCtrlTagKeySync);
   IControl* pControlInternalSyncBtn = GetUI()->GetControlWithTag(kCtrlTagInternalSync);
   IControl* pControlMidiPlayBtn = GetUI()->GetControlWithTag(kCtrlTagMidiPlay);
+  double stBefore = pControlStopBtn->GetValue();
   double hsBefore = pControlHostSyncBtn->GetValue();
   double ksBefore = pControlKeySyncBtn->GetValue();
   double isBefore = pControlInternalSyncBtn->GetValue();
   double mpBefore = pControlMidiPlayBtn->GetValue();
+  pControlStopBtn->SetValue(0.0);
   pControlHostSyncBtn->SetValue(0.0);
   pControlKeySyncBtn->SetValue(0.0);
   pControlInternalSyncBtn->SetValue(0.0);
   pControlMidiPlayBtn->SetValue(0.0);
   IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
   pControlBtn->SetValue(1.0);
+  if (pControlStopBtn->GetValue() != stBefore) { pControlStopBtn->SetDirty(true); }
   if (pControlHostSyncBtn->GetValue() != hsBefore) { pControlHostSyncBtn->SetDirty(true); }
   if (pControlKeySyncBtn->GetValue() != ksBefore) { pControlKeySyncBtn->SetDirty(true); }
   if (pControlInternalSyncBtn->GetValue() != isBefore) { pControlInternalSyncBtn->SetDirty(true); }
@@ -215,26 +219,40 @@ void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
   IBSwitchControl::OnMouseDown(x, y, mod);
 
-  // If it is any of the octave button that has been pressed
-  if (mCtrlTag == kCtrlTagBtnPtnOct2 || mCtrlTag == kCtrlTagBtnPtnOct3)
+  if (mod.L)
   {
-    IControl* pControlOctav2 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2);
-    IControl* pControlOctav3 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3);
-    double oct2Before = pControlOctav2->GetValue();
-    double oct3Before = pControlOctav3->GetValue();
-    pControlOctav2->SetValue(mCtrlTag == kCtrlTagBtnPtnOct2 ? 1.0 : 0.0);
-    pControlOctav3->SetValue(mCtrlTag == kCtrlTagBtnPtnOct3 ? 1.0 : 0.0);
-    if (pControlOctav2->GetValue() != oct2Before) { pControlOctav2->SetDirty(true); }
-    if (pControlOctav3->GetValue() != oct3Before) { pControlOctav3->SetDirty(true); }
-  }
-  else
-  {
-    for (int i = 0; i < 12; ++i)
+    IPopupMenu menu{ "Menu", {"one", "two", "three"} };
+    // If it is any of the octave button that has been pressed
+    if (mCtrlTag == kCtrlTagBtnPtnOct2 || mCtrlTag == kCtrlTagBtnPtnOct3)
     {
-      double before = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue();
-      GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(0.0);
-      GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(kCtrlTagBtnPtnC + i == mCtrlTag ? 1.0 : 0.0);
-      GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetDirty(before == GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue());
+      IControl* pControlOctav2 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2);
+      IControl* pControlOctav3 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3);
+      double oct2Before = pControlOctav2->GetValue();
+      double oct3Before = pControlOctav3->GetValue();
+      pControlOctav2->SetValue(mCtrlTag == kCtrlTagBtnPtnOct2 ? 1.0 : 0.0);
+      pControlOctav3->SetValue(mCtrlTag == kCtrlTagBtnPtnOct3 ? 1.0 : 0.0);
+      if (pControlOctav2->GetValue() != oct2Before) { pControlOctav2->SetDirty(true); }
+      if (pControlOctav3->GetValue() != oct3Before) { pControlOctav3->SetDirty(true); }
+    }
+    else
+    {
+      for (int i = 0; i < 12; ++i)
+      {
+        double before = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue();
+        GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(0.0);
+        GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(kCtrlTagBtnPtnC + i == mCtrlTag ? 1.0 : 0.0);
+        GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetDirty(before == GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue());
+      }
     }
   }
+  else if(mod.R) // Right button
+  {
+    IPopupMenu menu{ "Menu", {"one", "two", "three"} };
+      //, , [pCaller](IPopupMenu* pMenu) {
+      //    auto* itemChosen = pMenu->GetChosenItem();
+      //    if (itemChosen)
+      //      pCaller->As<IVButtonControl>()->SetValueStr(itemChosen->GetText());
+      //  }
+  }
+
 }

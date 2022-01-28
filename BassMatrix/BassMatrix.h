@@ -96,4 +96,5 @@ private:
 	ISender<1, 1, int> mLedSeqSender;
 	ISender<1, 1, std::array<bool, kNumberOfSeqButtons>> mSequencerSender;
 	unsigned int mLastSamplePos;
+	bool mStartSyncWithHost;
 };

@@ -8,7 +8,7 @@
 #endif
 
 BassMatrix::BassMatrix(const InstanceInfo& info)
-: Plugin(info, MakeConfig(kNumParams, kNumPresets)), mLastSamplePos(0)
+: Plugin(info, MakeConfig(kNumParams, kNumPresets)), mLastSamplePos(0), mStartSyncWithHost(false)
 {
   GetParam(kParamCutOff)->InitDouble("Cut off", 500.0, 314.0, 2394.0, 1.0, "Hz");
   GetParam(kParamResonance)->InitDouble("Resonace", 50.0, 0.0, 100.0, 1.0, "%");
@@ -79,9 +79,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     pGraphics->AttachControl(new IBKnobControl(710, 30, knobLittleBitmap, kParamDecay));
     pGraphics->AttachControl(new IBKnobControl(810, 30, knobLittleBitmap, kParamAccent));
 
-    pGraphics->AttachControl(new IBKnobControl(210, 130, knobBigBitmap, kParamTempo));
+    pGraphics->AttachControl(new IBKnobControl(0 +  210 - 175, 130, knobBigBitmap, kParamTempo));
 //    pGraphics->AttachControl(new IBKnobControl(510, 130, knobBigBitmap, kParamDrive));
-    pGraphics->AttachControl(new IBKnobControl(810 - 75, 130, knobBigBitmap, kParamVolume));
+    pGraphics->AttachControl(new IBKnobControl(1130 - 210, 130, knobBigBitmap, kParamVolume));
 
     // Led buttons
     const IBitmap ledBtnBitmap = pGraphics->LoadBitmap(PNGBTNLED_FN, 2, true);
@@ -116,13 +116,13 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap btnStopBitmap = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(30, 800, btnStopBitmap, kParamStop, kCtrlTagStop), kCtrlTagStop);
     const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(140, 800, btnHostSyncBitmap, kParamHostSync, kCtrlTagHostSync), kCtrlTagHostSync);
+    pGraphics->AttachControl(new SyncBtnControl(100, 800, btnHostSyncBitmap, kParamHostSync, kCtrlTagHostSync), kCtrlTagHostSync);
     const IBitmap btnKeySyncBitmap = pGraphics->LoadBitmap(PNGKEYSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(250, 800, btnKeySyncBitmap, kParamKeySync, kCtrlTagKeySync), kCtrlTagKeySync);
+    pGraphics->AttachControl(new SyncBtnControl(170, 800, btnKeySyncBitmap, kParamKeySync, kCtrlTagKeySync), kCtrlTagKeySync);
     const IBitmap btnInternalSyncBitmap = pGraphics->LoadBitmap(PNGINTERNALSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(360, 800, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
+    pGraphics->AttachControl(new SyncBtnControl(240, 800, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(470, 800, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
+    pGraphics->AttachControl(new SyncBtnControl(310, 800, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
 
     // Pattern controls
     const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
@@ -241,8 +241,9 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
         continue; // Next frame
       }
 
-      else if (mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset))
+      else if (mStartSyncWithHost || mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset))
       { // Transport has changed
+        mStartSyncWithHost = false;
         double maxSamplePos = GetSamplesPerBeat() * 4.0;
         int currentSampleInSequence = static_cast<int>(GetSamplePos()) % static_cast<int>(maxSamplePos);
         int sampleLeftToNextStep = static_cast<int>(GetSamplePos()) / static_cast<int>(maxSamplePos);
@@ -290,6 +291,7 @@ void BassMatrix::OnReset()
 {
   open303Core.setSampleRate(GetSampleRate());
 
+  // Some internal stuff. Maybe we need to change this to sound more as a real TB-303?
   open303Core.filter.setMode(rosic::TeeBeeFilter::TB_303); // Should be LP_12
   open303Core.setAmpSustain(-60.0);
   open303Core.setTanhShaperDrive(36.9);
@@ -301,16 +303,6 @@ void BassMatrix::OnReset()
 
   srand(static_cast<unsigned int>(time(0)));
   open303Core.sequencer.randomize();
-
-  //open303Core.setTuning(440.0);
-  //open303Core.setCutoff(1000.0);
-  //open303Core.setResonance(50.0);
-  //open303Core.setEnvMod(0.25);
-  //open303Core.setDecay(400.0);
-  //open303Core.setAccent(0.5);
-  //open303Core.setVolume(-6.0);
-  //open303Core.setWaveform(0.0); // Default  open303Core.setWaveform(0.85);
-
   open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
 }
 
@@ -430,6 +422,7 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
+      mStartSyncWithHost = true;
     }
     else
     {
@@ -437,19 +430,14 @@ void BassMatrix::OnParamChange(int paramIdx)
     }
     break;
   case kParamInternalSync:
-    if (value == 1.0)
-    {
-      open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
-    }
-    else
-    {
-      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
-    }
+    open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+    mStartSyncWithHost = false;
     break;
   case kParamKeySync:
     if (value == 1.0)
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::KEY_SYNC);
+      mStartSyncWithHost = false;
     }
     else
     {
@@ -460,6 +448,7 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
       open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+      mStartSyncWithHost = false;
     }
     else
     {
