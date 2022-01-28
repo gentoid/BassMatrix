@@ -28,13 +28,8 @@ void SeqLedBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* p
     }
 
     int step = d.vals[0];
-    if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN)
-    {
-      // A very special correction here. I have not figured out yet why the
-      // sequencer in RUN mode behaves different than other moded.
-      if (step == 0) { step = 15; }
-      else { step = (step - 1); }
-    }
+    if (step == 0) { step = 15; }
+    else { step = (step - 1); }
 
     assert(step >= 0 && step <= 15);
 

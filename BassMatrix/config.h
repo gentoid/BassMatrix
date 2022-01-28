@@ -63,6 +63,7 @@
 #define PNGFX1BIG_FN          "fx-1-175x175.png"
 #define PNGBTNLED_FN          "btnLed.png"
 #define PNGBTNSEQ_FN          "btnSeq.png"
+#define PNGSTOP_FN            "btnStop.png"
 #define PNGHOSTSYNC_FN        "btnHostSync.png"
 #define PNGKEYSYNC_FN         "btnKeySync.png"
 #define PNGINTERNALSYNC_FN    "btnInternalSync.png"

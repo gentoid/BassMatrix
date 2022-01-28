@@ -24,6 +24,7 @@ enum EParams
 	kParamVolume,
 	kParamTempo,
 	kParamDrive,
+	kParamStop,
 	kParamHostSync,
 	kParamKeySync,
 	kParamInternalSync,
@@ -52,6 +53,7 @@ enum ECtrlTags
   kCtrlTagBtnPtnC    = kCtrlTagLedSeq0 + 16,
   kCtrlTagBtnPtnOct2 = kCtrlTagBtnPtnC + 12,
   kCtrlTagBtnPtnOct3,
+	kCtrlTagStop,
   kCtrlTagHostSync,
   kCtrlTagKeySync,
   kCtrlTagInternalSync,
@@ -93,4 +95,5 @@ private:
   rosic::Open303 open303Core;
 	ISender<1, 1, int> mLedSeqSender;
 	ISender<1, 1, std::array<bool, kNumberOfSeqButtons>> mSequencerSender;
+	unsigned int mLastSamplePos;
 };

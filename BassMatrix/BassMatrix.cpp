@@ -8,7 +8,7 @@
 #endif
 
 BassMatrix::BassMatrix(const InstanceInfo& info)
-: Plugin(info, MakeConfig(kNumParams, kNumPresets))
+: Plugin(info, MakeConfig(kNumParams, kNumPresets)), mLastSamplePos(0)
 {
   GetParam(kParamCutOff)->InitDouble("Cut off", 500.0, 314.0, 2394.0, 1.0, "Hz");
   GetParam(kParamResonance)->InitDouble("Resonace", 50.0, 0.0, 100.0, 1.0, "%");
@@ -21,6 +21,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamTempo)->InitDouble("Tempo", 120.0, 0.0, 300.0, 1.0, "bpm");
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
+  GetParam(kParamStop)->InitBool("Stop", false);
   GetParam(kParamHostSync)->InitBool("Host Sync", false);
   GetParam(kParamKeySync)->InitBool("Key Sync", false);
   GetParam(kParamInternalSync)->InitBool("Internal Sync", true);
@@ -112,6 +113,8 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
         }
     }
 
+    const IBitmap btnStopBitmap = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
+    pGraphics->AttachControl(new SyncBtnControl(30, 800, btnStopBitmap, kParamStop, kCtrlTagStop), kCtrlTagStop);
     const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(140, 800, btnHostSyncBitmap, kParamHostSync, kCtrlTagHostSync), kCtrlTagHostSync);
     const IBitmap btnKeySyncBitmap = pGraphics->LoadBitmap(PNGKEYSYNC_FN, 2, true);
@@ -176,11 +179,6 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
   if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
   {
     open303Core.sequencer.setTempo(GetTempo());
-    if (!GetTransportIsRunning())
-    {
-      *out01++ = *out02++ = 0.0;
-      return; // Silence
-    }
   }
 
   if ((open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN ||
@@ -237,22 +235,23 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
   {
     if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
     {
-      if (GetSamplePos() < 0.0) // At least Cubase can give a negative sample pos in the beginning.
+      if (GetSamplePos() < 0.0 /* At least Cubase can give a negative sample pos in the beginning. */  || !GetTransportIsRunning())
       {
-        *out01++ = *out02++ = 0.0;
-        break; // Next frame
+        *out01++ = *out02++ = 0.0; // Silence
+        continue; // Next frame
+      }
+
+      else if (mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset))
+      { // Transport has changed
+        double maxSamplePos = GetSamplesPerBeat() * 4.0;
+        int currentSampleInSequence = static_cast<int>(GetSamplePos()) % static_cast<int>(maxSamplePos);
+        int sampleLeftToNextStep = static_cast<int>(GetSamplePos()) / static_cast<int>(maxSamplePos);
+        double samplesPerStep = maxSamplePos / 16.0;
+        int currentStepInSequence = (int)((double)currentSampleInSequence / samplesPerStep);
+        open303Core.sequencer.setStep(currentStepInSequence, 0); // We hope that the bar is set on an even 16't.
+        mLastSamplePos = 0; // We hope that a change doesn't occurs twice in a ProcessBlock() call.
       }
     }
-
-    //if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC &&
-    //    GetSamplePos() + offset != mLastSamplePos + 1) // Transport has changed
-    //{
-    //  double maxSamplePos = GetSamplesPerBeat() * 4.0;
-    //  int currentSampleInSequence = static_cast<int>(GetSamplePos()) % static_cast<int>(maxSamplePos);
-    //  double samplesPerStep = maxSamplePos / 16.0;
-    //  int currentStepInSequence = (int)((double)currentSampleInSequence / samplesPerStep);
-    //  open303Core.sequencer.setStep(currentStepInSequence, 0);
-    //}
 
     while (!mMidiQueue.Empty())
     {
@@ -271,10 +270,11 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
       mMidiQueue.Remove();
     }
 
-//    mLastSamplePos = GetSamplePos();
-
     *out01++ = *out02++ = open303Core.getSample();
   }
+
+  mLastSamplePos = static_cast<unsigned int>(GetSamplePos()) + nFrames;
+
   mMidiQueue.Flush(nFrames);
 }
 
@@ -422,6 +422,9 @@ void BassMatrix::OnParamChange(int paramIdx)
     break;
   case kParamDrive:
     open303Core.setTanhShaperDrive(value);
+    break;
+  case kParamStop:
+    open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
     break;
   case kParamHostSync:
     if (value == 1.0)
