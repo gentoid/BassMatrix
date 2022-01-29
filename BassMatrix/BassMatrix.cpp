@@ -198,7 +198,7 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
 
       for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
       {
-        seq[i] = pattern->getNote(i % 16)->key == 11 - i / 16;
+        seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16;
       }
 
       for (int i = 0; i < kNumberOfPropButtons; ++i) // The note properties

@@ -221,7 +221,6 @@ void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 
   if (mod.L)
   {
-    IPopupMenu menu{ "Menu", {"one", "two", "three"} };
     // If it is any of the octave button that has been pressed
     if (mCtrlTag == kCtrlTagBtnPtnOct2 || mCtrlTag == kCtrlTagBtnPtnOct3)
     {
