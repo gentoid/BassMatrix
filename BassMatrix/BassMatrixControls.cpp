@@ -210,8 +210,8 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 }
 
 
-PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag) :
-  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected()
+PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag, rosic::Open303& in303) :
+  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected(), open303Core(in303)
 {
 }
 
@@ -245,14 +245,41 @@ void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
       }
     }
   }
-  else if(mod.R) // Right button
+}
+
+void PatternBtnControl::CreateContextMenu(IPopupMenu & contextMenu)
+{
+  contextMenu.AddItem("Clear pattern");
+  contextMenu.AddItem("Randomize pattern");
+
+  std::vector<std::string> notes = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+  for (int i = 2; i <= 3; ++i)
   {
-    IPopupMenu menu{ "Menu", {"one", "two", "three"} };
-      //, , [pCaller](IPopupMenu* pMenu) {
-      //    auto* itemChosen = pMenu->GetChosenItem();
-      //    if (itemChosen)
-      //      pCaller->As<IVButtonControl>()->SetValueStr(itemChosen->GetText());
-      //  }
+    for (auto note : notes)
+    {
+      std::string s = "Copy to pattern " + note + " on octav " + std::to_string(i);
+      contextMenu.AddItem(s.c_str());
+    }
   }
 
+  return;
+}
+
+void PatternBtnControl::OnContextSelection(int itemSelected)
+{
+  switch (itemSelected)
+  {
+  case 0:
+    open303Core.sequencer.clearPattern(mCtrlTag - kCtrlTagBtnPtnC);
+    open303Core.sequencer.setUpdateSequenserGUI(true);
+    break;
+  case 1:
+    open303Core.sequencer.randomizePattern(mCtrlTag - kCtrlTagBtnPtnC);
+    open303Core.sequencer.setUpdateSequenserGUI(true);
+    break;
+  default:
+    open303Core.sequencer.copyPattern(mCtrlTag - kCtrlTagBtnPtnC, itemSelected - 2);
+    break;
+  }
+  return;
 }

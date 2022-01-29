@@ -163,12 +163,24 @@ namespace rosic
     int getPatternMultiplier() { return patternMultiplier; }
     void setPatternMultiplier(int m) { patternMultiplier = m; }
 
-    void randomize()
+    void clearPattern(int nr)
+    {
+      patterns[nr].clear();
+    }
+    void randomizePattern(int nr)
+    {
+      patterns[nr].randomize();
+    }
+    void randomizeAllPatterns()
     {
       for (int i = 0; i < numPatterns; ++i)
       {
         patterns[i].randomize();
       }
+    }
+    void copyPattern(int from, int to)
+    {
+      patterns[to] = patterns[from];
     }
 
     //---------------------------------------------------------------------------------------------
