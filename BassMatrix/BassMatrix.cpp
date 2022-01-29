@@ -261,11 +261,16 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
     {
       if (mKnobLoopSize > 1)
       {
-        if (open303Core.sequencer.getStep() == 0)
+        if (open303Core.sequencer.getStep() == 0 && !mHasChanged)
         {
+          mHasChanged = true;
           mCurrentPattern = (mCurrentPattern + 1) % mKnobLoopSize;
           open303Core.sequencer.setPattern(mCurrentPattern);
           open303Core.sequencer.setUpdateSequenserGUI(true);
+        }
+        if (open303Core.sequencer.getStep() != 0)
+        {
+          mHasChanged = false;
         }
       }
     }

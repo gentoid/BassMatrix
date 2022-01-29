@@ -55,8 +55,8 @@ public:
 protected:
   int mParamIdx;
   int mCtrlTag;
-  int mOctav2Selected;
-  int mOctav3Selected;
+  bool mOctav2Selected;
+  bool mOctav3Selected;
 private:
   // the embedded core dsp object:
   rosic::Open303& open303Core;

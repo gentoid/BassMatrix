@@ -211,7 +211,7 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 
 
 PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag, rosic::Open303& in303) :
-  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected(), open303Core(in303)
+  IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag), mOctav2Selected(true), mOctav3Selected(false), open303Core(in303)
 {
 }
 

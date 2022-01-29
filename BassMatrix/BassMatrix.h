@@ -100,4 +100,5 @@ private:
 	bool mStartSyncWithHost;
 	int mKnobLoopSize;
 	int mCurrentPattern;
+	int mHasChanged;
 };
