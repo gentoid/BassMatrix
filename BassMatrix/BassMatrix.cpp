@@ -228,6 +228,9 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
 
       mSequencerSender.PushData({ kCtrlTagBtnSeq0, {seq} });
 
+      int pat;
+      pat = open303Core.sequencer.getActivePattern();
+      mPatternSender.PushData({ kCtrlTagBtnPtnC, {pat} });
     }
   }
 
@@ -272,13 +275,28 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
       IMidiMsg msg = mMidiQueue.Peek();
       if (msg.mOffset > offset) break;
 
-      if (msg.StatusMsg() == IMidiMsg::kNoteOn)
+      if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::KEY_SYNC)
       {
-        open303Core.noteOn(msg.NoteNumber(), 64, 0.0);
+        if (msg.StatusMsg() == IMidiMsg::kNoteOn)
+        {
+          open303Core.noteOn(msg.NoteNumber(), 64, 0.0);
+        }
+        else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
+        {
+          open303Core.noteOn(msg.NoteNumber(), 0, 0.0);
+        }
       }
-      else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
+      else if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC ||
+        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN)
       {
-        open303Core.noteOn(msg.NoteNumber(), 0, 0.0);
+        if (msg.StatusMsg() == IMidiMsg::kNoteOn)
+        {
+          if (msg.NoteNumber() >= 48 && msg.NoteNumber() < 72)
+          {
+            open303Core.sequencer.setPattern(msg.NoteNumber() - 48);
+            open303Core.sequencer.setUpdateSequenserGUI(true);
+          }
+        }
       }
 
       mMidiQueue.Remove();
@@ -297,6 +315,7 @@ void BassMatrix::OnIdle()
 {
   mLedSeqSender.TransmitData(*this);
   mSequencerSender.TransmitData(*this);
+  mPatternSender.TransmitData(*this);
 }
 #endif
 
@@ -316,7 +335,7 @@ void BassMatrix::OnReset()
 
   srand(static_cast<unsigned int>(time(0)));
   open303Core.sequencer.randomizeAllPatterns();
-  open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+//  open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
 }
 
 void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)

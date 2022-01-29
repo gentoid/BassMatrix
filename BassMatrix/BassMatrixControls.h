@@ -47,10 +47,10 @@ class PatternBtnControl : public IBSwitchControl
 {
 public:
   PatternBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag, rosic::Open303& open303Core);
+  void OnMsgFromDelegate(int msgTag, int dataSize, const void* pData) override;
   void OnMouseDown(float x, float y, const IMouseMod& mod) override;
   void CreateContextMenu(IPopupMenu& contextMenu) override;
   void OnContextSelection(int itemSelected) override;
-
 
 protected:
   int mParamIdx;

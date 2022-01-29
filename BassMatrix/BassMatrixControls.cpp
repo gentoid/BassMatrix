@@ -215,6 +215,34 @@ PatternBtnControl::PatternBtnControl(float x, float y, const IBitmap& bitmap, in
 {
 }
 
+void PatternBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* pData)
+{
+  if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
+  {
+    IByteStream stream(pData, dataSize);
+    int pos = 0;
+    ISenderData<1, int> d;
+    pos = stream.Get(&d, pos);
+    int pattern = d.vals[0];
+
+    for (int i = 0; i < kCtrlTagBtnPtnOct3 - kCtrlTagBtnPtnC; i++)
+    {
+      IControl* pControlBtn = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i);
+      double before = pControlBtn->GetValue();
+      pControlBtn->SetValue(pattern % 12 == i ? 1.0 : 0.0);
+      if (before != pControlBtn->GetValue())
+      {
+        pControlBtn->SetDirty(true);
+      }
+    }
+    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2)->SetValue(pattern < 12 ? 1.0 : 0.0);
+    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3)->SetValue(pattern >= 12 ? 1.0 : 0.0);
+    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2)->SetDirty(true);
+    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3)->SetDirty(true);
+    SetDirty(false);
+  }
+}
+
 void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
   IBSwitchControl::OnMouseDown(x, y, mod);

@@ -14,11 +14,11 @@ void AcidPattern::clear()
 {
   for(int i=0; i<maxNumSteps; i++)
   {
-    notes[i].key    = 0;
+    notes[i].key    = 1;
     notes[i].octave = 0;
     notes[i].accent = false;
     notes[i].slide  = false;
-    notes[i].gate   = false;
+    notes[i].gate   = true;
   }
 }
 
