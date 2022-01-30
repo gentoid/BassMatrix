@@ -297,15 +297,15 @@ void PatternBtnControl::OnContextSelection(int itemSelected)
   switch (itemSelected)
   {
   case 0:
-    open303Core.sequencer.clearPattern(mCtrlTag - kCtrlTagBtnPtnC);
+    open303Core.sequencer.clearPattern(12 * open303Core.sequencer.getPatternMultiplier() + mCtrlTag - kCtrlTagBtnPtnC);
     open303Core.sequencer.setUpdateSequenserGUI(true);
     break;
   case 1:
-    open303Core.sequencer.randomizePattern(mCtrlTag - kCtrlTagBtnPtnC);
+    open303Core.sequencer.randomizePattern(12 * open303Core.sequencer.getPatternMultiplier() + mCtrlTag - kCtrlTagBtnPtnC);
     open303Core.sequencer.setUpdateSequenserGUI(true);
     break;
   default:
-    open303Core.sequencer.copyPattern(mCtrlTag - kCtrlTagBtnPtnC, itemSelected - 2);
+    open303Core.sequencer.copyPattern(12 * open303Core.sequencer.getPatternMultiplier() + mCtrlTag - kCtrlTagBtnPtnC, itemSelected - 2);
     break;
   }
   return;

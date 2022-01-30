@@ -325,6 +325,7 @@ namespace rosic
     if( sequencer.getSequencerMode() != AcidSequencer::OFF)
     {
       noteOffCountDown--;
+      if (noteOffCountDown < 0) { noteOffCountDown = 0; } // Rescue when something went wrong
       if( noteOffCountDown == 0 || sequencer.isRunning() == false )
         releaseNote(currentNote);
 

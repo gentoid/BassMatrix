@@ -84,6 +84,7 @@ public:
 #endif
   
 #if IPLUG_DSP // http://bit.ly/2S64BDd
+	void PushSequencerButtons();
   void ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** outputs, int nFrames) override;
 #endif
 
