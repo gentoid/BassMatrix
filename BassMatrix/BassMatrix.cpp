@@ -167,6 +167,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //}
 //#endif
 
+#if IPLUG_DSP
 void BassMatrix::PushSequencerButtons()
 {
   std::array<bool, kNumberOfSeqButtons> seq;
@@ -204,7 +205,6 @@ void BassMatrix::PushSequencerButtons()
   mSequencerSender.PushData({ kCtrlTagBtnSeq0, {seq} });
 }
 
-#if IPLUG_DSP
 void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** outputs, int nFrames)
 {
   // Channel declaration.
