@@ -56,6 +56,20 @@ SeqNoteBtnControl::SeqNoteBtnControl(float x, float y, const IBitmap& bitmap, in
 {
 }
 
+void SeqNoteBtnControl::SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> sequencer, IGraphics* ui)
+{
+  for (int i = 0; i < kNumberOfSeqButtons; i++)
+  {
+    IControl* pControlBtn = ui->GetControlWithTag(kCtrlTagBtnSeq0 + i);
+    double before = pControlBtn->GetValue();
+    pControlBtn->SetValue(sequencer[i] ? 1.0 : 0.0);
+    if (before != pControlBtn->GetValue())
+    {
+      pControlBtn->SetDirty(true);
+    }
+  }
+}
+
 void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* pData)
 {
   if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
@@ -66,16 +80,8 @@ void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* 
     pos = stream.Get(&d, pos);
     std::array<bool, kNumberOfSeqButtons> sequencer = d.vals[0];
 
-    for (int i = 0; i < kNumberOfSeqButtons; i++)
-    {
-      IControl* pControlBtn = GetUI()->GetControlWithTag(kCtrlTagBtnSeq0 + i);
-      double before = pControlBtn->GetValue();
-      pControlBtn->SetValue(sequencer[i] ? 1.0 : 0.0);
-      if (before != pControlBtn->GetValue())
-      {
-        pControlBtn->SetDirty(true);
-      }
-    }
+    SeqNoteBtnControl::SetSequencerButtons(sequencer, GetUI());
+
     SetDirty(false);
   }
 }
@@ -290,6 +296,7 @@ void PatternBtnControl::CreateContextMenu(IPopupMenu & contextMenu)
   }
 
   return;
+
 }
 
 void PatternBtnControl::OnContextSelection(int itemSelected)
@@ -298,11 +305,11 @@ void PatternBtnControl::OnContextSelection(int itemSelected)
   {
   case 0:
     open303Core.sequencer.clearPattern(12 * open303Core.sequencer.getPatternMultiplier() + mCtrlTag - kCtrlTagBtnPtnC);
-    open303Core.sequencer.setUpdateSequenserGUI(true);
+    SeqNoteBtnControl::SetSequencerButtons(BassMatrix::CollectSequenceButtons(open303Core), GetUI());
     break;
   case 1:
     open303Core.sequencer.randomizePattern(12 * open303Core.sequencer.getPatternMultiplier() + mCtrlTag - kCtrlTagBtnPtnC);
-    open303Core.sequencer.setUpdateSequenserGUI(true);
+    SeqNoteBtnControl::SetSequencerButtons(BassMatrix::CollectSequenceButtons(open303Core), GetUI());
     break;
   default:
     open303Core.sequencer.copyPattern(12 * open303Core.sequencer.getPatternMultiplier() + mCtrlTag - kCtrlTagBtnPtnC, itemSelected - 2);

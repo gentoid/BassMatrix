@@ -25,6 +25,7 @@ class SeqNoteBtnControl : public IBSwitchControl
 {
 public:
   SeqNoteBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx);
+  static void SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> sequencer, IGraphics* ui);
   void OnMsgFromDelegate(int msgTag, int dataSize, const void* pData) override;
   void OnMouseDown(float x, float y, const IMouseMod& mod) override;
 protected:

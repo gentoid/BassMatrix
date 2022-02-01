@@ -167,10 +167,10 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //}
 //#endif
 
-#if IPLUG_DSP
-void BassMatrix::PushSequencerButtons()
+std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::Open303& open303Core)
 {
   std::array<bool, kNumberOfSeqButtons> seq;
+
   rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
 
   for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
@@ -202,8 +202,10 @@ void BassMatrix::PushSequencerButtons()
       seq[j] = pattern->getNote(i % 16)->gate;
     }
   }
-  mSequencerSender.PushData({ kCtrlTagBtnSeq0, {seq} });
+  return seq;
 }
+
+#if IPLUG_DSP
 
 void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** outputs, int nFrames)
 {
@@ -230,7 +232,8 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
     if (open303Core.sequencer.getUpdateSequenserGUI())
     {
       open303Core.sequencer.setUpdateSequenserGUI(false);
-      PushSequencerButtons();
+
+      mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
 
       // Push pattern buttons
       int pat;
@@ -407,7 +410,7 @@ void BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
       open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() + paramIdx - kBtnPtnC);
-      PushSequencerButtons();
+      mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
     }
     return;
   }
@@ -422,7 +425,7 @@ void BassMatrix::OnParamChange(int paramIdx)
       {
         open303Core.sequencer.setPattern(patternNr - 12);
       }
-      PushSequencerButtons();
+      mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
     }
     break;
   case kBtnPtnOct3:
@@ -434,7 +437,7 @@ void BassMatrix::OnParamChange(int paramIdx)
       {
         open303Core.sequencer.setPattern(patternNr + 12);
       }
-      PushSequencerButtons();
+      mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
     }
     break;
   case kKnobLoopSize:

@@ -26,7 +26,7 @@ void AcidPattern::randomize()
 {
   for(int i=0; i<maxNumSteps; i++)
   {
-    notes[i].key = roundToInt(randomUniform(0, 11, rand()));
+    notes[i].key = roundToInt(randomUniform(1, 12, rand()));
     notes[i].octave = roundToInt(randomUniform(-1, 1, rand()));
     notes[i].accent = roundToInt(randomUniform(0, 1, rand())) == 1;
     notes[i].slide = roundToInt(randomUniform(0, 5, rand())) == 4;
