@@ -146,7 +146,7 @@ void Open303::noteOn(int noteNumber, int velocity, double detune)
   if( sequencer.modeWasChanged() )
     allNotesOff();
 
-  if( sequencer.getSequencerMode() != AcidSequencer::OFF )
+  if( sequencer.getSequencerMode() != AcidSequencer::OFF && sequencer.getSequencerMode() != AcidSequencer::MIDI_PLAY)
   {
     if( velocity == 0 )
     {

@@ -23,6 +23,7 @@ namespace rosic
     enum sequencerModes
     {
       OFF = 0,
+      MIDI_PLAY,
       KEY_SYNC,
       HOST_SYNC,
       RUN,

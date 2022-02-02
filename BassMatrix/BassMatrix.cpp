@@ -24,8 +24,13 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamStop)->InitBool("Stop", false);
   GetParam(kParamHostSync)->InitBool("Host Sync", false);
   GetParam(kParamKeySync)->InitBool("Key Sync", false);
+#ifdef VST3_API
+  GetParam(kParamInternalSync)->InitBool("Internal Sync", false);
+  GetParam(kParamMidiPlay)->InitBool("Midi Play", true);
+#else
   GetParam(kParamInternalSync)->InitBool("Internal Sync", true);
   GetParam(kParamMidiPlay)->InitBool("Midi Play", false);
+#endif
 
   // This value set here have not so much relevance, since we tell the sequencer to
   // randomize the current pattern and then tells the gui to update.
@@ -224,7 +229,7 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
     open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC) &&
     !open303Core.sequencer.isRunning())
   {
-    open303Core.noteOn(36, 64, 0.0);
+    open303Core.noteOn(35, 64, 0.0); // 35 seems to make C on sequencer be a C.
   }
 
   if (open303Core.sequencer.getSequencerMode() != rosic::AcidSequencer::OFF)
@@ -252,7 +257,7 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
         continue; // Next frame
       }
 
-      else if (mStartSyncWithHost || mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset))
+      else if (GetTransportIsRunning() && (mStartSyncWithHost || mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset)))
       { // Transport has changed
         mStartSyncWithHost = false;
         double maxSamplePos = GetSamplesPerBeat() * 4.0;
@@ -288,11 +293,12 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
       IMidiMsg msg = mMidiQueue.Peek();
       if (msg.mOffset > offset) break;
 
-      if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::KEY_SYNC)
+      if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::KEY_SYNC ||
+        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::MIDI_PLAY)
       {
         if (msg.StatusMsg() == IMidiMsg::kNoteOn)
         {
-          open303Core.noteOn(msg.NoteNumber(), 64, 0.0);
+          open303Core.noteOn(msg.NoteNumber(), msg.Velocity(), 0.0);
         }
         else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
         {
@@ -311,7 +317,6 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
           }
         }
       }
-
       mMidiQueue.Remove();
     }
 
@@ -474,7 +479,10 @@ void BassMatrix::OnParamChange(int paramIdx)
     open303Core.setTanhShaperDrive(value);
     break;
   case kParamStop:
-    open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+    }
     break;
   case kParamHostSync:
     if (value == 1.0)
@@ -482,14 +490,13 @@ void BassMatrix::OnParamChange(int paramIdx)
       open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
       mStartSyncWithHost = true;
     }
-    else
-    {
-      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
-    }
     break;
   case kParamInternalSync:
-    open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
-    mStartSyncWithHost = false;
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+      mStartSyncWithHost = false;
+    }
     break;
   case kParamKeySync:
     if (value == 1.0)
@@ -497,20 +504,13 @@ void BassMatrix::OnParamChange(int paramIdx)
       open303Core.sequencer.setMode(rosic::AcidSequencer::KEY_SYNC);
       mStartSyncWithHost = false;
     }
-    else
-    {
-      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
-    }
     break;
   case kParamMidiPlay:
     if (value == 1.0)
     {
-      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
+      open303Core.sequencer.setMode(rosic::AcidSequencer::MIDI_PLAY);
+      open303Core.sequencer.stop();
       mStartSyncWithHost = false;
-    }
-    else
-    {
-      open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
     }
     break;
 

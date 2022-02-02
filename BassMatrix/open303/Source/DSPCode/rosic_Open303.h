@@ -322,7 +322,7 @@ namespace rosic
       return 0.0;
 
     // check the sequencer if we have some note to trigger:
-    if( sequencer.getSequencerMode() != AcidSequencer::OFF)
+    if( sequencer.getSequencerMode() != AcidSequencer::OFF && sequencer.getSequencerMode() != AcidSequencer::MIDI_PLAY)
     {
       noteOffCountDown--;
       if (noteOffCountDown < 0) { noteOffCountDown = 0; } // Rescue when something went wrong

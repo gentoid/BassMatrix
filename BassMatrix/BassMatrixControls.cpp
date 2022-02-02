@@ -206,13 +206,13 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
   pControlKeySyncBtn->SetValue(0.0);
   pControlInternalSyncBtn->SetValue(0.0);
   pControlMidiPlayBtn->SetValue(0.0);
-  IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
-  pControlBtn->SetValue(1.0);
   if (pControlStopBtn->GetValue() != stBefore) { pControlStopBtn->SetDirty(true); }
   if (pControlHostSyncBtn->GetValue() != hsBefore) { pControlHostSyncBtn->SetDirty(true); }
   if (pControlKeySyncBtn->GetValue() != ksBefore) { pControlKeySyncBtn->SetDirty(true); }
   if (pControlInternalSyncBtn->GetValue() != isBefore) { pControlInternalSyncBtn->SetDirty(true); }
   if (pControlMidiPlayBtn->GetValue() != mpBefore) { pControlMidiPlayBtn->SetDirty(true); }
+  IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
+  pControlBtn->SetValue(1.0);
 }
 
 
