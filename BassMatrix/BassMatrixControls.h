@@ -62,3 +62,11 @@ private:
   // the embedded core dsp object:
   rosic::Open303& open303Core;
 };
+
+// The buttons to modify pattern.
+class PtnModBtnControl : public IBSwitchControl
+{
+public:
+  PtnModBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx);
+  void OnMouseDown(float x, float y, const IMouseMod& mod) override;
+};

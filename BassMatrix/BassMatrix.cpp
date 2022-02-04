@@ -49,6 +49,11 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 
   GetParam(kKnobLoopSize)->InitInt("Loop size", 1, 1, 24);
 
+  GetParam(kParamCopy)->InitBool("Pattern copy", false);
+  GetParam(kParamClear)->InitBool("Pattern clear", false);
+  GetParam(kParamRandomize)->InitBool("Pattern randomize", false);
+
+
 #if IPLUG_EDITOR // http://bit.ly/2S64BDd
   mMakeGraphicsFunc = [&]() {
     return MakeGraphics(*this, PLUG_WIDTH, PLUG_HEIGHT, PLUG_FPS);
@@ -92,7 +97,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap ledBtnBitmap = pGraphics->LoadBitmap(PNGBTNLED_FN, 2, true);
     for (int i = 0; i < 16; i++)
     {
-        pGraphics->AttachControl(new SeqLedBtnControl(130.f + i * (ledBtnBitmap.W() / 2 + 6), 310.f, ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
+        pGraphics->AttachControl(new SeqLedBtnControl(120.f + i * (ledBtnBitmap.W() / 2 + 6), 310.f, ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
     }
 
     // Sequencer tones buttons
@@ -101,7 +106,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
         for (int j = 0; j < kNumberOfNoteBtns; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(140.f + i * (btnSeqBitmap.W() / 2 + 26), 380.f + j * (btnSeqBitmap.H() + 1),
+            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 380.f + j * (btnSeqBitmap.H() + 1),
                 btnSeqBitmap, kBtnSeq0 + 16 * j + i),
                 kCtrlTagBtnSeq0 + 16 * j + i, "Sequencer");
         }
@@ -112,22 +117,22 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
         for (int j = 0; j < 5; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(140.f + i * (btnSeqBitmap.W() / 2 + 26), 660.f + j * (btnSeqBitmap.H() + 1),
+            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 660.f + j * (btnSeqBitmap.H() + 1),
                 btnSeqBitmap, kBtnProp0 + 16 * j + i),
                 kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
         }
     }
 
     const IBitmap btnStopBitmap = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(30, 800, btnStopBitmap, kParamStop, kCtrlTagStop), kCtrlTagStop);
+    pGraphics->AttachControl(new SyncBtnControl(317, 790, btnStopBitmap, kParamStop, kCtrlTagStop), kCtrlTagStop);
     const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(100, 800, btnHostSyncBitmap, kParamHostSync, kCtrlTagHostSync), kCtrlTagHostSync);
+    pGraphics->AttachControl(new SyncBtnControl(417, 790, btnHostSyncBitmap, kParamHostSync, kCtrlTagHostSync), kCtrlTagHostSync);
     const IBitmap btnKeySyncBitmap = pGraphics->LoadBitmap(PNGKEYSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(170, 800, btnKeySyncBitmap, kParamKeySync, kCtrlTagKeySync), kCtrlTagKeySync);
+    pGraphics->AttachControl(new SyncBtnControl(517, 790, btnKeySyncBitmap, kParamKeySync, kCtrlTagKeySync), kCtrlTagKeySync);
     const IBitmap btnInternalSyncBitmap = pGraphics->LoadBitmap(PNGINTERNALSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(240, 800, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
+    pGraphics->AttachControl(new SyncBtnControl(617, 790, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(310, 800, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
+    pGraphics->AttachControl(new SyncBtnControl(717, 790, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
 
     // Pattern controls
     const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
@@ -155,6 +160,13 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 
     const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
     pGraphics->AttachControl(new IBKnobControl(615.f, 200.f, btnPatternLoopSizeBitmap, kKnobLoopSize));
+
+    const IBitmap btnClearBitmap = pGraphics->LoadBitmap(PNGCLEAR_FN, 2, true);
+    pGraphics->AttachControl(new PtnModBtnControl(400, 190, btnClearBitmap, kParamClear));
+    const IBitmap btnRandomizeBitmap = pGraphics->LoadBitmap(PNGRANDOMIZE_FN, 2, true);
+    pGraphics->AttachControl(new PtnModBtnControl(400, 220, btnRandomizeBitmap, kParamRandomize));
+    const IBitmap btnCopyBitmap = pGraphics->LoadBitmap(PNGCOPY_FN, 2, true);
+    pGraphics->AttachControl(new PtnModBtnControl(400, 250, btnCopyBitmap, kParamCopy));
 
     //pGraphics->AttachControl(new ITextControl(titleBounds, "BassMatrix", IText(30)), kCtrlTagTitle);
     //WDL_String buildInfoStr;
@@ -513,7 +525,16 @@ void BassMatrix::OnParamChange(int paramIdx)
       mStartSyncWithHost = false;
     }
     break;
-
+  case kParamCopy:
+    break;
+  case kParamClear:
+    open303Core.sequencer.clearPattern(open303Core.sequencer.getActivePattern());
+    mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+    break;
+  case kParamRandomize:
+    open303Core.sequencer.randomizePattern(open303Core.sequencer.getActivePattern());
+    mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+    break;
   default:
     break;
   }

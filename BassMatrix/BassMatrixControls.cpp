@@ -317,3 +317,15 @@ void PatternBtnControl::OnContextSelection(int itemSelected)
   }
   return;
 }
+
+PtnModBtnControl::PtnModBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx) :
+  IBSwitchControl(x, y, bitmap, paramIdx)
+{
+}
+
+void PtnModBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
+{
+  IBSwitchControl::OnMouseDown(x, y, mod);
+  SetValue(0.);
+  return;
+}

@@ -40,6 +40,9 @@ enum EParams
 	kBtnPtnOct2 = kBtnPtnC + 12,
 	kBtnPtnOct3,
 	kKnobLoopSize,
+	kParamCopy,
+	kParamClear,
+	kParamRandomize,
 
 	kNumParams
 };
