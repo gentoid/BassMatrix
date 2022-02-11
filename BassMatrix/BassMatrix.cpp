@@ -17,7 +17,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamEnvMode)->InitDouble("Env mode", 25.0, 0.0, 100.0, 1.0, "%");
   GetParam(kParamDecay)->InitDouble("Decay", 400.0, 200.0, 2000.0, 1.0, "ms");
   GetParam(kParamAccent)->InitDouble("Accent", 50.0, 0.0, 100.0, 1.0, "%");
-  GetParam(kParamVolume)->InitDouble("Volume", -17.0, -100.0, 0.0, 0.1, "dB");
+  GetParam(kParamVolume)->InitDouble("Volume", -17.0, -75.0, 0.0, 0.1, "dB");
   GetParam(kParamTempo)->InitDouble("Tempo", 120.0, 0.0, 300.0, 1.0, "bpm");
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
@@ -526,14 +526,23 @@ void BassMatrix::OnParamChange(int paramIdx)
     }
     break;
   case kParamCopy:
+    if (value == 1.0)
+    {
+    }
     break;
   case kParamClear:
-    open303Core.sequencer.clearPattern(open303Core.sequencer.getActivePattern());
-    mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+    if (value == 1.0)
+    {
+      open303Core.sequencer.clearPattern(open303Core.sequencer.getActivePattern());
+      mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+    }
     break;
   case kParamRandomize:
-    open303Core.sequencer.randomizePattern(open303Core.sequencer.getActivePattern());
-    mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+    if (value == 1.0)
+    {
+      open303Core.sequencer.randomizePattern(open303Core.sequencer.getActivePattern());
+      mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+    }
     break;
   default:
     break;

@@ -69,4 +69,5 @@ class PtnModBtnControl : public IBSwitchControl
 public:
   PtnModBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx);
   void OnMouseDown(float x, float y, const IMouseMod& mod) override;
+  void OnMouseUp(float x, float y, const IMouseMod& mod) override;
 };

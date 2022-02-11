@@ -182,7 +182,6 @@ void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
   }
 }
 
-
 SyncBtnControl::SyncBtnControl(float x, float y, const IBitmap& bitmap, int paramIdx, int ctrlTag) :
   IBSwitchControl(x, y, bitmap, paramIdx), mParamIdx(paramIdx), mCtrlTag(ctrlTag)
 {
@@ -325,7 +324,12 @@ PtnModBtnControl::PtnModBtnControl(float x, float y, const IBitmap& bitmap, int 
 
 void PtnModBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
-  IBSwitchControl::OnMouseDown(x, y, mod);
-  SetValue(0.);
-  return;
+  SetValue(1.0);
+  SetDirty();
+}
+
+void PtnModBtnControl::OnMouseUp(float x, float y, const IMouseMod& mod)
+{
+  SetValue(0.0);
+  SetDirty();
 }
