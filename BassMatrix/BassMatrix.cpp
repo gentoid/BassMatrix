@@ -39,6 +39,14 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     GetParam(i)->InitBool(("Sequencer button " + std::to_string(i - kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
   }
 
+//  for (int pattern = 1; pattern < kNumberOfPatterns + 1; ++pattern)
+//  {
+//    for (int i = kBtnSeq0; i < kBtnSeq0 + pattern * kNumberOfSeqButtons; ++i)
+//    {
+//      GetParam(i)->InitBool(("Sequencer button " + std::to_string(pattern * (i - kBtnSeq0))).c_str(), false);
+//    }
+//  }
+
   for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
   {
     GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(), i == kBtnPtnC);
@@ -97,7 +105,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap ledBtnBitmap = pGraphics->LoadBitmap(PNGBTNLED_FN, 2, true);
     for (int i = 0; i < 16; i++)
     {
-        pGraphics->AttachControl(new SeqLedBtnControl(120.f + i * (ledBtnBitmap.W() / 2 + 6), 310.f, ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
+        pGraphics->AttachControl(new SeqLedBtnControl(120.f + i * (ledBtnBitmap.W() / 2 + 6), 300.f, ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
     }
 
     // Sequencer tones buttons
@@ -106,7 +114,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
         for (int j = 0; j < kNumberOfNoteBtns; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 380.f + j * (btnSeqBitmap.H() + 1),
+            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 370.f + j * (btnSeqBitmap.H() + 1),
                 btnSeqBitmap, kBtnSeq0 + 16 * j + i),
                 kCtrlTagBtnSeq0 + 16 * j + i, "Sequencer");
         }
@@ -117,7 +125,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
         for (int j = 0; j < 5; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 660.f + j * (btnSeqBitmap.H() + 1),
+            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 665.f + j * (btnSeqBitmap.H() + 1),
                 btnSeqBitmap, kBtnProp0 + 16 * j + i),
                 kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
         }

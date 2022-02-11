@@ -9,8 +9,9 @@
 
 const int kNumPresets = 1;
 const int kNumberOfPropButtons = 5 * 16;
-const int kNumberOfNoteBtns = 12;
+const int kNumberOfNoteBtns = 13;
 const int kNumberOfSeqButtons = kNumberOfNoteBtns * 16 + kNumberOfPropButtons;
+const int kNumberOfPatterns = 24;
 
 enum EParams
 {
@@ -32,9 +33,9 @@ enum EParams
 
 	kBtnSeq0,
 
-	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
+	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns * kNumberOfPatterns,
 
-	kLedBtn0 = kBtnProp0 + kNumberOfPropButtons,
+	kLedBtn0 = kBtnProp0 + kNumberOfPropButtons * kNumberOfPatterns,
 
 	kBtnPtnC = kLedBtn0 + 16,
 	kBtnPtnOct2 = kBtnPtnC + 12,
