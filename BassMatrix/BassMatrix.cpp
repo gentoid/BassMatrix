@@ -200,7 +200,7 @@ std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::
 
   for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
   {
-    seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16;
+    seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16 - 1;
   }
 
   for (int i = 0; i < kNumberOfPropButtons; ++i) // The note properties
@@ -249,7 +249,7 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
     open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC) &&
     !open303Core.sequencer.isRunning())
   {
-    open303Core.noteOn(35, 64, 0.0); // 35 seems to make C on sequencer be a C.
+    open303Core.noteOn(36, 64, 0.0); // 36 seems to make C on sequencer be a C.
   }
 
   if (open303Core.sequencer.getSequencerMode() != rosic::AcidSequencer::OFF)
@@ -391,7 +391,7 @@ void BassMatrix::OnParamChange(int paramIdx)
   if (paramIdx >= kBtnSeq0 && paramIdx < kBtnSeq0 + kNumberOfSeqButtons - kNumberOfPropButtons)
   {
     int seqNr = (paramIdx - kBtnSeq0) % 16;
-    int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16;
+    int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1; // noteNr between 0 and 12
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
     if (value == 1.0)
     {

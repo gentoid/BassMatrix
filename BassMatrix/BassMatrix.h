@@ -33,9 +33,9 @@ enum EParams
 
 	kBtnSeq0,
 
-	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns * kNumberOfPatterns,
+	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
 
-	kLedBtn0 = kBtnProp0 + kNumberOfPropButtons * kNumberOfPatterns,
+	kLedBtn0 = kBtnProp0 + kNumberOfPropButtons,
 
 	kBtnPtnC = kLedBtn0 + 16,
 	kBtnPtnOct2 = kBtnPtnC + 12,
