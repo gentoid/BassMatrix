@@ -32,7 +32,7 @@ SRC += $(PROJECT_ROOT)/open303/Source/DSPCode/rosic_TeeBeeFilter.cpp
 
 WEB_CFLAGS += -DIGRAPHICS_NANOVG -DIGRAPHICS_GLES2
 
-WAM_LDFLAGS += -O0 -s EXPORT_NAME="'AudioWorkletGlobalScope.WAM.BassMatrix'" -s ASSERTIONS=0
+WAM_LDFLAGS += -O3 -s EXPORT_NAME="'AudioWorkletGlobalScope.WAM.BassMatrix'" -s ASSERTIONS=0
 
 WEB_LDFLAGS += -O0 -s ASSERTIONS=0
 
