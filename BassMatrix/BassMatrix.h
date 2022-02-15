@@ -77,6 +77,8 @@ public:
 #if IPLUG_EDITOR
 //  void OnParentWindowResize(int width, int height) override;
   bool OnHostRequestingSupportedViewConfiguration(int width, int height) override { return true; }
+	bool SerializeState(IByteChunk& chunk) const override;
+	int UnserializeState(const IByteChunk& chunk, int startPos) override;
 #endif
 
 #if IPLUG_DSP
@@ -86,7 +88,7 @@ public:
 	void OnIdle() override;
 	bool OnMessage(int msgTag, int ctrlTag, int dataSize, const void* pData) override;
 #endif
-	static std::array<bool, kNumberOfSeqButtons> CollectSequenceButtons(rosic::Open303& open303Core);
+	static std::array<bool, kNumberOfSeqButtons> CollectSequenceButtons(rosic::Open303& open303Core, int patternNr = -1);
 #if IPLUG_DSP // http://bit.ly/2S64BDd
 	void ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** outputs, int nFrames) override;
 #endif

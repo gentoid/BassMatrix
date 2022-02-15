@@ -192,11 +192,94 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //}
 //#endif
 
-std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::Open303& open303Core)
+#if IPLUG_EDITOR
+bool BassMatrix::SerializeState(IByteChunk& chunk) const
+{
+  TRACE
+  bool savedOK = true;
+  savedOK &= SerializeParams(chunk);
+
+  // Serialize patterns
+  for (int patternNr = 0; patternNr < kNumberOfPatterns && savedOK; ++patternNr)
+  {
+    std::array<bool, kNumberOfSeqButtons> a = CollectSequenceButtons((rosic::Open303&)open303Core, patternNr);
+    for (auto elem : a)
+    {
+      Trace(TRACELOC, "%d %s %f", patternNr, "Sequencer button", elem ? 1.0 : 0.0);
+      double v = elem ? 1.0 : 0.0;
+      savedOK &= (chunk.Put(&v) > 0);
+    }
+  }
+
+  return savedOK;
+}
+
+int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
+{
+  int pos = UnserializeParams(chunk, startPos);
+  TRACE
+  ENTER_PARAMS_MUTEX
+
+  // Unserialize patterns
+  for (int patternNr = 0; patternNr < kNumberOfPatterns && pos >= 0; ++patternNr)
+  {
+    rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);
+
+    for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
+    {
+      double v = 0.0;
+      pos = chunk.Get(&v, pos);
+      Trace(TRACELOC, "%d %s %f", patternNr, "Sequencer button", v);
+
+      if (v == 1.0)
+      {
+        pattern->getNote(i % 16)->key = kNumberOfNoteBtns - i / 16 - 1;
+      }
+    }
+
+    for (int i = 0; i < kNumberOfPropButtons; ++i) // The note properties
+    {
+      double v = 0.0;
+      pos = chunk.Get(&v, pos);
+      Trace(TRACELOC, "%d %s %f", patternNr, "Property button", v);
+
+      if (i < 16)
+      {
+        pattern->getNote(i % 16)->octave = (v == 1.0 ? 1 : 0);
+      }
+      else if (i < 32)
+      {
+        pattern->getNote(i % 16)->octave = (v == 1.0 ? -1 : 0);
+      }
+      else if (i < 48)
+      {
+        pattern->getNote(i % 16)->accent = (v == 1.0);
+      }
+      else if (i < 64)
+      {
+        pattern->getNote(i % 16)->slide = (v == 1.0);
+      }
+      else if (i < 80)
+      {
+        pattern->getNote(i % 16)->gate = (v == 1.0);
+      }
+    }
+
+  }
+
+  LEAVE_PARAMS_MUTEX
+  return pos;
+}
+#endif
+
+
+std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::Open303& open303Core, int patternNr)
 {
   std::array<bool, kNumberOfSeqButtons> seq;
 
-  rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
+  if (patternNr == -1) { patternNr = open303Core.sequencer.getActivePattern(); }
+
+  rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);
 
   for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
   {
