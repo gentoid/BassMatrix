@@ -82,10 +82,12 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //    pGraphics->SetLayoutOnResize(true);
     pGraphics->AttachCornerResizer(EUIResizerMode::Scale, false);
     pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
-//    pGraphics->AttachPanelBackground(COLOR_RED);
+
+    // Background
     pGraphics->LoadBitmap(BACKGROUND_FN, 1, true);
     pGraphics->AttachBackground(BACKGROUND_FN);
 
+    // Knobs
     const IBitmap knobRotateBitmap = pGraphics->LoadBitmap(PNG6062_FN, 127);
     const IBitmap knobLittleBitmap = pGraphics->LoadBitmap(PNGFX1LITTLE_FN, 127);
     const IBitmap knobBigBitmap = pGraphics->LoadBitmap(PNGFX1BIG_FN, 61);
@@ -100,6 +102,41 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     pGraphics->AttachControl(new IBKnobControl(0 +  210 - 175, 130, knobBigBitmap, kParamTempo));
 //    pGraphics->AttachControl(new IBKnobControl(510, 130, knobBigBitmap, kParamDrive));
     pGraphics->AttachControl(new IBKnobControl(1130 - 210, 130, knobBigBitmap, kParamVolume));
+
+    // Pattern buttons
+    const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
+    pGraphics->AttachControl(new PatternBtnControl(491, 145, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2, open303Core), kCtrlTagBtnPtnOct2);
+    const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
+    pGraphics->AttachControl(new PatternBtnControl(490.f + btnPatternOctav2Bitmap.FW() - 3, 145, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3, open303Core), kCtrlTagBtnPtnOct3);
+    IBitmap btnPatternBitmap[12];
+    btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
+    btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
+    btnPatternBitmap[2] = pGraphics->LoadBitmap(PNGBTNPATD_FN, 2, true);
+    btnPatternBitmap[3] = pGraphics->LoadBitmap(PNGBTNPATDd_FN, 2, true);
+    btnPatternBitmap[4] = pGraphics->LoadBitmap(PNGBTNPATE_FN, 2, true);
+    btnPatternBitmap[5] = pGraphics->LoadBitmap(PNGBTNPATF_FN, 2, true);
+    btnPatternBitmap[6] = pGraphics->LoadBitmap(PNGBTNPATFf_FN, 2, true);
+    btnPatternBitmap[7] = pGraphics->LoadBitmap(PNGBTNPATG_FN, 2, true);
+    btnPatternBitmap[8] = pGraphics->LoadBitmap(PNGBTNPATGg_FN, 2, true);
+    btnPatternBitmap[9] = pGraphics->LoadBitmap(PNGBTNPATA_FN, 2, true);
+    btnPatternBitmap[10] = pGraphics->LoadBitmap(PNGBTNPATAa_FN, 2, true);
+    btnPatternBitmap[11] = pGraphics->LoadBitmap(PNGBTNPATB_FN, 2, true);
+    for (int i = 0; i < 12; ++i)
+    {
+      pGraphics->AttachControl(new PatternBtnControl(490.f + (i % 4) * (btnPatternBitmap[0].W() / 2 + 7), 185.f + (i / 4) * (btnPatternBitmap[0].H() / 2 + 20), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
+    }
+
+    // Pattern control buttons
+    const IBitmap btnClearBitmap = pGraphics->LoadBitmap(PNGCLEAR_FN, 2, true);
+    pGraphics->AttachControl(new PtnModBtnControl(369, 187, btnClearBitmap, kParamClear));
+    const IBitmap btnRandomizeBitmap = pGraphics->LoadBitmap(PNGRANDOMIZE_FN, 2, true);
+    pGraphics->AttachControl(new PtnModBtnControl(369, 225, btnRandomizeBitmap, kParamRandomize));
+    const IBitmap btnCopyBitmap = pGraphics->LoadBitmap(PNGCOPY_FN, 2, true);
+    pGraphics->AttachControl(new PtnModBtnControl(369, 263, btnCopyBitmap, kParamCopy));
+
+    // Loop size knob
+    const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
+    pGraphics->AttachControl(new IBKnobControl(666.f, 195.f, btnPatternLoopSizeBitmap, kKnobLoopSize));
 
     // Led buttons
     const IBitmap ledBtnBitmap = pGraphics->LoadBitmap(PNGBTNLED_FN, 2, true);
@@ -131,7 +168,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
         }
     }
 
-    const int yVal = 800;
+    const int yVal = 797;
     const IBitmap btnStopBitmap = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(317, yVal, btnStopBitmap, kParamStop, kCtrlTagStop), kCtrlTagStop);
     const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
@@ -142,41 +179,6 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     pGraphics->AttachControl(new SyncBtnControl(617, yVal, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(717, yVal, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
-
-    // Pattern buttons
-    const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485, 155, btnPatternOctav2Bitmap, kBtnPtnOct2, kCtrlTagBtnPtnOct2, open303Core), kCtrlTagBtnPtnOct2);
-    const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() + 10, 155, btnPatternOctav3Bitmap, kBtnPtnOct3, kCtrlTagBtnPtnOct3, open303Core), kCtrlTagBtnPtnOct3);
-    IBitmap btnPatternBitmap[12] ;
-    btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
-    btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
-    btnPatternBitmap[2] = pGraphics->LoadBitmap(PNGBTNPATD_FN, 2, true);
-    btnPatternBitmap[3] = pGraphics->LoadBitmap(PNGBTNPATDd_FN, 2, true);
-    btnPatternBitmap[4] = pGraphics->LoadBitmap(PNGBTNPATE_FN, 2, true);
-    btnPatternBitmap[5] = pGraphics->LoadBitmap(PNGBTNPATF_FN, 2, true);
-    btnPatternBitmap[6] = pGraphics->LoadBitmap(PNGBTNPATFf_FN, 2, true);
-    btnPatternBitmap[7] = pGraphics->LoadBitmap(PNGBTNPATG_FN, 2, true);
-    btnPatternBitmap[8] = pGraphics->LoadBitmap(PNGBTNPATGg_FN, 2, true);
-    btnPatternBitmap[9] = pGraphics->LoadBitmap(PNGBTNPATA_FN, 2, true);
-    btnPatternBitmap[10] = pGraphics->LoadBitmap(PNGBTNPATAa_FN, 2, true);
-    btnPatternBitmap[11] = pGraphics->LoadBitmap(PNGBTNPATB_FN, 2, true);
-    for (int i = 0; i < 12; ++i)
-    {
-      pGraphics->AttachControl(new PatternBtnControl(505.f + (i % 4) * (btnPatternBitmap[0].W() / 2 + 7), 190.f + (i / 4) * (btnPatternBitmap[0].H() / 2 + 20), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
-    }
-
-    // Loop size knob
-    const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
-    pGraphics->AttachControl(new IBKnobControl(680.f, 200.f, btnPatternLoopSizeBitmap, kKnobLoopSize));
-
-    // Pattern control buttons
-    const IBitmap btnClearBitmap = pGraphics->LoadBitmap(PNGCLEAR_FN, 2, true);
-    pGraphics->AttachControl(new PtnModBtnControl(390, 192, btnClearBitmap, kParamClear));
-    const IBitmap btnRandomizeBitmap = pGraphics->LoadBitmap(PNGRANDOMIZE_FN, 2, true);
-    pGraphics->AttachControl(new PtnModBtnControl(390, 230, btnRandomizeBitmap, kParamRandomize));
-    const IBitmap btnCopyBitmap = pGraphics->LoadBitmap(PNGCOPY_FN, 2, true);
-    pGraphics->AttachControl(new PtnModBtnControl(390, 268, btnCopyBitmap, kParamCopy));
 
     //pGraphics->AttachControl(new ITextControl(titleBounds, "BassMatrix", IText(30)), kCtrlTagTitle);
     //WDL_String buildInfoStr;
