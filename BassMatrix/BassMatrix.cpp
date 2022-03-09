@@ -227,7 +227,7 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
   // Unserialize patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && pos >= 0; ++patternNr)
   {
-    rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);
+    rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);  
 
     for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
     {
