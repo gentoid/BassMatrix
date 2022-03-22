@@ -142,7 +142,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap ledBtnBitmap = pGraphics->LoadBitmap(PNGBTNLED_FN, 2, true);
     for (int i = 0; i < 16; i++)
     {
-        pGraphics->AttachControl(new SeqLedBtnControl(120.f + i * (ledBtnBitmap.W() / 2 + 6), 300.f, ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
+        pGraphics->AttachControl(new SeqLedBtnControl(124.f + i * (ledBtnBitmap.W() / 2 + 3) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
+          300.f,
+          ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
     }
 
     // Sequencer tones buttons
@@ -151,9 +153,11 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
         for (int j = 0; j < kNumberOfNoteBtns; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 370.f + j * (btnSeqBitmap.H() + 1),
-                btnSeqBitmap, kBtnSeq0 + 16 * j + i),
-                kCtrlTagBtnSeq0 + 16 * j + i, "Sequencer");
+          int heigth = btnSeqBitmap.H();
+          pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnSeqBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
+              375.f + j * (heigth + 1),
+              btnSeqBitmap, kBtnSeq0 + 16 * j + i),
+              kCtrlTagBtnSeq0 + 16 * j + i, "Sequencer");
         }
     }
 
@@ -162,9 +166,10 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     {
         for (int j = 0; j < 5; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(130.f + i * (btnSeqBitmap.W() / 2 + 26), 665.f + j * (btnSeqBitmap.H() + 1),
-                btnSeqBitmap, kBtnProp0 + 16 * j + i),
-                kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
+            pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnSeqBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
+              672.f + j * (btnSeqBitmap.H() + 1),
+              btnSeqBitmap, kBtnProp0 + 16 * j + i),
+              kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
         }
     }
 
