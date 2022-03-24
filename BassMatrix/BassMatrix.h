@@ -58,6 +58,7 @@ enum ECtrlTags
   kCtrlTagBtnPtnOct2 = kCtrlTagBtnPtnC + 12,
   kCtrlTagBtnPtnOct3,
 	kCtrlTagStop,
+	kCtrlWaveForm,
   kCtrlTagHostSync,
   kCtrlTagKeySync,
   kCtrlTagInternalSync,

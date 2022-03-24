@@ -12,7 +12,6 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 {
   GetParam(kParamCutOff)->InitDouble("Cut off", 500.0, 314.0, 2394.0, 1.0, "Hz");
   GetParam(kParamResonance)->InitDouble("Resonace", 50.0, 0.0, 100.0, 1.0, "%");
-  GetParam(kParamWaveForm)->InitDouble("Waveform", 0.0, 0.0, 1.0, 0.1, "|\\|\\ |_|_%");
   GetParam(kParamTuning)->InitDouble("Tuning", 440.0, 400.0, 480.0, 1.0, "%");
   GetParam(kParamEnvMode)->InitDouble("Env mode", 25.0, 0.0, 100.0, 1.0, "%");
   GetParam(kParamDecay)->InitDouble("Decay", 400.0, 200.0, 2000.0, 1.0, "ms");
@@ -21,6 +20,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamTempo)->InitDouble("Tempo", 120.0, 0.0, 300.0, 1.0, "bpm");
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
+  GetParam(kParamWaveForm)->InitBool("Waveform", false);
   GetParam(kParamStop)->InitBool("Stop", false);
   GetParam(kParamHostSync)->InitBool("Host Sync", false);
   GetParam(kParamKeySync)->InitBool("Key Sync", false);
@@ -91,7 +91,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IBitmap knobRotateBitmap = pGraphics->LoadBitmap(PNG6062_FN, 127);
     const IBitmap knobLittleBitmap = pGraphics->LoadBitmap(PNGFX1LITTLE_FN, 127);
     const IBitmap knobBigBitmap = pGraphics->LoadBitmap(PNGFX1BIG_FN, 61);
-    pGraphics->AttachControl(new IBKnobControl(210, 30, knobLittleBitmap, kParamWaveForm));
+//    pGraphics->AttachControl(new IBKnobControl(210, 30, knobLittleBitmap, kParamWaveForm));
+    const IBitmap btnWaveFormBitmap = pGraphics->LoadBitmap(PNGWAVEFORM_FN, 2, true);
+    pGraphics->AttachControl(new IBSwitchControl(200, 50, btnWaveFormBitmap, kParamWaveForm), kCtrlWaveForm);
     pGraphics->AttachControl(new IBKnobControl(310, 30, knobLittleBitmap, kParamTuning));
     pGraphics->AttachControl(new IBKnobControl(410, 30, knobLittleBitmap, kParamCutOff));
     pGraphics->AttachControl(new IBKnobControl(510, 30, knobLittleBitmap, kParamResonance));
@@ -123,7 +125,9 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     btnPatternBitmap[11] = pGraphics->LoadBitmap(PNGBTNPATB_FN, 2, true);
     for (int i = 0; i < 12; ++i)
     {
-      pGraphics->AttachControl(new PatternBtnControl(490.f + (i % 4) * (btnPatternBitmap[0].W() / 2 + 7), 185.f + (i / 4) * (btnPatternBitmap[0].H() / 2 + 20), btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
+      pGraphics->AttachControl(new PatternBtnControl(490.f + (i % 4) * (btnPatternBitmap[0].W() / 2),
+        185.f + (i / 4) * (btnPatternBitmap[0].H()),
+        btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
     }
 
     // Pattern control buttons
@@ -143,7 +147,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     for (int i = 0; i < 16; i++)
     {
         pGraphics->AttachControl(new SeqLedBtnControl(124.f + i * (ledBtnBitmap.W() / 2 + 3) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
-          300.f,
+          294.f,
           ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
     }
 
@@ -155,25 +159,26 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
         {
           int heigth = btnSeqBitmap.H();
           pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnSeqBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
-              375.f + j * (heigth + 1),
+              361.f + j * (heigth + 1),
               btnSeqBitmap, kBtnSeq0 + 16 * j + i),
               kCtrlTagBtnSeq0 + 16 * j + i, "Sequencer");
         }
     }
 
     // Properties buttons
+    const IBitmap btnPropBitmap = pGraphics->LoadBitmap(PNGBTNPROP_FN, 2, true);
     for (int i = 0; i < 16; i++)
     {
         for (int j = 0; j < 5; j++)
         {
-            pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnSeqBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
-              672.f + j * (btnSeqBitmap.H() + 1),
-              btnSeqBitmap, kBtnProp0 + 16 * j + i),
+            pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnPropBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
+              665.f + j * (btnPropBitmap.H() + 1),
+              btnPropBitmap, kBtnProp0 + 16 * j + i),
               kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
         }
     }
 
-    const int yVal = 797;
+    const int yVal = 792;
     const IBitmap btnStopBitmap = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(317, yVal, btnStopBitmap, kParamStop, kCtrlTagStop), kCtrlTagStop);
     const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
@@ -206,7 +211,7 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
 {
   TRACE
   bool savedOK = true;
-  savedOK &= SerializeParams(chunk);
+  savedOK &= SerializeParams(chunk); // Will serialize all kNumParams parameters
 
   // Serialize patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && savedOK; ++patternNr)
@@ -220,12 +225,23 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
     }
   }
 
+  double digit = 1.0;
+  savedOK &= (chunk.Put(&digit) > 0);
+  digit = 2.0;
+  savedOK &= (chunk.Put(&digit) > 0);
+  digit = 3.0;
+  savedOK &= (chunk.Put(&digit) > 0);
+  digit = 4.0;
+  savedOK &= (chunk.Put(&digit) > 0);
+  digit = 5.0;
+  savedOK &= (chunk.Put(&digit) > 0);
+
   return savedOK;
 }
 
 int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 {
-  int pos = UnserializeParams(chunk, startPos);
+  int pos = UnserializeParams(chunk, startPos); // Will unserialize all kNumParams parameters
   TRACE
   ENTER_PARAMS_MUTEX
 
@@ -275,6 +291,19 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
     }
 
   }
+
+  double one;
+  pos = chunk.Get(&one, pos);
+  double two;
+  pos = chunk.Get(&two, pos);
+  double three;
+  pos = chunk.Get(&three, pos);
+  double four;
+  pos = chunk.Get(&four, pos);
+  double five;
+  pos = chunk.Get(&five, pos);
+
+  OnParamReset(kPresetRecall);
 
   LEAVE_PARAMS_MUTEX
   return pos;
@@ -567,7 +596,14 @@ void BassMatrix::OnParamChange(int paramIdx)
     open303Core.setCutoff(value);
     break;
   case kParamWaveForm:
-    open303Core.setWaveform(value);
+    if (value == 1.0)
+    {
+      open303Core.setWaveform(1.0);
+    }
+    else
+    {
+      open303Core.setWaveform(0.0);
+    }
     break;
   case kParamTuning:
     open303Core.setTuning(value);
