@@ -125,7 +125,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     btnPatternBitmap[11] = pGraphics->LoadBitmap(PNGBTNPATB_FN, 2, true);
     for (int i = 0; i < 12; ++i)
     {
-      pGraphics->AttachControl(new PatternBtnControl(490.f + (i % 4) * (btnPatternBitmap[0].W() / 2),
+      pGraphics->AttachControl(new PatternBtnControl(481.f + (i % 4) * (btnPatternBitmap[0].W() / 2),
         178.f + (i / 4) * (btnPatternBitmap[0].H()),
         btnPatternBitmap[i], kBtnPtnC + i, kCtrlTagBtnPtnC + i, open303Core), kCtrlTagBtnPtnC + i);
     }
