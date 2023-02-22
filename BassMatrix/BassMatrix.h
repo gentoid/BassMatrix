@@ -8,14 +8,25 @@
 #include "IPlugAPIBase.h"
 
 const int kNumPresets = 1;
-const int kNumberOfPropButtons = 5 * 16;
 const int kNumberOfNoteBtns = 13;
-const int kNumberOfSeqButtons = kNumberOfNoteBtns * 16 + kNumberOfPropButtons;
+const int kNumberOfPropertyBtns = 5;
+const int kNumberOfTotalPropButtons = kNumberOfPropertyBtns * 16;
+const int kNumberOfSeqButtons = kNumberOfNoteBtns * 16 + kNumberOfPropertyBtns * 16;
 const int kNumberOfPatterns = 24;
 
 enum EParams
 {
-	kParamCutOff = 0,
+	// First the parameters that is not saved.
+	kLedBtn0 = 0,
+	kBtnSeq0 = kLedBtn0 + 16,
+	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
+
+	// Parameters that are saved
+	kBtnPtnC = kBtnProp0 + 16 * kNumberOfPropertyBtns,
+	kBtnPtnOct2 = kBtnPtnC + 12,
+	kBtnPtnOct3,
+
+	kParamCutOff,
 	kParamResonance,
 	kParamWaveForm,
 	kParamTuning,
@@ -30,16 +41,6 @@ enum EParams
 	kParamKeySync,
 	kParamInternalSync,
 	kParamMidiPlay,
-
-	kBtnSeq0,
-
-	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
-
-	kLedBtn0 = kBtnProp0 + kNumberOfPropButtons,
-
-	kBtnPtnC = kLedBtn0 + 16,
-	kBtnPtnOct2 = kBtnPtnC + 12,
-	kBtnPtnOct3,
 	kKnobLoopSize,
 	kParamCopy,
 	kParamClear,
@@ -53,7 +54,7 @@ enum ECtrlTags
   kCtrlTagVersionNumber = 0,
   kCtrlTagBtnSeq0,
   kCtrlTagBtnProp0   = kCtrlTagBtnSeq0 + 16 * kNumberOfNoteBtns,
-  kCtrlTagLedSeq0    = kCtrlTagBtnProp0 + 16 * 5,
+  kCtrlTagLedSeq0    = kCtrlTagBtnProp0 + 16 * kNumberOfPropertyBtns,
   kCtrlTagBtnPtnC    = kCtrlTagLedSeq0 + 16,
   kCtrlTagBtnPtnOct2 = kCtrlTagBtnPtnC + 12,
   kCtrlTagBtnPtnOct3,

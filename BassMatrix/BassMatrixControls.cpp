@@ -89,7 +89,7 @@ void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* 
 void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
 //  IBSwitchControl::OnMouseDown(x, y, mod);
-  if (mParamIdx - kBtnSeq0 < kNumberOfSeqButtons - kNumberOfPropButtons)
+  if (mParamIdx - kBtnSeq0 < kNumberOfSeqButtons - kNumberOfTotalPropButtons)
   {
     // For the notes. Turn off all note buttons on the same column and then turn on the button just pressed.
     for (int row = 0; row < kNumberOfNoteBtns; ++row)
@@ -200,18 +200,14 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
   double ksBefore = pControlKeySyncBtn->GetValue();
   double isBefore = pControlInternalSyncBtn->GetValue();
   double mpBefore = pControlMidiPlayBtn->GetValue();
-  pControlStopBtn->SetValue(0.0);
-  pControlHostSyncBtn->SetValue(0.0);
-  pControlKeySyncBtn->SetValue(0.0);
-  pControlInternalSyncBtn->SetValue(0.0);
-  pControlMidiPlayBtn->SetValue(0.0);
-  if (pControlStopBtn->GetValue() != stBefore) { pControlStopBtn->SetDirty(true); }
-  if (pControlHostSyncBtn->GetValue() != hsBefore) { pControlHostSyncBtn->SetDirty(true); }
-  if (pControlKeySyncBtn->GetValue() != ksBefore) { pControlKeySyncBtn->SetDirty(true); }
-  if (pControlInternalSyncBtn->GetValue() != isBefore) { pControlInternalSyncBtn->SetDirty(true); }
-  if (pControlMidiPlayBtn->GetValue() != mpBefore) { pControlMidiPlayBtn->SetDirty(true); }
-  IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
-  pControlBtn->SetValue(1.0);
+  if (stBefore == 1.0) { pControlStopBtn->SetValue(0.0); pControlStopBtn->SetDirty(true); }
+  if (hsBefore == 1.0) { pControlHostSyncBtn->SetValue(0.0); pControlHostSyncBtn->SetDirty(true); }
+  if (ksBefore == 1.0) { pControlKeySyncBtn->SetValue(0.0); pControlKeySyncBtn->SetDirty(true); }
+  if (isBefore == 1.0) { pControlInternalSyncBtn->SetValue(0.0); pControlInternalSyncBtn->SetDirty(true); }
+  if (mpBefore == 1.0) { pControlMidiPlayBtn->SetValue(0.0); pControlMidiPlayBtn->SetDirty(true); }
+//  IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
+  SetValue(1.0);
+  SetDirty(true);
 }
 
 

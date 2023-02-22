@@ -17,7 +17,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamDecay)->InitDouble("Decay", 400.0, 200.0, 2000.0, 1.0, "ms");
   GetParam(kParamAccent)->InitDouble("Accent", 50.0, 0.0, 100.0, 1.0, "%");
   GetParam(kParamVolume)->InitDouble("Volume", -17.0, -75.0, 0.0, 0.1, "dB");
-  GetParam(kParamTempo)->InitDouble("Tempo", 120.0, 0.0, 300.0, 1.0, "bpm");
+  GetParam(kParamTempo)->InitDouble("Tempo", 120.0, 10.0, 300.0, 1.0, "bpm");
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
   GetParam(kParamWaveForm)->InitBool("Waveform", false);
@@ -36,7 +36,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   // randomize the current pattern and then tells the gui to update.
   for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
   {
-    GetParam(i)->InitBool(("Sequencer button " + std::to_string(i - kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
+    GetParam(i)->InitBool(("Sequencer button " + std::to_string(i -  kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
   }
 
 //  for (int pattern = 1; pattern < kNumberOfPatterns + 1; ++pattern)
@@ -135,8 +135,8 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     pGraphics->AttachControl(new PtnModBtnControl(369, 178, btnClearBitmap, kParamClear));
     const IBitmap btnRandomizeBitmap = pGraphics->LoadBitmap(PNGRANDOMIZE_FN, 2, true);
     pGraphics->AttachControl(new PtnModBtnControl(369, 218, btnRandomizeBitmap, kParamRandomize));
-    const IBitmap btnCopyBitmap = pGraphics->LoadBitmap(PNGCOPY_FN, 2, true);
-    pGraphics->AttachControl(new PtnModBtnControl(369, 258, btnCopyBitmap, kParamCopy));
+//    const IBitmap btnCopyBitmap = pGraphics->LoadBitmap(PNGCOPY_FN, 2, true);
+//    pGraphics->AttachControl(new PtnModBtnControl(369, 258, btnCopyBitmap, kParamCopy));
 
     // Loop size knob
     const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
@@ -207,12 +207,36 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //}
 //#endif
 
+// Save plugin settings to hard drive. First save is junk.
 #if IPLUG_EDITOR
 bool BassMatrix::SerializeState(IByteChunk& chunk) const
 {
+#ifdef _DEBUG // Ugly solution to a problem I didn't understand
+  OutputDebugString("SerializeState() called\n");
+#endif
+
+  //static bool firstCall = true;
+  //if (firstCall)
+  //{
+  //  OutputDebugString("First call to SerializeState() is junk\n");
+  //  firstCall = false;
+  //  return true;
+  //}
+
   TRACE
+  //bool savedOK = true;
+  //savedOK &= SerializeParams(chunk); // Will serialize all kNumParams parameters
+
   bool savedOK = true;
-  savedOK &= SerializeParams(chunk); // Will serialize all kNumParams parameters
+#if 1
+  int n = NParams();
+  for (int i = kBtnPtnC; i < n && savedOK; ++i)
+  {
+    const IParam* pParam = GetParam(i);
+    Trace(TRACELOC, "%d %s %f", i, pParam->GetName(), pParam->Value());
+    double v = pParam->Value();
+    savedOK &= (chunk.Put(&v) > 0);
+  }
 
   // Serialize patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && savedOK; ++patternNr)
@@ -226,6 +250,8 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
     }
   }
 
+#endif
+
   double digit = 1.0;
   savedOK &= (chunk.Put(&digit) > 0);
   digit = 2.0;
@@ -236,26 +262,47 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
   savedOK &= (chunk.Put(&digit) > 0);
   digit = 5.0;
   savedOK &= (chunk.Put(&digit) > 0);
+  assert(digit == 5.0);
 
   return savedOK;
 }
 
+// From hard disk to BassMatrix.
 int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 {
-  int pos = UnserializeParams(chunk, startPos); // Will unserialize all kNumParams parameters
+#ifdef _DEBUG // Ugly solution to a problem I didn't understand
+  OutputDebugString("UnserializeState() called\n");
+#endif // Ugly solution to a problem I didn't understand
+  //int pos = UnserializeParams(chunk, startPos); // Will unserialize all kNumParams parameters
+  //TRACE
+  //ENTER_PARAMS_MUTEX
+
   TRACE
+  int n = NParams(), pos = startPos;
+
   ENTER_PARAMS_MUTEX
+
+#if 1
+
+  for (int i = kBtnPtnC; i < n && pos >= 0; ++i)
+  {
+    IParam* pParam = GetParam(i);
+    double v = 0.0;
+    pos = chunk.Get(&v, pos);
+    pParam->Set(v);
+    Trace(TRACELOC, "%d %s %f", i, pParam->GetName(), pParam->Value());
+  }
 
   // Unserialize patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && pos >= 0; ++patternNr)
   {
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);  
 
-    for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
+    for (int i = 0; i < kNumberOfSeqButtons - kNumberOfTotalPropButtons; ++i)
     {
       double v = 0.0;
       pos = chunk.Get(&v, pos);
-      Trace(TRACELOC, "%d %s %f", patternNr, "Sequencer button", v);
+      Trace(TRACELOC, "%d %s %d %f", patternNr, "Sequencer button", i, v);
 
       if (v == 1.0)
       {
@@ -263,11 +310,11 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
       }
     }
 
-    for (int i = 0; i < kNumberOfPropButtons; ++i) // The note properties
+    for (int i = 0; i < kNumberOfTotalPropButtons; ++i) // The note properties
     {
       double v = 0.0;
       pos = chunk.Get(&v, pos);
-      Trace(TRACELOC, "%d %s %f", patternNr, "Property button", v);
+      Trace(TRACELOC, "%d %s %d %f", patternNr, "Property button", i, v);
 
       if (i < 16)
       {
@@ -293,6 +340,8 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 
   }
 
+#endif
+
   double one;
   pos = chunk.Get(&one, pos);
   double two;
@@ -303,13 +352,14 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
   pos = chunk.Get(&four, pos);
   double five;
   pos = chunk.Get(&five, pos);
+  assert(five == 5.0);
 
   OnParamReset(kPresetRecall);
-
   LEAVE_PARAMS_MUTEX
+
   return pos;
 }
-#endif
+#endif // IPLUG_EDITOR
 
 
 std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::Open303& open303Core, int patternNr)
@@ -320,14 +370,14 @@ std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::
 
   rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);
 
-  for (int i = 0; i < kNumberOfSeqButtons - kNumberOfPropButtons; ++i)
+  for (int i = 0; i < kNumberOfSeqButtons - kNumberOfTotalPropButtons; ++i)
   {
     seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16 - 1;
   }
 
-  for (int i = 0; i < kNumberOfPropButtons; ++i) // The note properties
+  for (int i = 0; i < kNumberOfTotalPropButtons; ++i) // The note properties
   {
-    int j = i + kNumberOfSeqButtons - kNumberOfPropButtons;
+    int j = i + kNumberOfSeqButtons - kNumberOfTotalPropButtons;
     if (i < 16)
     {
       seq[j] = pattern->getNote(i % 16)->octave == 1;
@@ -510,7 +560,7 @@ void BassMatrix::OnParamChange(int paramIdx)
   double value = GetParam(paramIdx)->Value();
 
   // Note buttons
-  if (paramIdx >= kBtnSeq0 && paramIdx < kBtnSeq0 + kNumberOfSeqButtons - kNumberOfPropButtons)
+  if (paramIdx >= kBtnSeq0 && paramIdx < kBtnSeq0 + kNumberOfSeqButtons - kNumberOfTotalPropButtons)
   {
     int seqNr = (paramIdx - kBtnSeq0) % 16;
     int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1; // noteNr between 0 and 12
@@ -523,7 +573,7 @@ void BassMatrix::OnParamChange(int paramIdx)
   }
 
   // Note properties buttons
-  if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfPropButtons)
+  if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfTotalPropButtons)
   {
     int seqNr = (paramIdx - kBtnProp0) % 16;
     int rowNr = (paramIdx - kBtnProp0) / 16;
@@ -599,11 +649,11 @@ void BassMatrix::OnParamChange(int paramIdx)
   case kParamWaveForm:
     if (value == 1.0)
     {
-      open303Core.setWaveform(1.0);
+      open303Core.setWaveform(1.0); // Square
     }
     else
     {
-      open303Core.setWaveform(0.0);
+      open303Core.setWaveform(0.0); // Saw
     }
     break;
   case kParamTuning:
@@ -622,6 +672,8 @@ void BassMatrix::OnParamChange(int paramIdx)
     open303Core.setVolume(value);
     break;
   case kParamTempo:
+    assert(value >= 10);
+    assert(value <= 300);
     open303Core.sequencer.setTempo(value);
     break;
   case kParamDrive:
