@@ -88,7 +88,7 @@ void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* 
 
 void SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
 {
-//  IBSwitchControl::OnMouseDown(x, y, mod);
+  //  IBSwitchControl::OnMouseDown(x, y, mod);
   if (mParamIdx - kBtnSeq0 < kNumberOfSeqButtons - kNumberOfTotalPropButtons)
   {
     // For the notes. Turn off all note buttons on the same column and then turn on the button just pressed.
@@ -205,7 +205,6 @@ void SyncBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
   if (ksBefore == 1.0) { pControlKeySyncBtn->SetValue(0.0); pControlKeySyncBtn->SetDirty(true); }
   if (isBefore == 1.0) { pControlInternalSyncBtn->SetValue(0.0); pControlInternalSyncBtn->SetDirty(true); }
   if (mpBefore == 1.0) { pControlMidiPlayBtn->SetValue(0.0); pControlMidiPlayBtn->SetDirty(true); }
-//  IControl* pControlBtn = GetUI()->GetControlWithTag(mCtrlTag);
   SetValue(1.0);
   SetDirty(true);
 }
@@ -267,20 +266,24 @@ void PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod& mod)
       for (int i = 0; i < 12; ++i)
       {
         double before = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue();
-        GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(0.0);
-        GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(kCtrlTagBtnPtnC + i == mCtrlTag ? 1.0 : 0.0);
-        GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetDirty(before == GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue());
+        if (before == 1.0)
+        {
+          GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(0.0);
+          GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetDirty(true);
+        }
       }
+      SetValue(1.0);
+      SetDirty(true);
     }
   }
 }
 
-void PatternBtnControl::CreateContextMenu(IPopupMenu & contextMenu)
+void PatternBtnControl::CreateContextMenu(IPopupMenu& contextMenu)
 {
   contextMenu.AddItem("Clear pattern");
   contextMenu.AddItem("Randomize pattern");
 
-  std::vector<std::string> notes = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+  std::vector<std::string> notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
   for (int i = 2; i <= 3; ++i)
   {
     for (auto note : notes)
