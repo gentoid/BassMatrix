@@ -233,7 +233,7 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
   for (int i = kBtnPtnC; i < n && savedOK; ++i)
   {
     const IParam* pParam = GetParam(i);
-    Trace(TRACELOC, "%d %s %f", i, pParam->GetName(), pParam->Value());
+    Trace(TRACELOC, " %s %d %f", pParam->GetName(), i, pParam->Value());
     double v = pParam->Value();
     savedOK &= (chunk.Put(&v) > 0);
   }
@@ -241,13 +241,20 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
   // Serialize patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && savedOK; ++patternNr)
   {
+    Trace(TRACELOC, " %s %d ", "Pattern nr", patternNr);
     std::array<bool, kNumberOfSeqButtons> a = CollectSequenceButtons((rosic::Open303&)open303Core, patternNr);
     for (auto elem : a)
     {
-      Trace(TRACELOC, "%d %s %f", patternNr, "Sequencer button", elem ? 1.0 : 0.0);
+//      Trace(TRACELOC, " %s %d %f", "Sequencer button nr", patternNr, elem ? 1.0 : 0.0);
       double v = elem ? 1.0 : 0.0;
+#ifdef _DEBUG
+      OutputDebugString(v == 1.0 ? "*" : "-");
+#endif // _DEBUG
       savedOK &= (chunk.Put(&v) > 0);
     }
+#ifdef _DEBUG
+    OutputDebugString("\n");
+#endif // _DEBUG
   }
 
 #endif
@@ -263,6 +270,8 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
   digit = 5.0;
   savedOK &= (chunk.Put(&digit) > 0);
   assert(digit == 5.0);
+
+  assert(savedOK == true);
 
   return savedOK;
 }
@@ -296,13 +305,19 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
   // Unserialize patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && pos >= 0; ++patternNr)
   {
+    Trace(TRACELOC, " %s %d ", "Pattern nr", patternNr);
+
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);  
 
     for (int i = 0; i < kNumberOfSeqButtons - kNumberOfTotalPropButtons; ++i)
     {
       double v = 0.0;
       pos = chunk.Get(&v, pos);
-      Trace(TRACELOC, "%d %s %d %f", patternNr, "Sequencer button", i, v);
+//      Trace(TRACELOC, "%d %s %d %f", patternNr, "Sequencer button", i, v);
+
+#ifdef _DEBUG
+      OutputDebugString(v==1.0 ? "*" : "-");
+#endif // _DEBUG
 
       if (v == 1.0)
       {
@@ -314,7 +329,11 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
     {
       double v = 0.0;
       pos = chunk.Get(&v, pos);
-      Trace(TRACELOC, "%d %s %d %f", patternNr, "Property button", i, v);
+//      Trace(TRACELOC, "%d %s %d %f", patternNr, "Property button", i, v);
+
+#ifdef _DEBUG
+      OutputDebugString(v == 1.0 ? "*" : "-");
+#endif // _DEBUG
 
       if (i < 16)
       {
@@ -337,8 +356,24 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
         pattern->getNote(i % 16)->gate = (v == 1.0);
       }
     }
-
+#ifdef _DEBUG
+    OutputDebugString("\n");
+#endif // _DEBUG
   }
+
+#ifdef _DEBUG
+  // Control the notes written to sequencer
+  for (int patternNr = 0; patternNr < kNumberOfPatterns; ++patternNr)
+  {
+    Trace(TRACELOC, " %s %d ", "Pattern nr", patternNr);
+    std::array<bool, kNumberOfSeqButtons> a = CollectSequenceButtons((rosic::Open303&)open303Core, patternNr);
+    for (auto elem : a)
+    {
+      OutputDebugString(elem ? "*" : "-");
+    }
+    OutputDebugString("\n");
+  }
+#endif // _DEBUG
 
 #endif
 
@@ -355,6 +390,7 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
   assert(five == 5.0);
 
   OnParamReset(kPresetRecall);
+
   LEAVE_PARAMS_MUTEX
 
   return pos;
@@ -543,8 +579,10 @@ void BassMatrix::OnReset()
   open303Core.setPostFilterHighpass(24.0);
   open303Core.setSquarePhaseShift(189.0);
 
-  srand(static_cast<unsigned int>(time(0)));
-  open303Core.sequencer.randomizeAllPatterns();
+  // NOTE: OnReset() is called after a preset have been
+  // loaded, so DON'T call randomizeAllPatterns() here.
+//  srand(static_cast<unsigned int>(time(0)));
+//  open303Core.sequencer.randomizeAllPatterns();
 //  open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
 }
 
