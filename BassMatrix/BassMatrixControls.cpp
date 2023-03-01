@@ -56,18 +56,29 @@ SeqNoteBtnControl::SeqNoteBtnControl(float x, float y, const IBitmap& bitmap, in
 {
 }
 
+//
+// This function updates one the GUI sequencer buttons. It is just in GUI visible things. The actual values
+// is stored in Sequencer. So the sender of these notes should have read the values from the Sequencer.
+//
 void SeqNoteBtnControl::SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> sequencer, IGraphics* ui)
 {
+  Trace(TRACELOC, "");
   for (int i = 0; i < kNumberOfSeqButtons; i++)
   {
     IControl* pControlBtn = ui->GetControlWithTag(kCtrlTagBtnSeq0 + i);
     double before = pControlBtn->GetValue();
+#ifdef _DEBUG
+    OutputDebugString(sequencer[i] ? "*" : "-");
+#endif // _DEBUG
     pControlBtn->SetValue(sequencer[i] ? 1.0 : 0.0);
     if (before != pControlBtn->GetValue())
     {
       pControlBtn->SetDirty(true);
     }
   }
+#ifdef _DEBUG
+  OutputDebugString("\n");
+#endif // _DEBUG
 }
 
 void SeqNoteBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void* pData)

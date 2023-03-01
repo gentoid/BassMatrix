@@ -10,6 +10,10 @@
 BassMatrix::BassMatrix(const InstanceInfo& info)
 : Plugin(info, MakeConfig(kNumParams, kNumPresets)), mLastSamplePos(0), mStartSyncWithHost(false), mCurrentPattern(0)
 {
+  //srand(static_cast<unsigned int>(time(0)));
+  //open303Core.sequencer.randomizeAllPatterns();
+  open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+
   GetParam(kParamCutOff)->InitDouble("Cut off", 500.0, 314.0, 2394.0, 1.0, "Hz");
   GetParam(kParamResonance)->InitDouble("Resonace", 50.0, 0.0, 100.0, 1.0, "%");
   GetParam(kParamTuning)->InitDouble("Tuning", 440.0, 400.0, 480.0, 1.0, "%");
@@ -32,12 +36,12 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamMidiPlay)->InitBool("Midi Play", false);
 #endif
 
-  // This value set here have not so much relevance, since we tell the sequencer to
-  // randomize the current pattern and then tells the gui to update.
-  for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
-  {
-    GetParam(i)->InitBool(("Sequencer button " + std::to_string(i -  kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
-  }
+  //// This value set here have not so much relevance, since we tell the sequencer to
+  //// randomize the current pattern and then tells the gui to update.
+  //for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
+  //{
+  //  GetParam(i)->InitBool(("Sequencer button " + std::to_string(i -  kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
+  //}
 
 //  for (int pattern = 1; pattern < kNumberOfPatterns + 1; ++pattern)
 //  {
@@ -47,12 +51,12 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //    }
 //  }
 
-  for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
-  {
-    GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(), i == kBtnPtnC);
-  }
+  //for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
+  //{
+  //  GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(), i == kBtnPtnC);
+  //}
 
-  GetParam(kBtnPtnOct2)->InitBool("Octav 2", true);
+  GetParam(kBtnPtnOct2)->InitBool("Octav 2", false); // It's bad to set something to true here!!
   GetParam(kBtnPtnOct3)->InitBool("Octav 3", false);
 
   GetParam(kKnobLoopSize)->InitInt("Loop size", 1, 1, 24);
@@ -151,6 +155,19 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
           ledBtnBitmap, kLedBtn0 + i, open303Core), kCtrlTagLedSeq0 + i, "Sequencer");
     }
 
+    // Properties buttons
+    const IBitmap btnPropBitmap = pGraphics->LoadBitmap(PNGBTNPROP_FN, 2, true);
+    for (int i = 0; i < 16; i++)
+    {
+      for (int j = 0; j < 5; j++)
+      {
+        pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnPropBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
+          665.f + j * (btnPropBitmap.H() + 1),
+          btnPropBitmap, kBtnProp0 + 16 * j + i),
+          kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
+      }
+    }
+
     // Sequencer tones buttons
     const IBitmap btnSeqBitmap = pGraphics->LoadBitmap(PNGBTNSEQ_FN, 2, true);
     for (int i = 0; i < 16; i++)
@@ -162,19 +179,6 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
               361.f + j * (heigth + 1),
               btnSeqBitmap, kBtnSeq0 + 16 * j + i),
               kCtrlTagBtnSeq0 + 16 * j + i, "Sequencer");
-        }
-    }
-
-    // Properties buttons
-    const IBitmap btnPropBitmap = pGraphics->LoadBitmap(PNGBTNPROP_FN, 2, true);
-    for (int i = 0; i < 16; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
-            pGraphics->AttachControl(new SeqNoteBtnControl(134.f + i * (btnPropBitmap.W() / 2 + 21) + ((i > 3) ? 12 : 0) + ((i > 7) ? 12 : 0) + ((i > 11) ? 12 : 0),
-              665.f + j * (btnPropBitmap.H() + 1),
-              btnPropBitmap, kBtnProp0 + 16 * j + i),
-              kCtrlTagBtnProp0 + 16 * j + i, "Sequencer");
         }
     }
 
@@ -207,30 +211,24 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 //}
 //#endif
 
+
+//
 // Save plugin settings to hard drive. First save is junk.
+//
 #if IPLUG_EDITOR
 bool BassMatrix::SerializeState(IByteChunk& chunk) const
 {
-#ifdef _DEBUG // Ugly solution to a problem I didn't understand
+#ifdef _DEBUG
   OutputDebugString("SerializeState() called\n");
 #endif
 
-  //static bool firstCall = true;
-  //if (firstCall)
-  //{
-  //  OutputDebugString("First call to SerializeState() is junk\n");
-  //  firstCall = false;
-  //  return true;
-  //}
-
   TRACE
-  //bool savedOK = true;
-  //savedOK &= SerializeParams(chunk); // Will serialize all kNumParams parameters
 
   bool savedOK = true;
-#if 1
+
+  // Save parameters except the leds and the parameters that are stored in sequencer.
   int n = NParams();
-  for (int i = kBtnPtnC; i < n && savedOK; ++i)
+  for (int i = kParamCutOff; i < n && savedOK; ++i)
   {
     const IParam* pParam = GetParam(i);
     Trace(TRACELOC, " %s %d %f", pParam->GetName(), i, pParam->Value());
@@ -238,7 +236,7 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
     savedOK &= (chunk.Put(&v) > 0);
   }
 
-  // Serialize patterns
+  // Save all patterns
   for (int patternNr = 0; patternNr < kNumberOfPatterns && savedOK; ++patternNr)
   {
     Trace(TRACELOC, " %s %d ", "Pattern nr", patternNr);
@@ -257,43 +255,29 @@ bool BassMatrix::SerializeState(IByteChunk& chunk) const
 #endif // _DEBUG
   }
 
-#endif
-
-  double digit = 1.0;
-  savedOK &= (chunk.Put(&digit) > 0);
-  digit = 2.0;
-  savedOK &= (chunk.Put(&digit) > 0);
-  digit = 3.0;
-  savedOK &= (chunk.Put(&digit) > 0);
-  digit = 4.0;
-  savedOK &= (chunk.Put(&digit) > 0);
-  digit = 5.0;
-  savedOK &= (chunk.Put(&digit) > 0);
-  assert(digit == 5.0);
+  double version = 1.1; // Version of the saving mekanism.
+  savedOK &= (chunk.Put(&version) > 0);
 
   assert(savedOK == true);
 
   return savedOK;
 }
 
+//
 // From hard disk to BassMatrix.
+//
 int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 {
-#ifdef _DEBUG // Ugly solution to a problem I didn't understand
+#ifdef _DEBUG
   OutputDebugString("UnserializeState() called\n");
-#endif // Ugly solution to a problem I didn't understand
-  //int pos = UnserializeParams(chunk, startPos); // Will unserialize all kNumParams parameters
-  //TRACE
-  //ENTER_PARAMS_MUTEX
+#endif
 
   TRACE
-  int n = NParams(), pos = startPos;
 
   ENTER_PARAMS_MUTEX
 
-#if 1
-
-  for (int i = kBtnPtnC; i < n && pos >= 0; ++i)
+  int n = NParams(), pos = startPos;
+  for (int i = kParamCutOff; i < n && pos >= 0; ++i)
   {
     IParam* pParam = GetParam(i);
     double v = 0.0;
@@ -341,7 +325,10 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
       }
       else if (i < 32)
       {
-        pattern->getNote(i % 16)->octave = (v == 1.0 ? -1 : 0);
+        if (v == 1.0)
+        {
+          pattern->getNote(i % 16)->octave = -1;
+        }
       }
       else if (i < 48)
       {
@@ -361,35 +348,27 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 #endif // _DEBUG
   }
 
+  double version;
+  pos = chunk.Get(&version, pos);
+  assert(version == 1.1);
+
+//  OnParamReset(kPresetRecall);
+
 #ifdef _DEBUG
-  // Control the notes written to sequencer
-  for (int patternNr = 0; patternNr < kNumberOfPatterns; ++patternNr)
-  {
-    Trace(TRACELOC, " %s %d ", "Pattern nr", patternNr);
-    std::array<bool, kNumberOfSeqButtons> a = CollectSequenceButtons((rosic::Open303&)open303Core, patternNr);
-    for (auto elem : a)
-    {
-      OutputDebugString(elem ? "*" : "-");
-    }
-    OutputDebugString("\n");
-  }
+  //// Control the notes written to sequencer
+  //OutputDebugString("Control patterns written to sequencer\n");
+  //for (int patternNr = 0; patternNr < kNumberOfPatterns; ++patternNr)
+  //{
+  //  Trace(TRACELOC, " %s %d ", "Pattern nr", patternNr);
+  //  std::array<bool, kNumberOfSeqButtons> a = CollectSequenceButtons((rosic::Open303&)open303Core, patternNr);
+  //  for (auto elem : a)
+  //  {
+  //    OutputDebugString(elem ? "*" : "-");
+  //  }
+  //  OutputDebugString("\n");
+  //}
 #endif // _DEBUG
 
-#endif
-
-  double one;
-  pos = chunk.Get(&one, pos);
-  double two;
-  pos = chunk.Get(&two, pos);
-  double three;
-  pos = chunk.Get(&three, pos);
-  double four;
-  pos = chunk.Get(&four, pos);
-  double five;
-  pos = chunk.Get(&five, pos);
-  assert(five == 5.0);
-
-  OnParamReset(kPresetRecall);
 
   LEAVE_PARAMS_MUTEX
 
@@ -404,11 +383,19 @@ std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::
 
   if (patternNr == -1) { patternNr = open303Core.sequencer.getActivePattern(); }
 
+#ifdef _DEBUG
+  OutputDebugString("CollectSequenceButtons()");
+  OutputDebugString(std::string("Pattern: " + std::to_string(patternNr) + "\n").c_str());
+#endif // _DEBUG
+
   rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(patternNr);
 
   for (int i = 0; i < kNumberOfSeqButtons - kNumberOfTotalPropButtons; ++i)
   {
     seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16 - 1;
+#ifdef _DEBUG
+    OutputDebugString(seq[i] ? "*" : "-");
+#endif // _DEBUG
   }
 
   for (int i = 0; i < kNumberOfTotalPropButtons; ++i) // The note properties
@@ -434,7 +421,14 @@ std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::
     {
       seq[j] = pattern->getNote(i % 16)->gate;
     }
+#ifdef _DEBUG
+    OutputDebugString(seq[j] ? "*" : "-");
+#endif // _DEBUG
   }
+#ifdef _DEBUG
+  OutputDebugString("\n");
+#endif // _DEBUG
+
   return seq;
 }
 
@@ -442,6 +436,7 @@ std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::
 
 void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** outputs, int nFrames)
 {
+#if 1
   // Channel declaration.
   PLUG_SAMPLE_DST* out01 = outputs[0];  PLUG_SAMPLE_DST* out02 = outputs[1];
 
@@ -554,6 +549,7 @@ void BassMatrix::ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** output
   mLastSamplePos = static_cast<unsigned int>(GetSamplePos()) + nFrames;
 
   mMidiQueue.Flush(nFrames);
+#endif
 }
 
 #if IPLUG_DSP
@@ -567,6 +563,9 @@ void BassMatrix::OnIdle()
 
 void BassMatrix::OnReset()
 {
+  // NOTE: OnReset() is called after a preset have been
+  // loaded, so be sure you really want to reset the parameter.
+
   open303Core.setSampleRate(GetSampleRate());
 
   // Some internal stuff. Maybe we need to change this to sound more as a real TB-303?
@@ -578,12 +577,6 @@ void BassMatrix::OnReset()
   open303Core.setFeedbackHighpass(150.0);
   open303Core.setPostFilterHighpass(24.0);
   open303Core.setSquarePhaseShift(189.0);
-
-  // NOTE: OnReset() is called after a preset have been
-  // loaded, so DON'T call randomizeAllPatterns() here.
-//  srand(static_cast<unsigned int>(time(0)));
-//  open303Core.sequencer.randomizeAllPatterns();
-//  open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
 }
 
 void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)
@@ -603,9 +596,18 @@ void BassMatrix::OnParamChange(int paramIdx)
     int seqNr = (paramIdx - kBtnSeq0) % 16;
     int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1; // noteNr between 0 and 12
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
+
     if (value == 1.0)
     {
+#ifdef _DEBUG
+      OutputDebugString(std::string("Setting step " + to_string(seqNr) + " Note nr " + to_string(noteNr) + "\n").c_str());
+#endif // _DEBUG
       pattern->setKey(seqNr, noteNr); // Take care of the key notes
+      CollectSequenceButtons((rosic::Open303&)open303Core, 0);
+    }
+    else
+    {
+      return;
     }
     return;
   }
@@ -618,11 +620,26 @@ void BassMatrix::OnParamChange(int paramIdx)
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
     if (rowNr == 0)
     {
-      pattern->setOctave(seqNr, value == 1.0 ? 1 : 0);
+      if (value == 1.0)
+      {
+        pattern->setOctave(seqNr, 1);
+        OutputDebugString(std::string("Setting octave " + to_string(seqNr) + " to " + to_string(value) + "\n").c_str());
+      }
+      else
+      {
+        pattern->setOctave(seqNr, 0);
+      }
     }
     if (rowNr == 1)
     {
-      pattern->setOctave(seqNr, value == 1.0 ? -1 : 0);
+      if (value == 1.0)
+      {
+        pattern->setOctave(seqNr, -1);
+      }
+      else
+      {
+        pattern->setOctave(seqNr, 0);
+      }
     }
     if (rowNr == 2)
     {
