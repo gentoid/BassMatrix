@@ -44,10 +44,10 @@
 #define AAX_TYPE_IDS_AUDIOSUITE 'ITA1'
 #define AAX_PLUG_MFR_STR "Acme"
 #define AAX_PLUG_NAME_STR "BassMatrix\nIPEF"
-#define AAX_PLUG_CATEGORY_STR "Effect"
+#define AAX_PLUG_CATEGORY_STR "Synth"
 #define AAX_DOES_AUDIOSUITE 1
 
-#define VST3_SUBCATEGORY "Instrument|Effect"
+#define VST3_SUBCATEGORY "Instrument|Synth  "
 
 #define APP_NUM_CHANNELS 2
 #define APP_N_VECTOR_WAIT 0

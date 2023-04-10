@@ -86,7 +86,8 @@ public:
 #if IPLUG_DSP
 	void ProcessMidiMsg(const IMidiMsg& msg) override;
 	void OnReset() override;
-	void OnParamChange(int paramIdx) override;
+//	void OnParamChange(int paramIdx) override;
+	void OnParamChangeUI(int paramIdx, EParamSource source = kUnknown) override;
 	void OnIdle() override;
 	bool OnMessage(int msgTag, int ctrlTag, int dataSize, const void* pData) override;
 #endif
@@ -109,4 +110,5 @@ private:
 	int mKnobLoopSize;
 	int mCurrentPattern;
 	int mHasChanged;
+	bool mListenToOnParamChange;
 };
