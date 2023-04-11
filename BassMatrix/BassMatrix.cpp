@@ -398,7 +398,7 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
     }
   }
 
-  //OnParamReset(kPresetRecall);
+  OnParamReset(kPresetRecall);
 
   LEAVE_PARAMS_MUTEX
 
@@ -620,22 +620,18 @@ void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)
 //void BassMatrix::OnParamChange(int paramIdx)
 void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
 {
-  //if (!mListenToOnParamChange)
-  //{
-  //  return;
-  //}
-  //static bool hasDoneOnParamReset = false;
-  //if (hasDoneOnParamReset)
-  //{
-  //  OnParamReset(kPresetRecall);
-  //  hasDoneOnParamReset = true;
-  //}
+  if (source != kUI && source != kReset && source != kPresetRecall)
+  {
+    return;
+  }
 
   double value = GetParam(paramIdx)->Value();
 
   // Note buttons
   if (paramIdx >= kBtnSeq0 && paramIdx < kBtnSeq0 + kNumberOfSeqButtons - kNumberOfTotalPropButtons)
   {
+    if (source == kPresetRecall) { return; }
+
     int seqNr = (paramIdx - kBtnSeq0) % 16;
     int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1; // noteNr between 0 and 12
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
@@ -658,6 +654,7 @@ void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
   // Note properties buttons
   if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfTotalPropButtons)
   {
+    if (source == kPresetRecall) { return; }
     int seqNr = (paramIdx - kBtnProp0) % 16;
     int rowNr = (paramIdx - kBtnProp0) / 16;
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
