@@ -199,6 +199,13 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     //WDL_String buildInfoStr;
     //GetBuildInfoStr(buildInfoStr, __DATE__, __TIME__);
     //pGraphics->AttachControl(new ITextControl(versionBounds, buildInfoStr.Get(), DEFAULT_TEXT.WithAlign(EAlign::Far)), kCtrlTagVersionNumber);
+
+    // Clear all patterns.
+    for (int i = 0; i < 24; i++)
+    {
+      open303Core.sequencer.clearPattern(i);
+    }
+
   };
 #endif
 }
@@ -373,8 +380,9 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
   }
 
   // Restore octav and pattern buttons.
-  double ptn = 0.0;
-  pos = chunk.Get(&ptn, pos);
+  double ptn;
+  pos = chunk.Get(&ptn, pos); // ptn is between 0.0 and 23.0
+  open303Core.sequencer.setPattern(static_cast<int>(ptn));
   if (ptn < 12.0)
   {
     GetParam(kBtnPtnOct2)->Set(1.0);
@@ -655,6 +663,7 @@ void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
   if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfTotalPropButtons)
   {
     if (source == kPresetRecall) { return; }
+
     int seqNr = (paramIdx - kBtnProp0) % 16;
     int rowNr = (paramIdx - kBtnProp0) / 16;
     rosic::AcidPattern* pattern = open303Core.sequencer.getPattern(open303Core.sequencer.getActivePattern());
