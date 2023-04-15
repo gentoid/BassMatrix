@@ -78,12 +78,6 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     const IRECT versionBounds = innerBounds.GetFromTRHC(300, 20);
     const IRECT titleBounds = innerBounds.GetCentredInside(200, 50);
 
-    //    if (pGraphics->NControls()) {
-    //      pGraphics->GetBackgroundControl()->SetTargetAndDrawRECTs(bounds);
-    //      return;
-    //    }
-
-    //    pGraphics->SetLayoutOnResize(true);
     pGraphics->AttachCornerResizer(EUIResizerMode::Scale, false);
     pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
 
@@ -142,7 +136,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     //    const IBitmap btnCopyBitmap = pGraphics->LoadBitmap(PNGCOPY_FN, 2, true);
     //    pGraphics->AttachControl(new PtnModBtnControl(369, 258, btnCopyBitmap, kParamCopy));
 
-        // Loop size knob
+    // Loop size knob
     const IBitmap btnPatternLoopSizeBitmap = pGraphics->LoadBitmap(PNGKNOBPATLOOPSIZE_FN, 24, false);
     pGraphics->AttachControl(new IBKnobControl(666.f, 195.f, btnPatternLoopSizeBitmap, kKnobLoopSize));
 
@@ -194,11 +188,6 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
     pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 3, yVal, btnInternalSyncBitmap, kParamInternalSync, kCtrlTagInternalSync), kCtrlTagInternalSync);
     const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
     pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 4, yVal, btnMidiPlayBitmap, kParamMidiPlay, kCtrlTagMidiPlay), kCtrlTagMidiPlay);
-
-    //pGraphics->AttachControl(new ITextControl(titleBounds, "BassMatrix", IText(30)), kCtrlTagTitle);
-    //WDL_String buildInfoStr;
-    //GetBuildInfoStr(buildInfoStr, __DATE__, __TIME__);
-    //pGraphics->AttachControl(new ITextControl(versionBounds, buildInfoStr.Get(), DEFAULT_TEXT.WithAlign(EAlign::Far)), kCtrlTagVersionNumber);
 
     // Clear all patterns.
     for (int i = 0; i < 24; i++)
@@ -299,9 +288,9 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 
   TRACE
 
-  ENTER_PARAMS_MUTEX
+    ENTER_PARAMS_MUTEX
 
-  int n = NParams(), pos = startPos;
+    int n = NParams(), pos = startPos;
 
   // Check version for the preset format
   double version;
@@ -338,7 +327,7 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
       {
         pattern->getNote(i % 16)->key = kNumberOfNoteBtns - i / 16 - 1;
       }
-    }
+      }
 
     for (int i = 0; i < kNumberOfTotalPropButtons; ++i) // The note properties
     {
@@ -373,11 +362,11 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
       {
         pattern->getNote(i % 16)->gate = (v == 1.0);
       }
-    }
+      }
 #ifdef _DEBUG
     OutputDebugString("\n");
 #endif // _DEBUG
-  }
+    }
 
   // Restore octav and pattern buttons.
   double ptn;
@@ -410,8 +399,8 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 
   LEAVE_PARAMS_MUTEX
 
-  return pos;
-}
+    return pos;
+    }
 #endif // IPLUG_EDITOR
 
 
@@ -434,7 +423,7 @@ std::array<bool, kNumberOfSeqButtons> BassMatrix::CollectSequenceButtons(rosic::
 #ifdef _DEBUG
     OutputDebugString(seq[i] ? "*" : "-");
 #endif // _DEBUG
-  }
+}
 
   for (int i = 0; i < kNumberOfTotalPropButtons; ++i) // The note properties
   {
@@ -655,9 +644,9 @@ void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
     else
     {
       return;
-    }
-    return;
   }
+    return;
+}
 
   // Note properties buttons
   if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfTotalPropButtons)
@@ -672,7 +661,6 @@ void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
       if (value == 1.0)
       {
         pattern->setOctave(seqNr, 1);
-        OutputDebugStringA(std::string("Setting octave " + to_string(seqNr) + " to " + to_string(value) + "\n").c_str());
       }
       else
       {
