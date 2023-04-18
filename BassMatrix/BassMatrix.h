@@ -110,5 +110,4 @@ private:
 	int mKnobLoopSize;
 	int mCurrentPattern;
 	int mHasChanged;
-	bool mListenToOnParamChange;
 };

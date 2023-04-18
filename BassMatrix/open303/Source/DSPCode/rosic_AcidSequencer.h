@@ -153,7 +153,10 @@ namespace rosic
 
     int getStep() { return step; }
 
-    int getActivePattern() { return activePattern; }
+    int getActivePattern()
+    {
+      return activePattern;
+    }
 
     bool getUpdateSequenserGUI() { return updateSequenserGUI; }
 

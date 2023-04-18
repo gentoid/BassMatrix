@@ -78,7 +78,10 @@ namespace rosic
     void setSlide(int step, bool shouldHaveSlide) { notes[step].slide = shouldHaveSlide; }
 
     /** Sets the gate flag for one of the steps. */
-    void setGate(int step, bool shouldBeOpen) { notes[step].gate = shouldBeOpen; }
+    void setGate(int step, bool shouldBeOpen)
+    {
+      notes[step].gate = shouldBeOpen;
+    }
 
     /** Clears all notes in the pattern. */
     void clear();
