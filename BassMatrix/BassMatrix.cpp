@@ -591,6 +591,23 @@ void BassMatrix::OnIdle()
 }
 #endif
 
+#if IPLUG_EDITOR
+IGraphics* BassMatrix::CreateGraphics()
+{
+  IGraphics* p;
+  p = IGEditorDelegate::CreateGraphics();
+
+  // Refresh sequencer.
+  // The OnParamReset(kPresetRecall) call in UnserializeState will not be able to update
+  // the sequencer gui because the graphics have not been created and therefore the
+  // message from mSequencerSender will be lost.
+  mSequencerSender.PushData({ kCtrlTagBtnSeq0, {CollectSequenceButtons(open303Core)} });
+
+  return p;
+}
+#endif
+
+
 void BassMatrix::OnReset()
 {
   // NOTE: OnReset() is called after a preset have been
