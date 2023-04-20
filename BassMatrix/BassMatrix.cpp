@@ -46,29 +46,27 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   GetParam(kParamMidiPlay)->InitBool("Midi Play", false);
 #endif
 
-  //// This value set here have not so much relevance, since we tell the sequencer to
-  //// randomize the current pattern and then tells the gui to update.
-  //for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
-  //{
-  //  GetParam(i)->InitBool(("Sequencer button " + std::to_string(i -  kBtnSeq0)).c_str(), (i - kBtnSeq0) / 16 == 5 || (i - kBtnSeq0) / 16 == 16);
-  //}
 
-//  for (int pattern = 1; pattern < kNumberOfPatterns + 1; ++pattern)
-//  {
-//    for (int i = kBtnSeq0; i < kBtnSeq0 + pattern * kNumberOfSeqButtons; ++i)
-//    {
-//      GetParam(i)->InitBool(("Sequencer button " + std::to_string(pattern * (i - kBtnSeq0))).c_str(), false);
-//    }
-//  }
+  // Led buttons. We don't want them to be able to automate.
+  for (int i = kLedBtn0; i < kLedBtn0 + 16; ++i)
+  {
+    GetParam(i)->InitBool(("Led button " + std::to_string(i - kLedBtn0)).c_str(), false, "On/Off", IParam::kFlagCannotAutomate);
+  }
 
-  //for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
-  //{
-  //  GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(), i == kBtnPtnC);
-  //}
+  // Sequencer buttons (note buttons and property buttons). We don't want them to be able to automate.
+  for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
+  {
+    GetParam(i)->InitBool(("Sequencer button " + std::to_string(i -  kBtnSeq0)).c_str(), false, "On/Off", IParam::kFlagCannotAutomate);
+  }
 
-  GetParam(kBtnPtnOct2)->InitBool("Octav 2", false); // It's bad to set something to true here!!
-  GetParam(kBtnPtnOct3)->InitBool("Octav 3", false); // It's bad to set something to true here!!
-  GetParam(kBtnPtnC)->InitBool("Pattern C", false);  // It's bad to set something to true here!!
+  for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
+  {
+    GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(), false, "On/Off", IParam::kFlagCannotAutomate);
+  }
+
+  GetParam(kBtnPtnOct2)->InitBool("Octav 2", false, "On/Off", IParam::kFlagCannotAutomate); // It's bad to set something to true here!!
+  GetParam(kBtnPtnOct3)->InitBool("Octav 3", false, "On/Off", IParam::kFlagCannotAutomate); // It's bad to set something to true here!!
+//  GetParam(kBtnPtnC)->InitBool("Pattern C", false, "On/Off", IParam::kFlagCannotAutomate);  // It's bad to set something to true here!!
 
   GetParam(kKnobLoopSize)->InitInt("Loop size", 1, 1, 24);
 
@@ -636,7 +634,7 @@ void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)
 #if IPLUG_DSP
 void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
 {
-  if (source != kUI && source != kReset && source != kPresetRecall)
+  if (source != kUI && source != kReset && source != kPresetRecall && source != kHost)
   {
     return;
   }
