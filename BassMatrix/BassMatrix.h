@@ -77,12 +77,14 @@ public:
   BassMatrix(const InstanceInfo& info);
 
 #if IPLUG_EDITOR
-//  void OnParentWindowResize(int width, int height) override;
+#ifndef WAM_API
+	//  void OnParentWindowResize(int width, int height) override;
   bool OnHostRequestingSupportedViewConfiguration(int width, int height) override { return true; }
 	bool SerializeState(IByteChunk& chunk) const override;
 	int UnserializeState(const IByteChunk& chunk, int startPos) override;
 	IGraphics* CreateGraphics() override;
-#endif
+#endif // WAM_API
+#endif // IPLUG_EDITOR
 
 #if IPLUG_DSP
 	void ProcessMidiMsg(const IMidiMsg& msg) override;

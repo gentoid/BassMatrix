@@ -590,6 +590,7 @@ void BassMatrix::OnIdle()
 #endif
 
 #if IPLUG_EDITOR
+#ifndef WAM_API
 IGraphics* BassMatrix::CreateGraphics()
 {
   IGraphics* p;
@@ -603,6 +604,7 @@ IGraphics* BassMatrix::CreateGraphics()
 
   return p;
 }
+#endif // WAM_API
 #endif
 
 
