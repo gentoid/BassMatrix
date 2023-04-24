@@ -636,8 +636,14 @@ void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)
 }
 
 #if IPLUG_DSP
+
+#ifdef VST3_API
 void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
+#else
+void BassMatrix::OnParamChange(int paramIdx)
+#endif // API
 {
+
 #ifdef VST3_API
   if (source != kUI && source != kReset && source != kPresetRecall && source != kHost)
   {
@@ -650,8 +656,10 @@ void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
   // Note buttons
   if (paramIdx >= kBtnSeq0 && paramIdx < kBtnSeq0 + kNumberOfSeqButtons - kNumberOfTotalPropButtons)
   {
+#ifdef VST3_API
     if (source == kPresetRecall) { return; }
     if (source == kReset) { return; }
+#endif // API
 
     int seqNr = (paramIdx - kBtnSeq0) % 16;
     int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1; // noteNr between 0 and 12
@@ -674,8 +682,10 @@ void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
   // Note properties buttons
   if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfTotalPropButtons)
   {
+#ifdef VST3_API
     if (source == kPresetRecall) { return; }
     if (source == kReset) { return; }
+#endif // API
 
     int seqNr = (paramIdx - kBtnProp0) % 16;
     int rowNr = (paramIdx - kBtnProp0) / 16;

@@ -89,8 +89,11 @@ public:
 #if IPLUG_DSP
 	void ProcessMidiMsg(const IMidiMsg& msg) override;
 	void OnReset() override;
-//	void OnParamChange(int paramIdx) override;
+#if defined VST3_API
 	void OnParamChangeUI(int paramIdx, EParamSource source = kUnknown) override;
+#else
+	void OnParamChange(int paramIdx) override;
+#endif // API
 	void OnIdle() override;
 	bool OnMessage(int msgTag, int ctrlTag, int dataSize, const void* pData) override;
 #endif
