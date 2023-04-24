@@ -213,6 +213,7 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
 // Save plugin settings to hard drive. First save is junk.
 //
 #if IPLUG_EDITOR
+#ifdef VST3_API
 bool BassMatrix::SerializeState(IByteChunk& chunk) const
 {
 #ifdef _DEBUG
@@ -402,6 +403,7 @@ int BassMatrix::UnserializeState(const IByteChunk& chunk, int startPos)
 
     return pos;
 }
+#endif // API
 #endif // IPLUG_EDITOR
 
 
@@ -590,7 +592,7 @@ void BassMatrix::OnIdle()
 #endif
 
 #if IPLUG_EDITOR
-#ifndef WAM_API
+#ifdef VST3_API
 IGraphics* BassMatrix::CreateGraphics()
 {
   IGraphics* p;
@@ -604,7 +606,7 @@ IGraphics* BassMatrix::CreateGraphics()
 
   return p;
 }
-#endif // WAM_API
+#endif // API
 #endif
 
 
