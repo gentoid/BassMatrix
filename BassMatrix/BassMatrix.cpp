@@ -634,10 +634,12 @@ void BassMatrix::ProcessMidiMsg(const IMidiMsg& msg)
 #if IPLUG_DSP
 void BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
 {
+#ifndef WAM_API
   if (source != kUI && source != kReset && source != kPresetRecall && source != kHost)
   {
     return;
   }
+#endif // WAM_API
 
   double value = GetParam(paramIdx)->Value();
 

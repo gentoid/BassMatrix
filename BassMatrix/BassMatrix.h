@@ -81,7 +81,7 @@ public:
   bool OnHostRequestingSupportedViewConfiguration(int width, int height) override { return true; }
 	bool SerializeState(IByteChunk& chunk) const override;
 	int UnserializeState(const IByteChunk& chunk, int startPos) override;
-	IGraphics* CreateGraphics();
+	IGraphics* CreateGraphics() override;
 #endif
 
 #if IPLUG_DSP
