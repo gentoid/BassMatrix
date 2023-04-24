@@ -56,7 +56,14 @@ BassMatrix::BassMatrix(const InstanceInfo& info)
   // Sequencer buttons (note buttons and property buttons). We don't want them to be able to automate.
   for (int i = kBtnSeq0; i < kBtnSeq0 + kNumberOfSeqButtons; ++i)
   {
-    GetParam(i)->InitBool(("Sequencer button " + std::to_string(i -  kBtnSeq0)).c_str(), false, "On/Off", IParam::kFlagCannotAutomate);
+    if (i > kBtnProp0 + 63 && i < kBtnProp0 + 80) // The gate buttons
+    {
+      GetParam(i)->InitBool(("Sequencer button " + std::to_string(i - kBtnSeq0)).c_str(), true, "On/Off", IParam::kFlagCannotAutomate);
+    }
+    else
+    {
+      GetParam(i)->InitBool(("Sequencer button " + std::to_string(i - kBtnSeq0)).c_str(), false, "On/Off", IParam::kFlagCannotAutomate);
+    }
   }
 
   for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
