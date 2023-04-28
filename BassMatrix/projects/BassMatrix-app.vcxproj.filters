@@ -434,6 +434,7 @@
     <None Include="..\config\BassMatrix-win.props">
       <Filter>config</Filter>
     </None>
+    <None Include="..\..\common-win.props" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\BassMatrix.ico">

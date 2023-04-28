@@ -411,6 +411,7 @@
     <Image Include="..\resources\BassMatrix.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\common-win.props" />
     <None Include="..\config\BassMatrix-ios.xcconfig" />
     <None Include="..\config\BassMatrix-web.mk" />
     <None Include="..\config\BassMatrix-win.props">
