@@ -78,7 +78,7 @@ INLINE bool isOdd(int x);
 INLINE bool isPowerOfTwo(unsigned int x);
 
 /** Calculates the logarithm to base 2. */
-INLINE double log2(double x);
+INLINE double rosic_log2(double x);
 
 /** Calculates logarithm to an arbitrary base b. */
 INLINE double logB(double x, double b);
@@ -240,12 +240,12 @@ INLINE double exp2(double x)
 
 INLINE double freqToPitch(double freq)
 {
-  return 12.0 * log2(freq/440.0) + 69.0;
+  return 12.0 * rosic_log2(freq / 440.0) + 69.0;
 }
 
 INLINE double freqToPitch(double freq, double masterTuneA4)
 {
-  return 12.0 * log2(freq/masterTuneA4) + 69.0;
+  return 12.0 * rosic_log2(freq / masterTuneA4) + 69.0;
 }
 
 /*
@@ -300,7 +300,7 @@ INLINE bool isPowerOfTwo(unsigned int x)
   return false;
 }
 
-INLINE double log2(double x)
+INLINE double rosic_log2(double x)
 {
   return ONE_OVER_LN2*log(x);
 }

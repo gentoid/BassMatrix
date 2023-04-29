@@ -856,12 +856,13 @@ BassMatrix::OnParamChange(int paramIdx)
   // Pattern selection buttons
   if (paramIdx >= kBtnPtnC && paramIdx <= kBtnPtnC + 11)
   {
-    if (source == kUI && GetTransportIsRunning() &&
-        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-    {
-      return;
-    }
-
+//#ifdef VST3_API
+//    if (source == kUI && GetTransportIsRunning() &&
+//        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
+//    {
+//      return;
+//    }
+//#endif
     if (value == 1.0)
     {
       open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() +
@@ -874,11 +875,13 @@ BassMatrix::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kBtnPtnOct2:
+#ifdef VST3_API
       if (source == kUI && GetTransportIsRunning() &&
           open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
       {
         return;
       }
+#endif
       if (value == 1.0)
       {
         open303Core.sequencer.setPatternMultiplier(0);
@@ -891,11 +894,13 @@ BassMatrix::OnParamChange(int paramIdx)
       }
       break;
     case kBtnPtnOct3:
+#ifdef VST3_API
       if (source == kUI && GetTransportIsRunning() &&
           open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
       {
         return;
       }
+#endif
       if (value == 1.0)
       {
         open303Core.sequencer.setPatternMultiplier(1);
