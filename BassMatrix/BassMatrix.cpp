@@ -13,6 +13,10 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mStartSyncWithHost(false),
   mCurrentPattern(0)
 {
+#ifdef _DEBUG
+  OutputDebugString("### BassMatrix started ###\n");
+#endif
+
   // Setup the open303 sequencer.
   //srand(static_cast<unsigned int>(time(0)));
   //open303Core.sequencer.randomizeAllPatterns();
@@ -526,11 +530,11 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
   for (int i = 0; i < kNumberOfTotalPropButtons; ++i)  // The note properties
   {
     int j = i + kNumberOfSeqButtons - kNumberOfTotalPropButtons;
-    if (i < 16)
+    if (i < 16)  // Octave up button
     {
       seq[j] = pattern->getNote(i % 16)->octave == 1;
     }
-    else if (i < 32)
+    else if (i < 32)  // Octave down button
     {
       seq[j] = pattern->getNote(i % 16)->octave == -1;
     }
@@ -570,7 +574,8 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
   // No sample accurate leds, because they will not be accurate anyway.
   mLedSeqSender.PushData({ kCtrlTagLedSeq0, { open303Core.sequencer.getStep() } });
 
-  if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
+  if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC ||
+      open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::KEY_SYNC)
   {
     open303Core.sequencer.setTempo(GetTempo());
   }
@@ -601,27 +606,46 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
   {
     if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
     {
-      if (GetSamplePos() <
-              0.0 /* At least Cubase can give a negative sample pos in the beginning. */
-          || !GetTransportIsRunning())
+      if (GetSamplePos() < 0.0)  // At least Cubase can return a negative value
       {
         *out01++ = *out02++ = 0.0;  // Silence
         continue;                   // Next frame
       }
 
-      else if (GetTransportIsRunning() &&
-               (mStartSyncWithHost ||
-                mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset)))
+      if (!GetTransportIsRunning())
+      {
+        // Start
+        // This lights the led that corresponds the position where the transport bar is set on.
+        //
+        double maxSamplePos = GetSamplesPerBeat() * 4.0;
+        int currentSampleInSequence =
+            static_cast<int>(GetSamplePos()) % static_cast<int>(maxSamplePos);
+        double samplesPerStep = maxSamplePos / 16.0;
+        int currentStepInSequence = (int)((double)currentSampleInSequence / samplesPerStep);
+        open303Core.sequencer.setStep(currentStepInSequence,
+                                      -1);  // Let countdown be recalculated.
+
+        // End
+        // This lights the led that corresponds the position where the transport bar is set on.
+        //
+
+
+        *out01++ = *out02++ = 0.0;  // Silence
+        continue;                   // Next frame
+      }
+
+      else if (  // GetTransportIsRunning() &&
+          (mStartSyncWithHost ||
+           mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset)))
       {  // Transport has changed
         mStartSyncWithHost = false;
         double maxSamplePos = GetSamplesPerBeat() * 4.0;
         int currentSampleInSequence =
             static_cast<int>(GetSamplePos()) % static_cast<int>(maxSamplePos);
-        // int sampleLeftToNextStep = static_cast<int>(GetSamplePos()) / static_cast<int>(maxSamplePos);
         double samplesPerStep = maxSamplePos / 16.0;
         int currentStepInSequence = (int)((double)currentSampleInSequence / samplesPerStep);
         open303Core.sequencer.setStep(currentStepInSequence,
-                                      0);  // We hope that the bar is set on an even 16't.
+                                      -1);  // Let countdown be recalculated.
         mLastSamplePos = 0;  // We hope that a change doesn't occurs twice in a ProcessBlock() call.
       }
     }
@@ -856,13 +880,13 @@ BassMatrix::OnParamChange(int paramIdx)
   // Pattern selection buttons
   if (paramIdx >= kBtnPtnC && paramIdx <= kBtnPtnC + 11)
   {
-//#ifdef VST3_API
-//    if (source == kUI && GetTransportIsRunning() &&
-//        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-//    {
-//      return;
-//    }
-//#endif
+    //#ifdef VST3_API
+    //    if (source == kUI && GetTransportIsRunning() &&
+    //        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
+    //    {
+    //      return;
+    //    }
+    //#endif
     if (value == 1.0)
     {
       open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() +
@@ -875,13 +899,13 @@ BassMatrix::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kBtnPtnOct2:
-#ifdef VST3_API
-      if (source == kUI && GetTransportIsRunning() &&
-          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-      {
-        return;
-      }
-#endif
+      //#ifdef VST3_API
+      //      if (source == kUI && GetTransportIsRunning() &&
+      //          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
+      //      {
+      //        return;
+      //      }
+      //#endif
       if (value == 1.0)
       {
         open303Core.sequencer.setPatternMultiplier(0);
@@ -894,13 +918,13 @@ BassMatrix::OnParamChange(int paramIdx)
       }
       break;
     case kBtnPtnOct3:
-#ifdef VST3_API
-      if (source == kUI && GetTransportIsRunning() &&
-          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-      {
-        return;
-      }
-#endif
+//#ifdef VST3_API
+//      if (source == kUI && GetTransportIsRunning() &&
+//          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
+//      {
+//        return;
+//      }
+//#endif
       if (value == 1.0)
       {
         open303Core.sequencer.setPatternMultiplier(1);

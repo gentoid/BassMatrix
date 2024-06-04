@@ -436,12 +436,14 @@
     <ResourceCompile Include="..\resources\main.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\common-win.props" />
     <None Include="..\config\BassMatrix-ios.xcconfig" />
     <None Include="..\config\BassMatrix-mac.xcconfig" />
     <None Include="..\config\BassMatrix-web.mk" />
     <None Include="..\config\BassMatrix-win.props">
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\BassMatrix.ico" />

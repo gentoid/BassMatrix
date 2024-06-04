@@ -169,17 +169,17 @@ namespace rosic
 
     void clearPattern(int nr)
     {
-      patterns[nr].clear();
+      patterns[nr].clear(nr);
     }
     void randomizePattern(int nr)
     {
-      patterns[nr].randomize();
+      patterns[nr].randomize(nr);
     }
     void randomizeAllPatterns()
     {
       for (int i = 0; i < numPatterns; ++i)
       {
-        patterns[i].randomize();
+        patterns[i].randomize(i);
       }
     }
     void copyPattern(int from, int to)
