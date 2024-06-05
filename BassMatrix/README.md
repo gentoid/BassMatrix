@@ -21,6 +21,8 @@ is overwritten.
 
 Octave up/down/neutral buttons does not mirror the actual values in the sequencer.
 
+The sequecer leds are not allways in sync with the transport bar.
+
 
 
 ## Version 1.00
