@@ -14,7 +14,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mCurrentPattern(0)
 {
 #ifdef _DEBUG
-  OutputDebugString("### BassMatrix started ###\n");
+  OutputDebugString(L"### BassMatrix started ###\n");
 #endif
 
   // Setup the open303 sequencer.
@@ -310,7 +310,7 @@ bool
 BassMatrix::SerializeState(IByteChunk &chunk) const
 {
 #ifdef _DEBUG
-  OutputDebugString("SerializeState() called\n");
+  OutputDebugString(L"SerializeState() called\n");
 #endif
 
   TRACE
@@ -342,12 +342,12 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
       //      Trace(TRACELOC, " %s %d %f", "Sequencer button nr", patternNr, elem ? 1.0 : 0.0);
       double v = elem ? 1.0 : 0.0;
 #ifdef _DEBUG
-      OutputDebugString(v == 1.0 ? "*" : "-");
+      OutputDebugString(v == 1.0 ? L"*" : L"-");
 #endif  // _DEBUG
       savedOK &= (chunk.Put(&v) > 0);
     }
 #ifdef _DEBUG
-    OutputDebugString("\n");
+    OutputDebugString(L"\n");
 #endif  // _DEBUG
   }
 
@@ -380,7 +380,7 @@ int
 BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
 {
 #ifdef _DEBUG
-  OutputDebugString("UnserializeState() called\n");
+  OutputDebugString(L"UnserializeState() called\n");
 #endif
 
   TRACE
@@ -417,7 +417,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
       //      Trace(TRACELOC, "%d %s %d %f", patternNr, "Sequencer button", i, v);
 
 #ifdef _DEBUG
-      OutputDebugString(v == 1.0 ? "*" : "-");
+      OutputDebugString(v == 1.0 ? L"*" : L"-");
 #endif  // _DEBUG
 
       if (v == 1.0)
@@ -433,7 +433,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
       //      Trace(TRACELOC, "%d %s %d %f", patternNr, "Property button", i, v);
 
 #ifdef _DEBUG
-      OutputDebugString(v == 1.0 ? "*" : "-");
+      OutputDebugString(v == 1.0 ? L"*" : L"-");
 #endif  // _DEBUG
 
       if (i < 16)
@@ -461,7 +461,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
       }
     }
 #ifdef _DEBUG
-    OutputDebugString("\n");
+    OutputDebugString(L"\n");
 #endif  // _DEBUG
   }
 
@@ -513,8 +513,8 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
   }
 
 #ifdef _DEBUG
-  OutputDebugString("CollectSequenceButtons()");
-  OutputDebugString(std::string("Pattern: " + std::to_string(patternNr) + "\n").c_str());
+  OutputDebugString(L"CollectSequenceButtons()");
+  OutputDebugString(std::wstring(L"Pattern: " + std::to_wstring(patternNr) + L"\n").c_str());
 #endif  // _DEBUG
 
   rosic::AcidPattern *pattern = open303Core.sequencer.getPattern(patternNr);
@@ -523,7 +523,7 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
   {
     seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16 - 1;
 #ifdef _DEBUG
-    OutputDebugString(seq[i] ? "*" : "-");
+    OutputDebugString(seq[i] ? L"*" : L"-");
 #endif  // _DEBUG
   }
 
@@ -551,11 +551,11 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
       seq[j] = pattern->getNote(i % 16)->gate;
     }
 #ifdef _DEBUG
-    OutputDebugString(seq[j] ? "*" : "-");
+    OutputDebugString(seq[j] ? L"*" : L"-");
 #endif  // _DEBUG
   }
 #ifdef _DEBUG
-  OutputDebugString("\n");
+  OutputDebugString(L"\n");
 #endif  // _DEBUG
 
   return seq;
@@ -809,9 +809,9 @@ BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
 #ifdef _DEBUG
-      OutputDebugString(
-          std::string("Setting step " + to_string(seqNr) + " Note nr " + to_string(noteNr) + "\n")
-              .c_str());
+      OutputDebugString(std::wstring(L"Setting step " + to_wstring(seqNr) + L" Note nr " +
+                                     to_wstring(noteNr) + L"\n")
+                            .c_str());
 #endif                                 // _DEBUG
       pattern->setKey(seqNr, noteNr);  // Take care of the key notes
     }
@@ -918,13 +918,13 @@ BassMatrix::OnParamChange(int paramIdx)
       }
       break;
     case kBtnPtnOct3:
-//#ifdef VST3_API
-//      if (source == kUI && GetTransportIsRunning() &&
-//          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-//      {
-//        return;
-//      }
-//#endif
+      //#ifdef VST3_API
+      //      if (source == kUI && GetTransportIsRunning() &&
+      //          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
+      //      {
+      //        return;
+      //      }
+      //#endif
       if (value == 1.0)
       {
         open303Core.sequencer.setPatternMultiplier(1);
