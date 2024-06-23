@@ -701,7 +701,34 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
       mMidiQueue.Remove();
     }
 
-    *out01++ = *out02++ = open303Core.getSample();
+    rosic::AcidNote note;
+    bool onNew16th = false;
+    *out01++ = *out02++ = open303Core.getSample(note, onNew16th);
+
+#ifdef VST3_API
+    static int currentKey = 0;
+    static double noteOffSamplePos = 0.0;
+    // Send a midi message to midi output
+    if (onNew16th)
+    {
+      int key = note.key + 12 * note.octave + 36;
+      IMidiMsg midiMessage;
+      midiMessage.MakeNoteOnMsg(key, note.accent ? 127 : 100, 0);
+      IPlugVST3ProcessorBase::SendMidiMsg(midiMessage);
+      // Calculate when the next note off should be sent.
+      double secondsToNextStep = beatsToSeconds(0.25, GetTempo());
+      double samplesToNextStep = secondsToNextStep * GetSampleRate();
+      double samplesToNoteOff = samplesToNextStep * 0.90;
+      noteOffSamplePos = GetSamplePos() + offset + samplesToNoteOff;
+      currentKey = key;
+    }
+    else if (static_cast<int>(noteOffSamplePos) == static_cast<int>(GetSamplePos() + offset))
+    {
+      IMidiMsg midiMessage;
+      midiMessage.MakeNoteOffMsg(currentKey, 0);
+      IPlugVST3ProcessorBase::SendMidiMsg(midiMessage);
+    }
+#endif
   }
 
   mLastSamplePos = static_cast<unsigned int>(GetSamplePos()) + nFrames;
