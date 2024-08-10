@@ -14,7 +14,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mCurrentPattern(0)
 {
 #ifdef _DEBUG
-  OutputDebugString(L"### BassMatrix started ###\n");
+  OutputDebugStringW(L"### BassMatrix started ###\n");
 #endif
 
   // Setup the open303 sequencer.
@@ -513,8 +513,8 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
   }
 
 #ifdef _DEBUG
-  OutputDebugString(L"CollectSequenceButtons()");
-  OutputDebugString(std::wstring(L"Pattern: " + std::to_wstring(patternNr) + L"\n").c_str());
+  OutputDebugStringW(L"CollectSequenceButtons()");
+  OutputDebugStringW(std::wstring(L"Pattern: " + std::to_wstring(patternNr) + L"\n").c_str());
 #endif  // _DEBUG
 
   rosic::AcidPattern *pattern = open303Core.sequencer.getPattern(patternNr);
@@ -523,7 +523,7 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
   {
     seq[i] = pattern->getNote(i % 16)->key == kNumberOfNoteBtns - i / 16 - 1;
 #ifdef _DEBUG
-    OutputDebugString(seq[i] ? L"*" : L"-");
+    OutputDebugStringW(seq[i] ? L"*" : L"-");
 #endif  // _DEBUG
   }
 
@@ -551,11 +551,11 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
       seq[j] = pattern->getNote(i % 16)->gate;
     }
 #ifdef _DEBUG
-    OutputDebugString(seq[j] ? L"*" : L"-");
+    OutputDebugStringW(seq[j] ? L"*" : L"-");
 #endif  // _DEBUG
   }
 #ifdef _DEBUG
-  OutputDebugString(L"\n");
+  OutputDebugStringW(L"\n");
 #endif  // _DEBUG
 
   return seq;
@@ -836,7 +836,7 @@ BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
 #ifdef _DEBUG
-      OutputDebugString(std::wstring(L"Setting step " + to_wstring(seqNr) + L" Note nr " +
+      OutputDebugStringW(std::wstring(L"Setting step " + to_wstring(seqNr) + L" Note nr " +
                                      to_wstring(noteNr) + L"\n")
                             .c_str());
 #endif                                 // _DEBUG

@@ -78,7 +78,7 @@ SeqNoteBtnControl::SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> seq
     IControl *pControlBtn = ui->GetControlWithTag(kCtrlTagBtnSeq0 + i);
     double before = pControlBtn->GetValue();
 #ifdef _DEBUG
-    OutputDebugString(sequencer[i] ? L"*" : L"-");
+    OutputDebugStringW(sequencer[i] ? L"*" : L"-");
 #endif  // _DEBUG
     pControlBtn->SetValue(sequencer[i] ? 1.0 : 0.0);
     if (before != pControlBtn->GetValue())
@@ -87,7 +87,7 @@ SeqNoteBtnControl::SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> seq
     }
   }
 #ifdef _DEBUG
-  OutputDebugString(L"\n");
+  OutputDebugStringW(L"\n");
 #endif  // _DEBUG
 }
 
