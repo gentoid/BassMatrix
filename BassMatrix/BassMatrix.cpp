@@ -2,15 +2,82 @@
 #include "IPlug_include_in_plug_src.h"
 #include "BassMatrixControls.h"
 #include "open303/Source/DSPCode/rosic_Open303.h"
+#include <filesystem>
+#include <fstream>
 
 #if IPLUG_EDITOR
 #include "IControls.h"
+#endif
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Windows specific
+////////////////////////////////////////////////////////////////////////////////////////
+#ifdef _WIN32
+#include <shlobj.h>
+std::filesystem::path
+getDllPath()
+{
+  wchar_t dllPath[MAX_PATH];
+  HMODULE hModule = GetModuleHandleA("BassMatrix.vst3");
+  if (hModule == NULL)
+  {
+    throw std::runtime_error("Failed to get module handle.");
+  }
+  GetModuleFileNameW(hModule, dllPath, MAX_PATH);
+  return std::filesystem::path(dllPath).parent_path();
+}
+
+std::wstring
+getSettingsFilePath()
+{
+  wchar_t programDataPath[MAX_PATH];
+  SHGetSpecialFolderPath(0, programDataPath, CSIDL_COMMON_APPDATA, false);
+
+  std::wstring directoryPath = std::wstring(programDataPath) + L"\\Witech\\BassMatrix";
+  std::filesystem::create_directories(directoryPath);
+
+  return directoryPath + L"\\settings.json";
+}
+
+void
+WriteSettingsToProgramDataPath(double plugUIScale)
+{
+  std::wofstream file(getSettingsFilePath());
+  if (file.is_open())
+  {
+    file << L"{\n\t\"guiSize\": \"" + std::to_wstring(plugUIScale) + L"\"\n}";
+    file.close();
+  }
+}
+
+void
+ReadSettingsFromProgramDataPath(double &plugUIScale)
+{
+  std::wifstream file(getSettingsFilePath());
+  if (file.is_open())
+  {
+    std::wstring line;
+    while (std::getline(file, line))
+    {
+      if (line.find(L"guiSize") != std::wstring::npos)
+      {
+        std::wstring guiSize = line.substr(line.find(L"\"") + 1);
+        guiSize =
+            guiSize.substr(guiSize.find(':') + 3, guiSize.rfind(L"\"") - guiSize.find(':') - 3);
+        plugUIScale = std::stod(guiSize);
+      }
+    }
+    file.close();
+  }
+}
+
 #endif
 
 BassMatrix::BassMatrix(const InstanceInfo &info) :
   Plugin(info, MakeConfig(kNumParams, kNumPresets)),
   mLastSamplePos(0),
   mStartSyncWithHost(false),
+  mPlugUIScale(1.0),
   mCurrentPattern(0)
 {
 #ifdef _DEBUG
@@ -288,8 +355,15 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
                                                 kParamMidiPlay,
                                                 kCtrlTagMidiPlay),
                              kCtrlTagMidiPlay);
+    ReadSettingsFromProgramDataPath(mPlugUIScale);
+    pGraphics->Resize(PLUG_WIDTH, PLUG_HEIGHT, static_cast<float>(mPlugUIScale), true);
   };
 #endif
+}
+
+BassMatrix::~BassMatrix()
+{
+  WriteSettingsToProgramDataPath(mPlugUIScale);
 }
 
 //#if IPLUG_EDITOR
@@ -744,6 +818,12 @@ BassMatrix::OnIdle()
   mLedSeqSender.TransmitData(*this);
   mSequencerSender.TransmitData(*this);
   mPatternSender.TransmitData(*this);
+
+  // Update the plugin scale.
+  if (GetUI())
+  {
+    mPlugUIScale = GetUI()->GetDrawScale();
+  }
 }
 #endif
 
@@ -837,8 +917,8 @@ BassMatrix::OnParamChange(int paramIdx)
     {
 #ifdef _DEBUG
       OutputDebugStringW(std::wstring(L"Setting step " + to_wstring(seqNr) + L" Note nr " +
-                                     to_wstring(noteNr) + L"\n")
-                            .c_str());
+                                      to_wstring(noteNr) + L"\n")
+                             .c_str());
 #endif                                 // _DEBUG
       pattern->setKey(seqNr, noteNr);  // Take care of the key notes
     }

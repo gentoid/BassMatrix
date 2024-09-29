@@ -560,8 +560,8 @@
     <None Include="..\config\BassMatrix-mac.xcconfig">
       <Filter>config</Filter>
     </None>
-    <None Include="..\README.md" />
     <None Include="..\..\common-win.props" />
+    <None Include="..\..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\BassMatrix.ico" />

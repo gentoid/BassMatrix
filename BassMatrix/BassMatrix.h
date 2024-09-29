@@ -16,50 +16,50 @@ const int kNumberOfPatterns = 24;
 
 enum EParams
 {
-	// First the parameters that is not saved.
-	kLedBtn0 = 0,
-	kBtnSeq0 = kLedBtn0 + 16,
-	kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
+  // First the parameters that is not saved.
+  kLedBtn0 = 0,
+  kBtnSeq0 = kLedBtn0 + 16,
+  kBtnProp0 = kBtnSeq0 + 16 * kNumberOfNoteBtns,
 
-	// Parameters that are saved
-	kBtnPtnC = kBtnProp0 + 16 * kNumberOfPropertyBtns,
-	kBtnPtnOct2 = kBtnPtnC + 12,
-	kBtnPtnOct3,
+  // Parameters that are saved
+  kBtnPtnC = kBtnProp0 + 16 * kNumberOfPropertyBtns,
+  kBtnPtnOct2 = kBtnPtnC + 12,
+  kBtnPtnOct3,
 
-	kParamCutOff,
-	kParamResonance,
-	kParamWaveForm,
-	kParamTuning,
-	kParamEnvMode,
-	kParamDecay,
-	kParamAccent,
-	kParamVolume,
-	kParamTempo,
-	kParamDrive,
-	kParamStop,
-	kParamHostSync,
-	kParamKeySync,
-	kParamInternalSync,
-	kParamMidiPlay,
-	kKnobLoopSize,
-	kParamCopy,
-	kParamClear,
-	kParamRandomize,
+  kParamCutOff,
+  kParamResonance,
+  kParamWaveForm,
+  kParamTuning,
+  kParamEnvMode,
+  kParamDecay,
+  kParamAccent,
+  kParamVolume,
+  kParamTempo,
+  kParamDrive,
+  kParamStop,
+  kParamHostSync,
+  kParamKeySync,
+  kParamInternalSync,
+  kParamMidiPlay,
+  kKnobLoopSize,
+  kParamCopy,
+  kParamClear,
+  kParamRandomize,
 
-	kNumParams
+  kNumParams
 };
 
 enum ECtrlTags
 {
   kCtrlTagVersionNumber = 0,
   kCtrlTagBtnSeq0,
-  kCtrlTagBtnProp0   = kCtrlTagBtnSeq0 + 16 * kNumberOfNoteBtns,
-  kCtrlTagLedSeq0    = kCtrlTagBtnProp0 + 16 * kNumberOfPropertyBtns,
-  kCtrlTagBtnPtnC    = kCtrlTagLedSeq0 + 16,
+  kCtrlTagBtnProp0 = kCtrlTagBtnSeq0 + 16 * kNumberOfNoteBtns,
+  kCtrlTagLedSeq0 = kCtrlTagBtnProp0 + 16 * kNumberOfPropertyBtns,
+  kCtrlTagBtnPtnC = kCtrlTagLedSeq0 + 16,
   kCtrlTagBtnPtnOct2 = kCtrlTagBtnPtnC + 12,
   kCtrlTagBtnPtnOct3,
-	kCtrlTagStop,
-	kCtrlWaveForm,
+  kCtrlTagStop,
+  kCtrlWaveForm,
   kCtrlTagHostSync,
   kCtrlTagKeySync,
   kCtrlTagInternalSync,
@@ -74,46 +74,49 @@ using namespace igraphics;
 class BassMatrix final : public Plugin
 {
 public:
-  BassMatrix(const InstanceInfo& info);
+  BassMatrix(const InstanceInfo &info);
+  virtual ~BassMatrix();
 
 #if IPLUG_EDITOR
-	//  void OnParentWindowResize(int width, int height) override;
+  //  void OnParentWindowResize(int width, int height) override;
   bool OnHostRequestingSupportedViewConfiguration(int width, int height) override { return true; }
 #if defined VST3_API
-	bool SerializeState(IByteChunk& chunk) const override;
-	int UnserializeState(const IByteChunk& chunk, int startPos) override;
-	IGraphics* CreateGraphics() override;
-#endif // API
-#endif // IPLUG_EDITOR
+  bool SerializeState(IByteChunk &chunk) const override;
+  int UnserializeState(const IByteChunk &chunk, int startPos) override;
+  IGraphics *CreateGraphics() override;
+#endif  // API
+#endif  // IPLUG_EDITOR
 
 #if IPLUG_DSP
-	void ProcessMidiMsg(const IMidiMsg& msg) override;
-	void OnReset() override;
+  void ProcessMidiMsg(const IMidiMsg &msg) override;
+  void OnReset() override;
 #if defined VST3_API
-	void OnParamChangeUI(int paramIdx, EParamSource source = kUnknown) override;
+  void OnParamChangeUI(int paramIdx, EParamSource source = kUnknown) override;
 #else
-	void OnParamChange(int paramIdx) override;
-#endif // API
-	void OnIdle() override;
-	bool OnMessage(int msgTag, int ctrlTag, int dataSize, const void* pData) override;
+  void OnParamChange(int paramIdx) override;
+#endif  // API
+  void OnIdle() override;
+  bool OnMessage(int msgTag, int ctrlTag, int dataSize, const void *pData) override;
 #endif
-	static std::array<bool, kNumberOfSeqButtons> CollectSequenceButtons(rosic::Open303& open303Core, int patternNr = -1);
-#if IPLUG_DSP // http://bit.ly/2S64BDd
-	void ProcessBlock(PLUG_SAMPLE_DST** inputs, PLUG_SAMPLE_DST** outputs, int nFrames) override;
+  static std::array<bool, kNumberOfSeqButtons>
+  CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr = -1);
+#if IPLUG_DSP  // http://bit.ly/2S64BDd
+  void ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, int nFrames) override;
 #endif
 
 protected:
-	IMidiQueue mMidiQueue;
+  IMidiQueue mMidiQueue;
 
 private:
   // the embedded core dsp object:
   rosic::Open303 open303Core;
-	ISender<1, 1, int> mLedSeqSender;
-	ISender<1, 1, std::array<bool, kNumberOfSeqButtons>> mSequencerSender;
-	ISender<1, 1, int> mPatternSender;
-	unsigned int mLastSamplePos;
-	bool mStartSyncWithHost;
-	int mKnobLoopSize;
-	int mCurrentPattern;
-	int mHasChanged;
+  ISender<1, 1, int> mLedSeqSender;
+  ISender<1, 1, std::array<bool, kNumberOfSeqButtons>> mSequencerSender;
+  ISender<1, 1, int> mPatternSender;
+  unsigned int mLastSamplePos;
+  bool mStartSyncWithHost;
+  int mKnobLoopSize;
+  int mCurrentPattern;
+  int mHasChanged;
+  double mPlugUIScale;
 };

@@ -2,6 +2,10 @@
 
 This is a instrument written in C++ using the IPlug2 API. The DSP code is taken from the open303 open source project.
 
+## Version 1.20
+
+Plugin GUI size is saved between sessions.
+
 ## Version 1.10
 Fixed problem when key sync mode didn't read the tempo from host.
 
