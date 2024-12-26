@@ -3,38 +3,30 @@
 # makedist-web.sh builds a Web version of an iPlug2 project using emscripten
 # it copies a template folder from the iPlug2 tree and does a find and replace on various JavaScript and HTML files
 # arguments:
-# 1st argument : either "on", "off" or "ws" - this specifies whether $EMRUN is used to launch a server and browser after compilation. "ws" builds the project in websocket mode, without the WAM stuff
+# 1st argument : either "on", "off" or "ws" - this specifies whether emrun is used to launch a server and browser after compilation. "ws" builds the project in websocket mode, without the WAM stuff
 # 2nd argument : site origin -
 # 3rd argument : browser - either "chrome", "safari", "firefox" - if you want to launch a browser other than chrome, you must specify the correct origin for argument #2
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-IPLUG2_ROOT=../../iPlug2
+IPLUG2_ROOT=..\..\iPlug2
 PROJECT_ROOT=$SCRIPT_DIR/..
 IPLUG2_ROOT=$SCRIPT_DIR/$IPLUG2_ROOT
-FILE_PACKAGER=$EMSDK/upstream/emscripten/tools/file_packager.py
-EMRUN="python3 ${IPLUG2_ROOT}/Scripts/emrun/emrun.py"
 
 PROJECT_NAME=BassMatrix
-BUILD_DSP=1
-BUILD_EDITOR=1
 WEBSOCKET_MODE=0
 EMRUN_BROWSER=chrome
 LAUNCH_EMRUN=1
 EMRUN_SERVER=1
 EMRUN_SERVER_PORT=8001
-EMRUN_CONTAINER=0
 SITE_ORIGIN="/"
 
 cd $PROJECT_ROOT
 
 if [ "$1" = "ws" ]; then
   LAUNCH_EMRUN=0
-  BUILD_DSP=0
   WEBSOCKET_MODE=1
 elif [ "$1" = "off" ]; then
   LAUNCH_EMRUN=0
-elif [ "$1" = "container" ]; then
-  EMRUN_CONTAINER=1
 fi
 
 if [ "$#" -eq 2 ]; then
@@ -46,72 +38,69 @@ if [ "$#" -eq 3 ]; then
 fi
 
 # check to see if the build web folder has its own git repo
-# if [ -d build-web/.git ]
-# then
-  # if so trash only the scripts
-  if [ -d build-web/scripts ]; then
-    if [ "$BUILD_DSP" -eq "1" ]; then
-      rm build-web/scripts/*-wam.js
-    fi
+if [ -d build-web/.git ]
+then
+  # if so trash only the scripts folder
+  if [ -d build-web/scripts ]; then rm -r build-web/scripts; fi
+else
+  # otherwise trash the whole build-web folder
+  if [ -d build-web ]; then rm -r build-web; fi
 
-    if [ "$BUILD_EDITOR" -eq "1" ]; then
-      rm build-web/scripts/*-web.*
-    fi
-  fi
-# else
-#   # otherwise trash the whole build-web folder
-#   if [ -d build-web ]; then 
-#     rm -r build-web
-#   fi
-
-#   mkdir build-web
-# fi
+  mkdir build-web
+fi
 
 mkdir build-web/scripts
 
 echo BUNDLING RESOURCES -----------------------------
 
-cd build-web
+if [ -f ./build-web/imgs.js ]; then rm ./build-web/imgs.js; fi
+if [ -f ./build-web/imgs@2x.js ]; then rm ./build-web/imgs@2x.js; fi
+if [ -f ./build-web/svgs.js ]; then rm ./build-web/svgs.js; fi
+if [ -f ./build-web/fonts.js ]; then rm ./build-web/fonts.js; fi
 
-if [ -f imgs.js ]; then rm imgs.js; fi
-if [ -f imgs@2x.js ]; then rm imgs@2x.js; fi
-if [ -f svgs.js ]; then rm svgs.js; fi
-if [ -f fonts.js ]; then rm fonts.js; fi
-
+FILE_PACKAGER=$EMSDK/upstream/emscripten/tools/file_packager.py
 #package fonts
 FOUND_FONTS=0
-if [ "$(ls -A ../resources/fonts/*.ttf 2> /dev/null)" ]; then
+if [ "$(ls -A ./resources/fonts/*.ttf)" ]; then
   FOUND_FONTS=1
-  python3 $FILE_PACKAGER fonts.data --preload ../resources/fonts/ --exclude *DS_Store --js-output=fonts.js
+  python3 $FILE_PACKAGER fonts.data --preload ./resources/fonts/ --exclude *DS_Store --js-output=./fonts.js
 fi
 
 #package svgs
 FOUND_SVGS=0
-if [ "$(ls -A ../resources/img/*.svg 2> /dev/null)" ]; then
+if [ "$(ls -A ./resources/img/*.svg)" ]; then
   FOUND_SVGS=1
-  python3 $FILE_PACKAGER svgs.data --preload ../resources/img/ --exclude *.png --exclude *DS_Store --js-output=svgs.js
+  python3 $FILE_PACKAGER svgs.data --preload ./resources/img/ --exclude *.png --exclude *DS_Store --js-output=./svgs.js
 fi
 
 #package @1x pngs
 FOUND_PNGS=0
-if [ "$(ls -A ../resources/img/*.png 2> /dev/null)" ]; then
+if [ "$(ls -A ./resources/img/*.png)" ]; then
   FOUND_PNGS=1
-  python3 $FILE_PACKAGER imgs.data --use-preload-plugins --preload ../resources/img/ --use-preload-cache --indexedDB-name="/$PROJECT_NAME_pkg" --exclude *DS_Store --exclude  *@2x.png --exclude  *.svg >> imgs.js
+  python3 $FILE_PACKAGER imgs.data --use-preload-plugins --preload ./resources/img/ --use-preload-cache --indexedDB-name="/$PROJECT_NAME_pkg" --exclude *DS_Store --exclude  *@2x.png --exclude  *.svg >> ./imgs.js
 fi
 
 # package @2x pngs into separate .data file
 FOUND_2XPNGS=0
-if [ "$(ls -A ../resources/img/*@2x*.png 2> /dev/null)" ]; then
+if [ "$(ls -A ./resources/img/*@2x*.png)" ]; then
   FOUND_2XPNGS=1
-  mkdir ./2x/
-  cp ../resources/img/*@2x* ./2x
-  python3 $FILE_PACKAGER imgs@2x.data --use-preload-plugins --preload ./2x@/resources/img/ --use-preload-cache --indexedDB-name="/$PROJECT_NAME_pkg" --exclude *DS_Store >> imgs@2x.js
-  rm -r ./2x
+  mkdir ./build-web/2x/
+  cp ./resources/img/*@2x* ./build-web/2x
+  python3 $FILE_PACKAGER imgs@2x.data --use-preload-plugins --preload ./2x@/resources/img/ --use-preload-cache --indexedDB-name="/$PROJECT_NAME_pkg" --exclude *DS_Store >> ./imgs@2x.js
+  rm -r ./build-web/2x
 fi
 
-cd ..
+if [ -f ./imgs.js ]; then mv ./imgs.js ./build-web/imgs.js; fi
+if [ -f ./imgs@2x.js ]; then mv ./imgs@2x.js ./build-web/imgs@2x.js; fi
+if [ -f ./svgs.js ]; then mv ./svgs.js ./build-web/svgs.js; fi
+if [ -f ./fonts.js ]; then mv ./fonts.js ./build-web/fonts.js; fi
 
-if [ "$BUILD_DSP" -eq "1" ]; then
+if [ -f ./imgs.data ]; then mv ./imgs.data ./build-web/imgs.data; fi
+if [ -f ./imgs@2x.data ]; then mv ./imgs@2x.data ./build-web/imgs@2x.data; fi
+if [ -f ./svgs.data ]; then mv ./svgs.data ./build-web/svgs.data; fi
+if [ -f ./fonts.data ]; then mv ./fonts.data ./build-web/fonts.data; fi
+
+if [ "$WEBSOCKET_MODE" -eq "0" ]; then
   echo MAKING  - WAM WASM MODULE -----------------------------
   cd $PROJECT_ROOT/projects
   emmake make --makefile $PROJECT_NAME-wam-processor.mk
@@ -124,7 +113,9 @@ if [ "$BUILD_DSP" -eq "1" ]; then
   cd $PROJECT_ROOT/build-web/scripts
 
   # prefix the -wam.js script with scope
-  echo "AudioWorkletGlobalScope.WAM = AudioWorkletGlobalScope.WAM || {}; AudioWorkletGlobalScope.WAM.$PROJECT_NAME = { ENVIRONMENT: 'WEB' };" > $PROJECT_NAME-wam.tmp.js;
+  echo "AudioWorkletGlobalScope.WAM = AudioWorkletGlobalScope.WAM || {}; \
+        AudioWorkletGlobalScope.WAM.$PROJECT_NAME = { ENVIRONMENT: 'WEB' }; \
+        const ModuleFactory = AudioWorkletGlobalScope.WAM.$PROJECT_NAME;" > $PROJECT_NAME-wam.tmp.js;
   cat $PROJECT_NAME-wam.js >> $PROJECT_NAME-wam.tmp.js
   mv $PROJECT_NAME-wam.tmp.js $PROJECT_NAME-wam.js
   
@@ -145,7 +136,7 @@ if [ "$BUILD_DSP" -eq "1" ]; then
 
   rm *.bak
 else
-  echo "WAM not being built, BUILD_DSP = 0"
+  echo "WAM not being built in websocket mode"
 fi
 
 cd $PROJECT_ROOT/build-web
@@ -204,13 +195,10 @@ find . -maxdepth 2 -mindepth 1 -name .git -type d \! -prune -o \! -name .DS_Stor
 
 # launch emrun
 if [ "$LAUNCH_EMRUN" -eq "1" ]; then
-  mkcert 127.0.0.1 localhost
-  if [ "$EMRUN_CONTAINER" -eq "1" ]; then
-    $EMRUN --no_browser --serve_after_close --serve_after_exit --port=$EMRUN_SERVER_PORT --hostname=0.0.0.0 .
-  elif [ "$EMRUN_SERVER" -eq "0" ]; then
-    $EMRUN --browser $EMRUN_BROWSER --no_server --port=$EMRUN_SERVER_PORT index.html
+  if [ "$EMRUN_SERVER" -eq "0" ]; then
+    emrun --browser $EMRUN_BROWSER --no_server --port=$EMRUN_SERVER_PORT index.html
   else
-    $EMRUN --browser $EMRUN_BROWSER --no_emrun_detect index.html
+    emrun --browser $EMRUN_BROWSER --no_emrun_detect index.html
   fi
 else
   echo "Not running emrun"

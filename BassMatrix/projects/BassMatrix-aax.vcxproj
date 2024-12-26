@@ -389,11 +389,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\iPlug2\IGraphics\Drawing\IGraphicsSkia.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Tracer|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\iPlug2\IGraphics\IControl.cpp" />
@@ -403,6 +403,8 @@
     <ClCompile Include="..\..\iPlug2\IPlug\AAX\IPlugAAX_Parameters.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\AAX\IPlugAAX_Describe.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\AAX\IPlugAAX.cpp" />
+    <ClCompile Include="..\..\iPlug2\IPlug\Extras\Synth\MidiSynth.cpp" />
+    <ClCompile Include="..\..\iPlug2\IPlug\Extras\Synth\VoiceAllocator.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugAPIBase.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugParameter.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugPaths.cpp" />
@@ -410,7 +412,6 @@
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugProcessor.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugTimer.cpp" />
     <ClCompile Include="..\BassMatrix.cpp" />
-    <ClCompile Include="..\BassMatrixControls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuildStep Include="..\..\AAX_SDK\Libs\Release\AAXLibrary.lib">
@@ -464,7 +465,6 @@
     <ClInclude Include="..\..\iPlug2\IGraphics\IGraphics_include_in_plug_hdr.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\IGraphics_include_in_plug_src.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\IGraphics_select.h" />
-    <ClInclude Include="..\..\iPlug2\IGraphics\ISender.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\Platforms\IGraphicsLinux.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\Platforms\IGraphicsMac.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\Platforms\IGraphicsMac_view.h" />
@@ -473,6 +473,10 @@
     <ClInclude Include="..\..\iPlug2\IPlug\AAX\IPlugAAX_Parameters.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\AAX\IPlugAAX_TaperDelegate.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\AAX\IPlugAAX.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\ControlRamp.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\MidiSynth.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\SynthVoice.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\VoiceAllocator.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugAPIBase.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugConstants.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugDelegate_select.h" />
@@ -490,9 +494,10 @@
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugUtilities.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlug_include_in_plug_hdr.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlug_include_in_plug_src.h" />
-    <ClInclude Include="..\BassMatrixControls.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\ISender.h" />
     <ClInclude Include="..\config.h" />
     <ClInclude Include="..\BassMatrix.h" />
+    <ClInclude Include="..\BassMatrix_DSP.h" />
     <ClInclude Include="..\resources\resource.h" />
   </ItemGroup>
   <ItemGroup>

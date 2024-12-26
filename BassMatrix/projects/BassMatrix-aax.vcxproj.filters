@@ -56,10 +56,15 @@
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugTimer.cpp">
       <Filter>IPlug</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\iPlug2\IPlug\Extras\Synth\MidiSynth.cpp">
+      <Filter>IPlug\Extras\Synth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\iPlug2\IPlug\Extras\Synth\VoiceAllocator.cpp">
+      <Filter>IPlug\Extras\Synth</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\iPlug2\IGraphics\Drawing\IGraphicsSkia.cpp">
       <Filter>IGraphics\Drawing</Filter>
     </ClCompile>
-    <ClCompile Include="..\BassMatrixControls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\BassMatrix.h" />
@@ -190,8 +195,8 @@
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugPluginBase.h">
       <Filter>IPlug</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\iPlug2\IGraphics\ISender.h">
-      <Filter>IGraphics</Filter>
+    <ClInclude Include="..\..\iPlug2\IPlug\ISender.h">
+      <Filter>IPlug</Filter>
     </ClInclude>
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugProcessor.h">
       <Filter>IPlug</Filter>
@@ -208,10 +213,22 @@
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugUtilities.h">
       <Filter>IPlug</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\ControlRamp.h">
+      <Filter>IPlug\Extras\Synth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\MidiSynth.h">
+      <Filter>IPlug\Extras\Synth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\SynthVoice.h">
+      <Filter>IPlug\Extras\Synth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\Synth\VoiceAllocator.h">
+      <Filter>IPlug\Extras\Synth</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\iPlug2\IGraphics\Drawing\IGraphicsSkia.h">
       <Filter>IGraphics\Drawing</Filter>
     </ClInclude>
-    <ClInclude Include="..\BassMatrixControls.h" />
+    <ClInclude Include="..\BassMatrix_DSP.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="resources">
@@ -237,6 +254,12 @@
     </Filter>
     <Filter Include="IGraphics\Controls">
       <UniqueIdentifier>{3c740de7-2371-4065-bf3d-5af9193c7b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPlug\Extras">
+      <UniqueIdentifier>{f455cd61-f1f2-4fc5-8206-dd012c63a6fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPlug\Extras\Synth">
+      <UniqueIdentifier>{d16c1839-657e-4631-b0a1-187ffc2c316b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

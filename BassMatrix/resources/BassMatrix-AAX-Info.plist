@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>BassMatrix</string>
 	<key>CFBundleGetInfoString</key>
-	<string>BassMatrix v0.29.0 Copyright 2021 Acme Inc</string>
+	<string>BassMatrix v1.0.0 Copyright 2020 Acme Inc</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.Witech.aax.BassMatrix</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,15 +17,15 @@
 	<key>CFBundlePackageType</key>
 	<string>TDMw</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.29.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>PTul</string>
 	<key>CFBundleVersion</key>
-	<string>0.29.0</string>
+	<string>1.0.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.11.0</string>
+	<string>10.13.0</string>
 	<key>LSMultipleInstancesProhibited</key>
 	<string>true</string>
 	<key>LSPrefersCarbon</key>

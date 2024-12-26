@@ -31,7 +31,7 @@ std::wstring
 getSettingsFilePath()
 {
   wchar_t programDataPath[MAX_PATH];
-  SHGetSpecialFolderPath(0, programDataPath, CSIDL_COMMON_APPDATA, false);
+  SHGetSpecialFolderPathW(0, programDataPath, CSIDL_COMMON_APPDATA, false);
 
   std::wstring directoryPath = std::wstring(programDataPath) + L"\\Witech\\BassMatrix";
   std::filesystem::create_directories(directoryPath);

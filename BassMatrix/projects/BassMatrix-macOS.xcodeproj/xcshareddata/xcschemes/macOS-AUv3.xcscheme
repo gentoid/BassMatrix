@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1320"
+   LastUpgradeVersion = "1250"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -61,8 +61,8 @@
       launchAutomaticallySubstyle = "2">
       <RemoteRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "com.cockos.reaper"
-         RemotePath = "/Applications/REAPER.app">
+         BundleIdentifier = "com.apple.garageband10"
+         RemotePath = "/Applications/GarageBand.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -86,7 +86,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
-      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
       <MacroExpansion>
          <BuildableReference

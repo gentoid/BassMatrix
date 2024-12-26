@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 import plistlib, os, datetime, fileinput, glob, sys, string, shutil
 
 scriptpath = os.path.dirname(os.path.realpath(__file__))
 projectpath = os.path.abspath(os.path.join(scriptpath, os.pardir))
 
-IPLUG2_ROOT = "../../iPlug2"
+IPLUG2_ROOT = "..\..\iPlug2"
 
 sys.path.insert(0, os.path.join(os.getcwd(), IPLUG2_ROOT + '/Scripts'))
 
