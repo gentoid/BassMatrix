@@ -1,4 +1,4 @@
-#include "Mackan.h"
+#include "BassMatrix.h"
 #include "IPlug_include_in_plug_src.h"
 #include "BassMatrixControls.h"
 #include "open303/Source/DSPCode/rosic_Open303.h"
@@ -70,7 +70,7 @@ ReadSettingsFromProgramDataPath(double &plugUIScale)
 
 #endif
 
-Mackan::Mackan(const InstanceInfo &info) :
+BassMatrix::BassMatrix(const InstanceInfo &info) :
   Plugin(info, MakeConfig(kNumParams, kNumPresets)),
   mLastSamplePos(0),
   mStartSyncWithHost(false),
@@ -358,7 +358,7 @@ Mackan::Mackan(const InstanceInfo &info) :
 #endif
 }
 
-Mackan::~Mackan()
+BassMatrix::~BassMatrix()
 {
 #ifdef _WIN32
   WriteSettingsToProgramDataPath(mPlugUIScale);
@@ -576,7 +576,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
 
 
 std::array<bool, kNumberOfSeqButtons>
-Mackan::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
+BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
 {
   std::array<bool, kNumberOfSeqButtons> seq;
 
@@ -646,7 +646,7 @@ Mackan::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
 #if IPLUG_DSP
 
 void
-Mackan::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, int nFrames)
+BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, int nFrames)
 {
   // Channel declaration.
   PLUG_SAMPLE_DST *out01 = outputs[0];
@@ -820,7 +820,7 @@ Mackan::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, int nF
 
 #if IPLUG_DSP
 void
-Mackan::OnIdle()
+BassMatrix::OnIdle()
 {
   mLedSeqSender.TransmitData(*this);
   mSequencerSender.TransmitData(*this);
@@ -855,7 +855,7 @@ BassMatrix::CreateGraphics()
 
 
 void
-Mackan::OnReset()
+BassMatrix::OnReset()
 {
   // NOTE: OnReset() is called after a preset have been
   // loaded, so be sure you really want to reset the parameter.
@@ -875,7 +875,7 @@ Mackan::OnReset()
 }
 
 void
-Mackan::ProcessMidiMsg(const IMidiMsg &msg)
+BassMatrix::ProcessMidiMsg(const IMidiMsg &msg)
 {
   TRACE;
   mMidiQueue.Add(msg);  // Take care of MIDI events in ProcessBlock()
@@ -885,10 +885,10 @@ Mackan::ProcessMidiMsg(const IMidiMsg &msg)
 
 #ifdef VST3_API
 void
-Mackan::OnParamChangeUI(int paramIdx, EParamSource source)
+BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
 #else
 void
-Mackan::OnParamChange(int paramIdx)
+BassMatrix::OnParamChange(int paramIdx)
 #endif  // API
 {
 
@@ -1135,7 +1135,7 @@ Mackan::OnParamChange(int paramIdx)
 }
 
 bool
-Mackan::OnMessage(int msgTag, int ctrlTag, int dataSize, const void *pData)
+BassMatrix::OnMessage(int msgTag, int ctrlTag, int dataSize, const void *pData)
 {
   return false;
 }
