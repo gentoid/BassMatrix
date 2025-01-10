@@ -75,6 +75,8 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mLastSamplePos(0),
   mStartSyncWithHost(false),
   mPlugUIScale(1.0),
+  mHasChanged(false),
+  mKnobLoopSize(0),
   mCurrentPattern(0)
 {
 #ifdef _WIN32
@@ -174,35 +176,40 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   GetParam(kParamClear)->InitBool("Pattern clear", false);
   GetParam(kParamRandomize)->InitBool("Pattern randomize", false);
 
-    
-    
-#if IPLUG_EDITOR // http://bit.ly/2S64BDd
-  mMakeGraphicsFunc = [&]() {
-    return MakeGraphics(*this, PLUG_WIDTH, PLUG_HEIGHT, PLUG_FPS, GetScaleForScreen(PLUG_WIDTH, PLUG_HEIGHT));
+
+#if IPLUG_EDITOR  // http://bit.ly/2S64BDd
+  mMakeGraphicsFunc = [&]()
+  {
+    return MakeGraphics(*this,
+                        PLUG_WIDTH,
+                        PLUG_HEIGHT,
+                        PLUG_FPS,
+                        GetScaleForScreen(PLUG_WIDTH, PLUG_HEIGHT));
   };
-  
-  mLayoutFunc = [&](IGraphics* pGraphics) {
+
+  mLayoutFunc = [&](IGraphics *pGraphics)
+  {
     pGraphics->AttachCornerResizer(EUIResizerMode::Scale, false);
-//    pGraphics->AttachPanelBackground(COLOR_GRAY);
+    //    pGraphics->AttachPanelBackground(COLOR_GRAY);
     // Background
     pGraphics->LoadBitmap(BACKGROUND_FN, 1, true);
     pGraphics->AttachBackground(BACKGROUND_FN);
 
     // Knobs
-        const IBitmap knobRotateBitmap = pGraphics->LoadBitmap(PNG6062_FN, 127);
-        const IBitmap knobLittleBitmap = pGraphics->LoadBitmap(PNGFX1LITTLE_FN, 127);
-        const IBitmap knobBigBitmap = pGraphics->LoadBitmap(PNGFX1BIG_FN, 61);
-        //    pGraphics->AttachControl(new IBKnobControl(210, 30, knobLittleBitmap, kParamWaveForm));
-        const IBitmap btnWaveFormBitmap = pGraphics->LoadBitmap(PNGWAVEFORM_FN, 2, true);
+    const IBitmap knobRotateBitmap = pGraphics->LoadBitmap(PNG6062_FN, 127);
+    const IBitmap knobLittleBitmap = pGraphics->LoadBitmap(PNGFX1LITTLE_FN, 127);
+    const IBitmap knobBigBitmap = pGraphics->LoadBitmap(PNGFX1BIG_FN, 61);
+    //    pGraphics->AttachControl(new IBKnobControl(210, 30, knobLittleBitmap, kParamWaveForm));
+    const IBitmap btnWaveFormBitmap = pGraphics->LoadBitmap(PNGWAVEFORM_FN, 2, true);
     pGraphics->AttachControl(new IBSwitchControl(200, 50, btnWaveFormBitmap, kParamWaveForm),
                              kCtrlWaveForm);
-        pGraphics->AttachControl(new IBKnobControl(310, 30, knobLittleBitmap, kParamTuning));
-        pGraphics->AttachControl(new IBKnobControl(410, 30, knobLittleBitmap, kParamCutOff));
-        pGraphics->AttachControl(new IBKnobControl(510, 30, knobLittleBitmap, kParamResonance));
-        pGraphics->AttachControl(new IBKnobControl(610, 30, knobLittleBitmap, kParamEnvMode));
-        pGraphics->AttachControl(new IBKnobControl(710, 30, knobLittleBitmap, kParamDecay));
-        pGraphics->AttachControl(new IBKnobControl(810, 30, knobLittleBitmap, kParamAccent));
-    
+    pGraphics->AttachControl(new IBKnobControl(310, 30, knobLittleBitmap, kParamTuning));
+    pGraphics->AttachControl(new IBKnobControl(410, 30, knobLittleBitmap, kParamCutOff));
+    pGraphics->AttachControl(new IBKnobControl(510, 30, knobLittleBitmap, kParamResonance));
+    pGraphics->AttachControl(new IBKnobControl(610, 30, knobLittleBitmap, kParamEnvMode));
+    pGraphics->AttachControl(new IBKnobControl(710, 30, knobLittleBitmap, kParamDecay));
+    pGraphics->AttachControl(new IBKnobControl(810, 30, knobLittleBitmap, kParamAccent));
+
     pGraphics->AttachControl(new IBKnobControl(0 + 210 - 175, 130, knobBigBitmap, kParamTempo));
     //    pGraphics->AttachControl(new IBKnobControl(510, 130, knobBigBitmap, kParamDrive));
     pGraphics->AttachControl(new IBKnobControl(1130 - 210, 130, knobBigBitmap, kParamVolume));
@@ -602,7 +609,6 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
     OutputDebugStringW(seq[i] ? L"*" : L"-");
 #endif  // _DEBUG
 #endif
-
   }
 
   for (int i = 0; i < kNumberOfTotalPropButtons; ++i)  // The note properties
@@ -927,7 +933,7 @@ BassMatrix::OnParamChange(int paramIdx)
       OutputDebugStringW(std::wstring(L"Setting step " + to_wstring(seqNr) + L" Note nr " +
                                       to_wstring(noteNr) + L"\n")
                              .c_str());
-#endif                                 // _DEBUG
+#endif  // _DEBUG
 #endif
       pattern->setKey(seqNr, noteNr);  // Take care of the key notes
     }

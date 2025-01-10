@@ -117,6 +117,6 @@ private:
   bool mStartSyncWithHost;
   int mKnobLoopSize;
   int mCurrentPattern;
-  int mHasChanged;
+  bool mHasChanged;
   double mPlugUIScale;
 };
