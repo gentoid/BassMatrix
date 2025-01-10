@@ -727,48 +727,48 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BassMatrixControls.h; sourceTree = "<group>"; };
-		4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BassMatrixControls.cpp; sourceTree = "<group>"; };
-		4512A85A2D206A7D00C928E0 /* fft4g.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fft4g.c; sourceTree = "<group>"; };
-		4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefinitions.h; sourceTree = "<group>"; };
-		4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalFunctions.h; sourceTree = "<group>"; };
-		4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalFunctions.cpp; sourceTree = "<group>"; };
-		4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_AcidPattern.h; sourceTree = "<group>"; };
-		4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_AcidPattern.cpp; sourceTree = "<group>"; };
-		4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_AcidSequencer.h; sourceTree = "<group>"; };
-		4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_AcidSequencer.cpp; sourceTree = "<group>"; };
-		4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_AnalogEnvelope.h; sourceTree = "<group>"; };
-		4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_AnalogEnvelope.cpp; sourceTree = "<group>"; };
-		4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_BiquadFilter.h; sourceTree = "<group>"; };
-		4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_BiquadFilter.cpp; sourceTree = "<group>"; };
-		4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_BlendOscillator.h; sourceTree = "<group>"; };
-		4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_BlendOscillator.cpp; sourceTree = "<group>"; };
-		4512A8682D206A7D00C928E0 /* rosic_Complex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_Complex.h; sourceTree = "<group>"; };
-		4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_Complex.cpp; sourceTree = "<group>"; };
-		4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_DecayEnvelope.h; sourceTree = "<group>"; };
-		4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_DecayEnvelope.cpp; sourceTree = "<group>"; };
-		4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_EllipticQuarterBandFilter.h; sourceTree = "<group>"; };
-		4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_EllipticQuarterBandFilter.cpp; sourceTree = "<group>"; };
-		4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_FourierTransformerRadix2.h; sourceTree = "<group>"; };
-		4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_FourierTransformerRadix2.cpp; sourceTree = "<group>"; };
-		4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_FunctionTemplates.h; sourceTree = "<group>"; };
-		4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_FunctionTemplates.cpp; sourceTree = "<group>"; };
-		4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_LeakyIntegrator.h; sourceTree = "<group>"; };
-		4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_LeakyIntegrator.cpp; sourceTree = "<group>"; };
-		4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_MidiNoteEvent.h; sourceTree = "<group>"; };
-		4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_MidiNoteEvent.cpp; sourceTree = "<group>"; };
-		4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_MipMappedWaveTable.h; sourceTree = "<group>"; };
-		4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_MipMappedWaveTable.cpp; sourceTree = "<group>"; };
-		4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_NumberManipulations.h; sourceTree = "<group>"; };
-		4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_NumberManipulations.cpp; sourceTree = "<group>"; };
-		4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_OnePoleFilter.h; sourceTree = "<group>"; };
-		4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_OnePoleFilter.cpp; sourceTree = "<group>"; };
-		4512A87C2D206A7D00C928E0 /* rosic_Open303.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_Open303.h; sourceTree = "<group>"; };
-		4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_Open303.cpp; sourceTree = "<group>"; };
-		4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_RealFunctions.h; sourceTree = "<group>"; };
-		4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_RealFunctions.cpp; sourceTree = "<group>"; };
-		4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_TeeBeeFilter.h; sourceTree = "<group>"; };
-		4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_TeeBeeFilter.cpp; sourceTree = "<group>"; };
+		4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BassMatrixControls.h; path = ../BassMatrixControls.h; sourceTree = "<group>"; };
+		4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BassMatrixControls.cpp; path = ../BassMatrixControls.cpp; sourceTree = "<group>"; };
+		4512A85A2D206A7D00C928E0 /* fft4g.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fft4g.c; path = ../fft4g.c; sourceTree = "<group>"; };
+		4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GlobalDefinitions.h; path = ../GlobalDefinitions.h; sourceTree = "<group>"; };
+		4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GlobalFunctions.h; path = ../GlobalFunctions.h; sourceTree = "<group>"; };
+		4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalFunctions.cpp; path = ../GlobalFunctions.cpp; sourceTree = "<group>"; };
+		4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_AcidPattern.h; path = ../rosic_AcidPattern.h; sourceTree = "<group>"; };
+		4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_AcidPattern.cpp; path = ../rosic_AcidPattern.cpp; sourceTree = "<group>"; };
+		4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_AcidSequencer.h; path = ../rosic_AcidSequencer.h; sourceTree = "<group>"; };
+		4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_AcidSequencer.cpp; path = ../rosic_AcidSequencer.cpp; sourceTree = "<group>"; };
+		4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_AnalogEnvelope.h; path = ../rosic_AnalogEnvelope.h; sourceTree = "<group>"; };
+		4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_AnalogEnvelope.cpp; path = ../rosic_AnalogEnvelope.cpp; sourceTree = "<group>"; };
+		4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_BiquadFilter.h; path = ../rosic_BiquadFilter.h; sourceTree = "<group>"; };
+		4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_BiquadFilter.cpp; path = ../rosic_BiquadFilter.cpp; sourceTree = "<group>"; };
+		4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_BlendOscillator.h; path = ../rosic_BlendOscillator.h; sourceTree = "<group>"; };
+		4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_BlendOscillator.cpp; path = ../rosic_BlendOscillator.cpp; sourceTree = "<group>"; };
+		4512A8682D206A7D00C928E0 /* rosic_Complex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_Complex.h; path = ../rosic_Complex.h; sourceTree = "<group>"; };
+		4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_Complex.cpp; path = ../rosic_Complex.cpp; sourceTree = "<group>"; };
+		4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_DecayEnvelope.h; path = ../rosic_DecayEnvelope.h; sourceTree = "<group>"; };
+		4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_DecayEnvelope.cpp; path = ../rosic_DecayEnvelope.cpp; sourceTree = "<group>"; };
+		4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_EllipticQuarterBandFilter.h; path = ../rosic_EllipticQuarterBandFilter.h; sourceTree = "<group>"; };
+		4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_EllipticQuarterBandFilter.cpp; path = ../rosic_EllipticQuarterBandFilter.cpp; sourceTree = "<group>"; };
+		4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_FourierTransformerRadix2.h; path = ../rosic_FourierTransformerRadix2.h; sourceTree = "<group>"; };
+		4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_FourierTransformerRadix2.cpp; path = ../rosic_FourierTransformerRadix2.cpp; sourceTree = "<group>"; };
+		4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_FunctionTemplates.h; path = ../rosic_FunctionTemplates.h; sourceTree = "<group>"; };
+		4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_FunctionTemplates.cpp; path = ../rosic_FunctionTemplates.cpp; sourceTree = "<group>"; };
+		4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_LeakyIntegrator.h; path = ../rosic_LeakyIntegrator.h; sourceTree = "<group>"; };
+		4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_LeakyIntegrator.cpp; path = ../rosic_LeakyIntegrator.cpp; sourceTree = "<group>"; };
+		4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_MidiNoteEvent.h; path = ../rosic_MidiNoteEvent.h; sourceTree = "<group>"; };
+		4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_MidiNoteEvent.cpp; path = ../rosic_MidiNoteEvent.cpp; sourceTree = "<group>"; };
+		4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_MipMappedWaveTable.h; path = ../rosic_MipMappedWaveTable.h; sourceTree = "<group>"; };
+		4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_MipMappedWaveTable.cpp; path = ../rosic_MipMappedWaveTable.cpp; sourceTree = "<group>"; };
+		4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_NumberManipulations.h; path = ../rosic_NumberManipulations.h; sourceTree = "<group>"; };
+		4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_NumberManipulations.cpp; path = ../rosic_NumberManipulations.cpp; sourceTree = "<group>"; };
+		4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_OnePoleFilter.h; path = ../rosic_OnePoleFilter.h; sourceTree = "<group>"; };
+		4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_OnePoleFilter.cpp; path = ../rosic_OnePoleFilter.cpp; sourceTree = "<group>"; };
+		4512A87C2D206A7D00C928E0 /* rosic_Open303.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_Open303.h; path = ../rosic_Open303.h; sourceTree = "<group>"; };
+		4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_Open303.cpp; path = ../rosic_Open303.cpp; sourceTree = "<group>"; };
+		4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_RealFunctions.h; path = ../rosic_RealFunctions.h; sourceTree = "<group>"; };
+		4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_RealFunctions.cpp; path = ../rosic_RealFunctions.cpp; sourceTree = "<group>"; };
+		4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_TeeBeeFilter.h; path = ../rosic_TeeBeeFilter.h; sourceTree = "<group>"; };
+		4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_TeeBeeFilter.cpp; path = ../rosic_TeeBeeFilter.cpp; sourceTree = "<group>"; };
 		4F03A55020A4621000EBDFFB /* IGraphicsNanoVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGraphicsNanoVG.h; sourceTree = "<group>"; };
 		4F03A55420A4621000EBDFFB /* IGraphicsNanoVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGraphicsNanoVG.cpp; sourceTree = "<group>"; };
 		4F03A55620A4621000EBDFFB /* IGraphicsLiveEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGraphicsLiveEdit.h; path = ../../iPlug2/IGraphics/IGraphicsLiveEdit.h; sourceTree = "<group>"; };
@@ -1278,48 +1278,7 @@
 		089C166AFE841209C02AAC07 /* IPlugExample */ = {
 			isa = PBXGroup;
 			children = (
-				4512A85A2D206A7D00C928E0 /* fft4g.c */,
-				4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */,
-				4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */,
-				4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */,
-				4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */,
-				4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */,
-				4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */,
-				4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */,
-				4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */,
-				4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */,
-				4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */,
-				4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */,
-				4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */,
-				4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */,
-				4512A8682D206A7D00C928E0 /* rosic_Complex.h */,
-				4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */,
-				4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */,
-				4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */,
-				4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */,
-				4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */,
-				4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */,
-				4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */,
-				4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */,
-				4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */,
-				4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */,
-				4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */,
-				4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */,
-				4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */,
-				4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */,
-				4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */,
-				4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */,
-				4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */,
-				4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */,
-				4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */,
-				4512A87C2D206A7D00C928E0 /* rosic_Open303.h */,
-				4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */,
-				4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */,
-				4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */,
-				4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */,
-				4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */,
-				4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */,
-				4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */,
+				45DA5D6F2D315D6700D90BB8 /* open303 */,
 				52FBBED30D0CF143001C8B8A /* config.h */,
 				4F3862EE2014BBEC0009F402 /* BassMatrix.h */,
 				4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */,
@@ -1399,6 +1358,55 @@
 				4FDA600620B586AC00C49ABA /* BassMatrix-mac.xcconfig */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		45DA5D6F2D315D6700D90BB8 /* open303 */ = {
+			isa = PBXGroup;
+			children = (
+				4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */,
+				4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */,
+				4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */,
+				4512A8682D206A7D00C928E0 /* rosic_Complex.h */,
+				4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */,
+				4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */,
+				4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */,
+				4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */,
+				4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */,
+				4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */,
+				4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */,
+				4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */,
+				4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */,
+				4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */,
+				4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */,
+				4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */,
+				4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */,
+				4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */,
+				4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */,
+				4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */,
+				4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */,
+				4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */,
+				4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */,
+				4512A87C2D206A7D00C928E0 /* rosic_Open303.h */,
+				4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */,
+				4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */,
+				4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */,
+				4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */,
+				4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */,
+				4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */,
+				4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */,
+				4512A85A2D206A7D00C928E0 /* fft4g.c */,
+				4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */,
+				4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */,
+				4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */,
+				4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */,
+				4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */,
+				4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */,
+				4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */,
+				4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */,
+				4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */,
+				4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */,
+			);
+			path = open303;
 			sourceTree = "<group>";
 		};
 		4F03A54820A461FD00EBDFFB /* IGraphics */ = {

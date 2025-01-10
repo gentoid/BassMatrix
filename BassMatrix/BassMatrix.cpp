@@ -723,7 +723,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
 
       else if (  // GetTransportIsRunning() &&
           (mStartSyncWithHost ||
-           mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset)))
+           (mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset))))
       {  // Transport has changed
         mStartSyncWithHost = false;
         double maxSamplePos = GetSamplesPerBeat() * 4.0;
