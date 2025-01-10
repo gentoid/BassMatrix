@@ -28,6 +28,8 @@ AcidPattern::clear(int patternNr)
 void
 AcidPattern::randomize(int patternNr)
 {
+  std::srand(static_cast<unsigned>(std::time(nullptr)));
+  
   assert(patternNr >= 0 && patternNr <= 24);
   //for(int i=0; i<maxNumSteps; i++)
   //{
@@ -137,9 +139,9 @@ AcidPattern::randomize(int patternNr)
 
     notes[i].key = playedNote % 12;
     notes[i].octave = octave;
-    notes[i].accent = roundToInt(randomUniform(0, 1, rand())) == 1;
-    notes[i].slide = roundToInt(randomUniform(0, 5, rand())) == 4;
-    notes[i].gate = roundToInt(randomUniform(0, 11, rand())) < 9;
+    notes[i].accent = std::rand() % 2 == 0;
+    notes[i].slide = std::rand() % 6 == 0;
+    notes[i].gate = std::rand() % 12 < 9;
 
     // Increase step
     i++;

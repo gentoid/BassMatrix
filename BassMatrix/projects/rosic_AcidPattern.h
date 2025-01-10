@@ -136,6 +136,8 @@ public:
   //=============================================================================================
 
 protected:
+  int easyRoundToInt(double value);
+
   static const int maxNumSteps = 16;
   AcidNote notes[maxNumSteps];
 
