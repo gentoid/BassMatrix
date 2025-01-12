@@ -7,7 +7,7 @@
 namespace rosic
 {
 
-  /**
+/**
 
   This is a sequencer for typical acid-lines involving slides and accents.
 
@@ -15,283 +15,286 @@ namespace rosic
 
   */
 
-  class AcidSequencer
+class AcidSequencer
+{
+
+public:
+  enum sequencerModes
   {
+    OFF = 0,
+    MIDI_PLAY,
+    KEY_SYNC,
+    HOST_SYNC,
+    RUN,
 
-  public:
+    NUM_SEQUENCER_MODES
+  };
 
-    enum sequencerModes
-    {
-      OFF = 0,
-      MIDI_PLAY,
-      KEY_SYNC,
-      HOST_SYNC,
-      RUN,
+  //---------------------------------------------------------------------------------------------
+  // construction/destruction:
 
-      NUM_SEQUENCER_MODES
-    };
+  /** Constructor. */
+  AcidSequencer() : mNextStep(0), mCurrentStep(0) {};
 
-    //---------------------------------------------------------------------------------------------
-    // construction/destruction:
+  //---------------------------------------------------------------------------------------------
+  // setup:
 
-    /** Constructor. */
-    AcidSequencer();   
+  /** Sets the sample-rate. */
+  void setSampleRate(double newSampleRate);
 
-    //---------------------------------------------------------------------------------------------
-    // setup:
+  /** Sets the tempo in BPM. */
+  void setTempo(double newTempoInBpm) { bpm = newTempoInBpm; }
 
-    /** Sets the sample-rate. */
-    void setSampleRate(double newSampleRate);
+  /** Sets the key in one of the patterns for one of the steps (between 0...11, 0 is C). */
+  void setKey(int pattern, int step, int newKey);
 
-    /** Sets the tempo in BPM. */
-    void setTempo(double newTempoInBpm) { bpm = newTempoInBpm; }
+  /** Sets the octave for one of the steps (0 is the root octave between C2...B2). */
+  void setOctave(int pattern, int step, int newOctave);
 
-    /** Sets the key in one of the patterns for one of the steps (between 0...11, 0 is C). */
-    void setKey(int pattern, int step, int newKey);
+  /** Sets the accent flag for one of the steps. */
+  void setAccent(int pattern, int step, bool shouldBeAccented);
 
-    /** Sets the octave for one of the steps (0 is the root octave between C2...B2). */
-    void setOctave(int pattern, int step, int newOctave);
+  /** Sets the slide flag for one of the steps. */
+  void setSlide(int pattern, int step, bool shouldHaveSlide);
 
-    /** Sets the accent flag for one of the steps. */
-    void setAccent(int pattern, int step, bool shouldBeAccented);
+  /** Sets the gate flag for one of the steps. */
+  void setGate(int pattern, int step, bool shouldBeOpen);
 
-    /** Sets the slide flag for one of the steps. */
-    void setSlide(int pattern, int step, bool shouldHaveSlide);
+  /** Selects one of the modes for the sequencer @see sequencerModes. */
+  void setMode(int newMode);
 
-    /** Sets the gate flag for one of the steps. */
-    void setGate(int pattern, int step, bool shouldBeOpen);
-
-    /** Selects one of the modes for the sequencer @see sequencerModes. */
-    void setMode(int newMode);
-
-    /** Sets the length of one step (the time while gate is open) in units of one step (which 
+  /** Sets the length of one step (the time while gate is open) in units of one step (which 
     is one 16th note). */
-    void setStepLength(double newStepLength) 
-    { patterns[activePattern].setStepLength(newStepLength); }
+  void setStepLength(double newStepLength) { patterns[activePattern].setStepLength(newStepLength); }
 
-    /** Circularly shifts the active pattern by the given number of steps. */
-    void circularShift(int numSteps) { patterns[activePattern].circularShift(numSteps); }
+  /** Circularly shifts the active pattern by the given number of steps. */
+  void circularShift(int numSteps) { patterns[activePattern].circularShift(numSteps); }
 
-    /** Marks a key (note value from 0...12, where 0 and 12 is a C) as permissible or not. 
+  /** Marks a key (note value from 0...12, where 0 and 12 is a C) as permissible or not. 
     Whenever the pattern currently played requires a key that is not permissible, the sequencer
     will play the closest key among the permissible ones (it will select the lower when two 
     permissible keys are at equal distance). */
-    void setKeyPermissible(int key, bool shouldBePermissible);
+  void setKeyPermissible(int key, bool shouldBePermissible);
 
-    /** Toggles the permissibility of a key on/off. */
-    void toggleKeyPermissibility(int key);
+  /** Toggles the permissibility of a key on/off. */
+  void toggleKeyPermissibility(int key);
 
-    //---------------------------------------------------------------------------------------------
-    // inquiry:
+  //---------------------------------------------------------------------------------------------
+  // inquiry:
 
-    /** Returns the number of patterns. */
-    int getNumPatterns() const { return numPatterns; }
+  /** Returns the number of patterns. */
+  int getNumPatterns() const { return numPatterns; }
 
-    /** Returns a pointer to the pattern with given index - NULL if index is out of range. */
-    AcidPattern* getPattern(int index);
+  /** Returns a pointer to the pattern with given index - NULL if index is out of range. */
+  AcidPattern *getPattern(int index);
 
-    /** Returns true when the sequencer is running, false otherwise. */
-    bool isRunning() const { return running; }
+  /** Returns true when the sequencer is running, false otherwise. */
+  bool isRunning() const { return running; }
 
-    /** Returns once true, when the mode was changed due to a call to setMode. Thereafter, it will
+  /** Returns once true, when the mode was changed due to a call to setMode. Thereafter, it will
     always return false until a new call to setMode happens - whereafter it will again return true
     once, ...and so on. The idea is that an outlying class may have to become aware of such changes
     in order to turn off running notes (trigger all-notes-off or something). */
-    bool modeWasChanged();
+  bool modeWasChanged();
 
-    /** Returns the length of one step (the time while gate is open) in units of one step (which 
+  /** Returns the length of one step (the time while gate is open) in units of one step (which 
     is one 16th note). */
-    double getStepLength() const { return patterns[activePattern].getStepLength(); }
+  double getStepLength() const { return patterns[activePattern].getStepLength(); }
 
-    /** Returns the length of one step (the time while gate is open) in samples. */
-    int getStepLengthInSamples() const 
-    { return roundToInt(sampleRate*getStepLength()*beatsToSeconds(0.25, bpm)); }
+  /** Returns the length of one step (the time while gate is open) in samples. */
+  int getStepLengthInSamples() const
+  {
+    return roundToInt(sampleRate * getStepLength() * beatsToSeconds(0.25, bpm));
+  }
 
-    /** Returns the selected sequencer mode @see sequencerModes. */
-    int getSequencerMode() const { return sequencerMode; }
+  /** Returns the selected sequencer mode @see sequencerModes. */
+  int getSequencerMode() const { return sequencerMode; }
 
-    /** Returns, if the given key is among the permissible ones. */
-    bool isKeyPermissible(int key);
+  /** Returns, if the given key is among the permissible ones. */
+  bool isKeyPermissible(int key);
 
-    //---------------------------------------------------------------------------------------------
-    // audio processing:
+  //---------------------------------------------------------------------------------------------
+  // audio processing:
 
-    /** Returns a pointer to the note that occurs at this sample if any, NULL otherwise. */
-    INLINE AcidNote* getNote();
+  /** Returns a pointer to the note that occurs at this sample if any, NULL otherwise. */
+  INLINE AcidNote *getNote();
 
-    /** Returns the next note that will be scheduled - after getNote() has returned a non-NULL 
+  /** Returns the next note that will be scheduled - after getNote() has returned a non-NULL 
     pointer, this will be the next non-NULL note that will be returned. So, if an event has 
     occurred at some time instant, you may investigate the next upcoming event beforehand by 
     calling this function. */
-    INLINE AcidNote* getNextScheduledNote() 
-    { 
-      AcidNote* note = patterns[activePattern].getNote(step);
-      note->key      = getClosestPermissibleKey(note->key); 
-      return note;
-    }
+  INLINE AcidNote *getNextScheduledNote()
+  {
+    AcidNote *note = patterns[activePattern].getNote(mCurrentStep);
+    note->key = getClosestPermissibleKey(note->key);
+    return note;
+  }
 
-    /** Returns the key among the permissible ones which is closest to the given key - if two keys 
+  /** Returns the key among the permissible ones which is closest to the given key - if two keys 
     are at the same distance, it returns the lower of them. If the passed key is itself 
     permissible, it will be returned unchanged. */
-    INLINE int getClosestPermissibleKey(int key);
+  INLINE int getClosestPermissibleKey(int key);
 
-    //---------------------------------------------------------------------------------------------
-    // event handling:
+  //---------------------------------------------------------------------------------------------
+  // event handling:
 
-    /** Lets the sequencer start playing. */
-    void start();
+  /** Lets the sequencer start playing. */
+  void start();
 
-    /** Lets the sequencer stop playing. */
-    void stop();
+  /** Lets the sequencer stop playing. */
+  void stop();
 
-    double getTempo() { return bpm; }
+  double getTempo() { return bpm; }
 
-    void setStep(int inStep, int samplesLeftInStep)
-    {
-      step = inStep; countDown = samplesLeftInStep;
-    }
-
-    int getStep() { return step; }
-
-    int getActivePattern()
-    {
-      return activePattern;
-    }
-
-    bool getUpdateSequenserGUI() { return updateSequenserGUI; }
-
-    void setUpdateSequenserGUI(bool v) { updateSequenserGUI = v; }
-
-    void setPattern(int patternNr) { activePattern = patternNr; }
-
-    int getPatternMultiplier() { return patternMultiplier; }
-    void setPatternMultiplier(int m) { patternMultiplier = m; }
-
-    void clearPattern(int nr)
-    {
-      patterns[nr].clear(nr);
-    }
-    void randomizePattern(int nr)
-    {
-      patterns[nr].randomize(nr);
-    }
-    void randomizeAllPatterns()
-    {
-      for (int i = 0; i < numPatterns; ++i)
-      {
-        patterns[i].randomize(i);
-      }
-    }
-    void copyPattern(int from, int to)
-    {
-      patterns[to] = patterns[from];
-    }
-
-    //---------------------------------------------------------------------------------------------
-    // others:
-
-    //=============================================================================================
-
-  protected:
-
-    static const int numPatterns = 24;
-    AcidPattern patterns[numPatterns];
-
-    int    patternMultiplier = 0;  // used when changing between patterns
-    int    activePattern;      // the currently selected pattern
-    bool   running;            // flag to indicate that sequencer is running
-    bool   modeChanged;        // flag that is set to true in setMode and to false in modeChanged
-    double sampleRate;         // the sample-rate
-    double bpm;                // the tempo in bpm
-    int    countDown;          // a sample-countdown - counts down for the next step to occur
-    int    step;               // the current step
-    int    sequencerMode;      // the selected mode for the sequencer
-    double driftError;         // to keep track and compensate for accumulating timing error
-    bool   keyPermissible[13]; // array of flags to indicate if a particular key is permissible
-    bool   updateSequenserGUI; // sequencer has been updated in such a way it affects the GUI.
-  };
-
-  //-----------------------------------------------------------------------------------------------
-  // from here: definitions of the functions to be inlined, i.e. all functions which are supposed 
-  // to be called at audio-rate (they can't be put into the .cpp file):
-
-  INLINE AcidNote* AcidSequencer::getNote()
+  void setStep(int inStep, int samplesLeftInStep)
   {
-    if( running == false )
-      return NULL;
-
-    if( countDown > 0 )
-    {
-      countDown--;
-      return NULL;
-    }
-    else
-    {
-      double secondsToNextStep = beatsToSeconds(0.25, bpm);
-      double samplesToNextStep = secondsToNextStep * sampleRate;
-      countDown                = roundToInt(samplesToNextStep);
-
-      // keep track of accumulating error due to rounding and compensate when the accumulated error
-      // exceeds half a sample:
-      driftError += countDown - samplesToNextStep;
-      if( driftError < -0.5 ) // negative errors indicate that we are too early
-      {
-        driftError += 1.0;
-        countDown  += 1;
-      }
-      else if( driftError >= 0.5 )
-      {
-        driftError -= 1.0;
-        countDown  -= 1;
-      }
-
-      AcidNote* note = patterns[activePattern].getNote(step);
-      note->key      = getClosestPermissibleKey(note->key);
-      step           = (step+1) % patterns[activePattern].getNumSteps();
-      return note; 
-    }
+    mCurrentStep = inStep;
+    mNextStep = (mCurrentStep + 1) % patterns[activePattern].getNumSteps();
+    countDown = samplesLeftInStep;
   }
 
-  INLINE int AcidSequencer::getClosestPermissibleKey(int key)
+  int getStep() { return mCurrentStep; }
+
+  int getActivePattern() { return activePattern; }
+
+  bool getUpdateSequenserGUI() { return updateSequenserGUI; }
+
+  void setUpdateSequenserGUI(bool v) { updateSequenserGUI = v; }
+
+  void setPattern(int patternNr) { activePattern = patternNr; }
+
+  int getPatternMultiplier() { return patternMultiplier; }
+  void setPatternMultiplier(int m) { patternMultiplier = m; }
+
+  void clearPattern(int nr) { patterns[nr].clear(nr); }
+  void randomizePattern(int nr) { patterns[nr].randomize(nr); }
+  void randomizeAllPatterns()
   {
-    if( key >= 0 && key <= 12 )
+    for (int i = 0; i < numPatterns; ++i)
     {
-      if( keyPermissible[key] )
-        return key;
+      patterns[i].randomize(i);
+    }
+  }
+  void copyPattern(int from, int to) { patterns[to] = patterns[from]; }
+
+  //---------------------------------------------------------------------------------------------
+  // others:
+
+  //=============================================================================================
+
+protected:
+  static const int numPatterns = 24;
+  AcidPattern patterns[numPatterns];
+
+  int patternMultiplier = 0;  // used when changing between patterns
+  int activePattern;          // the currently selected pattern
+  bool running;               // flag to indicate that sequencer is running
+  bool modeChanged;           // flag that is set to true in setMode and to false in modeChanged
+  double sampleRate;          // the sample-rate
+  double bpm;                 // the tempo in bpm
+  int countDown;              // a sample-countdown - counts down for the next step to occur
+  int sequencerMode;          // the selected mode for the sequencer
+  double driftError;          // to keep track and compensate for accumulating timing error
+  bool keyPermissible[13];    // array of flags to indicate if a particular key is permissible
+  bool updateSequenserGUI;    // sequencer has been updated in such a way it affects the GUI.
+
+private:
+  int mCurrentStep;
+  int mNextStep;
+};
+
+//-----------------------------------------------------------------------------------------------
+// from here: definitions of the functions to be inlined, i.e. all functions which are supposed
+// to be called at audio-rate (they can't be put into the .cpp file):
+
+INLINE AcidNote *
+AcidSequencer::getNote()
+{
+  if (running == false)
+    return NULL;
+
+  if (countDown > 0)
+  {
+    countDown--;
+    return NULL;
+  }
+  else
+  {
+    int countDownBefore = countDown;
+    double secondsToNextStep = beatsToSeconds(0.25, bpm);
+    double samplesToNextStep = secondsToNextStep * sampleRate;
+    countDown = roundToInt(samplesToNextStep);
+
+    // keep track of accumulating error due to rounding and compensate when the accumulated error
+    // exceeds half a sample:
+    driftError += countDown - samplesToNextStep;
+    if (driftError < -0.5)  // negative errors indicate that we are too early
+    {
+      driftError += 1.0;
+      countDown += 1;
+    }
+    else if (driftError >= 0.5)
+    {
+      driftError -= 1.0;
+      countDown -= 1;
+    }
+
+    if (countDownBefore != -1)
+    {
+      mCurrentStep = mNextStep;
+    }
+    AcidNote *note = patterns[activePattern].getNote(mCurrentStep);
+    note->key = getClosestPermissibleKey(note->key);
+    if (countDownBefore != -1)
+    {
+      mNextStep = (mCurrentStep + 1) % patterns[activePattern].getNumSteps();
+    }
+    return note;
+  }
+}
+
+INLINE int
+AcidSequencer::getClosestPermissibleKey(int key)
+{
+  if (key >= 0 && key <= 12)
+  {
+    if (keyPermissible[key])
+      return key;
+    else
+    {
+      // find the closest lower permissible key:
+      int kLo = key - 1;
+      while (kLo >= 0)
+      {
+        if (keyPermissible[kLo])
+          break;
+        kLo--;
+      }
+
+      // find the closest higher permissible key:
+      int kHi = key + 1;
+      while (kHi < 12)
+      {
+        if (keyPermissible[kHi])
+          break;
+        kHi++;
+      }
+
+      // select the closest (subject to the constraint that it must be between 0 and 12):
+      if ((kHi - key) < (kLo - key) && kHi <= 12)
+        return kHi;
+      else if ((kLo - key) < (kHi - key) && kLo >= 0)
+        return kLo;
+      else if ((kHi - key) == (kLo - key) && kLo >= 0)
+        return kLo;
       else
-      {
-        // find the closest lower permissible key:
-        int kLo = key-1;
-        while( kLo >= 0 )
-        {
-          if( keyPermissible[kLo] )
-            break;
-          kLo--;
-        }
-
-        // find the closest higher permissible key:
-        int kHi = key+1;
-        while( kHi < 12 )
-        {
-          if( keyPermissible[kHi] )
-            break;
-          kHi++;
-        }
-
-        // select the closest (subject to the constraint that it must be between 0 and 12):
-        if(      (kHi-key) <  (kLo-key) && kHi <= 12 )
-          return kHi;
-        else if( (kLo-key) <  (kHi-key) && kLo >= 0  )
-          return kLo;
-        else if( (kHi-key) == (kLo-key) && kLo >= 0  )
-          return kLo;
-        else return -1; // none of the keys is permissible
-      }
+        return -1;  // none of the keys is permissible
     }
-    else
-      return 0;
   }
+  else
+    return 0;
+}
 
-} // end namespace rosic
+}  // end namespace rosic
 
-#endif // rosic_AcidSequencer_h
+#endif  // rosic_AcidSequencer_h

@@ -13,41 +13,32 @@ SeqLedBtnControl::SeqLedBtnControl(float x,
 void
 SeqLedBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void *pData)
 {
-  if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
+  if (GetUI())
   {
-    IByteStream stream(pData, dataSize);
 
-    int pos = 0;
-    ISenderData<1, int> d;
-    pos = stream.Get(&d, pos);
 
-    // Turn off all leds
-    for (int i = 0; i < 16; i++)
+    if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
     {
-      IControl *pControlOff = GetUI()->GetControlWithTag(kCtrlTagLedSeq0 + i);
-      double before = pControlOff->GetValue();
-      pControlOff->SetValue(0.0);
-      if (before != pControlOff->GetValue())
+      IByteStream stream(pData, dataSize);
+      int pos = 0;
+      ISenderData<1, int> d;
+      pos = stream.Get(&d, pos);
+      int nr = d.vals[0];
+
+      for (int i = 0; i < 16; i++)
       {
-        pControlOff->SetDirty(true);
+        IControl *pControlBtn = GetUI()->GetControlWithTag(kCtrlTagLedSeq0 + i);
+        if (i == nr)
+        {
+          pControlBtn->SetValue(1.0);
+        }
+        else
+        {
+          pControlBtn->SetValue(0.0);
+        }
+        pControlBtn->SetDirty(true);
       }
     }
-
-    int step = d.vals[0];
-    //if (step == 0) { step = 15; }
-    //else { step = (step - 1); }
-
-    assert(step >= 0 && step <= 15);
-
-    IControl *pControlOn = GetUI()->GetControlWithTag(kCtrlTagLedSeq0 + step);
-    double before = pControlOn->GetValue();
-    pControlOn->SetValue(1.0);
-    if (before != pControlOn->GetValue())
-    {
-      pControlOn->SetDirty(true);
-    }
-
-    SetDirty(false);
   }
 }
 void

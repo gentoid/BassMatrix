@@ -1,4 +1,6 @@
 #include "rosic_AcidPattern.h"
+#include <cstdlib>  // for std::srand and std::rand
+#include <ctime>    // for std::time
 #include <assert.h>
 
 using namespace rosic;
