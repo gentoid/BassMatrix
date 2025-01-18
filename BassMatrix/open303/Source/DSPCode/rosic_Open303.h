@@ -319,6 +319,11 @@ Open303::getSample(AcidNote &outNote, bool &onNew16th)
   if (idle)
     return 0.0;
 
+  if (!sequencer.isRunning())
+  {
+    return 0.0;
+  }
+
   // check the sequencer if we have some note to trigger:
   if (sequencer.getSequencerMode() != AcidSequencer::OFF &&
       sequencer.getSequencerMode() != AcidSequencer::MIDI_PLAY)

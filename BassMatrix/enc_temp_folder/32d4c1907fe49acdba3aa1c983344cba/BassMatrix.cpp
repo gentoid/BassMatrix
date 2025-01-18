@@ -667,12 +667,12 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
     open303Core.sequencer.setTempo(GetTempo());
   }
 
-  if ((open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN ||
-       open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC) &&
-      !open303Core.sequencer.isRunning())
-  {
-    open303Core.noteOn(36, 64, 0.0);  // 36 seems to make C on sequencer be a C.
-  }
+  //if ((open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN ||
+  //     open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC) &&
+  //    !open303Core.sequencer.isRunning())
+  //{
+  //  open303Core.noteOn(36, 64, 0.0);  // 36 seems to make C on sequencer be a C.
+  //}
 
   if (open303Core.sequencer.getSequencerMode() != rosic::AcidSequencer::OFF)
   {
@@ -841,13 +841,11 @@ BassMatrix::OnIdle()
   mSequencerSender.TransmitData(*this);
   mPatternSender.TransmitData(*this);
 
-#ifndef WAM_API
   // Update the plugin scale.
   if (GetUI())
   {
     mPlugUIScale = GetUI()->GetDrawScale();
   }
-#endif
 }
 #endif
 
