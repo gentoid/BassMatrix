@@ -5,7 +5,7 @@ using namespace rosic;
 // construction/destruction:
 
 AcidSequencer::AcidSequencer() :
-  updateSequenserGUI(true), mNextStep(0), mCurrentStep(0)
+  updateSequenserGUI(true), mNextStep(1), mCurrentStep(0)
 {
   sampleRate    = 44100.0;
   bpm           = 140.0;
@@ -86,7 +86,8 @@ void AcidSequencer::start()
   // set up members such that we will trap in the else-branch in the next call to getNote():
   running    = true;
   countDown  = -1;
-  step       = 0;
+  mCurrentStep = 0;
+  mNextStep = 1;
   driftError = 0.0;
 }
 
