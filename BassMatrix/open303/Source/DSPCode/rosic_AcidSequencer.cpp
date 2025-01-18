@@ -5,14 +5,13 @@ using namespace rosic;
 // construction/destruction:
 
 AcidSequencer::AcidSequencer() :
-  updateSequenserGUI(true)
+  updateSequenserGUI(true), mNextStep(0), mCurrentStep(0)
 {
   sampleRate    = 44100.0;
   bpm           = 140.0;
   activePattern = 0;
   running       = false;
   countDown     = 0;
-  step          = 0;
   sequencerMode = OFF;
   driftError    = 0.0;
   modeChanged   = false;

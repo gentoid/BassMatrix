@@ -34,7 +34,7 @@ public:
   // construction/destruction:
 
   /** Constructor. */
-  AcidSequencer() : mNextStep(0), mCurrentStep(0) {};
+  AcidSequencer();
 
   //---------------------------------------------------------------------------------------------
   // setup:
