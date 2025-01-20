@@ -7,6 +7,13 @@
 #define M_PI 3.14159265358979323846
 #endif
 
+template <typename T>
+T
+my_clamp(T value, T min, T max)
+{
+  return value < min ? min : (value > max ? max : value);
+}
+
 // Rest of the code remains the same...
 
 // From Amazon Q
@@ -111,13 +118,13 @@ std::pair<double, double> processDelayReverbAudioBlock(double sampleRate, double
 //  }
 //
 //  // Set the drive amount (0.0 to 1.0, will be scaled internally)
-//  void setDrive(double newDrive) { drive = std::clamp(newDrive, 0.0, 1.0); }
+//  void setDrive(double newDrive) { drive = my_clamp(newDrive, 0.0, 1.0); }
 //
 //  // Set the bias (DC offset before saturation)
-//  void setBias(double newBias) { bias = std::clamp(newBias, -1.0, 1.0); }
+//  void setBias(double newBias) { bias = my_clamp(newBias, -1.0, 1.0); }
 //
 //  // Set wet/dry mix
-//  void setMix(double newMix) { mix = std::clamp(newMix, 0.0, 1.0); }
+//  void setMix(double newMix) { mix = my_clamp(newMix, 0.0, 1.0); }
 //
 //private:
 //  // Asymmetric soft clipping function
@@ -199,7 +206,7 @@ std::pair<double, double> processDelayReverbAudioBlock(double sampleRate, double
 //  {
 //  }
 //
-//  void setTone(double newTone) { tone = std::clamp(newTone, -1.0, 1.0); }
+//  void setTone(double newTone) { tone = my_clamp(newTone, -1.0, 1.0); }
 //
 //  // Process stereo signal
 //  std::pair<double, double> processStereo(double inputL, double inputR)
@@ -299,11 +306,11 @@ public:
     stage.shape = 0.8;
   }
 
-  void setDrive(double newDrive) { drive = std::clamp(newDrive, 0.0, 1.0); }
+  void setDrive(double newDrive) { drive = my_clamp(newDrive, 0.0, 1.0); }
 
-  void setBias(double newBias) { bias = std::clamp(newBias, -1.0, 1.0); }
+  void setBias(double newBias) { bias = my_clamp(newBias, -1.0, 1.0); }
 
-  void setMix(double newMix) { mix = std::clamp(newMix, 0.0, 1.0); }
+  void setMix(double newMix) { mix = my_clamp(newMix, 0.0, 1.0); }
 
 private:
   double tubeSaturate(double input)

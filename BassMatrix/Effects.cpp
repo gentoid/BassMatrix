@@ -1,12 +1,5 @@
 #include "Effects.h"
 
-template <typename T>
-T
-my_clamp(T value, T min, T max)
-{
-  return value < min ? min : (value > max ? max : value);
-}
-
 // Amazon Q
 AcidStereoDelay::AcidStereoDelay(double sampleRate) :
   writeIndex(0),
