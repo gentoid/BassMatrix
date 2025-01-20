@@ -169,6 +169,7 @@
       <PreprocessorDefinitions>$(VST3_DEFS);$(DEBUG_DEFS);$(EXTRA_DEBUG_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(VST3_INC_PATHS);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -206,6 +207,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>$(VST3_INC_PATHS);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -242,6 +244,7 @@
       <PreprocessorDefinitions>$(VST3_DEFS);$(TRACER_DEFS);$(EXTRA_TRACER_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(VST3_INC_PATHS);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -333,6 +336,7 @@
     <ClInclude Include="..\BassMatrix.h" />
     <ClInclude Include="..\BassMatrixControls.h" />
     <ClInclude Include="..\BassMatrix_DSP.h" />
+    <ClInclude Include="..\Effects.h" />
     <ClInclude Include="..\resources\resource.h" />
     <ClInclude Include="GlobalDefinitions.h" />
     <ClInclude Include="GlobalFunctions.h" />
@@ -418,6 +422,7 @@
     <ClCompile Include="..\..\iPlug2\IPlug\VST3\IPlugVST3_ProcessorBase.cpp" />
     <ClCompile Include="..\BassMatrix.cpp" />
     <ClCompile Include="..\BassMatrixControls.cpp" />
+    <ClCompile Include="..\Effects.cpp" />
     <ClCompile Include="fft4g.c" />
     <ClCompile Include="GlobalFunctions.cpp" />
     <ClCompile Include="rosic_AcidPattern.cpp" />

@@ -4,7 +4,7 @@
 #include "open303/Source/DSPCode/rosic_Open303.h"
 #include <filesystem>
 #include <fstream>
-
+#include "Effects.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // Windows specific
@@ -799,7 +799,12 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
 
     rosic::AcidNote note;
     bool onNew16th = false;
-    *out01++ = *out02++ = open303Core.getSample(note, onNew16th);
+
+    std::pair<double, double> delayOut =
+        processDelayReverbAudioBlock(GetSampleRate(), open303Core.getSample(note, onNew16th));
+
+    *out01++ = delayOut.first;
+    *out02++ = delayOut.second;
 
 #ifdef VST3_API
     static int currentKey = 0;
@@ -824,16 +829,14 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
       midiMessage.MakeNoteOffMsg(currentKey, 0);
       IPlugVST3ProcessorBase::SendMidiMsg(midiMessage);
     }
-#endif
+#endif  // VST3_API
   }
 
   mLastSamplePos = static_cast<unsigned int>(GetSamplePos()) + nFrames;
 
   mMidiQueue.Flush(nFrames);
-#endif
 }
 
-#if IPLUG_DSP
 void
 BassMatrix::OnIdle()
 {
@@ -847,9 +850,10 @@ BassMatrix::OnIdle()
   {
     mPlugUIScale = GetUI()->GetDrawScale();
   }
-#endif
+#endif  // WAM_API
 }
-#endif
+
+#endif  // IPLUG_DSP
 
 #if IPLUG_EDITOR
 #ifdef VST3_API
@@ -867,8 +871,8 @@ BassMatrix::CreateGraphics()
 
   return p;
 }
-#endif  // API
-#endif
+#endif  // VST3_API
+#endif  // IPLUG_EDITOR
 
 
 void

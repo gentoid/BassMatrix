@@ -201,6 +201,7 @@
       <Filter>open303</Filter>
     </ClCompile>
     <ClCompile Include="..\BassMatrixControls.cpp" />
+    <ClCompile Include="..\Effects.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="../config.h" />
@@ -498,6 +499,7 @@
       <Filter>open303</Filter>
     </ClInclude>
     <ClInclude Include="..\BassMatrixControls.h" />
+    <ClInclude Include="..\Effects.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="resources">
