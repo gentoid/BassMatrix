@@ -66,6 +66,7 @@
 #define PNGBTNPROP_FN "btnProp.png"
 #define PNGSTOP_FN "btnStop.png"
 #define PNGWAVEFORM_FN "btnWaveForm.png"
+#define PNGEFFECTS_FN "btnWaveForm.png"
 #define PNGHOSTSYNC_FN "btnHostSync.png"
 #define PNGKEYSYNC_FN "btnKeySync.png"
 #define PNGINTERNALSYNC_FN "btnInternalSync.png"

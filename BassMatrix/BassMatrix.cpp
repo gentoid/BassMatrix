@@ -205,7 +205,8 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
     const IBitmap btnWaveForm = pGraphics->LoadBitmap(PNGWAVEFORM_FN, 2, true);
     pGraphics->AttachControl(new IBSwitchControl(200, 50, btnWaveForm, kParamWaveForm),
                              kCtrlWaveForm);
-    pGraphics->AttachControl(new IBSwitchControl(200, 75, btnWaveForm, kParamEffects),
+    const IBitmap btnUseEffects = pGraphics->LoadBitmap(PNGEFFECTS_FN, 2, true);
+    pGraphics->AttachControl(new IBSwitchControl(200, 75, btnUseEffects, kParamEffects),
                              kCtrlEffects);
     pGraphics->AttachControl(new IBKnobControl(310, 30, knobLittleBitmap, kParamTuning));
     pGraphics->AttachControl(new IBKnobControl(410, 30, knobLittleBitmap, kParamCutOff));
