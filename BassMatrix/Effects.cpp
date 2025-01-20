@@ -1,5 +1,12 @@
 #include "Effects.h"
 
+template <typename T>
+T
+my_clamp(T value, T min, T max)
+{
+  return value < min ? min : (value > max ? max : value);
+}
+
 // Amazon Q
 AcidStereoDelay::AcidStereoDelay(double sampleRate) :
   writeIndex(0),
@@ -39,14 +46,14 @@ AcidStereoDelay::setDelayTime(double timeMs)
 void
 AcidStereoDelay::setFeedback(double fb)
 {
-  feedback = std::clamp(fb, 0.0, 0.95);  // Limit feedback to prevent runaway
+  feedback = my_clamp(fb, 0.0, 0.95);  // Limit feedback to prevent runaway
 }
 
 void
 AcidStereoDelay::setWetDryMix(double wet, double dry)
 {
-  wetMix = std::clamp(wet, 0.0, 1.0);
-  dryMix = std::clamp(dry, 0.0, 1.0);
+  wetMix = my_clamp(wet, 0.0, 1.0);
+  dryMix = my_clamp(dry, 0.0, 1.0);
 }
 
 // Process a single mono sample and return stereo output
