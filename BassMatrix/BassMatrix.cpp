@@ -800,8 +800,9 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
     rosic::AcidNote note;
     bool onNew16th = false;
 
-    std::pair<double, double> delayOut =
-        processDelayReverbAudioBlock(GetSampleRate(), open303Core.getSample(note, onNew16th));
+    double tb303Oout = open303Core.getSample(note, onNew16th);
+    double tubeOut = processAcidTubeSaturatorBlock(GetSampleRate(), tb303Oout);
+    std::pair<double, double> delayOut = processDelayReverbAudioBlock(GetSampleRate(), tubeOut);
 
     *out01++ = delayOut.first;
     *out02++ = delayOut.second;

@@ -170,3 +170,16 @@ processDelayReverbAudioBlock(double sampleRate, double input)
 
   return std::make_pair(left, right);
 }
+
+// Usage example:
+double
+processAcidTubeSaturatorBlock(double sampleRate, double input)
+{
+  static AcidTubeSaturator saturator(sampleRate);
+
+  saturator.setDrive(0.7);  // 70% drive
+  saturator.setBias(0.1);   // Slight positive bias
+  saturator.setMix(1.0);    // 100% wet
+
+  return saturator.process(input);
+}
