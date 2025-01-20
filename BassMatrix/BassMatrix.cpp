@@ -77,7 +77,8 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mPlugUIScale(1.0),
   mHasChanged(false),
   mKnobLoopSize(0),
-  mCurrentPattern(0)
+  mCurrentPattern(0),
+  mUseEffects(true)
 {
 #ifdef _WIN32
 #ifdef _DEBUG
@@ -110,6 +111,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
   GetParam(kParamWaveForm)->InitBool("Waveform", false);
+  GetParam(kParamEffects)->InitBool("Waveform", true);
   GetParam(kParamStop)->InitBool("Stop", false);
   GetParam(kParamHostSync)->InitBool("Host Sync", false);
   GetParam(kParamKeySync)->InitBool("Key Sync", false);
@@ -200,9 +202,11 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
     const IBitmap knobLittleBitmap = pGraphics->LoadBitmap(PNGFX1LITTLE_FN, 127);
     const IBitmap knobBigBitmap = pGraphics->LoadBitmap(PNGFX1BIG_FN, 61);
     //    pGraphics->AttachControl(new IBKnobControl(210, 30, knobLittleBitmap, kParamWaveForm));
-    const IBitmap btnWaveFormBitmap = pGraphics->LoadBitmap(PNGWAVEFORM_FN, 2, true);
-    pGraphics->AttachControl(new IBSwitchControl(200, 50, btnWaveFormBitmap, kParamWaveForm),
+    const IBitmap btnWaveForm = pGraphics->LoadBitmap(PNGWAVEFORM_FN, 2, true);
+    pGraphics->AttachControl(new IBSwitchControl(200, 50, btnWaveForm, kParamWaveForm),
                              kCtrlWaveForm);
+    pGraphics->AttachControl(new IBSwitchControl(200, 75, btnWaveForm, kParamEffects),
+                             kCtrlEffects);
     pGraphics->AttachControl(new IBKnobControl(310, 30, knobLittleBitmap, kParamTuning));
     pGraphics->AttachControl(new IBKnobControl(410, 30, knobLittleBitmap, kParamCutOff));
     pGraphics->AttachControl(new IBKnobControl(510, 30, knobLittleBitmap, kParamResonance));
@@ -467,14 +471,19 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
 
   ENTER_PARAMS_MUTEX
 
-  int n = NParams(), pos = startPos;
+  int nrOfParameters = NParams(), pos = startPos;
 
   // Check version for the preset format
   double version;
   pos = chunk.Get(&version, pos);
   assert(version == 1.1);
 
-  for (int i = kParamCutOff; i < n && pos >= 0; ++i)
+  if (version == 1.0)
+  {
+    nrOfParameters = NParams() - 1;  // The use effects button has been added since 1.0
+  }
+
+  for (int i = kParamCutOff; i < nrOfParameters && pos >= 0; ++i)
   {
     IParam *pParam = GetParam(i);
     double v = 0.0;
@@ -801,11 +810,19 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
     bool onNew16th = false;
 
     double tb303Oout = open303Core.getSample(note, onNew16th);
-    double tubeOut = processAcidTubeSaturatorBlock(GetSampleRate(), tb303Oout);
-    std::pair<double, double> delayOut = processDelayReverbAudioBlock(GetSampleRate(), tubeOut);
 
-    *out01++ = delayOut.first;
-    *out02++ = delayOut.second;
+    if (mUseEffects)
+    {
+      double tubeOut = processAcidTubeSaturatorBlock(GetSampleRate(), tb303Oout);
+      std::pair<double, double> delayOut = processDelayReverbAudioBlock(GetSampleRate(), tubeOut);
+      *out01++ = delayOut.first;
+      *out02++ = delayOut.second;
+    }
+    else
+    {
+      *out01++ = tb303Oout;
+      *out02++ = tb303Oout;
+    }
 
 #ifdef VST3_API
     static int currentKey = 0;
@@ -1087,6 +1104,7 @@ BassMatrix::OnParamChange(int paramIdx)
         open303Core.setWaveform(0.0);  // Saw
       }
       break;
+    case kParamEffects: mUseEffects = (value == 1.0) ? true : false; break;
     case kParamTuning: open303Core.setTuning(value); break;
     case kParamEnvMode: open303Core.setEnvMod(value); break;
     case kParamDecay: open303Core.setDecay(value); break;

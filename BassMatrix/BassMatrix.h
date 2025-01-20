@@ -45,6 +45,7 @@ enum EParams
   kParamCopy,
   kParamClear,
   kParamRandomize,
+  kParamEffects,
 
   kNumParams
 };
@@ -64,6 +65,7 @@ enum ECtrlTags
   kCtrlTagKeySync,
   kCtrlTagInternalSync,
   kCtrlTagMidiPlay,
+  kCtrlEffects,
 
   kNumCtrlTags
 };
@@ -119,6 +121,7 @@ private:
   int mCurrentPattern;
   bool mHasChanged;
   double mPlugUIScale;
+  bool mUseEffects;
 };
 
 

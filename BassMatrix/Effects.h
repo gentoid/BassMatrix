@@ -2,7 +2,12 @@
 #include <utility>    // For std::pair, std::make_pair
 #include <cstring>    // For memory operations
 #include <cmath>      // For mathematical operations
-#include <numbers>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+// Rest of the code remains the same...
 
 // From Amazon Q
 class AcidStereoDelay
@@ -321,7 +326,7 @@ private:
   double removeDC(double input)
   {
     const double dcFilterCutoff = 20.0;
-    const double r = 1.0 - (2.0 * std::numbers::pi * dcFilterCutoff / sampleRate);
+    const double r = 1.0 - (2.0 * M_PI * dcFilterCutoff / sampleRate);
 
     double output = input - lastInputDC + r * lastOutputDC;
     lastInputDC = input;
