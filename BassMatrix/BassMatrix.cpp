@@ -893,6 +893,13 @@ BassMatrix::CreateGraphics()
 #endif  // VST3_API
 #endif  // IPLUG_EDITOR
 
+#if IPLUG_DSP
+void
+BassMatrix::ProcessMidiMsg(const IMidiMsg &msg)
+{
+  TRACE;
+  mMidiQueue.Add(msg);  // Take care of MIDI events in ProcessBlock()
+}
 
 void
 BassMatrix::OnReset()
@@ -913,13 +920,7 @@ BassMatrix::OnReset()
   open303Core.setPostFilterHighpass(24.0);
   open303Core.setSquarePhaseShift(189.0);
 }
-
-void
-BassMatrix::ProcessMidiMsg(const IMidiMsg &msg)
-{
-  TRACE;
-  mMidiQueue.Add(msg);  // Take care of MIDI events in ProcessBlock()
-}
+#endif
 
 #if IPLUG_DSP
 
