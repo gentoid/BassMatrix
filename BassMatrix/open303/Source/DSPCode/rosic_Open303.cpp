@@ -83,6 +83,7 @@ Open303::~Open303()
 
 void Open303::setSampleRate(double newSampleRate)
 {
+  sampleRate = newSampleRate;
   mainEnv.setSampleRate         (       newSampleRate);
   ampEnv.setSampleRate          (       newSampleRate);
   pitchSlewLimiter.setSampleRate((float)newSampleRate);
@@ -99,6 +100,11 @@ void Open303::setSampleRate(double newSampleRate)
 
   oscillator.setSampleRate    (  oversampling*newSampleRate);
   filter.setSampleRate        (  oversampling*newSampleRate);
+}
+
+double Open303::getSampleRate()
+{
+  return sampleRate;
 }
 
 void Open303::setCutoff(double newCutoff)

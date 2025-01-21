@@ -664,6 +664,10 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
 void
 BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, int nFrames)
 {
+
+  assert(GetSampleRate() == open303Core.getSampleRate());
+
+
   // Channel declaration.
   PLUG_SAMPLE_DST *out01 = outputs[0];
   PLUG_SAMPLE_DST *out02 = outputs[1];

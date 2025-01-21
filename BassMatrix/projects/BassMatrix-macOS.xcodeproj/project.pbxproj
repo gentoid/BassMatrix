@@ -25,279 +25,318 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		4512A84D2D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A84E2D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A84F2D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8502D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8512D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8522D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8532D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8542D2069CC00C928E0 /* BassMatrixControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */; };
-		4512A8552D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8562D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8572D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8582D2069CC00C928E0 /* BassMatrixControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */; };
-		4512A8592D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */; };
-		4512A8822D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A8832D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A8842D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A8852D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A8862D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A8872D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A8882D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A8892D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A88A2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A88B2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A88C2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A88D2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A88E2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A88F2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A8902D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A8912D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A8922D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A8932D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A8942D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A8952D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A8962D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A8972D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A8982D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A8992D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A89A2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A89B2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A89C2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A89D2D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A89E2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A89F2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A8A02D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A8A12D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A8A22D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A8A32D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A8A42D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A8A52D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A8A62D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A8A72D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A8A82D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A8A92D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A8AA2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A8AB2D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A8AC2D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A8AD2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A8AE2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A8AF2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A8B02D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A8B12D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A8B22D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A8B32D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A8B42D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A8B52D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A8B62D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A8B72D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A8B82D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A8B92D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A8BA2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A8BB2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A8BC2D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A8BD2D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A8BE2D206A7D00C928E0 /* GlobalFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */; };
-		4512A8BF2D206A7D00C928E0 /* rosic_AcidPattern.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */; };
-		4512A8C02D206A7D00C928E0 /* rosic_LeakyIntegrator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */; };
-		4512A8C12D206A7D00C928E0 /* rosic_RealFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */; };
-		4512A8C22D206A7D00C928E0 /* rosic_TeeBeeFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */; };
-		4512A8C32D206A7D00C928E0 /* rosic_NumberManipulations.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */; };
-		4512A8C42D206A7D00C928E0 /* rosic_BlendOscillator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */; };
-		4512A8C52D206A7D00C928E0 /* rosic_Complex.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8682D206A7D00C928E0 /* rosic_Complex.h */; };
-		4512A8C62D206A7D00C928E0 /* rosic_MipMappedWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */; };
-		4512A8C72D206A7D00C928E0 /* rosic_BiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */; };
-		4512A8C82D206A7D00C928E0 /* rosic_FunctionTemplates.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */; };
-		4512A8C92D206A7D00C928E0 /* rosic_DecayEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */; };
-		4512A8CA2D206A7D00C928E0 /* rosic_Open303.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A87C2D206A7D00C928E0 /* rosic_Open303.h */; };
-		4512A8CB2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */; };
-		4512A8CC2D206A7D00C928E0 /* rosic_AcidSequencer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */; };
-		4512A8CD2D206A7D00C928E0 /* rosic_AnalogEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */; };
-		4512A8CE2D206A7D00C928E0 /* GlobalDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */; };
-		4512A8CF2D206A7D00C928E0 /* rosic_OnePoleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */; };
-		4512A8D02D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */; };
-		4512A8D12D206A7D00C928E0 /* rosic_MidiNoteEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */; };
-		4512A8D22D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A8D32D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A8D42D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A8D52D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A8D62D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A8D72D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A8D82D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A8D92D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A8DA2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A8DB2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A8DC2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A8DD2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A8DE2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A8DF2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A8E02D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A8E12D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A8E22D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A8E32D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A8E42D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A8E52D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A8E62D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A8E72D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A8E82D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A8E92D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A8EA2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A8EB2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A8EC2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A8ED2D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A8EE2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A8EF2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A8F02D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A8F12D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A8F22D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A8F32D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A8F42D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A8F52D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A8F62D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A8F72D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A8F82D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A8F92D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A8FA2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A8FB2D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A8FC2D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A8FD2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A8FE2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A8FF2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A9002D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A9012D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A9022D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A9032D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A9042D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A9052D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A9062D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A9072D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A9082D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A9092D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A90A2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A90B2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A90C2D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A90D2D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A90E2D206A7D00C928E0 /* GlobalFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */; };
-		4512A90F2D206A7D00C928E0 /* rosic_AcidPattern.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */; };
-		4512A9102D206A7D00C928E0 /* rosic_LeakyIntegrator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */; };
-		4512A9112D206A7D00C928E0 /* rosic_RealFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */; };
-		4512A9122D206A7D00C928E0 /* rosic_TeeBeeFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */; };
-		4512A9132D206A7D00C928E0 /* rosic_NumberManipulations.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */; };
-		4512A9142D206A7D00C928E0 /* rosic_BlendOscillator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */; };
-		4512A9152D206A7D00C928E0 /* rosic_Complex.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8682D206A7D00C928E0 /* rosic_Complex.h */; };
-		4512A9162D206A7D00C928E0 /* rosic_MipMappedWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */; };
-		4512A9172D206A7D00C928E0 /* rosic_BiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */; };
-		4512A9182D206A7D00C928E0 /* rosic_FunctionTemplates.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */; };
-		4512A9192D206A7D00C928E0 /* rosic_DecayEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */; };
-		4512A91A2D206A7D00C928E0 /* rosic_Open303.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A87C2D206A7D00C928E0 /* rosic_Open303.h */; };
-		4512A91B2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */; };
-		4512A91C2D206A7D00C928E0 /* rosic_AcidSequencer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */; };
-		4512A91D2D206A7D00C928E0 /* rosic_AnalogEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */; };
-		4512A91E2D206A7D00C928E0 /* GlobalDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */; };
-		4512A91F2D206A7D00C928E0 /* rosic_OnePoleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */; };
-		4512A9202D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */; };
-		4512A9212D206A7D00C928E0 /* rosic_MidiNoteEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */; };
-		4512A9222D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A9232D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A9242D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A9252D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A9262D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A9272D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A9282D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A9292D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A92A2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A92B2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A92C2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A92D2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A92E2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A92F2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A9302D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A9312D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A9322D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A9332D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A9342D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A9352D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A9362D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A9372D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A9382D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A9392D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A93A2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A93B2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A93C2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A93D2D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A93E2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A93F2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A9402D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A9412D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A9422D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A9432D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A9442D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A9452D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A9462D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A9472D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A9482D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A9492D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A94A2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A94B2D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A94C2D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A94D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A94E2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A94F2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A9502D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A9512D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A9522D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A9532D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A9542D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A9552D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A9562D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A9572D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A9582D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A9592D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A95A2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A95B2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A95C2D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A95D2D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A95E2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A95F2D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A9602D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A9612D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A9622D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A9632D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A9642D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A9652D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A9662D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A9672D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A9682D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A9692D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A96A2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A96B2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A96C2D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A96D2D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A96E2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A96F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A9702D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A9712D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
-		4512A9722D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */; };
-		4512A9732D206A7D00C928E0 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85A2D206A7D00C928E0 /* fft4g.c */; };
-		4512A9742D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */; };
-		4512A9752D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */; };
-		4512A9762D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */; };
-		4512A9772D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */; };
-		4512A9782D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */; };
-		4512A9792D206A7D00C928E0 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */; };
-		4512A97A2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */; };
-		4512A97B2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */; };
-		4512A97C2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */; };
-		4512A97D2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */; };
-		4512A97E2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */; };
-		4512A97F2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */; };
-		4512A9802D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */; };
-		4512A9812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */; };
-		4512A9822D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */; };
-		4512A9832D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */; };
-		4512A9842D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */; };
-		4512A9852D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */; };
+		45B25D1A2D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D1B2D3F7360003EDE09 /* Effects.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D182D3F7360003EDE09 /* Effects.h */; };
+		45B25D1C2D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D1D2D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D1E2D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D1F2D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D202D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D212D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D222D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D232D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D242D3F7360003EDE09 /* Effects.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D182D3F7360003EDE09 /* Effects.h */; };
+		45B25D252D3F7360003EDE09 /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D192D3F7360003EDE09 /* Effects.cpp */; };
+		45B25D4F2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25D502D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25D512D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25D522D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25D532D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25D542D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25D552D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25D562D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25D572D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25D582D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25D592D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25D5A2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25D5B2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25D5C2D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25D5D2D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25D5E2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25D5F2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25D602D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25D612D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25D622D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25D632D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25D642D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25D652D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25D662D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25D672D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25D682D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25D692D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25D6A2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25D6B2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25D6C2D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25D6D2D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25D6E2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25D6F2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25D702D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25D712D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25D722D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25D732D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25D742D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25D752D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25D762D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25D772D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25D782D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25D792D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25D7A2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25D7B2D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25D7C2D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25D7D2D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25D7E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25D7F2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25D802D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25D812D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25D822D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25D832D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25D842D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25D852D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25D862D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25D872D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25D882D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25D892D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25D8A2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25D8B2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25D8C2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25D8D2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25D8E2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25D8F2D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25D902D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25D912D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25D922D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25D932D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25D942D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25D952D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25D962D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25D972D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25D982D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25D992D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25D9A2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25D9B2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25D9C2D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25D9D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25D9E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25D9F2D3F75D1003EDE09 /* rosic_DecayEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D362D3F75D1003EDE09 /* rosic_DecayEnvelope.h */; };
+		45B25DA02D3F75D1003EDE09 /* rosic_BiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D302D3F75D1003EDE09 /* rosic_BiquadFilter.h */; };
+		45B25DA12D3F75D1003EDE09 /* GlobalFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D282D3F75D1003EDE09 /* GlobalFunctions.h */; };
+		45B25DA22D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D382D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h */; };
+		45B25DA32D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D3A2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h */; };
+		45B25DA42D3F75D1003EDE09 /* rosic_AcidSequencer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D2C2D3F75D1003EDE09 /* rosic_AcidSequencer.h */; };
+		45B25DA52D3F75D1003EDE09 /* rosic_OnePoleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D462D3F75D1003EDE09 /* rosic_OnePoleFilter.h */; };
+		45B25DA62D3F75D1003EDE09 /* rosic_LeakyIntegrator.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D3E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.h */; };
+		45B25DA72D3F75D1003EDE09 /* GlobalDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D272D3F75D1003EDE09 /* GlobalDefinitions.h */; };
+		45B25DA82D3F75D1003EDE09 /* rosic_RealFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D4A2D3F75D1003EDE09 /* rosic_RealFunctions.h */; };
+		45B25DA92D3F75D1003EDE09 /* rosic_AnalogEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D2E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.h */; };
+		45B25DAA2D3F75D1003EDE09 /* rosic_BlendOscillator.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D322D3F75D1003EDE09 /* rosic_BlendOscillator.h */; };
+		45B25DAB2D3F75D1003EDE09 /* rosic_Complex.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D342D3F75D1003EDE09 /* rosic_Complex.h */; };
+		45B25DAC2D3F75D1003EDE09 /* rosic_NumberManipulations.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D442D3F75D1003EDE09 /* rosic_NumberManipulations.h */; };
+		45B25DAD2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D4C2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h */; };
+		45B25DAE2D3F75D1003EDE09 /* rosic_FunctionTemplates.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D3C2D3F75D1003EDE09 /* rosic_FunctionTemplates.h */; };
+		45B25DAF2D3F75D1003EDE09 /* rosic_AcidPattern.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D2A2D3F75D1003EDE09 /* rosic_AcidPattern.h */; };
+		45B25DB02D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D422D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h */; };
+		45B25DB12D3F75D1003EDE09 /* rosic_MidiNoteEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D402D3F75D1003EDE09 /* rosic_MidiNoteEvent.h */; };
+		45B25DB22D3F75D1003EDE09 /* rosic_Open303.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D482D3F75D1003EDE09 /* rosic_Open303.h */; };
+		45B25DB32D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25DB42D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25DB52D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25DB62D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25DB72D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25DB82D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25DB92D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25DBA2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25DBB2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25DBC2D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25DBD2D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25DBE2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25DBF2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25DC02D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25DC12D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25DC22D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25DC32D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25DC42D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25DC52D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25DC62D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25DC72D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25DC82D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25DC92D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25DCA2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25DCB2D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25DCC2D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25DCD2D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25DCE2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25DCF2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25DD02D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25DD12D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25DD22D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25DD32D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25DD42D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25DD52D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25DD62D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25DD72D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25DD82D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25DD92D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25DDA2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25DDB2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25DDC2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25DDD2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25DDE2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25DDF2D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25DE02D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25DE12D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25DE22D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25DE32D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25DE42D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25DE52D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25DE62D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25DE72D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25DE82D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25DE92D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25DEA2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25DEB2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25DEC2D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25DED2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25DEE2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25DEF2D3F75D1003EDE09 /* rosic_DecayEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D362D3F75D1003EDE09 /* rosic_DecayEnvelope.h */; };
+		45B25DF02D3F75D1003EDE09 /* rosic_BiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D302D3F75D1003EDE09 /* rosic_BiquadFilter.h */; };
+		45B25DF12D3F75D1003EDE09 /* GlobalFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D282D3F75D1003EDE09 /* GlobalFunctions.h */; };
+		45B25DF22D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D382D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h */; };
+		45B25DF32D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D3A2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h */; };
+		45B25DF42D3F75D1003EDE09 /* rosic_AcidSequencer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D2C2D3F75D1003EDE09 /* rosic_AcidSequencer.h */; };
+		45B25DF52D3F75D1003EDE09 /* rosic_OnePoleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D462D3F75D1003EDE09 /* rosic_OnePoleFilter.h */; };
+		45B25DF62D3F75D1003EDE09 /* rosic_LeakyIntegrator.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D3E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.h */; };
+		45B25DF72D3F75D1003EDE09 /* GlobalDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D272D3F75D1003EDE09 /* GlobalDefinitions.h */; };
+		45B25DF82D3F75D1003EDE09 /* rosic_RealFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D4A2D3F75D1003EDE09 /* rosic_RealFunctions.h */; };
+		45B25DF92D3F75D1003EDE09 /* rosic_AnalogEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D2E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.h */; };
+		45B25DFA2D3F75D1003EDE09 /* rosic_BlendOscillator.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D322D3F75D1003EDE09 /* rosic_BlendOscillator.h */; };
+		45B25DFB2D3F75D1003EDE09 /* rosic_Complex.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D342D3F75D1003EDE09 /* rosic_Complex.h */; };
+		45B25DFC2D3F75D1003EDE09 /* rosic_NumberManipulations.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D442D3F75D1003EDE09 /* rosic_NumberManipulations.h */; };
+		45B25DFD2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D4C2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h */; };
+		45B25DFE2D3F75D1003EDE09 /* rosic_FunctionTemplates.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D3C2D3F75D1003EDE09 /* rosic_FunctionTemplates.h */; };
+		45B25DFF2D3F75D1003EDE09 /* rosic_AcidPattern.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D2A2D3F75D1003EDE09 /* rosic_AcidPattern.h */; };
+		45B25E002D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D422D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h */; };
+		45B25E012D3F75D1003EDE09 /* rosic_MidiNoteEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D402D3F75D1003EDE09 /* rosic_MidiNoteEvent.h */; };
+		45B25E022D3F75D1003EDE09 /* rosic_Open303.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25D482D3F75D1003EDE09 /* rosic_Open303.h */; };
+		45B25E032D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25E042D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25E052D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25E062D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25E072D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25E082D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25E092D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25E0A2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25E0B2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25E0C2D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25E0D2D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25E0E2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25E0F2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25E102D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25E112D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25E122D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25E132D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25E142D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25E152D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25E162D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25E172D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25E182D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25E192D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25E1A2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25E1B2D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25E1C2D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25E1D2D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25E1E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25E1F2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25E202D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25E212D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25E222D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25E232D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25E242D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25E252D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25E262D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25E272D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25E282D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25E292D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25E2A2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25E2B2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25E2C2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25E2D2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25E2E2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25E2F2D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25E302D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25E312D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25E322D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25E332D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25E342D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25E352D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25E362D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25E372D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25E382D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25E392D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25E3A2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25E3B2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25E3C2D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25E3D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25E3E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25E3F2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */; };
+		45B25E402D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */; };
+		45B25E412D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */; };
+		45B25E422D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */; };
+		45B25E432D3F75D1003EDE09 /* fft4g.c in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D262D3F75D1003EDE09 /* fft4g.c */; };
+		45B25E442D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */; };
+		45B25E452D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */; };
+		45B25E462D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */; };
+		45B25E472D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */; };
+		45B25E482D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */; };
+		45B25E492D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */; };
+		45B25E4A2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */; };
+		45B25E4B2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */; };
+		45B25E4C2D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */; };
+		45B25E4D2D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */; };
+		45B25E4E2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */; };
+		45B25E4F2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */; };
+		45B25E502D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */; };
+		45B25E512D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */; };
+		45B25E522D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */; };
+		45B25E5A2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E5B2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E5C2D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E5D2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E5E2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E5F2D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E602D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E612D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E622D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E632D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E642D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E652D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E662D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E672D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E682D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E692D3F76D2003EDE09 /* BassMatrixControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E562D3F76D2003EDE09 /* BassMatrixControls.h */; };
+		45B25E6A2D3F76D2003EDE09 /* BassMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E532D3F76D2003EDE09 /* BassMatrix.h */; };
+		45B25E6B2D3F76D2003EDE09 /* BassMatrix_DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E552D3F76D2003EDE09 /* BassMatrix_DSP.h */; };
+		45B25E6C2D3F76D2003EDE09 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E582D3F76D2003EDE09 /* config.h */; };
+		45B25E6D2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E6E2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E6F2D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E702D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E712D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E722D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E732D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E742D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E752D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E762D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E772D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E782D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E792D3F76D2003EDE09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45B25E592D3F76D2003EDE09 /* README.md */; };
+		45B25E7A2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E7B2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E7C2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */; };
+		45B25E7D2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */; };
+		45B25E7E2D3F76D2003EDE09 /* BassMatrixControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E562D3F76D2003EDE09 /* BassMatrixControls.h */; };
+		45B25E7F2D3F76D2003EDE09 /* BassMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E532D3F76D2003EDE09 /* BassMatrix.h */; };
+		45B25E802D3F76D2003EDE09 /* BassMatrix_DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E552D3F76D2003EDE09 /* BassMatrix_DSP.h */; };
+		45B25E812D3F76D2003EDE09 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B25E582D3F76D2003EDE09 /* config.h */; };
 		4F03A58C20A4621100EBDFFB /* IGraphicsNanoVG.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F03A55020A4621000EBDFFB /* IGraphicsNanoVG.h */; };
 		4F03A5AA20A4621100EBDFFB /* IGraphicsLiveEdit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F03A55620A4621000EBDFFB /* IGraphicsLiveEdit.h */; };
 		4F03A5AB20A4621100EBDFFB /* IGraphics_include_in_plug_hdr.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F03A55720A4621000EBDFFB /* IGraphics_include_in_plug_hdr.h */; };
@@ -330,10 +369,6 @@
 		4F35DEAF207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */; };
 		4F35DEB0207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */; };
 		4F35DEB1207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */; };
-		4F3862EF2014BBEC0009F402 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
-		4F3862F12014BBEC0009F402 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
-		4F3862F22014BBEC0009F402 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
-		4F3862F32014BBEC0009F402 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4F3EE1BF231438D000004786 /* BassMatrix.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4FD290A8137C34D700CEBE7E /* BassMatrix.icns */; };
 		4F3EE1C0231438D000004786 /* BassMatrix-macOS-MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F1B4AE32014D33600BC64D4 /* BassMatrix-macOS-MainMenu.xib */; };
 		4F3EE1C2231438D000004786 /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
@@ -362,7 +397,6 @@
 		4F3EE1DB231438D000004786 /* IPlugAPP_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F690C9A203A345100A4A13E /* IPlugAPP_main.cpp */; };
 		4F3EE1DC231438D000004786 /* IControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F63695920A463090022C370 /* IControls.cpp */; };
 		4F3EE1DD231438D000004786 /* IGraphicsMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1F58120E4AFEE004157C8 /* IGraphicsMac.mm */; };
-		4F3EE1DE231438D000004786 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4F3EE1DF231438D000004786 /* IPopupMenuControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A82F5213DE80300BE63A4 /* IPopupMenuControl.cpp */; };
 		4F3EE1E0231438D000004786 /* IPlugAPIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F78D8ED13B63BA40032E0F3 /* IPlugAPIBase.cpp */; };
 		4F3EE1E1231438D000004786 /* IPlugPluginBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */; };
@@ -415,8 +449,6 @@
 		4F722020225C1EB100FF0E7C /* commoniids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F72201E225C1EB100FF0E7C /* commoniids.cpp */; };
 		4F722021225C1EB100FF0E7C /* commoniids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F72201E225C1EB100FF0E7C /* commoniids.cpp */; };
 		4F78BE1222E73DD900AD537E /* AUv3Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F78BE1022E73DD900AD537E /* AUv3Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F78BE1422E7406D00AD537E /* BassMatrix.h in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862EE2014BBEC0009F402 /* BassMatrix.h */; };
-		4F78BE1522E7406D00AD537E /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4F78BE1622E7406D00AD537E /* IGraphicsMac_view.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1F58620E4AFEF004157C8 /* IGraphicsMac_view.mm */; };
 		4F78BE1722E7406D00AD537E /* IGraphicsMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1F58120E4AFEE004157C8 /* IGraphicsMac.mm */; };
 		4F78BE1822E7406D00AD537E /* IGraphicsCoreText.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FD2AF22675B6300FC59E6 /* IGraphicsCoreText.mm */; };
@@ -482,7 +514,6 @@
 		4F8C10E420BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8C10DE20BA2796006320CD /* IGraphicsEditorDelegate.cpp */; };
 		4F8C10E620BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8C10DE20BA2796006320CD /* IGraphicsEditorDelegate.cpp */; };
 		4F8C10E720BA2796006320CD /* IGraphicsEditorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F8C10DF20BA2796006320CD /* IGraphicsEditorDelegate.h */; };
-		4F8D9707209EF5AC006E2A11 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4F9828B8140A9EB700F3FCC1 /* IPlugAPIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F78D8ED13B63BA40032E0F3 /* IPlugAPIBase.cpp */; };
 		4F9828C1140A9EB700F3FCC1 /* IPlugParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F78D90413B63BA50032E0F3 /* IPlugParameter.cpp */; };
 		4F993F7223055C96000313AF /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
@@ -514,7 +545,6 @@
 		4FB600231567CB0A0020189A /* IPlugParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F78D90413B63BA50032E0F3 /* IPlugParameter.cpp */; };
 		4FB600261567CB0A0020189A /* AAX_Exports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CC38A1549B91100A9EA21 /* AAX_Exports.cpp */; };
 		4FB600281567CB0A0020189A /* IPlugAAX_Describe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CC4401549C15500A9EA21 /* IPlugAAX_Describe.cpp */; };
-		4FC3EFCB2086C27800BD11FA /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4FC3EFCE2086C35D00BD11FA /* IPlugPluginBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */; };
 		4FC3EFD42086C49D00BD11FA /* BassMatrixVST3Controller.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC3EFC42086C0A600BD11FA /* BassMatrixVST3Controller.a */; };
 		4FC3EFF02086CE5700BD11FA /* eventlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC3EFDD2086CE5600BD11FA /* eventlist.h */; };
@@ -555,7 +585,6 @@
 		4FD8699A27206006005A5F28 /* IPopupMenuControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A82F5213DE80300BE63A4 /* IPopupMenuControl.cpp */; };
 		4FD8699C27206006005A5F28 /* IGraphicsEditorDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8C10DE20BA2796006320CD /* IGraphicsEditorDelegate.cpp */; };
 		4FD8699D27206006005A5F28 /* IGraphicsNanoVG_src.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6369DC20A464BB0022C370 /* IGraphicsNanoVG_src.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		4FD8699E27206006005A5F28 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4FD8699F27206006005A5F28 /* IPlugAPIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F78D8ED13B63BA40032E0F3 /* IPlugAPIBase.cpp */; };
 		4FD869A027206006005A5F28 /* IGraphicsMac_view.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1F58620E4AFEF004157C8 /* IGraphicsMac_view.mm */; };
 		4FD869A127206006005A5F28 /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
@@ -590,7 +619,6 @@
 		4FF3205820B2BFAB00269268 /* IPlugPaths.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FF3204F20B2BFAB00269268 /* IPlugPaths.h */; };
 		4FFBB90520863B0E00DDD0E7 /* baseiids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8158BF205D50EB00393585 /* baseiids.cpp */; };
 		4FFBB90620863B0E00DDD0E7 /* IPlugTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAC0E6207D76C600299363 /* IPlugTimer.cpp */; };
-		4FFBB90720863B0E00DDD0E7 /* BassMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */; };
 		4FFBB90820863B0E00DDD0E7 /* pluginfactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8157E9205D50EA00393585 /* pluginfactory.cpp */; };
 		4FFBB90920863B0E00DDD0E7 /* vstinitiids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F81588D205D50EB00393585 /* vstinitiids.cpp */; };
 		4FFBB90A20863B0E00DDD0E7 /* fdebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8158C5205D50EB00393585 /* fdebug.cpp */; };
@@ -727,48 +755,55 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BassMatrixControls.h; path = ../BassMatrixControls.h; sourceTree = "<group>"; };
-		4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BassMatrixControls.cpp; path = ../BassMatrixControls.cpp; sourceTree = "<group>"; };
-		4512A85A2D206A7D00C928E0 /* fft4g.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fft4g.c; path = ../fft4g.c; sourceTree = "<group>"; };
-		4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GlobalDefinitions.h; path = ../GlobalDefinitions.h; sourceTree = "<group>"; };
-		4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GlobalFunctions.h; path = ../GlobalFunctions.h; sourceTree = "<group>"; };
-		4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalFunctions.cpp; path = ../GlobalFunctions.cpp; sourceTree = "<group>"; };
-		4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_AcidPattern.h; path = ../rosic_AcidPattern.h; sourceTree = "<group>"; };
-		4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_AcidPattern.cpp; path = ../rosic_AcidPattern.cpp; sourceTree = "<group>"; };
-		4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_AcidSequencer.h; path = ../rosic_AcidSequencer.h; sourceTree = "<group>"; };
-		4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_AcidSequencer.cpp; path = ../rosic_AcidSequencer.cpp; sourceTree = "<group>"; };
-		4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_AnalogEnvelope.h; path = ../rosic_AnalogEnvelope.h; sourceTree = "<group>"; };
-		4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_AnalogEnvelope.cpp; path = ../rosic_AnalogEnvelope.cpp; sourceTree = "<group>"; };
-		4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_BiquadFilter.h; path = ../rosic_BiquadFilter.h; sourceTree = "<group>"; };
-		4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_BiquadFilter.cpp; path = ../rosic_BiquadFilter.cpp; sourceTree = "<group>"; };
-		4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_BlendOscillator.h; path = ../rosic_BlendOscillator.h; sourceTree = "<group>"; };
-		4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_BlendOscillator.cpp; path = ../rosic_BlendOscillator.cpp; sourceTree = "<group>"; };
-		4512A8682D206A7D00C928E0 /* rosic_Complex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_Complex.h; path = ../rosic_Complex.h; sourceTree = "<group>"; };
-		4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_Complex.cpp; path = ../rosic_Complex.cpp; sourceTree = "<group>"; };
-		4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_DecayEnvelope.h; path = ../rosic_DecayEnvelope.h; sourceTree = "<group>"; };
-		4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_DecayEnvelope.cpp; path = ../rosic_DecayEnvelope.cpp; sourceTree = "<group>"; };
-		4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_EllipticQuarterBandFilter.h; path = ../rosic_EllipticQuarterBandFilter.h; sourceTree = "<group>"; };
-		4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_EllipticQuarterBandFilter.cpp; path = ../rosic_EllipticQuarterBandFilter.cpp; sourceTree = "<group>"; };
-		4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_FourierTransformerRadix2.h; path = ../rosic_FourierTransformerRadix2.h; sourceTree = "<group>"; };
-		4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_FourierTransformerRadix2.cpp; path = ../rosic_FourierTransformerRadix2.cpp; sourceTree = "<group>"; };
-		4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_FunctionTemplates.h; path = ../rosic_FunctionTemplates.h; sourceTree = "<group>"; };
-		4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_FunctionTemplates.cpp; path = ../rosic_FunctionTemplates.cpp; sourceTree = "<group>"; };
-		4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_LeakyIntegrator.h; path = ../rosic_LeakyIntegrator.h; sourceTree = "<group>"; };
-		4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_LeakyIntegrator.cpp; path = ../rosic_LeakyIntegrator.cpp; sourceTree = "<group>"; };
-		4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_MidiNoteEvent.h; path = ../rosic_MidiNoteEvent.h; sourceTree = "<group>"; };
-		4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_MidiNoteEvent.cpp; path = ../rosic_MidiNoteEvent.cpp; sourceTree = "<group>"; };
-		4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_MipMappedWaveTable.h; path = ../rosic_MipMappedWaveTable.h; sourceTree = "<group>"; };
-		4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_MipMappedWaveTable.cpp; path = ../rosic_MipMappedWaveTable.cpp; sourceTree = "<group>"; };
-		4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_NumberManipulations.h; path = ../rosic_NumberManipulations.h; sourceTree = "<group>"; };
-		4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_NumberManipulations.cpp; path = ../rosic_NumberManipulations.cpp; sourceTree = "<group>"; };
-		4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_OnePoleFilter.h; path = ../rosic_OnePoleFilter.h; sourceTree = "<group>"; };
-		4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_OnePoleFilter.cpp; path = ../rosic_OnePoleFilter.cpp; sourceTree = "<group>"; };
-		4512A87C2D206A7D00C928E0 /* rosic_Open303.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_Open303.h; path = ../rosic_Open303.h; sourceTree = "<group>"; };
-		4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_Open303.cpp; path = ../rosic_Open303.cpp; sourceTree = "<group>"; };
-		4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_RealFunctions.h; path = ../rosic_RealFunctions.h; sourceTree = "<group>"; };
-		4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_RealFunctions.cpp; path = ../rosic_RealFunctions.cpp; sourceTree = "<group>"; };
-		4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rosic_TeeBeeFilter.h; path = ../rosic_TeeBeeFilter.h; sourceTree = "<group>"; };
-		4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = rosic_TeeBeeFilter.cpp; path = ../rosic_TeeBeeFilter.cpp; sourceTree = "<group>"; };
+		45B25D182D3F7360003EDE09 /* Effects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Effects.h; path = ../Effects.h; sourceTree = SOURCE_ROOT; };
+		45B25D192D3F7360003EDE09 /* Effects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Effects.cpp; path = ../Effects.cpp; sourceTree = SOURCE_ROOT; };
+		45B25D262D3F75D1003EDE09 /* fft4g.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fft4g.c; sourceTree = "<group>"; };
+		45B25D272D3F75D1003EDE09 /* GlobalDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefinitions.h; sourceTree = "<group>"; };
+		45B25D282D3F75D1003EDE09 /* GlobalFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalFunctions.h; sourceTree = "<group>"; };
+		45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalFunctions.cpp; sourceTree = "<group>"; };
+		45B25D2A2D3F75D1003EDE09 /* rosic_AcidPattern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_AcidPattern.h; sourceTree = "<group>"; };
+		45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_AcidPattern.cpp; sourceTree = "<group>"; };
+		45B25D2C2D3F75D1003EDE09 /* rosic_AcidSequencer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_AcidSequencer.h; sourceTree = "<group>"; };
+		45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_AcidSequencer.cpp; sourceTree = "<group>"; };
+		45B25D2E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_AnalogEnvelope.h; sourceTree = "<group>"; };
+		45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_AnalogEnvelope.cpp; sourceTree = "<group>"; };
+		45B25D302D3F75D1003EDE09 /* rosic_BiquadFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_BiquadFilter.h; sourceTree = "<group>"; };
+		45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_BiquadFilter.cpp; sourceTree = "<group>"; };
+		45B25D322D3F75D1003EDE09 /* rosic_BlendOscillator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_BlendOscillator.h; sourceTree = "<group>"; };
+		45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_BlendOscillator.cpp; sourceTree = "<group>"; };
+		45B25D342D3F75D1003EDE09 /* rosic_Complex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_Complex.h; sourceTree = "<group>"; };
+		45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_Complex.cpp; sourceTree = "<group>"; };
+		45B25D362D3F75D1003EDE09 /* rosic_DecayEnvelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_DecayEnvelope.h; sourceTree = "<group>"; };
+		45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_DecayEnvelope.cpp; sourceTree = "<group>"; };
+		45B25D382D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_EllipticQuarterBandFilter.h; sourceTree = "<group>"; };
+		45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_EllipticQuarterBandFilter.cpp; sourceTree = "<group>"; };
+		45B25D3A2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_FourierTransformerRadix2.h; sourceTree = "<group>"; };
+		45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_FourierTransformerRadix2.cpp; sourceTree = "<group>"; };
+		45B25D3C2D3F75D1003EDE09 /* rosic_FunctionTemplates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_FunctionTemplates.h; sourceTree = "<group>"; };
+		45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_FunctionTemplates.cpp; sourceTree = "<group>"; };
+		45B25D3E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_LeakyIntegrator.h; sourceTree = "<group>"; };
+		45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_LeakyIntegrator.cpp; sourceTree = "<group>"; };
+		45B25D402D3F75D1003EDE09 /* rosic_MidiNoteEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_MidiNoteEvent.h; sourceTree = "<group>"; };
+		45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_MidiNoteEvent.cpp; sourceTree = "<group>"; };
+		45B25D422D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_MipMappedWaveTable.h; sourceTree = "<group>"; };
+		45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_MipMappedWaveTable.cpp; sourceTree = "<group>"; };
+		45B25D442D3F75D1003EDE09 /* rosic_NumberManipulations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_NumberManipulations.h; sourceTree = "<group>"; };
+		45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_NumberManipulations.cpp; sourceTree = "<group>"; };
+		45B25D462D3F75D1003EDE09 /* rosic_OnePoleFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_OnePoleFilter.h; sourceTree = "<group>"; };
+		45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_OnePoleFilter.cpp; sourceTree = "<group>"; };
+		45B25D482D3F75D1003EDE09 /* rosic_Open303.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_Open303.h; sourceTree = "<group>"; };
+		45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_Open303.cpp; sourceTree = "<group>"; };
+		45B25D4A2D3F75D1003EDE09 /* rosic_RealFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_RealFunctions.h; sourceTree = "<group>"; };
+		45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_RealFunctions.cpp; sourceTree = "<group>"; };
+		45B25D4C2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rosic_TeeBeeFilter.h; sourceTree = "<group>"; };
+		45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rosic_TeeBeeFilter.cpp; sourceTree = "<group>"; };
+		45B25E532D3F76D2003EDE09 /* BassMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BassMatrix.h; path = ../BassMatrix.h; sourceTree = SOURCE_ROOT; };
+		45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BassMatrix.cpp; path = ../BassMatrix.cpp; sourceTree = SOURCE_ROOT; };
+		45B25E552D3F76D2003EDE09 /* BassMatrix_DSP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BassMatrix_DSP.h; path = ../BassMatrix_DSP.h; sourceTree = SOURCE_ROOT; };
+		45B25E562D3F76D2003EDE09 /* BassMatrixControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BassMatrixControls.h; path = ../BassMatrixControls.h; sourceTree = SOURCE_ROOT; };
+		45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BassMatrixControls.cpp; path = ../BassMatrixControls.cpp; sourceTree = SOURCE_ROOT; };
+		45B25E582D3F76D2003EDE09 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = SOURCE_ROOT; };
+		45B25E592D3F76D2003EDE09 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 		4F03A55020A4621000EBDFFB /* IGraphicsNanoVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGraphicsNanoVG.h; sourceTree = "<group>"; };
 		4F03A55420A4621000EBDFFB /* IGraphicsNanoVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGraphicsNanoVG.cpp; sourceTree = "<group>"; };
 		4F03A55620A4621000EBDFFB /* IGraphicsLiveEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGraphicsLiveEdit.h; path = ../../iPlug2/IGraphics/IGraphicsLiveEdit.h; sourceTree = "<group>"; };
@@ -812,8 +847,6 @@
 		4F2EA977203A50E9008E4850 /* IPlugAPP_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugAPP_dialog.cpp; path = ../../iPlug2/IPlug/APP/IPlugAPP_dialog.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugPluginBase.cpp; path = ../../iPlug2/IPlug/IPlugPluginBase.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		4F35DEAC207E5C5A00867D8F /* IPlugPluginBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = IPlugPluginBase.h; path = ../../iPlug2/IPlug/IPlugPluginBase.h; sourceTree = "<group>"; tabWidth = 2; };
-		4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BassMatrix.cpp; path = ../BassMatrix.cpp; sourceTree = "<group>"; };
-		4F3862EE2014BBEC0009F402 /* BassMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BassMatrix.h; path = ../BassMatrix.h; sourceTree = "<group>"; };
 		4F3862FF2014BCC70009F402 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = ../scripts; sourceTree = "<group>"; };
 		4F3907602013EBA300DDA490 /* BassMatrix.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BassMatrix.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3907772013EC0400DDA490 /* IPlugAUViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = IPlugAUViewController.mm; path = ../../iPlug2/IPlug/AUv3/IPlugAUViewController.mm; sourceTree = "<group>"; };
@@ -1017,7 +1050,6 @@
 		4F8F61A7202807B9003F2573 /* IPlugProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = IPlugProcessor.h; path = ../../iPlug2/IPlug/IPlugProcessor.h; sourceTree = "<group>"; tabWidth = 2; };
 		4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugProcessor.cpp; path = ../../iPlug2/IPlug/IPlugProcessor.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		4F914A5126B4A4F100E19BD1 /* ISender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ISender.h; path = ../../iPlug2/IPlug/ISender.h; sourceTree = "<group>"; };
-		4F9313232315CA1100DB2383 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4F97BD89213760E200541A17 /* IGraphicsCanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGraphicsCanvas.h; sourceTree = "<group>"; };
 		4F97BD8A213760E200541A17 /* IGraphicsCanvas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IGraphicsCanvas.cpp; sourceTree = "<group>"; };
 		4F97BD8B2137629600541A17 /* IFPSDisplayControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFPSDisplayControl.h; sourceTree = "<group>"; };
@@ -1137,7 +1169,6 @@
 		4FFBB93B20863B0E00DDD0E7 /* BassMatrix.vst3 */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BassMatrix.vst3; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFBB94120863E9300DDD0E7 /* IPlugVST3_Parameter.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = IPlugVST3_Parameter.h; path = ../../iPlug2/IPlug/VST3/IPlugVST3_Parameter.h; sourceTree = "<group>"; tabWidth = 2; };
 		4FFF72B8214BB71400839091 /* main.rc */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.rc; path = ../resources/main.rc; sourceTree = "<group>"; };
-		52FBBED30D0CF143001C8B8A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		B8214CDB274AEF3500DFBE63 /* plugin.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plugin.hh; sourceTree = "<group>"; };
 		B8214CDC274AEF3500DFBE63 /* param-queue.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "param-queue.hh"; sourceTree = "<group>"; };
 		B8214CDD274AEF3500DFBE63 /* reducing-param-queue.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "reducing-param-queue.hh"; sourceTree = "<group>"; };
@@ -1278,11 +1309,16 @@
 		089C166AFE841209C02AAC07 /* IPlugExample */ = {
 			isa = PBXGroup;
 			children = (
-				45DA5D6F2D315D6700D90BB8 /* open303 */,
-				52FBBED30D0CF143001C8B8A /* config.h */,
-				4F3862EE2014BBEC0009F402 /* BassMatrix.h */,
-				4F3862ED2014BBEC0009F402 /* BassMatrix.cpp */,
-				4F9313232315CA1100DB2383 /* README.md */,
+				45B25E532D3F76D2003EDE09 /* BassMatrix.h */,
+				45B25E542D3F76D2003EDE09 /* BassMatrix.cpp */,
+				45B25E552D3F76D2003EDE09 /* BassMatrix_DSP.h */,
+				45B25E562D3F76D2003EDE09 /* BassMatrixControls.h */,
+				45B25E572D3F76D2003EDE09 /* BassMatrixControls.cpp */,
+				45B25E582D3F76D2003EDE09 /* config.h */,
+				45B25E592D3F76D2003EDE09 /* README.md */,
+				45B25D4E2D3F75D1003EDE09 /* DSPCode */,
+				45B25D182D3F7360003EDE09 /* Effects.h */,
+				45B25D192D3F7360003EDE09 /* Effects.cpp */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
@@ -1360,54 +1396,53 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		45DA5D6F2D315D6700D90BB8 /* open303 */ = {
+		45B25D4E2D3F75D1003EDE09 /* DSPCode */ = {
 			isa = PBXGroup;
 			children = (
-				4512A8652D206A7D00C928E0 /* rosic_BiquadFilter.cpp */,
-				4512A8662D206A7D00C928E0 /* rosic_BlendOscillator.h */,
-				4512A8672D206A7D00C928E0 /* rosic_BlendOscillator.cpp */,
-				4512A8682D206A7D00C928E0 /* rosic_Complex.h */,
-				4512A8692D206A7D00C928E0 /* rosic_Complex.cpp */,
-				4512A86A2D206A7D00C928E0 /* rosic_DecayEnvelope.h */,
-				4512A86B2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp */,
-				4512A86C2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h */,
-				4512A86D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp */,
-				4512A86E2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h */,
-				4512A86F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp */,
-				4512A8702D206A7D00C928E0 /* rosic_FunctionTemplates.h */,
-				4512A8712D206A7D00C928E0 /* rosic_FunctionTemplates.cpp */,
-				4512A8722D206A7D00C928E0 /* rosic_LeakyIntegrator.h */,
-				4512A8732D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp */,
-				4512A8742D206A7D00C928E0 /* rosic_MidiNoteEvent.h */,
-				4512A8752D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp */,
-				4512A8762D206A7D00C928E0 /* rosic_MipMappedWaveTable.h */,
-				4512A8772D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp */,
-				4512A8782D206A7D00C928E0 /* rosic_NumberManipulations.h */,
-				4512A8792D206A7D00C928E0 /* rosic_NumberManipulations.cpp */,
-				4512A87A2D206A7D00C928E0 /* rosic_OnePoleFilter.h */,
-				4512A87B2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp */,
-				4512A87C2D206A7D00C928E0 /* rosic_Open303.h */,
-				4512A87D2D206A7D00C928E0 /* rosic_Open303.cpp */,
-				4512A87E2D206A7D00C928E0 /* rosic_RealFunctions.h */,
-				4512A87F2D206A7D00C928E0 /* rosic_RealFunctions.cpp */,
-				4512A8802D206A7D00C928E0 /* rosic_TeeBeeFilter.h */,
-				4512A8812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp */,
-				4512A84B2D2069CC00C928E0 /* BassMatrixControls.h */,
-				4512A84C2D2069CC00C928E0 /* BassMatrixControls.cpp */,
-				4512A85A2D206A7D00C928E0 /* fft4g.c */,
-				4512A85B2D206A7D00C928E0 /* GlobalDefinitions.h */,
-				4512A85C2D206A7D00C928E0 /* GlobalFunctions.h */,
-				4512A85D2D206A7D00C928E0 /* GlobalFunctions.cpp */,
-				4512A85E2D206A7D00C928E0 /* rosic_AcidPattern.h */,
-				4512A85F2D206A7D00C928E0 /* rosic_AcidPattern.cpp */,
-				4512A8602D206A7D00C928E0 /* rosic_AcidSequencer.h */,
-				4512A8612D206A7D00C928E0 /* rosic_AcidSequencer.cpp */,
-				4512A8622D206A7D00C928E0 /* rosic_AnalogEnvelope.h */,
-				4512A8632D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp */,
-				4512A8642D206A7D00C928E0 /* rosic_BiquadFilter.h */,
+				45B25D262D3F75D1003EDE09 /* fft4g.c */,
+				45B25D272D3F75D1003EDE09 /* GlobalDefinitions.h */,
+				45B25D282D3F75D1003EDE09 /* GlobalFunctions.h */,
+				45B25D292D3F75D1003EDE09 /* GlobalFunctions.cpp */,
+				45B25D2A2D3F75D1003EDE09 /* rosic_AcidPattern.h */,
+				45B25D2B2D3F75D1003EDE09 /* rosic_AcidPattern.cpp */,
+				45B25D2C2D3F75D1003EDE09 /* rosic_AcidSequencer.h */,
+				45B25D2D2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp */,
+				45B25D2E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.h */,
+				45B25D2F2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp */,
+				45B25D302D3F75D1003EDE09 /* rosic_BiquadFilter.h */,
+				45B25D312D3F75D1003EDE09 /* rosic_BiquadFilter.cpp */,
+				45B25D322D3F75D1003EDE09 /* rosic_BlendOscillator.h */,
+				45B25D332D3F75D1003EDE09 /* rosic_BlendOscillator.cpp */,
+				45B25D342D3F75D1003EDE09 /* rosic_Complex.h */,
+				45B25D352D3F75D1003EDE09 /* rosic_Complex.cpp */,
+				45B25D362D3F75D1003EDE09 /* rosic_DecayEnvelope.h */,
+				45B25D372D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp */,
+				45B25D382D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h */,
+				45B25D392D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp */,
+				45B25D3A2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h */,
+				45B25D3B2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp */,
+				45B25D3C2D3F75D1003EDE09 /* rosic_FunctionTemplates.h */,
+				45B25D3D2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp */,
+				45B25D3E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.h */,
+				45B25D3F2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp */,
+				45B25D402D3F75D1003EDE09 /* rosic_MidiNoteEvent.h */,
+				45B25D412D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp */,
+				45B25D422D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h */,
+				45B25D432D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp */,
+				45B25D442D3F75D1003EDE09 /* rosic_NumberManipulations.h */,
+				45B25D452D3F75D1003EDE09 /* rosic_NumberManipulations.cpp */,
+				45B25D462D3F75D1003EDE09 /* rosic_OnePoleFilter.h */,
+				45B25D472D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp */,
+				45B25D482D3F75D1003EDE09 /* rosic_Open303.h */,
+				45B25D492D3F75D1003EDE09 /* rosic_Open303.cpp */,
+				45B25D4A2D3F75D1003EDE09 /* rosic_RealFunctions.h */,
+				45B25D4B2D3F75D1003EDE09 /* rosic_RealFunctions.cpp */,
+				45B25D4C2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h */,
+				45B25D4D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp */,
 			);
-			path = open303;
-			sourceTree = "<group>";
+			name = DSPCode;
+			path = ../open303/Source/DSPCode;
+			sourceTree = SOURCE_ROOT;
 		};
 		4F03A54820A461FD00EBDFFB /* IGraphics */ = {
 			isa = PBXGroup;
@@ -2217,28 +2252,32 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4512A8BE2D206A7D00C928E0 /* GlobalFunctions.h in Headers */,
-				4512A8BF2D206A7D00C928E0 /* rosic_AcidPattern.h in Headers */,
-				4512A8C02D206A7D00C928E0 /* rosic_LeakyIntegrator.h in Headers */,
-				4512A8C12D206A7D00C928E0 /* rosic_RealFunctions.h in Headers */,
-				4512A8C22D206A7D00C928E0 /* rosic_TeeBeeFilter.h in Headers */,
-				4512A8C32D206A7D00C928E0 /* rosic_NumberManipulations.h in Headers */,
-				4512A8C42D206A7D00C928E0 /* rosic_BlendOscillator.h in Headers */,
-				4512A8C52D206A7D00C928E0 /* rosic_Complex.h in Headers */,
-				4512A8C62D206A7D00C928E0 /* rosic_MipMappedWaveTable.h in Headers */,
-				4512A8C72D206A7D00C928E0 /* rosic_BiquadFilter.h in Headers */,
-				4512A8C82D206A7D00C928E0 /* rosic_FunctionTemplates.h in Headers */,
-				4512A8C92D206A7D00C928E0 /* rosic_DecayEnvelope.h in Headers */,
-				4512A8CA2D206A7D00C928E0 /* rosic_Open303.h in Headers */,
-				4512A8CB2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h in Headers */,
-				4512A8CC2D206A7D00C928E0 /* rosic_AcidSequencer.h in Headers */,
-				4512A8CD2D206A7D00C928E0 /* rosic_AnalogEnvelope.h in Headers */,
-				4512A8CE2D206A7D00C928E0 /* GlobalDefinitions.h in Headers */,
-				4512A8CF2D206A7D00C928E0 /* rosic_OnePoleFilter.h in Headers */,
-				4512A8D02D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h in Headers */,
-				4512A8D12D206A7D00C928E0 /* rosic_MidiNoteEvent.h in Headers */,
-				4512A8542D2069CC00C928E0 /* BassMatrixControls.h in Headers */,
+				45B25D242D3F7360003EDE09 /* Effects.h in Headers */,
 				4F78BE1222E73DD900AD537E /* AUv3Framework.h in Headers */,
+				45B25D9F2D3F75D1003EDE09 /* rosic_DecayEnvelope.h in Headers */,
+				45B25DA02D3F75D1003EDE09 /* rosic_BiquadFilter.h in Headers */,
+				45B25DA12D3F75D1003EDE09 /* GlobalFunctions.h in Headers */,
+				45B25DA22D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h in Headers */,
+				45B25DA32D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h in Headers */,
+				45B25DA42D3F75D1003EDE09 /* rosic_AcidSequencer.h in Headers */,
+				45B25DA52D3F75D1003EDE09 /* rosic_OnePoleFilter.h in Headers */,
+				45B25DA62D3F75D1003EDE09 /* rosic_LeakyIntegrator.h in Headers */,
+				45B25DA72D3F75D1003EDE09 /* GlobalDefinitions.h in Headers */,
+				45B25DA82D3F75D1003EDE09 /* rosic_RealFunctions.h in Headers */,
+				45B25DA92D3F75D1003EDE09 /* rosic_AnalogEnvelope.h in Headers */,
+				45B25DAA2D3F75D1003EDE09 /* rosic_BlendOscillator.h in Headers */,
+				45B25DAB2D3F75D1003EDE09 /* rosic_Complex.h in Headers */,
+				45B25DAC2D3F75D1003EDE09 /* rosic_NumberManipulations.h in Headers */,
+				45B25DAD2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h in Headers */,
+				45B25DAE2D3F75D1003EDE09 /* rosic_FunctionTemplates.h in Headers */,
+				45B25E692D3F76D2003EDE09 /* BassMatrixControls.h in Headers */,
+				45B25E6A2D3F76D2003EDE09 /* BassMatrix.h in Headers */,
+				45B25E6B2D3F76D2003EDE09 /* BassMatrix_DSP.h in Headers */,
+				45B25E6C2D3F76D2003EDE09 /* config.h in Headers */,
+				45B25DAF2D3F75D1003EDE09 /* rosic_AcidPattern.h in Headers */,
+				45B25DB02D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h in Headers */,
+				45B25DB12D3F75D1003EDE09 /* rosic_MidiNoteEvent.h in Headers */,
+				45B25DB22D3F75D1003EDE09 /* rosic_Open303.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2252,12 +2291,31 @@
 				4F63695A20A463090022C370 /* IControls.h in Headers */,
 				4F03A5D320A4621100EBDFFB /* IGraphicsStructs.h in Headers */,
 				4FC3EFF82086CE5700BD11FA /* optional.h in Headers */,
-				4512A8582D2069CC00C928E0 /* BassMatrixControls.h in Headers */,
 				4FC3F0012086CE5700BD11FA /* uid.h in Headers */,
 				4F03A5B620A4621100EBDFFB /* IGraphics_select.h in Headers */,
 				4F03A5AB20A4621100EBDFFB /* IGraphics_include_in_plug_hdr.h in Headers */,
 				4FC3EFF22086CE5700BD11FA /* hostclasses.h in Headers */,
 				4FCE29D621D6ED70004BCBA1 /* ITextEntryControl.h in Headers */,
+				45B25DEF2D3F75D1003EDE09 /* rosic_DecayEnvelope.h in Headers */,
+				45B25DF02D3F75D1003EDE09 /* rosic_BiquadFilter.h in Headers */,
+				45B25DF12D3F75D1003EDE09 /* GlobalFunctions.h in Headers */,
+				45B25DF22D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.h in Headers */,
+				45B25DF32D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.h in Headers */,
+				45B25DF42D3F75D1003EDE09 /* rosic_AcidSequencer.h in Headers */,
+				45B25DF52D3F75D1003EDE09 /* rosic_OnePoleFilter.h in Headers */,
+				45B25DF62D3F75D1003EDE09 /* rosic_LeakyIntegrator.h in Headers */,
+				45B25DF72D3F75D1003EDE09 /* GlobalDefinitions.h in Headers */,
+				45B25DF82D3F75D1003EDE09 /* rosic_RealFunctions.h in Headers */,
+				45B25DF92D3F75D1003EDE09 /* rosic_AnalogEnvelope.h in Headers */,
+				45B25DFA2D3F75D1003EDE09 /* rosic_BlendOscillator.h in Headers */,
+				45B25DFB2D3F75D1003EDE09 /* rosic_Complex.h in Headers */,
+				45B25DFC2D3F75D1003EDE09 /* rosic_NumberManipulations.h in Headers */,
+				45B25DFD2D3F75D1003EDE09 /* rosic_TeeBeeFilter.h in Headers */,
+				45B25DFE2D3F75D1003EDE09 /* rosic_FunctionTemplates.h in Headers */,
+				45B25DFF2D3F75D1003EDE09 /* rosic_AcidPattern.h in Headers */,
+				45B25E002D3F75D1003EDE09 /* rosic_MipMappedWaveTable.h in Headers */,
+				45B25E012D3F75D1003EDE09 /* rosic_MidiNoteEvent.h in Headers */,
+				45B25E022D3F75D1003EDE09 /* rosic_Open303.h in Headers */,
 				4F03A5D420A4621100EBDFFB /* IGraphicsUtilities.h in Headers */,
 				4F03A5AA20A4621100EBDFFB /* IGraphicsLiveEdit.h in Headers */,
 				4F6369EA20A466470022C370 /* IControl.h in Headers */,
@@ -2265,28 +2323,13 @@
 				4F03A5D520A4621100EBDFFB /* IGraphicsConstants.h in Headers */,
 				4FF3205820B2BFAB00269268 /* IPlugPaths.h in Headers */,
 				4F03A5B720A4621100EBDFFB /* IGraphics.h in Headers */,
+				45B25E7E2D3F76D2003EDE09 /* BassMatrixControls.h in Headers */,
+				45B25E7F2D3F76D2003EDE09 /* BassMatrix.h in Headers */,
+				45B25E802D3F76D2003EDE09 /* BassMatrix_DSP.h in Headers */,
+				45B25E812D3F76D2003EDE09 /* config.h in Headers */,
 				4F6FD2B022675B6300FC59E6 /* IGraphicsCoreText.h in Headers */,
 				4F03A5D220A4621100EBDFFB /* IGraphicsPopupMenu.h in Headers */,
-				4512A90E2D206A7D00C928E0 /* GlobalFunctions.h in Headers */,
-				4512A90F2D206A7D00C928E0 /* rosic_AcidPattern.h in Headers */,
-				4512A9102D206A7D00C928E0 /* rosic_LeakyIntegrator.h in Headers */,
-				4512A9112D206A7D00C928E0 /* rosic_RealFunctions.h in Headers */,
-				4512A9122D206A7D00C928E0 /* rosic_TeeBeeFilter.h in Headers */,
-				4512A9132D206A7D00C928E0 /* rosic_NumberManipulations.h in Headers */,
-				4512A9142D206A7D00C928E0 /* rosic_BlendOscillator.h in Headers */,
-				4512A9152D206A7D00C928E0 /* rosic_Complex.h in Headers */,
-				4512A9162D206A7D00C928E0 /* rosic_MipMappedWaveTable.h in Headers */,
-				4512A9172D206A7D00C928E0 /* rosic_BiquadFilter.h in Headers */,
-				4512A9182D206A7D00C928E0 /* rosic_FunctionTemplates.h in Headers */,
-				4512A9192D206A7D00C928E0 /* rosic_DecayEnvelope.h in Headers */,
-				4512A91A2D206A7D00C928E0 /* rosic_Open303.h in Headers */,
-				4512A91B2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.h in Headers */,
-				4512A91C2D206A7D00C928E0 /* rosic_AcidSequencer.h in Headers */,
-				4512A91D2D206A7D00C928E0 /* rosic_AnalogEnvelope.h in Headers */,
-				4512A91E2D206A7D00C928E0 /* GlobalDefinitions.h in Headers */,
-				4512A91F2D206A7D00C928E0 /* rosic_OnePoleFilter.h in Headers */,
-				4512A9202D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.h in Headers */,
-				4512A9212D206A7D00C928E0 /* rosic_MidiNoteEvent.h in Headers */,
+				45B25D1B2D3F7360003EDE09 /* Effects.h in Headers */,
 				4FC3EFFE2086CE5700BD11FA /* processdata.h in Headers */,
 				4FC3F0002086CE5700BD11FA /* stringconvert.h in Headers */,
 				4F8C10E720BA2796006320CD /* IGraphicsEditorDelegate.h in Headers */,
@@ -2630,6 +2673,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E662D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2637,6 +2681,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E602D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2644,6 +2689,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E792D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2651,6 +2697,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E5F2D3F76D2003EDE09 /* README.md in Resources */,
 				4F3EE1BF231438D000004786 /* BassMatrix.icns in Resources */,
 				4F3EE1C0231438D000004786 /* BassMatrix-macOS-MainMenu.xib in Resources */,
 			);
@@ -2660,6 +2707,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E6F2D3F76D2003EDE09 /* README.md in Resources */,
 				4F78BE3C22E74CD000AD537E /* IPlugAUViewController_vBassMatrix.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2668,6 +2716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E5C2D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2675,6 +2724,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E652D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2682,6 +2732,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E782D3F76D2003EDE09 /* README.md in Resources */,
 				4F78D88613B6382B0032E0F3 /* BassMatrix.icns in Resources */,
 				4F1B4AE42014D33600BC64D4 /* BassMatrix-macOS-MainMenu.xib in Resources */,
 			);
@@ -2691,6 +2742,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E722D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2698,6 +2750,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B25E752D3F76D2003EDE09 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2900,42 +2953,43 @@
 			files = (
 				4FF231BB2BFA0B020040797B /* VoiceAllocator.cpp in Sources */,
 				4FF231BC2BFA0B020040797B /* MidiSynth.cpp in Sources */,
-				4512A8502D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4FDAC0EB207D76C600299363 /* IPlugTimer.cpp in Sources */,
 				4F63696E20A463090022C370 /* IControls.cpp in Sources */,
-				4512A9362D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A9372D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A9382D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A9392D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A93A2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A93B2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A93C2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A93D2D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A93E2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A93F2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A9402D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A9412D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A9422D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A9432D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A9442D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A9452D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A9462D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A9472D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A9482D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A9492D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
 				4F03A5AD20A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4F5F344220C0226200487201 /* IPlugPaths.mm in Sources */,
 				4F6369EC20A466470022C370 /* IControl.cpp in Sources */,
 				4FB1F58A20E4B005004157C8 /* IGraphicsMac.mm in Sources */,
 				4FCE29D821D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
+				45B25D4F2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25D502D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25D512D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25D522D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25D532D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25D542D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25D552D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25D562D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25D572D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25D582D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25D592D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25D5A2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25D5B2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25D5C2D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25D5D2D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25D5E2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25D5F2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25D602D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25D612D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25D622D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4F9A82F8213DE80400BE63A4 /* IPopupMenuControl.cpp in Sources */,
 				4F1A527B205D910000CF2908 /* IPlugVST2.cpp in Sources */,
 				4F8C10E120BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
 				4F6369DE20A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
-				4F8D9707209EF5AC006E2A11 /* BassMatrix.cpp in Sources */,
+				45B25D1E2D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4F78D9BB13B63BA50032E0F3 /* IPlugAPIBase.cpp in Sources */,
 				4FB1F59020E4B010004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F993F7223055C96000313AF /* IPlugProcessor.cpp in Sources */,
+				45B25E672D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E682D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
 				4F35DEAE207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
 				4F6FD2B222675B6300FC59E6 /* IGraphicsCoreText.mm in Sources */,
 				4F78D9C813B63BA50032E0F3 /* IPlugParameter.cpp in Sources */,
@@ -2947,29 +3001,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F78BE3222E7429B00AD537E /* IPlugAUv3Appex.m in Sources */,
-				4512A8822D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A8832D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A8842D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A8852D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A8862D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A8872D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A8882D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A8892D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A88A2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A88B2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A88C2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A88D2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A88E2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A88F2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A8902D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A8912D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A8922D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A8932D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A8942D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A8952D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
-				4512A8522D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4FF231C52BFA0B050040797B /* VoiceAllocator.cpp in Sources */,
 				4FF231C62BFA0B050040797B /* MidiSynth.cpp in Sources */,
+				45B25E2B2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25E2C2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25E2D2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25E2E2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25E2F2D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25E302D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25E312D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25E322D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25E332D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25E342D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25E352D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25E7A2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E7B2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25E362D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25E372D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25E382D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25E392D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25E3A2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25E3B2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25E3C2D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25E3D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25E3E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2981,8 +3036,31 @@
 				4F6369E020A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
 				4F6369EE20A466470022C370 /* IControl.cpp in Sources */,
 				4F1A528C205D916F00CF2908 /* IPlugAU.cpp in Sources */,
+				45B25D1C2D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4F63697020A463090022C370 /* IControls.cpp in Sources */,
 				4FD52131202A5B9B00A4D22A /* IPlugAU_view_factory.mm in Sources */,
+				45B25D8B2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25D8C2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25D8D2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25D8E2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25D8F2D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25D902D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25D912D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25D922D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25D932D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25E612D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E622D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25D942D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25D952D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25D962D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25D972D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25D982D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25D992D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25D9A2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25D9B2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25D9C2D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25D9D2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25D9E2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4F993F7423055C96000313AF /* IPlugProcessor.cpp in Sources */,
 				4F8C10E320BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
 				4F6FD2B422675B6300FC59E6 /* IGraphicsCoreText.mm in Sources */,
@@ -2993,33 +3071,11 @@
 				4FD52136202A5BD000A4D22A /* dfx-au-utilities.c in Sources */,
 				4FCE29DA21D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
 				4F5F344420C0226200487201 /* IPlugPaths.mm in Sources */,
-				4512A8572D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4F35DEB0207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
 				4F78D95C13B63BA50032E0F3 /* IPlugParameter.cpp in Sources */,
 				4FB1F58C20E4B006004157C8 /* IGraphicsMac.mm in Sources */,
-				4F3862F22014BBEC0009F402 /* BassMatrix.cpp in Sources */,
 				4FF231BF2BFA0B030040797B /* VoiceAllocator.cpp in Sources */,
 				4FF231C02BFA0B030040797B /* MidiSynth.cpp in Sources */,
-				4512A9722D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A9732D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A9742D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A9752D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A9762D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A9772D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A9782D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A9792D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A97A2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A97B2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A97C2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A97D2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A97E2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A97F2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A9802D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A9812D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A9822D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A9832D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A9842D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A9852D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3042,26 +3098,28 @@
 				4F3EE1D0231438D000004786 /* IGraphicsMac_view.mm in Sources */,
 				4F3EE1D1231438D000004786 /* swell-appstub.mm in Sources */,
 				4F3EE1D2231438D000004786 /* swell-misc.mm in Sources */,
-				4512A95E2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A95F2D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A9602D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A9612D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A9622D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A9632D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A9642D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A9652D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A9662D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A9672D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A9682D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A9692D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A96A2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A96B2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A96C2D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A96D2D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A96E2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A96F2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A9702D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A9712D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
+				45B25E3F2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25E402D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25E412D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25E422D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25E432D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25E5D2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E5E2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25E442D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25E452D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25E462D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25E472D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25E482D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25E492D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25E4A2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25E4B2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25E4C2D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25E4D2D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25E4E2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25E4F2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25E502D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25E512D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25E522D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4F3EE1D3231438D000004786 /* swell-wnd.mm in Sources */,
 				4F3EE1D4231438D000004786 /* swell.cpp in Sources */,
 				4F3EE1D5231438D000004786 /* IPlugAPP_host.cpp in Sources */,
@@ -3073,16 +3131,15 @@
 				4F3EE1DB231438D000004786 /* IPlugAPP_main.cpp in Sources */,
 				4F3EE1DC231438D000004786 /* IControls.cpp in Sources */,
 				4F3EE1DD231438D000004786 /* IGraphicsMac.mm in Sources */,
-				4F3EE1DE231438D000004786 /* BassMatrix.cpp in Sources */,
 				4FF231C92BFA0B070040797B /* VoiceAllocator.cpp in Sources */,
 				4FF231CA2BFA0B070040797B /* MidiSynth.cpp in Sources */,
 				4F3EE1DF231438D000004786 /* IPopupMenuControl.cpp in Sources */,
-				4512A8532D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4F3EE1E0231438D000004786 /* IPlugAPIBase.cpp in Sources */,
 				4F3EE1E1231438D000004786 /* IPlugPluginBase.cpp in Sources */,
 				4F3EE1E2231438D000004786 /* IGraphicsEditorDelegate.cpp in Sources */,
 				4F3EE1E3231438D000004786 /* swell-gdi.mm in Sources */,
 				4F3EE1E4231438D000004786 /* IPlugParameter.cpp in Sources */,
+				45B25D232D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4F3EE1E5231438D000004786 /* IPlugTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3091,9 +3148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F78BE1422E7406D00AD537E /* BassMatrix.h in Sources */,
 				4F0D965C23099F6900BFDED0 /* IPlugProcessor.cpp in Sources */,
-				4F78BE1522E7406D00AD537E /* BassMatrix.cpp in Sources */,
 				4F78BE1622E7406D00AD537E /* IGraphicsMac_view.mm in Sources */,
 				4F78BE1722E7406D00AD537E /* IGraphicsMac.mm in Sources */,
 				4F78BE1822E7406D00AD537E /* IGraphicsCoreText.mm in Sources */,
@@ -3102,36 +3157,38 @@
 				4F78BE1B22E7406D00AD537E /* IControls.cpp in Sources */,
 				4F78BE1E22E7406D00AD537E /* IGraphicsNanoVG_src.m in Sources */,
 				4F78BE1F22E7406D00AD537E /* IGraphics.cpp in Sources */,
+				45B25DB32D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25DB42D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25DB52D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25DB62D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25DB72D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25DB82D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25DB92D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25E6D2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E6E2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25DBA2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25DBB2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25DBC2D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25DBD2D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25DBE2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25DBF2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25DC02D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25DC12D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25DC22D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25DC32D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25DC42D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25DC52D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25DC62D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4F78BE2022E7406D00AD537E /* IGraphicsEditorDelegate.cpp in Sources */,
 				4F78BE2122E7406D00AD537E /* IControl.cpp in Sources */,
 				4F78BE2222E7406D00AD537E /* IPlugAUAudioUnit.mm in Sources */,
 				4F78BE2322E7406D00AD537E /* IPlugAUv3.mm in Sources */,
 				4F78BE2422E7406D00AD537E /* IPlugAUViewController.mm in Sources */,
+				45B25D252D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4F78BE2522E7406D00AD537E /* IPlugPluginBase.cpp in Sources */,
-				4512A8552D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4F78BE2622E7406D00AD537E /* IPlugAPIBase.cpp in Sources */,
 				4F78BE2822E7406D00AD537E /* IPlugParameter.cpp in Sources */,
 				4FF231CB2BFA0B080040797B /* VoiceAllocator.cpp in Sources */,
-				4512A8D22D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A8D32D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A8D42D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A8D52D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A8D62D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A8D72D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A8D82D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A8D92D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A8DA2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A8DB2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A8DC2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A8DD2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A8DE2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A8DF2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A8E02D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A8E12D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A8E22D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A8E32D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A8E42D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A8E52D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
 				4FF231CC2BFA0B080040797B /* MidiSynth.cpp in Sources */,
 				4F78BE2922E7406D00AD537E /* IPlugTimer.cpp in Sources */,
 				4F78BE2A22E7406D00AD537E /* IPlugPaths.mm in Sources */,
@@ -3143,10 +3200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F81597C205D50EB00393585 /* baseiids.cpp in Sources */,
-				4512A8512D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4FDAC0EC207D76C600299363 /* IPlugTimer.cpp in Sources */,
 				B8E22A0C220268C4007CBF4C /* IPlugVST3_ProcessorBase.cpp in Sources */,
-				4F3862F12014BBEC0009F402 /* BassMatrix.cpp in Sources */,
 				4F81591F205D50EB00393585 /* pluginfactory.cpp in Sources */,
 				4F63696F20A463090022C370 /* IControls.cpp in Sources */,
 				4F6FD2B322675B6300FC59E6 /* IGraphicsCoreText.mm in Sources */,
@@ -3158,29 +3213,12 @@
 				4F9828C1140A9EB700F3FCC1 /* IPlugParameter.cpp in Sources */,
 				4F81591A205D50EB00393585 /* pluginview.cpp in Sources */,
 				4F815982205D50EB00393585 /* fstring.cpp in Sources */,
+				45B25E5A2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E5B2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
 				4F815995205D51F000393585 /* vstpresetfile.cpp in Sources */,
 				4F815983205D50EB00393585 /* timer.cpp in Sources */,
 				4FF231BD2BFA0B030040797B /* VoiceAllocator.cpp in Sources */,
-				4512A8FA2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A8FB2D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A8FC2D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A8FD2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A8FE2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A8FF2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A9002D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A9012D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A9022D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A9032D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A9042D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A9052D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A9062D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A9072D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A9082D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A9092D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A90A2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A90B2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A90C2D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A90D2D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
+				45B25D212D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4FF231BE2BFA0B030040797B /* MidiSynth.cpp in Sources */,
 				4F815989205D50EB00393585 /* funknown.cpp in Sources */,
 				4FB1F58B20E4B006004157C8 /* IGraphicsMac.mm in Sources */,
@@ -3210,6 +3248,26 @@
 				4F815985205D50EB00393585 /* fcondition.cpp in Sources */,
 				4F9A82F9213DE80400BE63A4 /* IPopupMenuControl.cpp in Sources */,
 				4F8C10E220BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
+				45B25D632D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25D642D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25D652D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25D662D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25D672D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25D682D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25D692D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25D6A2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25D6B2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25D6C2D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25D6D2D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25D6E2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25D6F2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25D702D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25D712D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25D722D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25D732D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25D742D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25D752D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25D762D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4F81597D205D50EB00393585 /* fbuffer.cpp in Sources */,
 				4F1A527E205D911A00CF2908 /* IPlugVST3.cpp in Sources */,
 				4F815988205D50EB00393585 /* coreiids.cpp in Sources */,
@@ -3232,36 +3290,37 @@
 				4F03A5B020A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4F35DEB1207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
 				4F5F344520C0226200487201 /* IPlugPaths.mm in Sources */,
+				45B25D772D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25D782D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25D792D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25D7A2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25D7B2D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25D7C2D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25D7D2D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25D7E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25D7F2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25D802D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25D812D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25D822D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25D832D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25D842D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25D852D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25D862D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25D872D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25D882D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25D892D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25E632D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E642D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25D8A2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4F1A5285205D914A00CF2908 /* IPlugAAX.cpp in Sources */,
 				4F0848292015129A00F9E881 /* IPlugAAX_Parameters.cpp in Sources */,
 				4FB1F59420E4B014004157C8 /* IGraphicsMac_view.mm in Sources */,
-				4F3862F32014BBEC0009F402 /* BassMatrix.cpp in Sources */,
 				4FCE29DB21D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
+				45B25D222D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4FB600231567CB0A0020189A /* IPlugParameter.cpp in Sources */,
-				4512A84F2D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4FB600261567CB0A0020189A /* AAX_Exports.cpp in Sources */,
 				4F6FD2B522675B6300FC59E6 /* IGraphicsCoreText.mm in Sources */,
 				4FF231C12BFA0B040040797B /* VoiceAllocator.cpp in Sources */,
-				4512A8AA2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A8AB2D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A8AC2D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A8AD2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A8AE2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A8AF2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A8B02D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A8B12D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A8B22D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A8B32D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A8B42D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A8B52D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A8B62D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A8B72D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A8B82D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A8B92D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A8BA2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A8BB2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A8BC2D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A8BD2D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
 				4FF231C22BFA0B040040797B /* MidiSynth.cpp in Sources */,
 				4FB600281567CB0A0020189A /* IPlugAAX_Describe.cpp in Sources */,
 				4FB1F58D20E4B007004157C8 /* IGraphicsMac.mm in Sources */,
@@ -3275,39 +3334,40 @@
 				4F03A5B220A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4FB1F58F20E4B009004157C8 /* IGraphicsMac.mm in Sources */,
 				4F6369F120A466470022C370 /* IControl.cpp in Sources */,
-				4512A9222D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A9232D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A9242D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A9252D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A9262D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A9272D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A9282D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A9292D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A92A2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A92B2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A92C2D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A92D2D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A92E2D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A92F2D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A9302D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A9312D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A9322D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A9332D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A9342D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A9352D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
 				4F6FD2B722675B6300FC59E6 /* IGraphicsCoreText.mm in Sources */,
 				4F8C10E620BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
 				4FC3EFF92086CE5700BD11FA /* parameterchanges.cpp in Sources */,
 				4FC3EFCE2086C35D00BD11FA /* IPlugPluginBase.cpp in Sources */,
 				4F722021225C1EB100FF0E7C /* commoniids.cpp in Sources */,
 				4F63697320A463090022C370 /* IControls.cpp in Sources */,
-				4512A8592D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
+				45B25D1A2D3F7360003EDE09 /* Effects.cpp in Sources */,
+				45B25DDB2D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25DDC2D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25DDD2D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25DDE2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25E7C2D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E7D2D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25DDF2D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25DE02D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25DE12D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25DE22D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25DE32D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25DE42D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25DE52D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25DE62D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25DE72D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25DE82D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25DE92D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25DEA2D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25DEB2D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25DEC2D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25DED2D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25DEE2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4FCE29DD21D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
 				4FB1F59620E4B017004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F9A82FD213DE80400BE63A4 /* IPopupMenuControl.cpp in Sources */,
 				4F472103209B294400A0A0A8 /* IPlugVST3_Controller.cpp in Sources */,
 				4F78BE2D22E7412300AD537E /* IGraphicsNanoVG_src.m in Sources */,
-				4FC3EFCB2086C27800BD11FA /* BassMatrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3330,26 +3390,28 @@
 				4FB1F59120E4B011004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F5C5F6B21BED08700E024A7 /* swell-appstub.mm in Sources */,
 				4FD16D4013B635A0001D0217 /* swell-misc.mm in Sources */,
-				4512A8E62D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A8E72D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A8E82D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A8E92D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A8EA2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A8EB2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A8EC2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A8ED2D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A8EE2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A8EF2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A8F02D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A8F12D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A8F22D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A8F32D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A8F42D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A8F52D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A8F62D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A8F72D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A8F82D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A8F92D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
+				45B25E172D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25E182D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25E192D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25E1A2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25E1B2D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25E762D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E772D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
+				45B25E1C2D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25E1D2D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25E1E2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25E1F2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25E202D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25E212D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25E222D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25E232D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25E242D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25E252D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25E262D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25E272D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25E282D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25E292D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25E2A2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4FD16D4213B635AB001D0217 /* swell-wnd.mm in Sources */,
 				4FD16D4413B635B2001D0217 /* swell.cpp in Sources */,
 				4F690CA3203A45C700A4A13E /* IPlugAPP_host.cpp in Sources */,
@@ -3361,16 +3423,15 @@
 				4F690C9B203A345100A4A13E /* IPlugAPP_main.cpp in Sources */,
 				4F63696D20A463090022C370 /* IControls.cpp in Sources */,
 				4FB1F58920E4B004004157C8 /* IGraphicsMac.mm in Sources */,
-				4F3862EF2014BBEC0009F402 /* BassMatrix.cpp in Sources */,
 				4FF231B92BFA0B020040797B /* VoiceAllocator.cpp in Sources */,
 				4FF231BA2BFA0B020040797B /* MidiSynth.cpp in Sources */,
 				4F9A82F7213DE80400BE63A4 /* IPopupMenuControl.cpp in Sources */,
-				4512A8562D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4F78D90B13B63BA50032E0F3 /* IPlugAPIBase.cpp in Sources */,
 				4F35DEAD207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
 				4F8C10E020BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
 				4FF0A83221BE708700B2C9D1 /* swell-gdi.mm in Sources */,
 				4F78D91813B63BA50032E0F3 /* IPlugParameter.cpp in Sources */,
+				45B25D1D2D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4FDAC0EA207D76C600299363 /* IPlugTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3381,42 +3442,43 @@
 			files = (
 				4FD869DA27206169005A5F28 /* IPlugCLAP.cpp in Sources */,
 				4FD8699327206006005A5F28 /* IPlugTimer.cpp in Sources */,
-				4512A84E2D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4FD8699427206006005A5F28 /* IControls.cpp in Sources */,
 				4FD8699527206006005A5F28 /* IGraphics.cpp in Sources */,
-				4512A94A2D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A94B2D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A94C2D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A94D2D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A94E2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A94F2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A9502D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A9512D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A9522D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A9532D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A9542D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A9552D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A9562D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A9572D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A9582D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A9592D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A95A2D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A95B2D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A95C2D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A95D2D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
 				4FD8699627206006005A5F28 /* IPlugPaths.mm in Sources */,
 				4FD8699727206006005A5F28 /* IControl.cpp in Sources */,
 				4FF231CF2BFA0B260040797B /* MidiSynth.cpp in Sources */,
 				4FF231D02BFA0B260040797B /* VoiceAllocator.cpp in Sources */,
 				4FD8699827206006005A5F28 /* IGraphicsMac.mm in Sources */,
+				45B25E032D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25E042D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25E052D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25E062D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25E072D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25E082D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25E092D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25E0A2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25E0B2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25E0C2D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25E0D2D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25E0E2D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25E0F2D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25E102D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25E112D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25E122D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25E132D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25E142D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25E152D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25E162D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4FD8699927206006005A5F28 /* ITextEntryControl.cpp in Sources */,
 				4FD8699A27206006005A5F28 /* IPopupMenuControl.cpp in Sources */,
 				4FD8699C27206006005A5F28 /* IGraphicsEditorDelegate.cpp in Sources */,
 				4FD8699D27206006005A5F28 /* IGraphicsNanoVG_src.m in Sources */,
-				4FD8699E27206006005A5F28 /* BassMatrix.cpp in Sources */,
+				45B25D202D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4FD8699F27206006005A5F28 /* IPlugAPIBase.cpp in Sources */,
 				4FD869A027206006005A5F28 /* IGraphicsMac_view.mm in Sources */,
 				4FD869A127206006005A5F28 /* IPlugProcessor.cpp in Sources */,
+				45B25E702D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E712D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
 				4FD869A227206006005A5F28 /* IPlugPluginBase.cpp in Sources */,
 				4FD869A327206006005A5F28 /* IGraphicsCoreText.mm in Sources */,
 				4FD869A427206006005A5F28 /* IPlugParameter.cpp in Sources */,
@@ -3429,7 +3491,6 @@
 			files = (
 				4FFBB90520863B0E00DDD0E7 /* baseiids.cpp in Sources */,
 				4FFBB90620863B0E00DDD0E7 /* IPlugTimer.cpp in Sources */,
-				4FFBB90720863B0E00DDD0E7 /* BassMatrix.cpp in Sources */,
 				4FFBB90820863B0E00DDD0E7 /* pluginfactory.cpp in Sources */,
 				4FFBB90920863B0E00DDD0E7 /* vstinitiids.cpp in Sources */,
 				4FFBB90A20863B0E00DDD0E7 /* fdebug.cpp in Sources */,
@@ -3441,8 +3502,8 @@
 				4FFBB91020863B0E00DDD0E7 /* pluginview.cpp in Sources */,
 				4FFBB91120863B0E00DDD0E7 /* fstring.cpp in Sources */,
 				4FFBB91320863B0E00DDD0E7 /* vstpresetfile.cpp in Sources */,
-				4512A84D2D2069CC00C928E0 /* BassMatrixControls.cpp in Sources */,
 				4FFBB91520863B0E00DDD0E7 /* timer.cpp in Sources */,
+				45B25D1F2D3F7360003EDE09 /* Effects.cpp in Sources */,
 				4FFBB91720863B0E00DDD0E7 /* funknown.cpp in Sources */,
 				4FFBB91820863B0E00DDD0E7 /* vstbus.cpp in Sources */,
 				4FFBB91920863B0E00DDD0E7 /* IPlugPluginBase.cpp in Sources */,
@@ -3458,31 +3519,33 @@
 				4FFBB92420863B0E00DDD0E7 /* vstaudioeffect.cpp in Sources */,
 				4FFBB92520863B0E00DDD0E7 /* vstsinglecomponenteffect.cpp in Sources */,
 				4FFBB92620863B0E00DDD0E7 /* updatehandler.cpp in Sources */,
-				4512A8962D206A7D00C928E0 /* rosic_NumberManipulations.cpp in Sources */,
-				4512A8972D206A7D00C928E0 /* fft4g.c in Sources */,
-				4512A8982D206A7D00C928E0 /* rosic_AcidSequencer.cpp in Sources */,
-				4512A8992D206A7D00C928E0 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
-				4512A89A2D206A7D00C928E0 /* rosic_OnePoleFilter.cpp in Sources */,
-				4512A89B2D206A7D00C928E0 /* rosic_FunctionTemplates.cpp in Sources */,
-				4512A89C2D206A7D00C928E0 /* rosic_DecayEnvelope.cpp in Sources */,
-				4512A89D2D206A7D00C928E0 /* rosic_Complex.cpp in Sources */,
-				4512A89E2D206A7D00C928E0 /* rosic_MipMappedWaveTable.cpp in Sources */,
-				4512A89F2D206A7D00C928E0 /* rosic_AcidPattern.cpp in Sources */,
-				4512A8A02D206A7D00C928E0 /* rosic_MidiNoteEvent.cpp in Sources */,
-				4512A8A12D206A7D00C928E0 /* rosic_Open303.cpp in Sources */,
-				4512A8A22D206A7D00C928E0 /* rosic_LeakyIntegrator.cpp in Sources */,
-				4512A8A32D206A7D00C928E0 /* rosic_BiquadFilter.cpp in Sources */,
-				4512A8A42D206A7D00C928E0 /* rosic_RealFunctions.cpp in Sources */,
-				4512A8A52D206A7D00C928E0 /* rosic_TeeBeeFilter.cpp in Sources */,
-				4512A8A62D206A7D00C928E0 /* rosic_BlendOscillator.cpp in Sources */,
-				4512A8A72D206A7D00C928E0 /* rosic_FourierTransformerRadix2.cpp in Sources */,
-				4512A8A82D206A7D00C928E0 /* rosic_AnalogEnvelope.cpp in Sources */,
-				4512A8A92D206A7D00C928E0 /* GlobalFunctions.cpp in Sources */,
+				45B25DC72D3F75D1003EDE09 /* rosic_BiquadFilter.cpp in Sources */,
+				45B25DC82D3F75D1003EDE09 /* rosic_FunctionTemplates.cpp in Sources */,
+				45B25DC92D3F75D1003EDE09 /* rosic_FourierTransformerRadix2.cpp in Sources */,
+				45B25DCA2D3F75D1003EDE09 /* rosic_MipMappedWaveTable.cpp in Sources */,
+				45B25DCB2D3F75D1003EDE09 /* fft4g.c in Sources */,
+				45B25DCC2D3F75D1003EDE09 /* rosic_Open303.cpp in Sources */,
+				45B25DCD2D3F75D1003EDE09 /* rosic_EllipticQuarterBandFilter.cpp in Sources */,
+				45B25DCE2D3F75D1003EDE09 /* rosic_AnalogEnvelope.cpp in Sources */,
+				45B25DCF2D3F75D1003EDE09 /* GlobalFunctions.cpp in Sources */,
+				45B25DD02D3F75D1003EDE09 /* rosic_NumberManipulations.cpp in Sources */,
+				45B25DD12D3F75D1003EDE09 /* rosic_MidiNoteEvent.cpp in Sources */,
+				45B25DD22D3F75D1003EDE09 /* rosic_BlendOscillator.cpp in Sources */,
+				45B25DD32D3F75D1003EDE09 /* rosic_OnePoleFilter.cpp in Sources */,
+				45B25DD42D3F75D1003EDE09 /* rosic_DecayEnvelope.cpp in Sources */,
+				45B25DD52D3F75D1003EDE09 /* rosic_Complex.cpp in Sources */,
+				45B25DD62D3F75D1003EDE09 /* rosic_RealFunctions.cpp in Sources */,
+				45B25DD72D3F75D1003EDE09 /* rosic_AcidSequencer.cpp in Sources */,
+				45B25DD82D3F75D1003EDE09 /* rosic_AcidPattern.cpp in Sources */,
+				45B25DD92D3F75D1003EDE09 /* rosic_TeeBeeFilter.cpp in Sources */,
+				45B25DDA2D3F75D1003EDE09 /* rosic_LeakyIntegrator.cpp in Sources */,
 				4FFBB92820863B0E00DDD0E7 /* vstcomponent.cpp in Sources */,
 				4FFBB92C20863B0E00DDD0E7 /* fstreamer.cpp in Sources */,
 				4FFBB92D20863B0E00DDD0E7 /* vstrepresentation.cpp in Sources */,
 				4FFBB92E20863B0E00DDD0E7 /* fcondition.cpp in Sources */,
 				4FFBB93020863B0E00DDD0E7 /* fbuffer.cpp in Sources */,
+				45B25E732D3F76D2003EDE09 /* BassMatrix.cpp in Sources */,
+				45B25E742D3F76D2003EDE09 /* BassMatrixControls.cpp in Sources */,
 				4FFBB93420863B0E00DDD0E7 /* coreiids.cpp in Sources */,
 				4F5F344720C0226200487201 /* IPlugPaths.mm in Sources */,
 				4FFBB93520863B0E00DDD0E7 /* vstnoteexpressiontypes.cpp in Sources */,

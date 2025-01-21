@@ -43,6 +43,8 @@ public:
   /** Sets the sample-rate (in Hz). */
   void setSampleRate(double newSampleRate);
 
+  double getSampleRate();
+
   /** Sets up the waveform continuously between saw and square - the input should be in the range 
     0...1 where 0 means pure saw and 1 means pure square. */
   void setWaveform(double newWaveform) { oscillator.setBlendFactor(newWaveform); }

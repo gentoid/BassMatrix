@@ -2,6 +2,9 @@
 
 This is a instrument written in C++ using the IPlug2 API. The DSP code is taken from the open303 open source project.
 
+## Known problems
+* On man the Random button causes the pattern to be silent.
+
 ## Version 1.20
 
 Plugin GUI size is saved between sessions.

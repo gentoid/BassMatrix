@@ -16,11 +16,12 @@ my_clamp(T value, T min, T max)
 
 // Rest of the code remains the same...
 
+static const int MAX_DELAY_LENGTH = 192000;  // 4 seconds at 48kHz
+
 // From Amazon Q
 class AcidStereoDelay
 {
 private:
-  static const int MAX_DELAY_LENGTH = 192000;  // 4 seconds at 48kHz
   double *delayBufferL;
   double *delayBufferR;
   int writeIndex;
