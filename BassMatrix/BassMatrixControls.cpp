@@ -13,32 +13,41 @@ SeqLedBtnControl::SeqLedBtnControl(float x,
 void
 SeqLedBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void *pData)
 {
-  if (GetUI())
+  if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
   {
+    IByteStream stream(pData, dataSize);
 
+    int pos = 0;
+    ISenderData<1, int> d;
+    pos = stream.Get(&d, pos);
 
-    if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
+    // Turn off all leds
+    for (int i = 0; i < 16; i++)
     {
-      IByteStream stream(pData, dataSize);
-      int pos = 0;
-      ISenderData<1, int> d;
-      pos = stream.Get(&d, pos);
-      int nr = d.vals[0];
-
-      for (int i = 0; i < 16; i++)
+      IControl *pControlOff = GetUI()->GetControlWithTag(kCtrlTagLedSeq0 + i);
+      double before = pControlOff->GetValue();
+      pControlOff->SetValue(0.0);
+      if (before != pControlOff->GetValue())
       {
-        IControl *pControlBtn = GetUI()->GetControlWithTag(kCtrlTagLedSeq0 + i);
-        if (i == nr)
-        {
-          pControlBtn->SetValue(1.0);
-        }
-        else
-        {
-          pControlBtn->SetValue(0.0);
-        }
-        pControlBtn->SetDirty(true);
+        pControlOff->SetDirty(true);
       }
     }
+
+    int step = d.vals[0];
+    //if (step == 0) { step = 15; }
+    //else { step = (step - 1); }
+
+    assert(step >= 0 && step <= 15);
+
+    IControl *pControlOn = GetUI()->GetControlWithTag(kCtrlTagLedSeq0 + step);
+    double before = pControlOn->GetValue();
+    pControlOn->SetValue(1.0);
+    if (before != pControlOn->GetValue())
+    {
+      pControlOn->SetDirty(true);
+    }
+
+    SetDirty(false);
   }
 }
 void
@@ -68,18 +77,22 @@ SeqNoteBtnControl::SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> seq
   {
     IControl *pControlBtn = ui->GetControlWithTag(kCtrlTagBtnSeq0 + i);
     double before = pControlBtn->GetValue();
+#ifdef _WIN32
 #ifdef _DEBUG
     OutputDebugStringW(sequencer[i] ? L"*" : L"-");
 #endif  // _DEBUG
+#endif
     pControlBtn->SetValue(sequencer[i] ? 1.0 : 0.0);
     if (before != pControlBtn->GetValue())
     {
       pControlBtn->SetDirty(true);
     }
   }
+#ifdef _WIN32
 #ifdef _DEBUG
   OutputDebugStringW(L"\n");
 #endif  // _DEBUG
+#endif
 }
 
 void
