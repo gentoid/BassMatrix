@@ -8,7 +8,11 @@ This is a instrument written in C++ using the IPlug2 API. The DSP code is taken 
 
 ## Version 2.00
 
-Plugin GUI size is saved between sessions.
+Support for MacOS audio units (Component).
+
+Plugin GUI size is saved between sessions (on Windows)
+
+Plugin pattern should restart on note on and stop playing on note off.
 
 ## Version 1.10
 

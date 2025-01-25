@@ -75,7 +75,7 @@ SeqNoteBtnControl::SetSequencerButtons(std::array<bool, kNumberOfSeqButtons> seq
   Trace(TRACELOC, "");
   for (int i = 0; i < kNumberOfSeqButtons; i++)
   {
-    IControl *pControlBtn = ui->GetControlWithTag(kCtrlTagBtnSeq0 + i);
+    IControl *pControlBtn = ui->GetControlWithTag(kCtrlTagSeq0 + i);
     double before = pControlBtn->GetValue();
 #ifdef _WIN32
 #ifdef _DEBUG
@@ -122,7 +122,7 @@ SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod &mod)
     for (int row = 0; row < kNumberOfNoteBtns; ++row)
     {
       int col = (mParamIdx - kBtnSeq0) % 16;
-      IControl *pControlBtn = GetUI()->GetControlWithTag(kCtrlTagBtnSeq0 + col + 16 * row);
+      IControl *pControlBtn = GetUI()->GetControlWithTag(kCtrlTagSeq0 + col + 16 * row);
       double before = pControlBtn->GetValue();
       pControlBtn->SetValue(0.0);
       if (before != 0.0)
@@ -144,7 +144,7 @@ SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod &mod)
     int col = (mParamIdx - kBtnSeq0) % 16;
     int row = (mParamIdx - kBtnSeq0) / 16;
     IControl *pControlBtn =
-        GetUI()->GetControlWithTag(kCtrlTagBtnProp0 + (row - kNumberOfNoteBtns) * 16 + col);
+        GetUI()->GetControlWithTag(kCtrlTagProp0 + (row - kNumberOfNoteBtns) * 16 + col);
     if (row == kNumberOfNoteBtns || row == kNumberOfNoteBtns + 1)  // Up or down
     {                                                              // Up is pressed.
       IControl *pControlBtnUp;
@@ -153,11 +153,11 @@ SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod &mod)
       if (row == kNumberOfNoteBtns)
       {
         pControlBtnUp = pControlBtn;
-        pControlBtnDown = GetUI()->GetControlWithTag(kCtrlTagBtnProp0 + col + 16);
+        pControlBtnDown = GetUI()->GetControlWithTag(kCtrlTagProp0 + col + 16);
       }
       else
       {
-        pControlBtnUp = GetUI()->GetControlWithTag(kCtrlTagBtnProp0 + col);
+        pControlBtnUp = GetUI()->GetControlWithTag(kCtrlTagProp0 + col);
         pControlBtnDown = pControlBtn;
       }
 
@@ -208,139 +208,6 @@ SeqNoteBtnControl::OnMouseDown(float x, float y, const IMouseMod &mod)
       pControlBtn->SetDirty(true);
     }
   }
-}
-
-PatternBtnControl::PatternBtnControl(float x,
-                                     float y,
-                                     const IBitmap &bitmap,
-                                     int paramIdx,
-                                     int ctrlTag,
-                                     rosic::Open303 &in303) :
-  IBSwitchControl(x, y, bitmap, paramIdx),
-  mParamIdx(paramIdx),
-  mCtrlTag(ctrlTag),
-  mOctav2Selected(true),
-  mOctav3Selected(false),
-  open303Core(in303)
-{
-}
-
-void
-PatternBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void *pData)
-{
-  if (!IsDisabled() && msgTag == ISender<>::kUpdateMessage)
-  {
-    IByteStream stream(pData, dataSize);
-    int pos = 0;
-    ISenderData<1, int> d;
-    pos = stream.Get(&d, pos);
-    int pattern = d.vals[0];
-
-    for (int i = 0; i < kCtrlTagBtnPtnOct3 - kCtrlTagBtnPtnC; i++)
-    {
-      IControl *pControlBtn = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i);
-      double before = pControlBtn->GetValue();
-      pControlBtn->SetValue(pattern % 12 == i ? 1.0 : 0.0);
-      if (before != pControlBtn->GetValue())
-      {
-        pControlBtn->SetDirty(true);
-      }
-    }
-    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2)->SetValue(pattern < 12 ? 1.0 : 0.0);
-    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3)->SetValue(pattern >= 12 ? 1.0 : 0.0);
-    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2)->SetDirty(true);
-    GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3)->SetDirty(true);
-    SetDirty(false);
-  }
-}
-
-void
-PatternBtnControl::OnMouseDown(float x, float y, const IMouseMod &mod)
-{
-  IBSwitchControl::OnMouseDown(x, y, mod);
-
-  if (mod.L)
-  {
-    // If it is any of the octave button that has been pressed
-    if (mCtrlTag == kCtrlTagBtnPtnOct2 || mCtrlTag == kCtrlTagBtnPtnOct3)
-    {
-      IControl *pControlOctav2 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct2);
-      IControl *pControlOctav3 = GetUI()->GetControlWithTag(kCtrlTagBtnPtnOct3);
-      double oct2Before = pControlOctav2->GetValue();
-      double oct3Before = pControlOctav3->GetValue();
-      pControlOctav2->SetValue(mCtrlTag == kCtrlTagBtnPtnOct2 ? 1.0 : 0.0);
-      pControlOctav3->SetValue(mCtrlTag == kCtrlTagBtnPtnOct3 ? 1.0 : 0.0);
-      if (pControlOctav2->GetValue() != oct2Before)
-      {
-        pControlOctav2->SetDirty(true);
-      }
-      if (pControlOctav3->GetValue() != oct3Before)
-      {
-        pControlOctav3->SetDirty(true);
-      }
-    }
-    else
-    {
-      for (int i = 0; i < 12; ++i)
-      {
-        double before = GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->GetValue();
-        if (before == 1.0)
-        {
-          GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetValue(0.0);
-          GetUI()->GetControlWithTag(kCtrlTagBtnPtnC + i)->SetDirty(true);
-        }
-      }
-      SetValue(1.0);
-      SetDirty(true);
-    }
-  }
-}
-
-void
-PatternBtnControl::CreateContextMenu(IPopupMenu &contextMenu)
-{
-  contextMenu.AddItem("Clear pattern");
-  contextMenu.AddItem("Randomize pattern");
-
-  std::vector<std::string> notes = {
-    "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
-  };
-  for (int i = 2; i <= 3; ++i)
-  {
-    for (auto note : notes)
-    {
-      std::string s = "Copy to pattern " + note + " on octav " + std::to_string(i);
-      contextMenu.AddItem(s.c_str());
-    }
-  }
-
-  return;
-}
-
-void
-PatternBtnControl::OnContextSelection(int itemSelected)
-{
-  switch (itemSelected)
-  {
-    case 0:
-      open303Core.sequencer.clearPattern(12 * open303Core.sequencer.getPatternMultiplier() +
-                                         mCtrlTag - kCtrlTagBtnPtnC);
-      SeqNoteBtnControl::SetSequencerButtons(BassMatrix::CollectSequenceButtons(open303Core),
-                                             GetUI());
-      break;
-    case 1:
-      open303Core.sequencer.randomizePattern(12 * open303Core.sequencer.getPatternMultiplier() +
-                                             mCtrlTag - kCtrlTagBtnPtnC);
-      SeqNoteBtnControl::SetSequencerButtons(BassMatrix::CollectSequenceButtons(open303Core),
-                                             GetUI());
-      break;
-    default:
-      open303Core.sequencer.copyPattern(12 * open303Core.sequencer.getPatternMultiplier() +
-                                            mCtrlTag - kCtrlTagBtnPtnC,
-                                        itemSelected - 2);
-      break;
-  }
-  return;
 }
 
 PtnModBtnControl::PtnModBtnControl(float x, float y, const IBitmap &bitmap, int paramIdx) :

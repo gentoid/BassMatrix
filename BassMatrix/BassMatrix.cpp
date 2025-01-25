@@ -78,7 +78,15 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mHasChanged(false),
   mKnobLoopSize(0),
   mCurrentPattern(0),
-  mUseEffects(true)
+  mUseEffects(true),
+  mHasLoadingPresets(false),
+  mSelectedOctav(0),
+  mSelectedPattern(0),
+#ifdef VST3_API
+  mSelectedPlayMode(rosic::AcidSequencer::HOST_SYNC)
+#else
+  mSelectedPlayMode(rosic::AcidSequencer::RUN)
+#endif
 {
 #ifdef _WIN32
 #ifdef _DEBUG
@@ -95,7 +103,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
     open303Core.sequencer.clearPattern(i);
   }
   open303Core.sequencer.setPattern(0);
-  open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+  open303Core.sequencer.setMode(mSelectedPlayMode);
 
   //
   // Setup parameters and their default values
@@ -112,17 +120,16 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
 
   GetParam(kParamWaveForm)->InitBool("Waveform", false);
   GetParam(kParamEffects)->InitBool("Waveform", true);
-  GetParam(kParamStop)->InitBool("Stop", false);
-  GetParam(kParamHostSync)->InitBool("Host Sync", false);
-  GetParam(kParamKeySync)->InitBool("Key Sync", false);
-#ifdef VST3_API
-  GetParam(kParamInternalSync)->InitBool("Internal Sync", false);
-  GetParam(kParamMidiPlay)->InitBool("Midi Play", true);
-#else
-  GetParam(kParamInternalSync)->InitBool("Internal Sync", true);
-  GetParam(kParamMidiPlay)->InitBool("Midi Play", false);
-#endif
 
+  GetParam(kParamPlayMode0)->InitBool("Stop", mSelectedPlayMode == rosic::AcidSequencer::OFF);
+  GetParam(kParamPlayMode0 + 1)
+      ->InitBool("Host Sync", mSelectedPlayMode == rosic::AcidSequencer::HOST_SYNC);
+  GetParam(kParamPlayMode0 + 2)
+      ->InitBool("Key Sync", mSelectedPlayMode == rosic::AcidSequencer::KEY_SYNC);
+  GetParam(kParamPlayMode0 + 3)
+      ->InitBool("Internal Sync", mSelectedPlayMode == rosic::AcidSequencer::RUN);
+  GetParam(kParamPlayMode0 + 4)
+      ->InitBool("Midi Play", mSelectedPlayMode == rosic::AcidSequencer::KEY_SYNC);
 
   // Led buttons. We don't want them to be able to automate.
   for (int i = kLedBtn0; i < kLedBtn0 + 16; ++i)
@@ -152,20 +159,20 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
     }
   }
 
-  for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
+  for (int i = kParamPattern0; i < kParamPattern0 + 12; ++i)
   {
-    GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kBtnPtnC)).c_str(),
+    GetParam(i)->InitBool(("Pattern button" + std::to_string(i - kParamPattern0)).c_str(),
                           false,
                           "On/Off",
                           IParam::kFlagCannotAutomate);
   }
 
-  GetParam(kBtnPtnOct2)
+  GetParam(kParamOct0)
       ->InitBool("Octav 2",
                  false,
                  "On/Off",
                  IParam::kFlagCannotAutomate);  // It's bad to set something to true here!!
-  GetParam(kBtnPtnOct3)
+  GetParam(kParamOct0 + 1)
       ->InitBool("Octav 3",
                  false,
                  "On/Off",
@@ -219,23 +226,25 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
     //    pGraphics->AttachControl(new IBKnobControl(510, 130, knobBigBitmap, kParamDrive));
     pGraphics->AttachControl(new IBKnobControl(1130 - 210, 130, knobBigBitmap, kParamVolume));
 
-    // Pattern buttons
-    const IBitmap btnPatternOctav2Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485,
+    // Octav buttons
+    IBitmap btnPatternOctavBitmap[2];
+    btnPatternOctavBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATOCTAV2_FN, 2, true);
+    btnPatternOctavBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
+
+    for (int i = 0; i < 2; i++)
+    {
+      pGraphics->AttachControl(new GroupBtnControl(485 + (btnPatternOctavBitmap[i].FW() - 3) * i,
                                                    138,
-                                                   btnPatternOctav2Bitmap,
-                                                   kBtnPtnOct2,
-                                                   kCtrlTagBtnPtnOct2,
-                                                   open303Core),
-                             kCtrlTagBtnPtnOct2);
-    const IBitmap btnPatternOctav3Bitmap = pGraphics->LoadBitmap(PNGBTNPATOCTAV3_FN, 2, true);
-    pGraphics->AttachControl(new PatternBtnControl(485.f + btnPatternOctav2Bitmap.FW() - 3,
-                                                   138,
-                                                   btnPatternOctav3Bitmap,
-                                                   kBtnPtnOct3,
-                                                   kCtrlTagBtnPtnOct3,
-                                                   open303Core),
-                             kCtrlTagBtnPtnOct3);
+                                                   btnPatternOctavBitmap[i],
+                                                   kParamOct0 + i,
+                                                   mSelectedOctav,
+                                                   i,
+                                                   kCtrlTagOctav0,
+                                                   2),
+                               kCtrlTagOctav0 + i,
+                               "Octav button");
+    }
+
     IBitmap btnPatternBitmap[12];
     btnPatternBitmap[0] = pGraphics->LoadBitmap(PNGBTNPATC_FN, 2, true);
     btnPatternBitmap[1] = pGraphics->LoadBitmap(PNGBTNPATCc_FN, 2, true);
@@ -251,14 +260,15 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
     btnPatternBitmap[11] = pGraphics->LoadBitmap(PNGBTNPATB_FN, 2, true);
     for (int i = 0; i < 12; ++i)
     {
-      pGraphics->AttachControl(new PatternBtnControl(481.f +
-                                                         (i % 4) * (btnPatternBitmap[0].W() / 2),
-                                                     178.f + (i / 4) * (btnPatternBitmap[0].H()),
-                                                     btnPatternBitmap[i],
-                                                     kBtnPtnC + i,
-                                                     kCtrlTagBtnPtnC + i,
-                                                     open303Core),
-                               kCtrlTagBtnPtnC + i);
+      pGraphics->AttachControl(new GroupBtnControl(481.f + (i % 4) * btnPatternBitmap[0].W() / 2,
+                                                   178.f + (i / 4) * btnPatternBitmap[0].H(),
+                                                   btnPatternBitmap[i],
+                                                   kParamPattern0 + i,
+                                                   mSelectedPattern,
+                                                   i,
+                                                   kCtrlTagPattern0,
+                                                   12),
+                               kCtrlTagPattern0 + i);
     }
 
     // Pattern control buttons
@@ -302,7 +312,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
                                                        665.f + j * (btnPropBitmap.H() + 1),
                                                        btnPropBitmap,
                                                        kBtnProp0 + 16 * j + i),
-                                 kCtrlTagBtnProp0 + 16 * j + i,
+                                 kCtrlTagProp0 + 16 * j + i,
                                  "Sequencer");
       }
     }
@@ -320,48 +330,34 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
                                                        361.f + j * (heigth + 1),
                                                        btnSeqBitmap,
                                                        kBtnSeq0 + 16 * j + i),
-                                 kCtrlTagBtnSeq0 + 16 * j + i,
+                                 kCtrlTagSeq0 + 16 * j + i,
                                  "Sequencer");
       }
     }
 
-    const int yVal = 790;
-    const int xBase = 310;
-    const IBitmap btnStopBitmap = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 0,
-                                                yVal,
-                                                btnStopBitmap,
-                                                kParamStop,
-                                                kCtrlTagStop),
-                             kCtrlTagStop);
-    const IBitmap btnHostSyncBitmap = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 1,
-                                                yVal,
-                                                btnHostSyncBitmap,
-                                                kParamHostSync,
-                                                kCtrlTagHostSync),
-                             kCtrlTagHostSync);
-    const IBitmap btnKeySyncBitmap = pGraphics->LoadBitmap(PNGKEYSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 2,
-                                                yVal,
-                                                btnKeySyncBitmap,
-                                                kParamKeySync,
-                                                kCtrlTagKeySync),
-                             kCtrlTagKeySync);
-    const IBitmap btnInternalSyncBitmap = pGraphics->LoadBitmap(PNGINTERNALSYNC_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 3,
-                                                yVal,
-                                                btnInternalSyncBitmap,
-                                                kParamInternalSync,
-                                                kCtrlTagInternalSync),
-                             kCtrlTagInternalSync);
-    const IBitmap btnMidiPlayBitmap = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
-    pGraphics->AttachControl(new SyncBtnControl(xBase + btnStopBitmap.W() / 2 * 4,
-                                                yVal,
-                                                btnMidiPlayBitmap,
-                                                kParamMidiPlay,
-                                                kCtrlTagMidiPlay),
-                             kCtrlTagMidiPlay);
+    // Play mode buttons
+    //
+    IBitmap btnPlayModes[5];
+    btnPlayModes[0] = pGraphics->LoadBitmap(PNGSTOP_FN, 2, true);
+    btnPlayModes[1] = pGraphics->LoadBitmap(PNGHOSTSYNC_FN, 2, true);
+    btnPlayModes[2] = pGraphics->LoadBitmap(PNGKEYSYNC_FN, 2, true);
+    btnPlayModes[3] = pGraphics->LoadBitmap(PNGINTERNALSYNC_FN, 2, true);
+    btnPlayModes[4] = pGraphics->LoadBitmap(PNGMIDIPLAY_FN, 2, true);
+
+    for (int i = 0; i < 5; ++i)
+    {
+      pGraphics->AttachControl(new GroupBtnControl(310.f + (btnPlayModes[i].W() / 2 * i),
+                                                   790.f,
+                                                   btnPlayModes[i],
+                                                   kParamPlayMode0 + i,
+                                                   mSelectedPlayMode,
+                                                   i,
+                                                   kCtrlTagPlayMode0,
+                                                   5),
+                               kCtrlTagPlayMode0 + i,
+                               "Mode button");
+    }
+
 #ifdef _WIN32
     ReadSettingsFromProgramDataPath(mPlugUIScale);
     pGraphics->Resize(PLUG_WIDTH, PLUG_HEIGHT, static_cast<float>(mPlugUIScale), true);
@@ -438,13 +434,13 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
 
   // Save current octav and current pattern.
   //  double oct2 = GetParam(kBtnPtnOct2)->Value();
-  double oct3 = GetParam(kBtnPtnOct3)->Value();
+  double oct3 = GetParam(kParamOct0)->Value();
   double ptn;
-  for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
+  for (int i = kParamPattern0; i < kParamPattern0 + 12; ++i)
   {
     if (GetParam(i)->Value() == 1.0)
     {
-      ptn = static_cast<double>(i - kBtnPtnC);
+      ptn = static_cast<double>(i - kParamPattern0);
     }
   }
   if (oct3 == 1.0)
@@ -561,18 +557,18 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
                                //  open303Core.sequencer.setPattern(static_cast<int>(ptn));
   if (ptn < 12.0)
   {
-    GetParam(kBtnPtnOct2)->Set(1.0);
-    GetParam(kBtnPtnOct3)->Set(0.0);
+    GetParam(kParamOct0)->Set(1.0);
+    GetParam(kParamOct0 + 1)->Set(0.0);
   }
   else
   {
-    GetParam(kBtnPtnOct2)->Set(0.0);
-    GetParam(kBtnPtnOct3)->Set(1.0);
+    GetParam(kParamOct0)->Set(0.0);
+    GetParam(kParamOct0 + 1)->Set(1.0);
     ptn -= 12.0;
   }
-  for (int i = kBtnPtnC; i < kBtnPtnC + 12; ++i)
+  for (int i = kParamPattern0; i < kParamPattern0 + 12; ++i)
   {
-    if (static_cast<int>(ptn) == i - kBtnPtnC)
+    if (static_cast<int>(ptn) == i - kParamPattern0)
     {
       GetParam(i)->Set(1.0);
     }
@@ -581,6 +577,8 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
       GetParam(i)->Set(0.0);
     }
   }
+
+  mHasLoadingPresets = true;
 
   OnParamReset(kPresetRecall);
 
@@ -694,12 +692,12 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
     {
       open303Core.sequencer.setUpdateSequenserGUI(false);
 
-      mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
+      mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
 
       // Push pattern buttons
       int pat;
       pat = open303Core.sequencer.getActivePattern();
-      mPatternSender.PushData({ kCtrlTagBtnPtnC, { pat } });
+      mPatternSender.PushData({ kCtrlTagPattern0, { pat } });
     }
   }
 
@@ -800,6 +798,8 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
             open303Core.sequencer.setPattern(msg.NoteNumber() - 48);
             open303Core.sequencer.setUpdateSequenserGUI(true);
           }
+          mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
+          mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
           open303Core.sequencer.setStep(0,
                                         -1);  // Let countdown be recalculated.
         }
@@ -866,6 +866,8 @@ BassMatrix::OnIdle()
   mLedSeqSender.TransmitData(*this);
   mSequencerSender.TransmitData(*this);
   mPatternSender.TransmitData(*this);
+  mSelectedOctavSender.TransmitData(*this);
+  mSelectedModeSender.TransmitData(*this);
 
 #ifndef WAM_API
   // Update the plugin scale.
@@ -890,7 +892,9 @@ BassMatrix::CreateGraphics()
   // The OnParamReset(kPresetRecall) call in UnserializeState will not be able to update
   // the sequencer gui because the graphics have not been created and therefore the
   // message from mSequencerSender will be lost.
-  mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
+  mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+  mSelectedModeSender.PushData({ kCtrlTagPlayMode0, { mSelectedPlayMode } });
+  mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
 
   return p;
 }
@@ -923,6 +927,17 @@ BassMatrix::OnReset()
   open303Core.setFeedbackHighpass(150.0);
   open303Core.setPostFilterHighpass(24.0);
   open303Core.setSquarePhaseShift(189.0);
+
+  if (!mHasLoadingPresets)
+  {
+#if IPLUG_DSP
+    open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
+#else
+    open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
+    open303Core.sequencer.start();
+#endif
+    open303Core.sequencer.randomizePattern(0);
+  }
 }
 #endif
 
@@ -934,7 +949,7 @@ BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
 #else
 void
 BassMatrix::OnParamChange(int paramIdx)
-#endif  // API
+#endif  // VST3_API
 {
 
 #ifdef VST3_API
@@ -942,7 +957,7 @@ BassMatrix::OnParamChange(int paramIdx)
   {
     return;
   }
-#endif  // API
+#endif  // VST3_API
 
   double value = GetParam(paramIdx)->Value();
 
@@ -958,7 +973,7 @@ BassMatrix::OnParamChange(int paramIdx)
     {
       return;
     }
-#endif  // API
+#endif  // VST3_API
 
     int seqNr = (paramIdx - kBtnSeq0) % 16;
     int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1;  // noteNr between 0 and 12
@@ -995,7 +1010,7 @@ BassMatrix::OnParamChange(int paramIdx)
     {
       return;
     }
-#endif  // API
+#endif  // VST3_API
 
     int seqNr = (paramIdx - kBtnProp0) % 16;
     int rowNr = (paramIdx - kBtnProp0) / 16;
@@ -1039,7 +1054,7 @@ BassMatrix::OnParamChange(int paramIdx)
   }
 
   // Pattern selection buttons
-  if (paramIdx >= kBtnPtnC && paramIdx <= kBtnPtnC + 11)
+  if (paramIdx >= kParamPattern0 && paramIdx <= kParamPattern0 + 11)
   {
     //#ifdef VST3_API
     //    if (source == kUI && GetTransportIsRunning() &&
@@ -1051,52 +1066,62 @@ BassMatrix::OnParamChange(int paramIdx)
     if (value == 1.0)
     {
       open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() +
-                                       paramIdx - kBtnPtnC);
-      mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
+                                       paramIdx - kParamPattern0);
+      mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
     }
     return;
   }
 
+  if (paramIdx >= kParamPlayMode0 && paramIdx <= kParamPlayMode0 + 4)
+  {
+    if (value == 1.0)
+    {
+      mSelectedPlayMode = paramIdx - kParamPlayMode0;
+      open303Core.sequencer.setMode(mSelectedPlayMode);
+      mStartSyncWithHost = (mSelectedPlayMode == rosic::AcidSequencer::HOST_SYNC);
+      if (mSelectedPlayMode == rosic::AcidSequencer::MIDI_PLAY ||
+          mSelectedPlayMode == rosic::AcidSequencer::OFF ||
+          mSelectedPlayMode == rosic::AcidSequencer::KEY_SYNC)
+      {
+        open303Core.sequencer.stop();
+      }
+      else  // rosic::AcidSequencer::HOST_SYNC or rosic::AcidSequencer::RUN
+      {
+        open303Core.sequencer.stop();
+      }
+    }
+  }
+
+  if (paramIdx == kParamOct0)
+  {
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setPatternMultiplier(0);
+      int patternNr = open303Core.sequencer.getActivePattern();
+      if (patternNr >= 12)
+      {
+        open303Core.sequencer.setPattern(patternNr - 12);
+      }
+      mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+    }
+  }
+
+  if (paramIdx == kParamOct0 + 1)
+  {
+    if (value == 1.0)
+    {
+      open303Core.sequencer.setPatternMultiplier(1);
+      int patternNr = open303Core.sequencer.getActivePattern();
+      if (patternNr < 12)
+      {
+        open303Core.sequencer.setPattern(patternNr + 12);
+      }
+      mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+    }
+  }
+
   switch (paramIdx)
   {
-    case kBtnPtnOct2:
-      //#ifdef VST3_API
-      //      if (source == kUI && GetTransportIsRunning() &&
-      //          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-      //      {
-      //        return;
-      //      }
-      //#endif
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setPatternMultiplier(0);
-        int patternNr = open303Core.sequencer.getActivePattern();
-        if (patternNr >= 12)
-        {
-          open303Core.sequencer.setPattern(patternNr - 12);
-        }
-        mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
-      }
-      break;
-    case kBtnPtnOct3:
-      //#ifdef VST3_API
-      //      if (source == kUI && GetTransportIsRunning() &&
-      //          open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-      //      {
-      //        return;
-      //      }
-      //#endif
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setPatternMultiplier(1);
-        int patternNr = open303Core.sequencer.getActivePattern();
-        if (patternNr < 12)
-        {
-          open303Core.sequencer.setPattern(patternNr + 12);
-        }
-        mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
-      }
-      break;
     case kKnobLoopSize: mKnobLoopSize = static_cast<int>(value); break;
     case kParamResonance: open303Core.setResonance(value); break;
     case kParamCutOff: open303Core.setCutoff(value); break;
@@ -1122,41 +1147,6 @@ BassMatrix::OnParamChange(int paramIdx)
       open303Core.sequencer.setTempo(value);
       break;
     case kParamDrive: open303Core.setTanhShaperDrive(value); break;
-    case kParamStop:
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setMode(rosic::AcidSequencer::OFF);
-      }
-      break;
-    case kParamHostSync:
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
-        mStartSyncWithHost = true;
-      }
-      break;
-    case kParamInternalSync:
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
-        mStartSyncWithHost = false;
-      }
-      break;
-    case kParamKeySync:
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setMode(rosic::AcidSequencer::KEY_SYNC);
-        mStartSyncWithHost = false;
-      }
-      break;
-    case kParamMidiPlay:
-      if (value == 1.0)
-      {
-        open303Core.sequencer.setMode(rosic::AcidSequencer::MIDI_PLAY);
-        open303Core.sequencer.stop();
-        mStartSyncWithHost = false;
-      }
-      break;
     case kParamCopy:
       if (value == 1.0)
       {
@@ -1166,14 +1156,14 @@ BassMatrix::OnParamChange(int paramIdx)
       if (value == 1.0)
       {
         open303Core.sequencer.clearPattern(open303Core.sequencer.getActivePattern());
-        mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
+        mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
       }
       break;
     case kParamRandomize:
       if (value == 1.0)
       {
         open303Core.sequencer.randomizePattern(open303Core.sequencer.getActivePattern());
-        mSequencerSender.PushData({ kCtrlTagBtnSeq0, { CollectSequenceButtons(open303Core) } });
+        mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
       }
       break;
     default: break;
