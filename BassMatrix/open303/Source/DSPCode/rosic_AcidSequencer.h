@@ -22,10 +22,10 @@ public:
   enum sequencerModes
   {
     OFF = 0,
-    MIDI_PLAY,
-    KEY_SYNC,
     HOST_SYNC,
+    KEY_SYNC,
     RUN,
+    MIDI_PLAY,
 
     NUM_SEQUENCER_MODES
   };
