@@ -14,6 +14,7 @@ New features to implement
 
 Release procedure
 
+* Update version number in the GUI
 * Update version in SerializeState() and UnserializeState()
 * Build **release** version of Component on Mac
 * Zip the component directory and mail it to ola@witech.se
