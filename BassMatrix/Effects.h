@@ -321,11 +321,11 @@ private:
     // Asymmetric wave shaping
     if (x > 0.0)
     {
-      x = 1.0 - expf(-x * stage.shape);
+      x = 1.0 - exp(-x * stage.shape);
     }
     else
     {
-      x = -1.0 + expf(x * stage.shape);
+      x = -1.0 + exp(x * stage.shape);
     }
 
     return x;
