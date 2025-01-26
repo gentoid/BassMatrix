@@ -930,11 +930,11 @@ BassMatrix::OnReset()
 
   if (!mHasLoadingPresets)
   {
-#if IPLUG_DSP
-    open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
-#else
+#if APP_API
     open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
-    open303Core.sequencer.start();
+    open303Core.sequencer.stop();
+#else
+    open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
 #endif
     open303Core.sequencer.randomizePattern(0);
   }
