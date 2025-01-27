@@ -11,6 +11,7 @@ New features to implement
 * Check that saving settings works on Mac
 * A more fun pattern at startup.
 * Choose HOST SYNC mode if start up from DAW, else choose INT.SYNC
+* On Mac Randomize doesn't select any note as gated.
 
 Bugs
 * Gui don't show octav 3 change from octav 2 on the midi in.
