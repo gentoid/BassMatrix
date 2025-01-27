@@ -9,4 +9,3 @@ build-*
 */.vs
 *.pem
 mkcert*
-bassmatrix-old-working
