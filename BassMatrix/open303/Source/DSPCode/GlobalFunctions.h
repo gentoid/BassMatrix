@@ -135,7 +135,7 @@ underlying integer pseudo random number generator is a linear congruential with 
 first call to initialize it - otherwise it will use 0 as seed. A negative number (as in the default 
 argument) will indicate to not initialize the state and just generate a random number based on the 
 last state (which is the case for a typical call). */
-INLINE double randomUniform(double min = 0.0, double max = 1.0, int seed = -1);
+//INLINE double randomUniform(double min = 0.0, double max = 1.0, int seed = -1);
 
 /** Returns the nearest integer (as double, without typecast). */
 INLINE double round(double x);
@@ -398,14 +398,14 @@ INLINE double radiantToDegree(double radiant)
   return (180.0/PI)*radiant;
 }
 
-INLINE double randomUniform(double min, double max, int seed)
-{
-  static unsigned long state = 0;
-  if( seed >= 0 )
-    state = seed;                                        // initialization, if desired
-  state = 1664525*state + 1013904223;                    // mod implicitely by integer overflow
-  return min + (max-min) * ((1.0/4294967296.0) * state); // transform to desired range
-}
+//INLINE double randomUniform(double min, double max, int seed)
+//{
+//  static unsigned long state = 0;
+//  if( seed >= 0 )
+//    state = seed;                                        // initialization, if desired
+//  state = 1664525*state + 1013904223;                    // mod implicitely by integer overflow
+//  return min + (max-min) * ((1.0/4294967296.0) * state); // transform to desired range
+//}
 
 INLINE double round(double x)
 {
