@@ -12,6 +12,9 @@ New features to implement
 * A more fun pattern at startup.
 * Choose HOST SYNC mode if start up from DAW, else choose INT.SYNC
 
+Bugs
+* Gui don't show octav 3 change from octav 2 on the midi in.
+
 Release procedure
 
 * Update version number in the GUI

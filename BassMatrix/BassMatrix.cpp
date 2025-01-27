@@ -435,7 +435,7 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
   // Save current octav and current pattern.
   //  double oct2 = GetParam(kBtnPtnOct2)->Value();
   double oct3 = GetParam(kParamOct0)->Value();
-  double ptn;
+  double ptn = 0.0;
   for (int i = kParamPattern0; i < kParamPattern0 + 12; ++i)
   {
     if (GetParam(i)->Value() == 1.0)
@@ -930,7 +930,7 @@ BassMatrix::OnReset()
 
   if (!mHasLoadingPresets)
   {
-#if APP_API
+#ifdef APP_API
     open303Core.sequencer.setMode(rosic::AcidSequencer::RUN);
     open303Core.sequencer.stop();
 #else
