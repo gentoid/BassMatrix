@@ -1,14 +1,13 @@
 # BassMatrix
 
-A basic MPE capable synthesier plug-in with IGraphics GUI
+A Roland TB-303 clone
 
 ## Release procedure
 
 New features to implement
 
-* Listen to Note off massage in pattern changes
+* Listen to Note off message in pattern changes
 * Let UnserializeState() turn off effects if version is < 2.00
-* Check that saving settings works on Mac
 * A more fun pattern at startup.
 * Choose HOST SYNC mode if start up from DAW, else choose INT.SYNC
 * On Mac Randomize doesn't select any note as gated.

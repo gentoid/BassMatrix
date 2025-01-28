@@ -1,5 +1,6 @@
 #include "rosic_AcidPattern.h"
 #include <assert.h>
+#include <ctime>
 
 using namespace rosic;
 
@@ -28,6 +29,9 @@ AcidPattern::clear(int patternNr)
 void
 AcidPattern::randomize(int patternNr)
 {
+  // Use the time as a seed for the random number generator
+  std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
   assert(patternNr >= 0 && patternNr <= 24);
 
   // Create rhythm
@@ -129,9 +133,15 @@ AcidPattern::randomize(int patternNr)
 
     notes[i].key = playedNote % 12;
     notes[i].octave = octave;
-    notes[i].accent = (std::rand() % 100) < 30; // 30%
-    notes[i].slide = std::rand() % 100 < 15; // 15%
-    notes[i].gate = std::rand() % 100 < 90; // 90%
+    //#ifdef _WIN32
+    //    notes[i].accent = roundToInt(randomUniform(0, 1, rand())) == 1;
+    //    notes[i].slide = roundToInt(randomUniform(0, 5, rand())) == 4;
+    //    notes[i].gate = roundToInt(randomUniform(0, 11, rand())) < 9;
+    //#else
+    notes[i].accent = (std::rand() % 100) < 30;  // 30%
+    notes[i].slide = (std::rand() % 100) < 15;   // 15%
+    notes[i].gate = (std::rand() % 100) < 75;    // 75%
+                                                 //#endif
 
     // Increase step
     i++;

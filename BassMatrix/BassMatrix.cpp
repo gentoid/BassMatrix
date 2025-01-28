@@ -108,7 +108,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   //
   // Setup parameters and their default values
   //
-  GetParam(kParamCutOff)->InitDouble("Cut off", 500.0, 314.0, 2394.0, 1.0, "Hz");
+  GetParam(kParamCutOff)->InitDouble("Cut off", 640.0, 314.0, 2394.0, 1.0, "Hz");
   GetParam(kParamResonance)->InitDouble("Resonace", 50.0, 0.0, 100.0, 1.0, "%");
   GetParam(kParamTuning)->InitDouble("Tuning", 440.0, 400.0, 480.0, 1.0, "%");
   GetParam(kParamEnvMode)->InitDouble("Env mode", 25.0, 0.0, 100.0, 1.0, "%");
@@ -936,7 +936,8 @@ BassMatrix::OnReset()
 #else
     open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
 #endif
-    open303Core.sequencer.randomizePattern(0);
+    open303Core.sequencer.randomizePattern(9);
+    open303Core.sequencer.setPattern(9);
   }
 }
 #endif
