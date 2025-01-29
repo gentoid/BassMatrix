@@ -265,6 +265,9 @@ GroupBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void *pData)
       for (int i = 0; i < mNrOfGroupMembers; i++)
       {
         IControl *pControlBtn = GetUI()->GetControlWithTag(mGroupStart + i);
+
+        double before = pControlBtn->GetValue();
+
         if (i == mSelectedGroupTag)
         {
           pControlBtn->SetValue(1.0);
@@ -273,7 +276,10 @@ GroupBtnControl::OnMsgFromDelegate(int msgTag, int dataSize, const void *pData)
         {
           pControlBtn->SetValue(0.0);
         }
-        pControlBtn->SetDirty(true);
+        if (before != pControlBtn->GetValue())
+        {
+          pControlBtn->SetDirty(true);
+        }
       }
     }
   }
