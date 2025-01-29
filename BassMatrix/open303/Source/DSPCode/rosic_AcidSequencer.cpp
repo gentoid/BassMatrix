@@ -4,64 +4,69 @@ using namespace rosic;
 //-------------------------------------------------------------------------------------------------
 // construction/destruction:
 
-AcidSequencer::AcidSequencer() :
-  updateSequenserGUI(true), mNextStep(1), mCurrentStep(0)
+AcidSequencer::AcidSequencer() : mNextStep(1), mCurrentStep(0)
 {
-  sampleRate    = 44100.0;
-  bpm           = 140.0;
+  sampleRate = 44100.0;
+  bpm = 140.0;
   activePattern = 0;
-  running       = false;
-  countDown     = 0;
+  running = false;
+  countDown = 0;
   sequencerMode = OFF;
-  driftError    = 0.0;
-  modeChanged   = false;
+  driftError = 0.0;
+  modeChanged = false;
 
-  for(int k=0; k<=12; k++)
+  for (int k = 0; k <= 12; k++)
     keyPermissible[k] = true;
 }
 
 //-------------------------------------------------------------------------------------------------
 // parameter settings:
 
-void AcidSequencer::setSampleRate(double newSampleRate)
+void
+AcidSequencer::setSampleRate(double newSampleRate)
 {
-  if( newSampleRate > 0.0 )
+  if (newSampleRate > 0.0)
     sampleRate = newSampleRate;
 }
 
-void AcidSequencer::setMode(int newMode)
+void
+AcidSequencer::setMode(int newMode)
 {
-  if( newMode >= 0 && newMode < NUM_SEQUENCER_MODES )
+  if (newMode >= 0 && newMode < NUM_SEQUENCER_MODES)
   {
     sequencerMode = newMode;
-    modeChanged   = true;
+    modeChanged = true;
   }
 }
 
-void AcidSequencer::setKeyPermissible(int key, bool shouldBePermissible)
+void
+AcidSequencer::setKeyPermissible(int key, bool shouldBePermissible)
 {
-  if( key >= 0 && key <= 12 )
+  if (key >= 0 && key <= 12)
     keyPermissible[key] = shouldBePermissible;
 }
 
-void AcidSequencer::toggleKeyPermissibility(int key)
+void
+AcidSequencer::toggleKeyPermissibility(int key)
 {
-  if( key >= 0 && key <= 12 )
+  if (key >= 0 && key <= 12)
     keyPermissible[key] = !keyPermissible[key];
 }
 
 //-------------------------------------------------------------------------------------------------
 // inquiry:
 
-AcidPattern* AcidSequencer::getPattern(int index)
+AcidPattern *
+AcidSequencer::getPattern(int index)
 {
-  if( index < 0 || index >= numPatterns )
+  if (index < 0 || index >= numPatterns)
     return NULL;
   else
     return &patterns[index];
 }
 
-bool AcidSequencer::modeWasChanged()
+bool
+AcidSequencer::modeWasChanged()
 {
   bool result = modeChanged;
   modeChanged = false;
@@ -70,9 +75,10 @@ bool AcidSequencer::modeWasChanged()
   // is called from the audio-thread - otherwise note-hangs could happen?
 }
 
-bool AcidSequencer::isKeyPermissible(int key)
+bool
+AcidSequencer::isKeyPermissible(int key)
 {
-  if( key >= 0 && key <= 12 )
+  if (key >= 0 && key <= 12)
     return keyPermissible[key];
   else
     return false;
@@ -81,17 +87,19 @@ bool AcidSequencer::isKeyPermissible(int key)
 //-------------------------------------------------------------------------------------------------
 // event handling:
 
-void AcidSequencer::start()
+void
+AcidSequencer::start()
 {
   // set up members such that we will trap in the else-branch in the next call to getNote():
-  running    = true;
-  countDown  = -1;
+  running = true;
+  countDown = -1;
   mCurrentStep = 0;
   mNextStep = 1;
   driftError = 0.0;
 }
 
-void AcidSequencer::stop()
+void
+AcidSequencer::stop()
 {
   running = false;
 }
