@@ -7,6 +7,7 @@
 #include "IPlugEditorDelegate.h"
 #include "IPlugAPIBase.h"
 
+const double kVersion = 2.00;
 const int kNumPresets = 1;
 const int kNumberOfNoteBtns = 13;
 const int kNumberOfPropertyBtns = 5;

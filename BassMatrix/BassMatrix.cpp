@@ -115,7 +115,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   GetParam(kParamEnvMode)->InitDouble("Env mode", 25.0, 0.0, 100.0, 1.0, "%");
   GetParam(kParamDecay)->InitDouble("Decay", 400.0, 200.0, 2000.0, 1.0, "ms");
   GetParam(kParamAccent)->InitDouble("Accent", 50.0, 0.0, 100.0, 1.0, "%");
-  GetParam(kParamVolume)->InitDouble("Volume", -17.0, -75.0, 0.0, 0.1, "dB");
+  GetParam(kParamVolume)->InitDouble("Volume", -30.0, -75.0, 0.0, 0.1, "dB");
   GetParam(kParamTempo)->InitDouble("Tempo", 120.0, 10.0, 300.0, 1.0, "bpm");
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
@@ -400,7 +400,7 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
   bool savedOK = true;
 
   // Set version of the preset format.
-  double version = 1.1;
+  double version = kVersion;
   savedOK &= (chunk.Put(&version) > 0);
 
   // Save parameters except the leds and the parameters that are stored in sequencer.
@@ -474,7 +474,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
   // Check version for the preset format
   double version;
   pos = chunk.Get(&version, pos);
-  assert(version == 1.1);
+  //  assert(version == 1.1);
 
   if (version == 1.0 || version == 1.10)
   {
@@ -926,10 +926,10 @@ BassMatrix::OnReset()
 #else
     open303Core.sequencer.setMode(rosic::AcidSequencer::HOST_SYNC);
 #endif
-    open303Core.sequencer.randomizePattern(9);
-    open303Core.sequencer.setPattern(9);
+    mSelectedPattern = 9;
+    open303Core.sequencer.randomizePattern(mSelectedPattern);
+    open303Core.sequencer.setPattern(mSelectedPattern);
     mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
-    //    mPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
     mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
     mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
   }
@@ -1099,8 +1099,8 @@ BassMatrix::OnParamChange(int paramIdx)
         open303Core.sequencer.setPattern(patternNr - 12);
       }
       mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+      mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
     }
-    mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
   }
 
   if (paramIdx == kParamOct0 + 1)
@@ -1115,8 +1115,8 @@ BassMatrix::OnParamChange(int paramIdx)
         open303Core.sequencer.setPattern(patternNr + 12);
       }
       mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+      mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
     }
-    mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
   }
 
   switch (paramIdx)
