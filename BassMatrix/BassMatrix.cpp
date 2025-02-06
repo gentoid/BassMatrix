@@ -758,8 +758,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
           open303Core.sequencer.stop();
         }
       }
-      else if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC ||
-               open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN)
+      else if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
       {
         // Select the pattern according to msg.NoteNumber().
         if (msg.StatusMsg() == IMidiMsg::kNoteOn && msg.NoteNumber() >= 48 && msg.NoteNumber() < 72)
@@ -789,7 +788,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
         open303Core.sequencer.setStep(0,
                                       -1);  // Let countdown be recalculated.
       }
-      else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
+      if (msg.StatusMsg() == IMidiMsg::kNoteOff && msg.NoteNumber() >= 48 && msg.NoteNumber() < 72)
       {
         open303Core.allNotesOff();
         open303Core.sequencer.stop();
