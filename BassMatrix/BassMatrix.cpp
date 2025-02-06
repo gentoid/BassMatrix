@@ -483,6 +483,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
     mUseEffects = false;
   }
 
+  for (int i = kParamCutOff; i < nrOfParameters && pos >= 0; ++i)
   {
     IParam *pParam = GetParam(i);
     double v = 0.0;
