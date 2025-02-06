@@ -7,7 +7,8 @@ A Roland TB-303 clone
 New features to implement
 
 * Listen to Note off message in pattern changes
-* Let UnserializeState() turn off effects if version is < 2.00
+* Fix bug when pattern and octav buttons don't show correct pattern and octav buttons when patter is changed with midi message.
+* Let UnserializeState() turn off effects if version is < 2.00, current version put to public is 1.10.
 * A more fun pattern at startup.
 * Choose HOST SYNC mode if start up from DAW, else choose INT.SYNC
 * On Mac Randomize doesn't select any note as gated.

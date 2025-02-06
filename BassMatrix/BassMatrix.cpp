@@ -3,6 +3,7 @@
 #include "BassMatrixControls.h"
 #include "open303/Source/DSPCode/rosic_Open303.h"
 #include <filesystem>
+#include <sstream>
 #include <fstream>
 #include "Effects.h"
 
@@ -119,7 +120,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   GetParam(kParamDrive)->InitDouble("Drive", 36.9, 0.0, 50.0, 1.0, "bpm");
 
   GetParam(kParamWaveForm)->InitBool("Waveform", false);
-  GetParam(kParamEffects)->InitBool("Waveform", true);
+  GetParam(kParamEffects)->InitBool("Effects", true);
 
   GetParam(kParamPlayMode0)->InitBool("Stop", mSelectedPlayMode == rosic::AcidSequencer::OFF);
   GetParam(kParamPlayMode0 + 1)
@@ -475,12 +476,13 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
   pos = chunk.Get(&version, pos);
   assert(version == 1.1);
 
-  if (version == 1.0)
+  if (version == 1.0 || version == 1.10)
   {
-    nrOfParameters = NParams() - 1;  // The use effects button has been added since 1.0
+    nrOfParameters = NParams() - 1;  // The use effects button has been added since 1.00 and 1.10
+    GetParam(kParamEffects)->Set(0.0);
+    mUseEffects = false;
   }
 
-  for (int i = kParamCutOff; i < nrOfParameters && pos >= 0; ++i)
   {
     IParam *pParam = GetParam(i);
     double v = 0.0;
@@ -662,42 +664,16 @@ BassMatrix::CollectSequenceButtons(rosic::Open303 &open303Core, int patternNr)
 void
 BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, int nFrames)
 {
-
   assert(GetSampleRate() == open303Core.getSampleRate());
 
-
-  // Channel declaration.
   PLUG_SAMPLE_DST *out01 = outputs[0];
   PLUG_SAMPLE_DST *out02 = outputs[1];
-
-  // No sample accurate leds, because they will not be accurate anyway.
-  mLedSeqSender.PushData({ kCtrlTagLedSeq0, { open303Core.sequencer.getStep() } });
-
-  if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC ||
-      open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::KEY_SYNC)
-  {
-    open303Core.sequencer.setTempo(GetTempo());
-  }
+  open303Core.sequencer.setTempo(GetTempo());
 
   if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN &&
       !open303Core.sequencer.isRunning())
   {
     open303Core.noteOn(36, 64, 0.0);  // 36 seems to make C on sequencer be a C.
-  }
-
-  if (open303Core.sequencer.getSequencerMode() != rosic::AcidSequencer::OFF)
-  {
-    if (open303Core.sequencer.getUpdateSequenserGUI())
-    {
-      open303Core.sequencer.setUpdateSequenserGUI(false);
-
-      mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
-
-      // Push pattern buttons
-      int pat;
-      pat = open303Core.sequencer.getActivePattern();
-      mPatternSender.PushData({ kCtrlTagPattern0, { pat } });
-    }
   }
 
   for (int offset = 0; offset < nFrames; ++offset)
@@ -712,9 +688,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
 
       if (!GetTransportIsRunning())
       {
-        // Start
         // This lights the led that corresponds the position where the transport bar is set on.
-        //
         double maxSamplePos = GetSamplesPerBeat() * 4.0;
         int currentSampleInSequence =
             static_cast<int>(GetSamplePos()) % static_cast<int>(maxSamplePos);
@@ -722,14 +696,8 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
         int currentStepInSequence = (int)((double)currentSampleInSequence / samplesPerStep);
         open303Core.sequencer.setStep(currentStepInSequence,
                                       -1);  // Let countdown be recalculated.
-
-        // End
-        // This lights the led that corresponds the position where the transport bar is set on.
-        //
-
-
-        *out01++ = *out02++ = 0.0;  // Silence
-        continue;                   // Next frame
+        *out01++ = *out02++ = 0.0;          // Silence
+        continue;                           // Next frame
       }
 
       else if ((mStartSyncWithHost ||
@@ -747,6 +715,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
       }
     }
 
+    // Handle the loop knob. Only relevant in run mode.
     if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN)
     {
       if (mKnobLoopSize > 1)
@@ -756,7 +725,10 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
           mHasChanged = true;
           mCurrentPattern = (mCurrentPattern + 1) % mKnobLoopSize;
           open303Core.sequencer.setPattern(mCurrentPattern);
-          open303Core.sequencer.setUpdateSequenserGUI(true);
+          mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+          //          mPatternSender.PushData({ kCtrlTagPattern0, { mCurrentPattern } });
+          mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
+          mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
         }
         if (open303Core.sequencer.getStep() != 0)
         {
@@ -777,8 +749,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
         if (msg.StatusMsg() == IMidiMsg::kNoteOn)
         {
           open303Core.noteOn(msg.NoteNumber(), msg.Velocity(), 0.0);
-          open303Core.sequencer.setStep(0,
-                                        -1);  // Let countdown be recalculated.
+          open303Core.sequencer.setStep(0, -1);  // Countdown initialized.
         }
         else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
         {
@@ -789,24 +760,38 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
       else if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC ||
                open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN)
       {
-        if (msg.StatusMsg() == IMidiMsg::kNoteOn)
+        // Select the pattern according to msg.NoteNumber().
+        if (msg.StatusMsg() == IMidiMsg::kNoteOn && msg.NoteNumber() >= 48 && msg.NoteNumber() < 72)
         {
-          if (msg.NoteNumber() >= 48 && msg.NoteNumber() < 72)
-          {  // Octav 2 and octav 3
-            open303Core.sequencer.setPattern(msg.NoteNumber() - 48);
-            open303Core.sequencer.setUpdateSequenserGUI(true);
-          }
+          int noteOffset = msg.NoteNumber() - 48;
+          open303Core.sequencer.setPattern(noteOffset);
+          mSelectedOctav = (msg.NoteNumber() <= 59) ? 0 : 1;
+          mSelectedPattern = noteOffset - mSelectedOctav * 12;
+          mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+          //          mPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
           mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
           mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
-          open303Core.noteOn(36, 64, 0.0);  // 36 seems to make C on sequencer be a C.
-          open303Core.sequencer.setStep(0,
-                                        -1);  // Let countdown be recalculated.
         }
-        else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
-        {
-          open303Core.allNotesOff();
-          open303Core.sequencer.stop();
-        }
+
+        // #ifdef _WIN32
+        // #ifdef _DEBUG
+        //         std::wstringstream debugMsg;
+        //         debugMsg << L"Setting selected octav to " << mSelectedOctav
+        //                  << L". Setting selected pattern to " << mSelectedPattern << L"\n";
+        //         OutputDebugStringW(debugMsg.str().c_str());
+        // #endif  // _DEBUG
+        // #endif
+
+        assert(mSelectedPattern >= 0 && mSelectedPattern < 12 && mSelectedOctav >= 0 &&
+               mSelectedOctav <= 1);
+        open303Core.noteOn(36, 64, 0.0);  // 36 seems to make C on sequencer be a C.
+        open303Core.sequencer.setStep(0,
+                                      -1);  // Let countdown be recalculated.
+      }
+      else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
+      {
+        open303Core.allNotesOff();
+        open303Core.sequencer.stop();
       }
       mMidiQueue.Remove();
     }
@@ -815,6 +800,10 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
     bool onNew16th = false;
 
     double tb303Oout = open303Core.getSample(note, onNew16th);
+    if (onNew16th)
+    {
+      mLedSeqSender.PushData({ kCtrlTagLedSeq0, { open303Core.sequencer.getStep() } });
+    }
 
     if (mUseEffects)
     {
@@ -854,7 +843,6 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
     }
 #endif  // VST3_API
   }
-
   mLastSamplePos = static_cast<unsigned int>(GetSamplePos()) + nFrames;
 
   mMidiQueue.Flush(nFrames);
@@ -865,8 +853,9 @@ BassMatrix::OnIdle()
 {
   mLedSeqSender.TransmitData(*this);
   mSequencerSender.TransmitData(*this);
-  mPatternSender.TransmitData(*this);
+  //  mPatternSender.TransmitData(*this);
   mSelectedOctavSender.TransmitData(*this);
+  mSelectedPatternSender.TransmitData(*this);
   mSelectedModeSender.TransmitData(*this);
 
 #ifndef WAM_API
@@ -895,6 +884,7 @@ BassMatrix::CreateGraphics()
   mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
   mSelectedModeSender.PushData({ kCtrlTagPlayMode0, { mSelectedPlayMode } });
   mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
+  mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
 
   return p;
 }
@@ -938,6 +928,10 @@ BassMatrix::OnReset()
 #endif
     open303Core.sequencer.randomizePattern(9);
     open303Core.sequencer.setPattern(9);
+    mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
+    //    mPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
+    mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
+    mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
   }
 }
 #endif
@@ -1097,6 +1091,7 @@ BassMatrix::OnParamChange(int paramIdx)
   {
     if (value == 1.0)
     {
+      mSelectedOctav = 0;
       open303Core.sequencer.setPatternMultiplier(0);
       int patternNr = open303Core.sequencer.getActivePattern();
       if (patternNr >= 12)
@@ -1105,12 +1100,14 @@ BassMatrix::OnParamChange(int paramIdx)
       }
       mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
     }
+    mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
   }
 
   if (paramIdx == kParamOct0 + 1)
   {
     if (value == 1.0)
     {
+      mSelectedOctav = 1;
       open303Core.sequencer.setPatternMultiplier(1);
       int patternNr = open303Core.sequencer.getActivePattern();
       if (patternNr < 12)
@@ -1119,6 +1116,7 @@ BassMatrix::OnParamChange(int paramIdx)
       }
       mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
     }
+    mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
   }
 
   switch (paramIdx)

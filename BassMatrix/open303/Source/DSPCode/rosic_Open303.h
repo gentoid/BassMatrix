@@ -341,29 +341,32 @@ Open303::getSample(AcidNote &outNote, bool &onNew16th)
     AcidNote *note = sequencer.getNote();
     if (note != NULL)
     {
-      if (note->gate == true && currentNote != -1)
+      if (currentNote != -1)
       {
-        int key = note->key + 12 * note->octave + currentNote;
-        key = clip(key, 0, 127);
-
-        outNote = *note;
         onNew16th = true;
-
-        if (!slideToNextNote)
-          triggerNote(key, note->accent);
-        else
-          slideToNote(key, note->accent);
-
-        AcidNote *nextNote = sequencer.getNextScheduledNote();
-        if (note->slide && nextNote->gate == true)
+        if (note->gate == true)
         {
-          noteOffCountDown = std::numeric_limits<int>::max();
-          slideToNextNote = true;
-        }
-        else
-        {
-          noteOffCountDown = sequencer.getStepLengthInSamples();
-          slideToNextNote = false;
+          int key = note->key + 12 * note->octave + currentNote;
+          key = clip(key, 0, 127);
+
+          outNote = *note;
+
+          if (!slideToNextNote)
+            triggerNote(key, note->accent);
+          else
+            slideToNote(key, note->accent);
+
+          AcidNote *nextNote = sequencer.getNextScheduledNote();
+          if (note->slide && nextNote->gate == true)
+          {
+            noteOffCountDown = std::numeric_limits<int>::max();
+            slideToNextNote = true;
+          }
+          else
+          {
+            noteOffCountDown = sequencer.getStepLengthInSamples();
+            slideToNextNote = false;
+          }
         }
       }
     }

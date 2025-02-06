@@ -16,6 +16,9 @@
         "functional": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "filesystem": "cpp",
+        "xlocinfo": "cpp",
+        "xstring": "cpp"
     }
 }

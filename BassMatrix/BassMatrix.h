@@ -102,7 +102,7 @@ private:
   rosic::Open303 open303Core;
   ISender<1, 1, int> mLedSeqSender;
   ISender<1, 1, std::array<bool, kNumberOfSeqButtons>> mSequencerSender;
-  ISender<1, 1, int> mPatternSender;
+  //  ISender<1, 1, int> mPatternSender;
   ISender<1, 1, int> mSelectedOctavSender;
   ISender<1, 1, int> mSelectedPatternSender;
   ISender<1, 1, int> mSelectedModeSender;
