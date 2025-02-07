@@ -71,7 +71,7 @@ public:
 #if IPLUG_EDITOR
   //  void OnParentWindowResize(int width, int height) override;
   bool OnHostRequestingSupportedViewConfiguration(int width, int height) override { return true; }
-#if defined VST3_API
+#if defined(VST3_API) || defined(AU_API)
   bool SerializeState(IByteChunk &chunk) const override;
   int UnserializeState(const IByteChunk &chunk, int startPos) override;
   IGraphics *CreateGraphics() override;
@@ -81,7 +81,7 @@ public:
 #if IPLUG_DSP
   void ProcessMidiMsg(const IMidiMsg &msg) override;
   void OnReset() override;
-#if defined VST3_API
+#if defined(VST3_API) || defined(AU_API)
   void OnParamChangeUI(int paramIdx, EParamSource source = kUnknown) override;
 #else
   void OnParamChange(int paramIdx) override;

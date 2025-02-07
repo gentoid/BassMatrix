@@ -387,11 +387,11 @@ BassMatrix::~BassMatrix()
 // Save plugin settings to hard drive. First save is junk.
 //
 #if IPLUG_EDITOR
-#ifdef VST3_API
+#if defined(VST3_API) || defined(AU_API)
 bool
 BassMatrix::SerializeState(IByteChunk &chunk) const
 {
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
   OutputDebugString(L"SerializeState() called\n");
 #endif
 
@@ -423,12 +423,12 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
     {
       //      Trace(TRACELOC, " %s %d %f", "Sequencer button nr", patternNr, elem ? 1.0 : 0.0);
       double v = elem ? 1.0 : 0.0;
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
       OutputDebugString(v == 1.0 ? L"*" : L"-");
 #endif  // _DEBUG
       savedOK &= (chunk.Put(&v) > 0);
     }
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
     OutputDebugString(L"\n");
 #endif  // _DEBUG
   }
@@ -461,7 +461,7 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
 int
 BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
 {
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
   OutputDebugString(L"UnserializeState() called\n");
 #endif
 
@@ -504,8 +504,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
       double v = 0.0;
       pos = chunk.Get(&v, pos);
       //      Trace(TRACELOC, "%d %s %d %f", patternNr, "Sequencer button", i, v);
-
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
       OutputDebugString(v == 1.0 ? L"*" : L"-");
 #endif  // _DEBUG
 
@@ -521,7 +520,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
       pos = chunk.Get(&v, pos);
       //      Trace(TRACELOC, "%d %s %d %f", patternNr, "Property button", i, v);
 
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
       OutputDebugString(v == 1.0 ? L"*" : L"-");
 #endif  // _DEBUG
 
@@ -549,7 +548,7 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
         pattern->getNote(i % 16)->gate = (v == 1.0);
       }
     }
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_WIN32)
     OutputDebugString(L"\n");
 #endif  // _DEBUG
   }
@@ -727,17 +726,17 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
       {
         if (open303Core.sequencer.getStep() == 0 && !mHasChanged)
         {
-          mHasChanged = true;
-          mCurrentPattern = (mCurrentPattern + 1) % mKnobLoopSize;
+        mHasChanged = true;
+        mCurrentPattern = (mCurrentPattern + 1) % mKnobLoopSize;
           open303Core.sequencer.setPattern(mCurrentPattern);
           mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
           //          mPatternSender.PushData({ kCtrlTagPattern0, { mCurrentPattern } });
           mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
           mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
-        }
+      }
         if (open303Core.sequencer.getStep() != 0)
         {
-          mHasChanged = false;
+        mHasChanged = false;
         }
       }
     }
@@ -821,31 +820,6 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
       *out01++ = tb303Oout;
       *out02++ = tb303Oout;
     }
-
-#ifdef VST3_API
-    static int currentKey = 0;
-    static double noteOffSamplePos = 0.0;
-    // Send a midi message to midi output
-    if (onNew16th)
-    {
-      int key = note.key + 12 * note.octave + 36;
-      IMidiMsg midiMessage;
-      midiMessage.MakeNoteOnMsg(key, note.accent ? 127 : 100, 0);
-      IPlugVST3ProcessorBase::SendMidiMsg(midiMessage);
-      // Calculate when the next note off should be sent.
-      double secondsToNextStep = beatsToSeconds(0.25, GetTempo());
-      double samplesToNextStep = secondsToNextStep * GetSampleRate();
-      double samplesToNoteOff = samplesToNextStep * 0.90;
-      noteOffSamplePos = GetSamplePos() + offset + samplesToNoteOff;
-      currentKey = key;
-    }
-    else if (static_cast<int>(noteOffSamplePos) == static_cast<int>(GetSamplePos() + offset))
-    {
-      IMidiMsg midiMessage;
-      midiMessage.MakeNoteOffMsg(currentKey, 0);
-      IPlugVST3ProcessorBase::SendMidiMsg(midiMessage);
-    }
-#endif  // VST3_API
   }
   mLastSamplePos = static_cast<unsigned int>(GetSamplePos()) + nFrames;
 
@@ -874,7 +848,7 @@ BassMatrix::OnIdle()
 #endif  // IPLUG_DSP
 
 #if IPLUG_EDITOR
-#ifdef VST3_API
+#if defined(VST3_API) || defined(AU_API)
 IGraphics *
 BassMatrix::CreateGraphics()
 {
@@ -892,7 +866,7 @@ BassMatrix::CreateGraphics()
 
   return p;
 }
-#endif  // VST3_API
+#endif  // VST3_API or AU_API
 #endif  // IPLUG_EDITOR
 
 #if IPLUG_DSP
@@ -942,28 +916,28 @@ BassMatrix::OnReset()
 
 #if IPLUG_DSP
 
-#ifdef VST3_API
+#if defined(VST3_API) || defined(AU_API)
 void
 BassMatrix::OnParamChangeUI(int paramIdx, EParamSource source)
 #else
 void
 BassMatrix::OnParamChange(int paramIdx)
-#endif  // VST3_API
+#endif  // VST3_API or AU_API
 {
 
-#ifdef VST3_API
+#if defined(VST3_API) || defined(AU_API)
   if (source != kUI && source != kReset && source != kPresetRecall && source != kHost)
   {
     return;
   }
-#endif  // VST3_API
+#endif  // VST3_API or AU_API
 
   double value = GetParam(paramIdx)->Value();
 
   // Note buttons
   if (paramIdx >= kBtnSeq0 && paramIdx < kBtnSeq0 + kNumberOfSeqButtons - kNumberOfTotalPropButtons)
   {
-#ifdef VST3_API
+#if defined(VST3_API) || defined(AU_API)
     if (source == kPresetRecall)
     {
       return;
@@ -972,7 +946,7 @@ BassMatrix::OnParamChange(int paramIdx)
     {
       return;
     }
-#endif  // VST3_API
+#endif  // VST3_API or AU_API
 
     int seqNr = (paramIdx - kBtnSeq0) % 16;
     int noteNr = kNumberOfNoteBtns - (paramIdx - kBtnSeq0) / 16 - 1;  // noteNr between 0 and 12
@@ -1000,7 +974,7 @@ BassMatrix::OnParamChange(int paramIdx)
   // Note properties buttons
   if (paramIdx >= kBtnProp0 && paramIdx < kBtnProp0 + kNumberOfTotalPropButtons)
   {
-#ifdef VST3_API
+#if defined(VST3_API) || defined(AU_API)
     if (source == kPresetRecall)
     {
       return;
@@ -1009,7 +983,7 @@ BassMatrix::OnParamChange(int paramIdx)
     {
       return;
     }
-#endif  // VST3_API
+#endif  // VST3_API or AU_API
 
     int seqNr = (paramIdx - kBtnProp0) % 16;
     int rowNr = (paramIdx - kBtnProp0) / 16;
@@ -1055,13 +1029,6 @@ BassMatrix::OnParamChange(int paramIdx)
   // Pattern selection buttons
   if (paramIdx >= kParamPattern0 && paramIdx <= kParamPattern0 + 11)
   {
-    //#ifdef VST3_API
-    //    if (source == kUI && GetTransportIsRunning() &&
-    //        open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::HOST_SYNC)
-    //    {
-    //      return;
-    //    }
-    //#endif
     if (value == 1.0)
     {
       open303Core.sequencer.setPattern(12 * open303Core.sequencer.getPatternMultiplier() +
