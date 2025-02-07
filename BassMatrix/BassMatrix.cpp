@@ -669,7 +669,11 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
 
   PLUG_SAMPLE_DST *out01 = outputs[0];
   PLUG_SAMPLE_DST *out02 = outputs[1];
-  open303Core.sequencer.setTempo(GetTempo());
+
+  if (open303Core.sequencer.getSequencerMode() != rosic::AcidSequencer::RUN)
+  {
+    open303Core.sequencer.setTempo(GetTempo());
+  }
 
   if (open303Core.sequencer.getSequencerMode() == rosic::AcidSequencer::RUN &&
       !open303Core.sequencer.isRunning())
