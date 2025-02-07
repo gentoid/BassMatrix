@@ -1,6 +1,13 @@
 # BassMatrix
 
-This is a instrument written in C++ using the IPlug2 API. The DSP code is taken from the open303 open source project.
+
+Roland TB-303 bass synthesizer, beloved in electronic music for its distinctive
+sound. BassMatrix comes with various sound-shaping parameters that allow users to 
+craft those classic acid bass lines with ease. It's available for download in
+64-bit Windows VST3, standalone Windows standalone and MacOS (au2, Components)
+versions, ensuring compatibility with different user setups.
+
+BassMatrix is a instrument written in C++ using the IPlug2 API. The DSP code is taken from the open303 open source project.
 
 ## Known problems
 
@@ -12,7 +19,9 @@ Support for MacOS audio units (Component).
 
 Plugin GUI size is saved between sessions (on Windows)
 
-Plugin pattern should restart on note on and stop playing on note off.
+Plugin pattern now restart on note on and stop playing on note off.
+
+A randomized pattern at startup.
 
 ## Version 1.10
 

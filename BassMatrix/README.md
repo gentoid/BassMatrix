@@ -6,7 +6,7 @@ A Roland TB-303 clone
 
 New features to implement
 
-* A more fun pattern at startup.
+* A randomized pattern at startup.
 
 Bugs
 * Om MacOS when deleting a BassMatrix and the start a new instance. The sequencer buttons, octav buttons and pattern buttons are off.
