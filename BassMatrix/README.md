@@ -9,7 +9,7 @@ New features to implement
 * A more fun pattern at startup.
 
 Bugs
-* None
+* Om MacOS when deleting a BassMatrix and the start a new instance. The sequencer buttons, octav buttons and pattern buttons are off.
 
 Release procedure
 

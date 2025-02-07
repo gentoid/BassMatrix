@@ -83,7 +83,7 @@ BassMatrix::BassMatrix(const InstanceInfo &info) :
   mHasLoadingPresets(false),
   mSelectedOctav(0),
   mSelectedPattern(0),
-#ifdef VST3_API
+#if IPLUG_EDITOR
   mSelectedPlayMode(rosic::AcidSequencer::HOST_SYNC)
 #else
   mSelectedPlayMode(rosic::AcidSequencer::RUN)
