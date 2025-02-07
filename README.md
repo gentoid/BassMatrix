@@ -6,7 +6,7 @@ BassMatrix is a instrument written in C++ using the IPlug2 API. The DSP code is 
 
 ## Known problems
 
-On MacOS when deleting a BassMatrix and the start a new instance of it in the DAW, the sequencer buttons, octav buttons and pattern buttons are off. This does not happen on a Windows DAW.
+On MacOS when keyboard sync mode note on don't play the note as supposed to.
 
 ## Version 2.00
 
@@ -16,7 +16,7 @@ Plugin GUI size is saved between sessions (on Windows)
 
 Plugin pattern now restart on note on and stop playing on note off.
 
-A randomized pattern at startup.
+A randomized pattern is generated at startup.
 
 ## Version 1.10
 
