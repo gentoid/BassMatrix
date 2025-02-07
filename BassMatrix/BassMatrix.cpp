@@ -703,7 +703,6 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
         *out01++ = *out02++ = 0.0;          // Silence
         continue;                           // Next frame
       }
-
       else if ((mStartSyncWithHost ||
                 (mLastSamplePos != 0 && (mLastSamplePos + offset != GetSamplePos() + offset))))
       {  // Transport has changed
@@ -753,7 +752,7 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
         if (msg.StatusMsg() == IMidiMsg::kNoteOn)
         {
           open303Core.noteOn(msg.NoteNumber(), msg.Velocity(), 0.0);
-          open303Core.sequencer.setStep(0, -1);  // Countdown initialized.
+          open303Core.sequencer.start();
         }
         else if (msg.StatusMsg() == IMidiMsg::kNoteOff)
         {
@@ -771,25 +770,14 @@ BassMatrix::ProcessBlock(PLUG_SAMPLE_DST **inputs, PLUG_SAMPLE_DST **outputs, in
           mSelectedOctav = (msg.NoteNumber() <= 59) ? 0 : 1;
           mSelectedPattern = noteOffset - mSelectedOctav * 12;
           mSequencerSender.PushData({ kCtrlTagSeq0, { CollectSequenceButtons(open303Core) } });
-          //          mPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
           mSelectedOctavSender.PushData({ kCtrlTagOctav0, { mSelectedOctav } });
           mSelectedPatternSender.PushData({ kCtrlTagPattern0, { mSelectedPattern } });
         }
 
-        // #ifdef _WIN32
-        // #ifdef _DEBUG
-        //         std::wstringstream debugMsg;
-        //         debugMsg << L"Setting selected octav to " << mSelectedOctav
-        //                  << L". Setting selected pattern to " << mSelectedPattern << L"\n";
-        //         OutputDebugStringW(debugMsg.str().c_str());
-        // #endif  // _DEBUG
-        // #endif
-
         assert(mSelectedPattern >= 0 && mSelectedPattern < 12 && mSelectedOctav >= 0 &&
                mSelectedOctav <= 1);
         open303Core.noteOn(36, 64, 0.0);  // 36 seems to make C on sequencer be a C.
-        open303Core.sequencer.setStep(0,
-                                      -1);  // Let countdown be recalculated.
+        open303Core.sequencer.start();
       }
       if (msg.StatusMsg() == IMidiMsg::kNoteOff && msg.NoteNumber() >= 48 && msg.NoteNumber() < 72)
       {

@@ -9,7 +9,7 @@ New features to implement
 * A randomized pattern at startup.
 
 Bugs
-* Om MacOS when deleting a BassMatrix and the start a new instance. The sequencer buttons, octav buttons and pattern buttons are off. This does not happen on Ableton Live on Windows.
+* On MacOS when keyboard sync mode note on don't play the note as supposed to.
 
 Release procedure
 
