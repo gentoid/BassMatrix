@@ -1,17 +1,12 @@
 # BassMatrix
 
-
-Roland TB-303 bass synthesizer, beloved in electronic music for its distinctive
-sound. BassMatrix comes with various sound-shaping parameters that allow users to 
-craft those classic acid bass lines with ease. It's available for download in
-64-bit Windows VST3, standalone Windows standalone and MacOS (au2, Components)
-versions, ensuring compatibility with different user setups.
+BassMatrix try to sond like the Roland TB-303 bass synthesizer, beloved in electronic music for its distinctive sound. BassMatrix comes with various sound-shaping parameters that allow users to craft those classic acid bass lines with ease. It's available for download in 64-bit Windows VST3, standalone Windows standalone and MacOS (au2, Components) versions, ensuring compatibility with different user setups.
 
 BassMatrix is a instrument written in C++ using the IPlug2 API. The DSP code is taken from the open303 open source project.
 
 ## Known problems
 
-* On Mac the Random button causes the pattern to be silent.
+On MacOS when deleting a BassMatrix and the start a new instance of it in the DAW, the sequencer buttons, octav buttons and pattern buttons are off. This does not happen on a Windows DAW.
 
 ## Version 2.00
 
