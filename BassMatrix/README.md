@@ -9,6 +9,7 @@ New features to implement
 * A randomized pattern at startup.
 
 Bugs
+
 * On MacOS when keyboard sync mode note on don't play the note as supposed to.
 
 Release procedure
@@ -22,3 +23,5 @@ Release procedure
 * Build **release** version of 64 bit VST3 on Windows
 * Zip the BassMatrix.vst3 directory.
 * Rename the zip to BassMatrix-vst3-2.40.zip
+* Upload all file to bassmatrix.witech.se
+* Create news on KvrAudio.
