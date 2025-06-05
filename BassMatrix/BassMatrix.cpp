@@ -435,7 +435,7 @@ BassMatrix::SerializeState(IByteChunk &chunk) const
 
   // Save current octav and current pattern.
   //  double oct2 = GetParam(kBtnPtnOct2)->Value();
-  double oct3 = GetParam(kParamOct0)->Value();
+  double oct3 = GetParam(kParamOct0 + 1)->Value();
   double ptn = 0.0;
   for (int i = kParamPattern0; i < kParamPattern0 + 12; ++i)
   {
@@ -557,16 +557,22 @@ BassMatrix::UnserializeState(const IByteChunk &chunk, int startPos)
   double ptn;
   pos = chunk.Get(&ptn, pos);  // ptn is between 0.0 and 23.0
                                //  open303Core.sequencer.setPattern(static_cast<int>(ptn));
+
+
   if (ptn < 12.0)
   {
     GetParam(kParamOct0)->Set(1.0);
     GetParam(kParamOct0 + 1)->Set(0.0);
+    mSelectedPattern = ptn;
+    mSelectedOctav = 0;
   }
   else
   {
     GetParam(kParamOct0)->Set(0.0);
     GetParam(kParamOct0 + 1)->Set(1.0);
     ptn -= 12.0;
+    mSelectedPattern = ptn;
+    mSelectedOctav = 1;
   }
   for (int i = kParamPattern0; i < kParamPattern0 + 12; ++i)
   {

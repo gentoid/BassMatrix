@@ -8,6 +8,12 @@ BassMatrix is a instrument written in C++ using the IPlug2 API. The DSP code is 
 
 On MacOS when keyboard sync mode note on don't play the note as supposed to.
 
+## Version 2.01
+
+Fixed bug when pattern was not restored correct.
+
+Fixed bug when GUI had a black background bigger than the plugin in Cubase.
+
 ## Version 2.00
 
 Support for MacOS audio units (Component).
